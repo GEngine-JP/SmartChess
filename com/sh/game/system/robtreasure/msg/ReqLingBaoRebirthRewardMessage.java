@@ -7,24 +7,24 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求灵宝重生</p>
+ * <p>请求灵宝重生奖励</p>
  * <p>Created by MessageUtil</p>
  * @author : lanyue group
  */
-public class ReqLingTreasureRebirthMessage extends AbstractMessage {
+public class ReqLingBaoRebirthRewardMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ReqLingTreasureRebirthMessage() {
+	public ReqLingBaoRebirthRewardMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 50022;
+		return 50025;
 	}
 	
 	/**

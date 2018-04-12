@@ -38,6 +38,11 @@ public class OwnerInfoBean extends KryoBean {
 	 */
 	private int fightValue;
 
+	/**
+	 * 行会名
+	 */
+	private String unionName;
+
 
 	public long getId() {
 		return id;
@@ -84,6 +89,15 @@ public class OwnerInfoBean extends KryoBean {
 	}
 
 	
+	public String getUnionName() {
+		return unionName;
+	}
+
+	public void setUnionName(String unionName) {
+		this.unionName = unionName;
+	}
+
+	
 
 	@Override
 	public boolean read(KryoInput buf) {
@@ -92,6 +106,7 @@ public class OwnerInfoBean extends KryoBean {
 		this.sex = readInt(buf, false);
 		this.career = readInt(buf, false);
 		this.fightValue = readInt(buf, false);
+		this.unionName = readString(buf);
 
 		return true;
 	}
@@ -103,6 +118,7 @@ public class OwnerInfoBean extends KryoBean {
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, career, false);
 		this.writeInt(buf, fightValue, false);
+		this.writeString(buf, unionName);
 
 		return true;
 	}
