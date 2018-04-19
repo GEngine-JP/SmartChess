@@ -24,13 +24,13 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 52003;
+		return 52002;
 	}
 	
 	/**
-	 * id
+	 * artifactId
 	 */
-	private int id;
+	private int artifactId;
 
 	/**
 	 * 0未激活 1可激活 2己激活
@@ -38,12 +38,12 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 	private int state;
 
 
-	public int getId() {
-		return id;
+	public int getArtifactId() {
+		return artifactId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setArtifactId(int artifactId) {
+		this.artifactId = artifactId;
 	}
 
 	
@@ -59,7 +59,7 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 
 	@Override
 	public boolean read(KryoInput buf) {
-		this.id = readInt(buf, false);
+		this.artifactId = readInt(buf, false);
 		this.state = readInt(buf, false);
 
 		return true;
@@ -67,7 +67,7 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, id, false);
+		this.writeInt(buf, artifactId, false);
 		this.writeInt(buf, state, false);
 
 		return true;

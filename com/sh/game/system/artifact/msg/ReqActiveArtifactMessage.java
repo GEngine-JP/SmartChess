@@ -28,7 +28,7 @@ public class ReqActiveArtifactMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * id
+	 * artifactId
 	 */
 	private int artifactId;
 
