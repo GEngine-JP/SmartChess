@@ -27,32 +27,16 @@ public class ReqNoticeFirePigInstanceBossDieMessage extends AbstractMessage {
 		return 20017;
 	}
 	
-	/**
-	 * 副本唯一id
-	 */
-	private int uniqueId;
 
-
-	public int getUniqueId() {
-		return uniqueId;
-	}
-
-	public void setUniqueId(int uniqueId) {
-		this.uniqueId = uniqueId;
-	}
-
-	
 
 	@Override
 	public boolean read(KryoInput buf) {
-		this.uniqueId = readInt(buf, false);
 
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, uniqueId, false);
 
 		return true;
 	}

@@ -1,4 +1,4 @@
-package com.sh.game.system.instance.msg;
+package com.sh.game.system.union.msg;
 
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
@@ -7,52 +7,52 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求退出副本（通用）</p>
+ * <p>请求弹劾会长</p>
  * <p>Created by MessageUtil</p>
  * @author : lanyue group
  */
-public class ReqExitInstanceMessage extends AbstractMessage {
+public class ReqImpeachLeaderMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ReqExitInstanceMessage() {
+	public ReqImpeachLeaderMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 20011;
+		return 23049;
 	}
 	
 	/**
-	 * 副本id
+	 * 会长id
 	 */
-	private int instanceId;
+	private long leaderId;
 
 
-	public int getInstanceId() {
-		return instanceId;
+	public long getLeaderId() {
+		return leaderId;
 	}
 
-	public void setInstanceId(int instanceId) {
-		this.instanceId = instanceId;
+	public void setLeaderId(long leaderId) {
+		this.leaderId = leaderId;
 	}
 
 	
 
 	@Override
 	public boolean read(KryoInput buf) {
-		this.instanceId = readInt(buf, false);
+		this.leaderId = readLong(buf);
 
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, instanceId, false);
+		this.writeLong(buf, leaderId);
 
 		return true;
 	}

@@ -42,6 +42,11 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 	 */
 	private long hp;
 
+	/**
+	 * 活动状态 1开启
+	 */
+	private int state;
+
 
 	public int getInstanceId() {
 		return instanceId;
@@ -70,12 +75,22 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 	}
 
 	
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	
 
 	@Override
 	public boolean read(KryoInput buf) {
 		this.instanceId = readInt(buf, false);
 		this.unionName = readString(buf);
 		this.hp = readLong(buf);
+		this.state = readInt(buf, false);
 
 		return true;
 	}
@@ -85,6 +100,7 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 		this.writeInt(buf, instanceId, false);
 		this.writeString(buf, unionName);
 		this.writeLong(buf, hp);
+		this.writeInt(buf, state, false);
 
 		return true;
 	}

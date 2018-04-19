@@ -32,11 +32,6 @@ public class ReqMultiInsCombineSkillMessage extends AbstractMessage {
 	 */
 	private int skillId;
 
-	/**
-	 * 副本唯一id
-	 */
-	private int uniqueId;
-
 
 	public int getSkillId() {
 		return skillId;
@@ -47,20 +42,10 @@ public class ReqMultiInsCombineSkillMessage extends AbstractMessage {
 	}
 
 	
-	public int getUniqueId() {
-		return uniqueId;
-	}
-
-	public void setUniqueId(int uniqueId) {
-		this.uniqueId = uniqueId;
-	}
-
-	
 
 	@Override
 	public boolean read(KryoInput buf) {
 		this.skillId = readInt(buf, false);
-		this.uniqueId = readInt(buf, false);
 
 		return true;
 	}
@@ -68,7 +53,6 @@ public class ReqMultiInsCombineSkillMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 		this.writeInt(buf, skillId, false);
-		this.writeInt(buf, uniqueId, false);
 
 		return true;
 	}

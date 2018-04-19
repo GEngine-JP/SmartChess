@@ -44,6 +44,11 @@ public class LingBaoBean extends KryoBean {
 	private int totalExp;
 
 	/**
+	 * 精炼阶数
+	 */
+	private int refineLv;
+
+	/**
 	 * 灵宝战力
 	 */
 	private int power;
@@ -103,6 +108,15 @@ public class LingBaoBean extends KryoBean {
 	}
 
 	
+	public int getRefineLv() {
+		return refineLv;
+	}
+
+	public void setRefineLv(int refineLv) {
+		this.refineLv = refineLv;
+	}
+
+	
 	public int getPower() {
 		return power;
 	}
@@ -121,6 +135,7 @@ public class LingBaoBean extends KryoBean {
 		this.level = readInt(buf, false);
 		this.nowExp = readInt(buf, false);
 		this.totalExp = readInt(buf, false);
+		this.refineLv = readInt(buf, false);
 		this.power = readInt(buf, false);
 
 		return true;
@@ -134,6 +149,7 @@ public class LingBaoBean extends KryoBean {
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, nowExp, false);
 		this.writeInt(buf, totalExp, false);
+		this.writeInt(buf, refineLv, false);
 		this.writeInt(buf, power, false);
 
 		return true;

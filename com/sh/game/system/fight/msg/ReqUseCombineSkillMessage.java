@@ -37,16 +37,6 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 	 */
 	private int wave;
 
-	/**
-	 * 副本id
-	 */
-	private int instanceId;
-
-	/**
-	 * 排行id
-	 */
-	private int targetRank;
-
 
 	public int getSkillId() {
 		return skillId;
@@ -66,31 +56,11 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 	}
 
 	
-	public int getInstanceId() {
-		return instanceId;
-	}
-
-	public void setInstanceId(int instanceId) {
-		this.instanceId = instanceId;
-	}
-
-	
-	public int getTargetRank() {
-		return targetRank;
-	}
-
-	public void setTargetRank(int targetRank) {
-		this.targetRank = targetRank;
-	}
-
-	
 
 	@Override
 	public boolean read(KryoInput buf) {
 		this.skillId = readInt(buf, false);
 		this.wave = readInt(buf, false);
-		this.instanceId = readInt(buf, false);
-		this.targetRank = readInt(buf, false);
 
 		return true;
 	}
@@ -99,8 +69,6 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 		this.writeInt(buf, skillId, false);
 		this.writeInt(buf, wave, false);
-		this.writeInt(buf, instanceId, false);
-		this.writeInt(buf, targetRank, false);
 
 		return true;
 	}

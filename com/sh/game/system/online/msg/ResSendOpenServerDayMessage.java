@@ -37,6 +37,16 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 	 */
 	private long time;
 
+	/**
+	 * 创角天数
+	 */
+	private int createDays;
+
+	/**
+	 * 合服次数
+	 */
+	private int mergeCount;
+
 
 	public int getDay() {
 		return day;
@@ -56,11 +66,31 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 	}
 
 	
+	public int getCreateDays() {
+		return createDays;
+	}
+
+	public void setCreateDays(int createDays) {
+		this.createDays = createDays;
+	}
+
+	
+	public int getMergeCount() {
+		return mergeCount;
+	}
+
+	public void setMergeCount(int mergeCount) {
+		this.mergeCount = mergeCount;
+	}
+
+	
 
 	@Override
 	public boolean read(KryoInput buf) {
 		this.day = readInt(buf, false);
 		this.time = readLong(buf);
+		this.createDays = readInt(buf, false);
+		this.mergeCount = readInt(buf, false);
 
 		return true;
 	}
@@ -69,6 +99,8 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 		this.writeInt(buf, day, false);
 		this.writeLong(buf, time);
+		this.writeInt(buf, createDays, false);
+		this.writeInt(buf, mergeCount, false);
 
 		return true;
 	}
