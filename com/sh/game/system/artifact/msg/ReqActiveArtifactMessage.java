@@ -30,29 +30,29 @@ public class ReqActiveArtifactMessage extends AbstractMessage {
 	/**
 	 * id
 	 */
-	private int id;
+	private int artifactId;
 
 
-	public int getId() {
-		return id;
+	public int getArtifactId() {
+		return artifactId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setArtifactId(int artifactId) {
+		this.artifactId = artifactId;
 	}
 
 	
 
 	@Override
 	public boolean read(KryoInput buf) {
-		this.id = readInt(buf, false);
+		this.artifactId = readInt(buf, false);
 
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, id, false);
+		this.writeInt(buf, artifactId, false);
 
 		return true;
 	}
