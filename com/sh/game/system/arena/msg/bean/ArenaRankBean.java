@@ -1,65 +1,58 @@
 package com.sh.game.system.arena.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.arena.msg.bean.RankRewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ArenaRankBean extends KryoBean {
 
 	/**
 	 * 开始名次
 	 */
 	private int startRank;
-
 	/**
 	 * 结束名次
 	 */
 	private int endRank;
-
 	/**
 	 * 玩家名字
 	 */
 	private String name;
-
 	/**
 	 * 战力
 	 */
 	private int fightPower;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 奖励数据
 	 */
-	private List<RankRewardBean> rankRewardList = new ArrayList<RankRewardBean>();
-
+	private List<RankRewardBean> rankRewardList = new ArrayList<>();
 
 	public int getStartRank() {
 		return startRank;
@@ -69,8 +62,7 @@ public class ArenaRankBean extends KryoBean {
 		this.startRank = startRank;
 	}
 
-	
-	public int getEndRank() {
+		public int getEndRank() {
 		return endRank;
 	}
 
@@ -78,8 +70,7 @@ public class ArenaRankBean extends KryoBean {
 		this.endRank = endRank;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -87,8 +78,7 @@ public class ArenaRankBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getFightPower() {
+		public int getFightPower() {
 		return fightPower;
 	}
 
@@ -96,8 +86,7 @@ public class ArenaRankBean extends KryoBean {
 		this.fightPower = fightPower;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -105,8 +94,7 @@ public class ArenaRankBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -114,8 +102,7 @@ public class ArenaRankBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -123,8 +110,7 @@ public class ArenaRankBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -132,8 +118,7 @@ public class ArenaRankBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public List<RankRewardBean> getRankRewardList() {
+		public List<RankRewardBean> getRankRewardList() {
 		return rankRewardList;
 	}
 
@@ -141,9 +126,9 @@ public class ArenaRankBean extends KryoBean {
 		this.rankRewardList = rankRewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.startRank = readInt(buf, false);
 		this.endRank = readInt(buf, false);
 		this.name = readString(buf);
@@ -162,13 +147,12 @@ public class ArenaRankBean extends KryoBean {
 				this.rankRewardList.add(rankRewardBean);
 			}
 		}
-
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, startRank, false);
 		this.writeInt(buf, endRank, false);
 		this.writeString(buf, name);
@@ -181,9 +165,6 @@ public class ArenaRankBean extends KryoBean {
 		for (int rankRewardListI = 0; rankRewardListI < this.rankRewardList.size(); rankRewardListI++) {
 			this.writeBean(buf, this.rankRewardList.get(rankRewardListI));
 		}
-
-
 		return true;
 	}
 }
-

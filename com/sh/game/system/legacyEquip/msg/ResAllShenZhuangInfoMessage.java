@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.legacyEquip.msg.bean.ShenZhuangBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送所有神装信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAllShenZhuangInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResAllShenZhuangInfoMessage extends AbstractMessage {
 	/**
 	 * 神装列表
 	 */
-	private List<ShenZhuangBean> shenZhuangList = new ArrayList<ShenZhuangBean>();
-
+	private List<ShenZhuangBean> shenZhuangList = new ArrayList<>();
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 
 	public List<ShenZhuangBean> getShenZhuangList() {
 		return shenZhuangList;
@@ -47,7 +48,6 @@ public class ResAllShenZhuangInfoMessage extends AbstractMessage {
 	public void setShenZhuangList(List<ShenZhuangBean> shenZhuangList) {
 		this.shenZhuangList = shenZhuangList;
 	}
-
 	public int getFightValue() {
 		return fightValue;
 	}
@@ -57,9 +57,9 @@ public class ResAllShenZhuangInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int shenZhuangListLength = readShort(buf);
 		for (int shenZhuangListI = 0; shenZhuangListI < shenZhuangListLength; shenZhuangListI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResAllShenZhuangInfoMessage extends AbstractMessage {
 				shenZhuangBean.read(buf);
 				this.shenZhuangList.add(shenZhuangBean);
 			}
-		}
-
-		this.fightValue = readInt(buf, false);
-
+		}		this.fightValue = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.shenZhuangList.size());
 		for (int shenZhuangListI = 0; shenZhuangListI < this.shenZhuangList.size(); shenZhuangListI++) {
 			this.writeBean(buf, this.shenZhuangList.get(shenZhuangListI));
-		}
-
-		this.writeInt(buf, fightValue, false);
-
+		}		this.writeInt(buf, fightValue, false);
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.activity.msg.bean.ActivityBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回活动面板数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenPanelMessage extends AbstractMessage {
 
 	@Override
@@ -33,12 +36,10 @@ public class ResOpenPanelMessage extends AbstractMessage {
 	 * 组id
 	 */
 	private int groupId;
-
 	/**
 	 * 活动数据
 	 */
-	private List<ActivityBean> activityList = new ArrayList<ActivityBean>();
-
+	private List<ActivityBean> activityList = new ArrayList<>();
 
 	public int getGroupId() {
 		return groupId;
@@ -48,8 +49,7 @@ public class ResOpenPanelMessage extends AbstractMessage {
 		this.groupId = groupId;
 	}
 
-	
-	public List<ActivityBean> getActivityList() {
+		public List<ActivityBean> getActivityList() {
 		return activityList;
 	}
 
@@ -57,9 +57,9 @@ public class ResOpenPanelMessage extends AbstractMessage {
 		this.activityList = activityList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.groupId = readInt(buf, false);
 		int activityListLength = readShort(buf);
 		for (int activityListI = 0; activityListI < activityListLength; activityListI++) {
@@ -71,21 +71,17 @@ public class ResOpenPanelMessage extends AbstractMessage {
 				this.activityList.add(activityBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, groupId, false);
 		writeShort(buf, this.activityList.size());
 		for (int activityListI = 0; activityListI < this.activityList.size(); activityListI++) {
 			this.writeBean(buf, this.activityList.get(activityListI));
 		}
-
-
 		return true;
 	}
 }
-

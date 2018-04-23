@@ -1,68 +1,59 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionRedPackBean extends KryoBean {
 
 	/**
 	 * 发送者id
 	 */
 	private long uid;
-
 	/**
 	 * 发送者名字
 	 */
 	private String name;
-
 	/**
 	 * 发送者职业
 	 */
 	private int senderCareer;
-
 	/**
 	 * 发送者性别
 	 */
 	private int sendSex;
-
 	/**
 	 * 红包id
 	 */
 	private long redPackId;
-
 	/**
 	 * 元宝
 	 */
 	private int money;
-
 	/**
 	 * 是否已领取
 	 */
 	private boolean isGet;
-
 	/**
 	 * 是否为空包(被领完)
 	 */
 	private boolean isNull;
-
 	/**
 	 * 祝福语
 	 */
 	private String content;
-
 	/**
 	 * 发送时间
 	 */
 	private int sendTime;
-
 
 	public long getUid() {
 		return uid;
@@ -72,8 +63,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.uid = uid;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -81,8 +71,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getSenderCareer() {
+		public int getSenderCareer() {
 		return senderCareer;
 	}
 
@@ -90,8 +79,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.senderCareer = senderCareer;
 	}
 
-	
-	public int getSendSex() {
+		public int getSendSex() {
 		return sendSex;
 	}
 
@@ -99,8 +87,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.sendSex = sendSex;
 	}
 
-	
-	public long getRedPackId() {
+		public long getRedPackId() {
 		return redPackId;
 	}
 
@@ -108,8 +95,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.redPackId = redPackId;
 	}
 
-	
-	public int getMoney() {
+		public int getMoney() {
 		return money;
 	}
 
@@ -117,8 +103,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.money = money;
 	}
 
-	
-	public boolean getIsGet() {
+		public boolean getIsGet() {
 		return isGet;
 	}
 
@@ -126,8 +111,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.isGet = isGet;
 	}
 
-	
-	public boolean getIsNull() {
+		public boolean getIsNull() {
 		return isNull;
 	}
 
@@ -135,8 +119,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.isNull = isNull;
 	}
 
-	
-	public String getContent() {
+		public String getContent() {
 		return content;
 	}
 
@@ -144,8 +127,7 @@ public class UnionRedPackBean extends KryoBean {
 		this.content = content;
 	}
 
-	
-	public int getSendTime() {
+		public int getSendTime() {
 		return sendTime;
 	}
 
@@ -154,9 +136,9 @@ public class UnionRedPackBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.name = readString(buf);
 		this.senderCareer = readInt(buf, false);
@@ -167,12 +149,12 @@ public class UnionRedPackBean extends KryoBean {
 		this.isNull = readBoolean(buf);
 		this.content = readString(buf);
 		this.sendTime = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeString(buf, name);
 		this.writeInt(buf, senderCareer, false);
@@ -183,8 +165,6 @@ public class UnionRedPackBean extends KryoBean {
 		this.writeBoolean(buf, isNull);
 		this.writeString(buf, content);
 		this.writeInt(buf, sendTime, false);
-
 		return true;
 	}
 }
-

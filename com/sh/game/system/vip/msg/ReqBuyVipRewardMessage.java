@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求领取vip礼包</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBuyVipRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqBuyVipRewardMessage extends AbstractMessage {
 	 */
 	private int vipLevel;
 
-
 	public int getVipLevel() {
 		return vipLevel;
 	}
@@ -42,19 +42,17 @@ public class ReqBuyVipRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.vipLevel = readInt(buf, false);
 
+		this.vipLevel = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, vipLevel, false);
 
+		this.writeInt(buf, vipLevel, false);
 		return true;
 	}
 }
-

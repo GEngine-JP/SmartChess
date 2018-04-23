@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.activity.msg.bean.ActivityRankBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回排行榜类型活动数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRankActivityMessage extends AbstractMessage {
 
 	@Override
@@ -33,12 +36,10 @@ public class ResRankActivityMessage extends AbstractMessage {
 	 * groupId
 	 */
 	private int groupId;
-
 	/**
 	 * 活动数据
 	 */
-	private List<ActivityRankBean> rankInfoBeanList = new ArrayList<ActivityRankBean>();
-
+	private List<ActivityRankBean> rankInfoBeanList = new ArrayList<>();
 
 	public int getGroupId() {
 		return groupId;
@@ -48,8 +49,7 @@ public class ResRankActivityMessage extends AbstractMessage {
 		this.groupId = groupId;
 	}
 
-	
-	public List<ActivityRankBean> getRankInfoBeanList() {
+		public List<ActivityRankBean> getRankInfoBeanList() {
 		return rankInfoBeanList;
 	}
 
@@ -57,9 +57,9 @@ public class ResRankActivityMessage extends AbstractMessage {
 		this.rankInfoBeanList = rankInfoBeanList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.groupId = readInt(buf, false);
 		int rankInfoBeanListLength = readShort(buf);
 		for (int rankInfoBeanListI = 0; rankInfoBeanListI < rankInfoBeanListLength; rankInfoBeanListI++) {
@@ -71,21 +71,17 @@ public class ResRankActivityMessage extends AbstractMessage {
 				this.rankInfoBeanList.add(activityRankBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, groupId, false);
 		writeShort(buf, this.rankInfoBeanList.size());
 		for (int rankInfoBeanListI = 0; rankInfoBeanListI < this.rankInfoBeanList.size(); rankInfoBeanListI++) {
 			this.writeBean(buf, this.rankInfoBeanList.get(rankInfoBeanListI));
 		}
-
-
 		return true;
 	}
 }
-

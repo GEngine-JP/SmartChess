@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通过后台登录</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackLoginMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqBackLoginMessage extends AbstractMessage {
 	 */
 	private String loginName;
 
-
 	public String getLoginName() {
 		return loginName;
 	}
@@ -42,19 +42,17 @@ public class ReqBackLoginMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.loginName = readString(buf);
 
+		this.loginName = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, loginName);
 
+		this.writeString(buf, loginName);
 		return true;
 	}
 }
-

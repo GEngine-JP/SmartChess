@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.UnionRedPackBean;
 import com.sh.game.system.union.msg.bean.UnionRedPackRecordBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>红包面板数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenRedPackPanelMessage extends AbstractMessage {
 
 	@Override
@@ -34,22 +37,18 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 	 * 今日抢到的红包数
 	 */
 	private int todayCount;
-
 	/**
 	 * 今日抢到的红包总数
 	 */
 	private int todayMoney;
-
 	/**
 	 * 红包列表
 	 */
-	private List<UnionRedPackBean> unionRedPackBeanList = new ArrayList<UnionRedPackBean>();
-
+	private List<UnionRedPackBean> unionRedPackBeanList = new ArrayList<>();
 	/**
 	 * 红包记录列表
 	 */
-	private List<UnionRedPackRecordBean> unionRedPackRecordBean = new ArrayList<UnionRedPackRecordBean>();
-
+	private List<UnionRedPackRecordBean> unionRedPackRecordBean = new ArrayList<>();
 
 	public int getTodayCount() {
 		return todayCount;
@@ -59,8 +58,7 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 		this.todayCount = todayCount;
 	}
 
-	
-	public int getTodayMoney() {
+		public int getTodayMoney() {
 		return todayMoney;
 	}
 
@@ -68,15 +66,13 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 		this.todayMoney = todayMoney;
 	}
 
-	
-	public List<UnionRedPackBean> getUnionRedPackBeanList() {
+		public List<UnionRedPackBean> getUnionRedPackBeanList() {
 		return unionRedPackBeanList;
 	}
 
 	public void setUnionRedPackBeanList(List<UnionRedPackBean> unionRedPackBeanList) {
 		this.unionRedPackBeanList = unionRedPackBeanList;
 	}
-
 	public List<UnionRedPackRecordBean> getUnionRedPackRecordBean() {
 		return unionRedPackRecordBean;
 	}
@@ -85,9 +81,9 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 		this.unionRedPackRecordBean = unionRedPackRecordBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.todayCount = readInt(buf, false);
 		this.todayMoney = readInt(buf, false);
 		int unionRedPackBeanListLength = readShort(buf);
@@ -99,9 +95,7 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 				unionRedPackBean.read(buf);
 				this.unionRedPackBeanList.add(unionRedPackBean);
 			}
-		}
-
-		int unionRedPackRecordBeanLength = readShort(buf);
+		}		int unionRedPackRecordBeanLength = readShort(buf);
 		for (int unionRedPackRecordBeanI = 0; unionRedPackRecordBeanI < unionRedPackRecordBeanLength; unionRedPackRecordBeanI++) {
 			if (readByte(buf) == 0) { 
 				this.unionRedPackRecordBean.add(null);
@@ -111,27 +105,21 @@ public class ResOpenRedPackPanelMessage extends AbstractMessage {
 				this.unionRedPackRecordBean.add(unionRedPackRecordBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, todayCount, false);
 		this.writeInt(buf, todayMoney, false);
 		writeShort(buf, this.unionRedPackBeanList.size());
 		for (int unionRedPackBeanListI = 0; unionRedPackBeanListI < this.unionRedPackBeanList.size(); unionRedPackBeanListI++) {
 			this.writeBean(buf, this.unionRedPackBeanList.get(unionRedPackBeanListI));
-		}
-
-		writeShort(buf, this.unionRedPackRecordBean.size());
+		}		writeShort(buf, this.unionRedPackRecordBean.size());
 		for (int unionRedPackRecordBeanI = 0; unionRedPackRecordBeanI < this.unionRedPackRecordBean.size(); unionRedPackRecordBeanI++) {
 			this.writeBean(buf, this.unionRedPackRecordBean.get(unionRedPackRecordBeanI));
 		}
-
-
 		return true;
 	}
 }
-

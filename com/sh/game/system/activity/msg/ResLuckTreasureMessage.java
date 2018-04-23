@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送财富幸运儿信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLuckTreasureMessage extends AbstractMessage {
 
 	@Override
@@ -32,32 +35,26 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 	 * 活动id
 	 */
 	private int activityId;
-
 	/**
 	 * 第几天
 	 */
 	private int day;
-
 	/**
 	 * 开奖状态 0开奖前 1开奖后
 	 */
 	private int openState;
-
 	/**
 	 * 获奖者
 	 */
 	private String luckyName;
-
 	/**
 	 * 幸运号码
 	 */
 	private int luckyNum;
-
 	/**
 	 * 幸运数字
 	 */
-	private List<Integer> luckNumberList = new ArrayList<Integer>();
-
+	private List<Integer> luckNumberList = new ArrayList<>();
 
 	public int getActivityId() {
 		return activityId;
@@ -67,8 +64,7 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.activityId = activityId;
 	}
 
-	
-	public int getDay() {
+		public int getDay() {
 		return day;
 	}
 
@@ -76,8 +72,7 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.day = day;
 	}
 
-	
-	public int getOpenState() {
+		public int getOpenState() {
 		return openState;
 	}
 
@@ -85,8 +80,7 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.openState = openState;
 	}
 
-	
-	public String getLuckyName() {
+		public String getLuckyName() {
 		return luckyName;
 	}
 
@@ -94,8 +88,7 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.luckyName = luckyName;
 	}
 
-	
-	public int getLuckyNum() {
+		public int getLuckyNum() {
 		return luckyNum;
 	}
 
@@ -103,8 +96,7 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.luckyNum = luckyNum;
 	}
 
-	
-	public List<Integer> getLuckNumberList() {
+		public List<Integer> getLuckNumberList() {
 		return luckNumberList;
 	}
 
@@ -112,9 +104,9 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		this.luckNumberList = luckNumberList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		this.day = readInt(buf, false);
 		this.openState = readInt(buf, false);
@@ -124,13 +116,12 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		for (int luckNumberListI = 0; luckNumberListI < luckNumberListLength; luckNumberListI++) {
 			this.luckNumberList.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeInt(buf, day, false);
 		this.writeInt(buf, openState, false);
@@ -140,9 +131,6 @@ public class ResLuckTreasureMessage extends AbstractMessage {
 		for (int luckNumberListI = 0; luckNumberListI < this.luckNumberList.size(); luckNumberListI++) {
 			this.writeInt(buf, this.luckNumberList.get(luckNumberListI), false);
 		}
-
-
 		return true;
 	}
 }
-

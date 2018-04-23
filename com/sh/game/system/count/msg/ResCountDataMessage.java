@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.count.msg.bean.CountBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回数量的列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCountDataMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResCountDataMessage extends AbstractMessage {
 	/**
 	 * 数量列表
 	 */
-	private List<CountBean> countList = new ArrayList<CountBean>();
-
+	private List<CountBean> countList = new ArrayList<>();
 
 	public List<CountBean> getCountList() {
 		return countList;
@@ -43,9 +45,9 @@ public class ResCountDataMessage extends AbstractMessage {
 		this.countList = countList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int countListLength = readShort(buf);
 		for (int countListI = 0; countListI < countListLength; countListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResCountDataMessage extends AbstractMessage {
 				this.countList.add(countBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.countList.size());
 		for (int countListI = 0; countListI < this.countList.size(); countListI++) {
 			this.writeBean(buf, this.countList.get(countListI));
 		}
-
-
 		return true;
 	}
 }
-

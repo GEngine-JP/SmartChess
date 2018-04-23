@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>告知客户端需要创建角色</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCreateRoleMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResCreateRoleMessage extends AbstractMessage {
 	 * 随机名字
 	 */
 	private long uid;
-
 	/**
 	 * 随机名字
 	 */
 	private String randomRoleName;
-
 
 	public long getUid() {
 		return uid;
@@ -46,8 +45,7 @@ public class ResCreateRoleMessage extends AbstractMessage {
 		this.uid = uid;
 	}
 
-	
-	public String getRandomRoleName() {
+		public String getRandomRoleName() {
 		return randomRoleName;
 	}
 
@@ -56,21 +54,19 @@ public class ResCreateRoleMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.randomRoleName = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeString(buf, randomRoleName);
-
 		return true;
 	}
 }
-

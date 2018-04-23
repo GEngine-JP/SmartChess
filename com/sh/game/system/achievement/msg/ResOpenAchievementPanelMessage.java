@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.achievement.msg.bean.AchievementBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回成就信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenAchievementPanelMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResOpenAchievementPanelMessage extends AbstractMessage {
 	/**
 	 * 成就列表
 	 */
-	private List<AchievementBean> achievementBean = new ArrayList<AchievementBean>();
-
+	private List<AchievementBean> achievementBean = new ArrayList<>();
 
 	public List<AchievementBean> getAchievementBean() {
 		return achievementBean;
@@ -43,9 +45,9 @@ public class ResOpenAchievementPanelMessage extends AbstractMessage {
 		this.achievementBean = achievementBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int achievementBeanLength = readShort(buf);
 		for (int achievementBeanI = 0; achievementBeanI < achievementBeanLength; achievementBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResOpenAchievementPanelMessage extends AbstractMessage {
 				this.achievementBean.add(achievementBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.achievementBean.size());
 		for (int achievementBeanI = 0; achievementBeanI < this.achievementBean.size(); achievementBeanI++) {
 			this.writeBean(buf, this.achievementBean.get(achievementBeanI));
 		}
-
-
 		return true;
 	}
 }
-

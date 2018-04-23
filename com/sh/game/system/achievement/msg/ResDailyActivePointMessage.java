@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>推送每日活跃值</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResDailyActivePointMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResDailyActivePointMessage extends AbstractMessage {
 	 */
 	private int dailyActivePoint;
 
-
 	public int getDailyActivePoint() {
 		return dailyActivePoint;
 	}
@@ -42,19 +42,17 @@ public class ResDailyActivePointMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.dailyActivePoint = readInt(buf, false);
 
+		this.dailyActivePoint = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, dailyActivePoint, false);
 
+		this.writeInt(buf, dailyActivePoint, false);
 		return true;
 	}
 }
-

@@ -1,38 +1,35 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class PositionInfo extends KryoBean {
 
 	/**
 	 * 会长
 	 */
 	private int master;
-
 	/**
 	 * 副会长
 	 */
 	private int master2;
-
 	/**
 	 * 长老
 	 */
 	private int numberTree;
-
 	/**
 	 * 护法
 	 */
 	private int numberFour;
-
 
 	public int getMaster() {
 		return master;
@@ -42,8 +39,7 @@ public class PositionInfo extends KryoBean {
 		this.master = master;
 	}
 
-	
-	public int getMaster2() {
+		public int getMaster2() {
 		return master2;
 	}
 
@@ -51,8 +47,7 @@ public class PositionInfo extends KryoBean {
 		this.master2 = master2;
 	}
 
-	
-	public int getNumberTree() {
+		public int getNumberTree() {
 		return numberTree;
 	}
 
@@ -60,8 +55,7 @@ public class PositionInfo extends KryoBean {
 		this.numberTree = numberTree;
 	}
 
-	
-	public int getNumberFour() {
+		public int getNumberFour() {
 		return numberFour;
 	}
 
@@ -70,25 +64,23 @@ public class PositionInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.master = readInt(buf, false);
 		this.master2 = readInt(buf, false);
 		this.numberTree = readInt(buf, false);
 		this.numberFour = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, master, false);
 		this.writeInt(buf, master2, false);
 		this.writeInt(buf, numberTree, false);
 		this.writeInt(buf, numberFour, false);
-
 		return true;
 	}
 }
-

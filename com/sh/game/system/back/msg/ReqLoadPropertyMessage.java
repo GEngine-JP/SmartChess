@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>刷property配置表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLoadPropertyMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +33,14 @@ public class ReqLoadPropertyMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
+
 		return true;
 	}
 }
-

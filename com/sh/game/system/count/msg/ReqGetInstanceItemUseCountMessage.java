@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>请求副本道具使用次数</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetInstanceItemUseCountMessage extends AbstractMessage {
 
 	@Override
@@ -32,12 +35,10 @@ public class ReqGetInstanceItemUseCountMessage extends AbstractMessage {
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * global配置id
 	 */
-	private List<Integer> globalId = new ArrayList<Integer>();
-
+	private List<Integer> globalId = new ArrayList<>();
 
 	public int getUniqueId() {
 		return uniqueId;
@@ -47,8 +48,7 @@ public class ReqGetInstanceItemUseCountMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public List<Integer> getGlobalId() {
+		public List<Integer> getGlobalId() {
 		return globalId;
 	}
 
@@ -56,29 +56,25 @@ public class ReqGetInstanceItemUseCountMessage extends AbstractMessage {
 		this.globalId = globalId;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readInt(buf, false);
 		int globalIdLength = readShort(buf);
 		for (int globalIdI = 0; globalIdI < globalIdLength; globalIdI++) {
 			this.globalId.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, uniqueId, false);
 		writeShort(buf, this.globalId.size());
 		for (int globalIdI = 0; globalIdI < this.globalId.size(); globalIdI++) {
 			this.writeInt(buf, this.globalId.get(globalIdI), false);
 		}
-
-
 		return true;
 	}
 }
-

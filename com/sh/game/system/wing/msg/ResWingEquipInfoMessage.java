@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.wing.msg.bean.WingEquipBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送光翼装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResWingEquipInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,22 +36,18 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 	 * 1角色光翼 2英雄光翼
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 光翼装备列表
 	 */
-	private List<WingEquipBean> wingEquipList = new ArrayList<WingEquipBean>();
-
+	private List<WingEquipBean> wingEquipList = new ArrayList<>();
 
 	public int getType() {
 		return type;
@@ -58,8 +57,7 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -67,8 +65,7 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -76,8 +73,7 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public List<WingEquipBean> getWingEquipList() {
+		public List<WingEquipBean> getWingEquipList() {
 		return wingEquipList;
 	}
 
@@ -85,9 +81,9 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 		this.wingEquipList = wingEquipList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.fightValue = readInt(buf, false);
@@ -101,13 +97,12 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 				this.wingEquipList.add(wingEquipBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, fightValue, false);
@@ -115,9 +110,6 @@ public class ResWingEquipInfoMessage extends AbstractMessage {
 		for (int wingEquipListI = 0; wingEquipListI < this.wingEquipList.size(); wingEquipListI++) {
 			this.writeBean(buf, this.wingEquipList.get(wingEquipListI));
 		}
-
-
 		return true;
 	}
 }
-

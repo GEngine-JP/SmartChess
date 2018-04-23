@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.legacyEquip.msg.bean.ShenZhuangBean;
 
-
 /**
  * <p>返回神装信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResShenZhuangInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,12 +33,10 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 	 * 神装
 	 */
 	private ShenZhuangBean shenZhuangBean;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 
 	public ShenZhuangBean getShenZhuangBean() {
 		return shenZhuangBean;
@@ -47,8 +46,7 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 		this.shenZhuangBean = shenZhuangBean;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -57,25 +55,23 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			ShenZhuangBean shenZhuangBean = new ShenZhuangBean();
 			shenZhuangBean.read(buf);
 			this.shenZhuangBean = shenZhuangBean;
 		}
 		this.fightValue = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, shenZhuangBean);
 		this.writeInt(buf, fightValue, false);
-
 		return true;
 	}
 }
-

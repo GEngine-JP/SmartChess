@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>告诉客户端goal的数量变化了</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResGoalValueChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResGoalValueChangeMessage extends AbstractMessage {
 	 * goalId
 	 */
 	private int goalId;
-
 	/**
 	 * goalCount
 	 */
 	private int goalCount;
-
 
 	public int getGoalId() {
 		return goalId;
@@ -46,8 +45,7 @@ public class ResGoalValueChangeMessage extends AbstractMessage {
 		this.goalId = goalId;
 	}
 
-	
-	public int getGoalCount() {
+		public int getGoalCount() {
 		return goalCount;
 	}
 
@@ -56,21 +54,19 @@ public class ResGoalValueChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.goalId = readInt(buf, false);
 		this.goalCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, goalId, false);
 		this.writeInt(buf, goalCount, false);
-
 		return true;
 	}
 }
-

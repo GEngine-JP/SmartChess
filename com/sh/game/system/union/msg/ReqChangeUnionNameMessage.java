@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求修改帮会名字</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeUnionNameMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqChangeUnionNameMessage extends AbstractMessage {
 	 */
 	private String newUnionName;
 
-
 	public String getNewUnionName() {
 		return newUnionName;
 	}
@@ -42,19 +42,17 @@ public class ReqChangeUnionNameMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.newUnionName = readString(buf);
 
+		this.newUnionName = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, newUnionName);
 
+		this.writeString(buf, newUnionName);
 		return true;
 	}
 }
-

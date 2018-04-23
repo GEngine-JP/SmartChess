@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>防沉迷状态 1-5对应小时</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResFcmStateMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResFcmStateMessage extends AbstractMessage {
 	 */
 	private int fcmState;
 
-
 	public int getFcmState() {
 		return fcmState;
 	}
@@ -42,19 +42,17 @@ public class ResFcmStateMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.fcmState = readInt(buf, false);
 
+		this.fcmState = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, fcmState, false);
 
+		this.writeInt(buf, fcmState, false);
 		return true;
 	}
 }
-

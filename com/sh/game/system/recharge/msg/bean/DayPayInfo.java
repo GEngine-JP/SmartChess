@@ -1,28 +1,27 @@
 package com.sh.game.system.recharge.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class DayPayInfo extends KryoBean {
 
 	/**
 	 * sequence
 	 */
 	private int sequence;
-
 	/**
 	 * 领取状态 0不可领取 1可领取 2已领取
 	 */
 	private int state;
-
 
 	public int getSequence() {
 		return sequence;
@@ -32,8 +31,7 @@ public class DayPayInfo extends KryoBean {
 		this.sequence = sequence;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -42,21 +40,19 @@ public class DayPayInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.sequence = readInt(buf, false);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, sequence, false);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

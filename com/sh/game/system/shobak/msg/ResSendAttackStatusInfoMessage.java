@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.shobak.msg.bean.AttackInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送攻击雕像和守卫信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendAttackStatusInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendAttackStatusInfoMessage extends AbstractMessage {
 	/**
 	 * 攻击信息
 	 */
-	private List<AttackInfoBean> attackInfos = new ArrayList<AttackInfoBean>();
-
+	private List<AttackInfoBean> attackInfos = new ArrayList<>();
 
 	public List<AttackInfoBean> getAttackInfos() {
 		return attackInfos;
@@ -43,9 +45,9 @@ public class ResSendAttackStatusInfoMessage extends AbstractMessage {
 		this.attackInfos = attackInfos;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int attackInfosLength = readShort(buf);
 		for (int attackInfosI = 0; attackInfosI < attackInfosLength; attackInfosI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendAttackStatusInfoMessage extends AbstractMessage {
 				this.attackInfos.add(attackInfoBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.attackInfos.size());
 		for (int attackInfosI = 0; attackInfosI < this.attackInfos.size(); attackInfosI++) {
 			this.writeBean(buf, this.attackInfos.get(attackInfosI));
 		}
-
-
 		return true;
 	}
 }
-

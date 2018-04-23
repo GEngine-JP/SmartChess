@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求领取王者禁地buff</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetKingForbiddenBuffMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqGetKingForbiddenBuffMessage extends AbstractMessage {
 	 */
 	private int position;
 
-
 	public int getPosition() {
 		return position;
 	}
@@ -42,19 +42,17 @@ public class ReqGetKingForbiddenBuffMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.position = readInt(buf, false);
 
+		this.position = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, position, false);
 
+		this.writeInt(buf, position, false);
 		return true;
 	}
 }
-

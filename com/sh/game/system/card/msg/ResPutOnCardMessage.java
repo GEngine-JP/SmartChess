@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.card.msg.bean.CardBean;
 
-
 /**
  * <p>返回穿戴卡片</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResPutOnCardMessage extends AbstractMessage {
 
 	@Override
@@ -32,17 +33,14 @@ public class ResPutOnCardMessage extends AbstractMessage {
 	 * 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 穿上的卡片
 	 */
 	private CardBean cardBean;
-
 
 	public int getType() {
 		return type;
@@ -52,8 +50,7 @@ public class ResPutOnCardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -61,8 +58,7 @@ public class ResPutOnCardMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public CardBean getCardBean() {
+		public CardBean getCardBean() {
 		return cardBean;
 	}
 
@@ -71,9 +67,9 @@ public class ResPutOnCardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		if (readByte(buf) != 0) {
@@ -81,17 +77,15 @@ public class ResPutOnCardMessage extends AbstractMessage {
 			cardBean.read(buf);
 			this.cardBean = cardBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeBean(buf, cardBean);
-
 		return true;
 	}
 }
-

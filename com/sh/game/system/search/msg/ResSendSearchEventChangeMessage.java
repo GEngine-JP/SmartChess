@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.search.msg.bean.SearchEventBean;
 
-
 /**
  * <p>返回探索事件变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendSearchEventChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,12 +33,10 @@ public class ResSendSearchEventChangeMessage extends AbstractMessage {
 	 * 变化的探索事件
 	 */
 	private SearchEventBean eventBean;
-
 	/**
 	 * 事件变化状态 1删除 2增加
 	 */
 	private int state;
-
 
 	public SearchEventBean getEventBean() {
 		return eventBean;
@@ -47,8 +46,7 @@ public class ResSendSearchEventChangeMessage extends AbstractMessage {
 		this.eventBean = eventBean;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -57,25 +55,23 @@ public class ResSendSearchEventChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			SearchEventBean searchEventBean = new SearchEventBean();
 			searchEventBean.read(buf);
 			this.eventBean = searchEventBean;
 		}
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, eventBean);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

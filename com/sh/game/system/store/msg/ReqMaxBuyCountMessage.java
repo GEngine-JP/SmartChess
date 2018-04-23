@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求指定商品能购买的最大数量</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqMaxBuyCountMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqMaxBuyCountMessage extends AbstractMessage {
 	 */
 	private int storeId;
 
-
 	public int getStoreId() {
 		return storeId;
 	}
@@ -42,19 +42,17 @@ public class ReqMaxBuyCountMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.storeId = readInt(buf, false);
 
+		this.storeId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, storeId, false);
 
+		this.writeInt(buf, storeId, false);
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.back.msg.bean.AutoBanBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回自动禁言列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAutoBanListMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResAutoBanListMessage extends AbstractMessage {
 	/**
 	 * 自动禁言列表
 	 */
-	private List<AutoBanBean> autoBanBean = new ArrayList<AutoBanBean>();
-
+	private List<AutoBanBean> autoBanBean = new ArrayList<>();
 
 	public List<AutoBanBean> getAutoBanBean() {
 		return autoBanBean;
@@ -43,9 +45,9 @@ public class ResAutoBanListMessage extends AbstractMessage {
 		this.autoBanBean = autoBanBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int autoBanBeanLength = readShort(buf);
 		for (int autoBanBeanI = 0; autoBanBeanI < autoBanBeanLength; autoBanBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResAutoBanListMessage extends AbstractMessage {
 				this.autoBanBean.add(autoBanBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.autoBanBean.size());
 		for (int autoBanBeanI = 0; autoBanBeanI < this.autoBanBean.size(); autoBanBeanI++) {
 			this.writeBean(buf, this.autoBanBean.get(autoBanBeanI));
 		}
-
-
 		return true;
 	}
 }
-

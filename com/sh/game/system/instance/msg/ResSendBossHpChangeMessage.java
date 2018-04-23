@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送boss血量变化信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendBossHpChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResSendBossHpChangeMessage extends AbstractMessage {
 	 */
 	private long hp;
 
-
 	public long getHp() {
 		return hp;
 	}
@@ -42,19 +42,17 @@ public class ResSendBossHpChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.hp = readLong(buf);
 
+		this.hp = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, hp);
 
+		this.writeLong(buf, hp);
 		return true;
 	}
 }
-

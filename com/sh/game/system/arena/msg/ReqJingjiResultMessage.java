@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求竞技结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqJingjiResultMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqJingjiResultMessage extends AbstractMessage {
 	 * 目标玩家排名
 	 */
 	private int targetRank;
-
 	/**
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 
 	public int getTargetRank() {
 		return targetRank;
@@ -46,8 +45,7 @@ public class ReqJingjiResultMessage extends AbstractMessage {
 		this.targetRank = targetRank;
 	}
 
-	
-	public int getUniqueId() {
+		public int getUniqueId() {
 		return uniqueId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqJingjiResultMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetRank = readInt(buf, false);
 		this.uniqueId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, targetRank, false);
 		this.writeInt(buf, uniqueId, false);
-
 		return true;
 	}
 }
-

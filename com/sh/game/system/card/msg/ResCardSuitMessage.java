@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送卡片套装信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCardSuitMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResCardSuitMessage extends AbstractMessage {
 	 * 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 套装id
 	 */
 	private int suitId;
-
 
 	public int getType() {
 		return type;
@@ -51,8 +49,7 @@ public class ResCardSuitMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -60,8 +57,7 @@ public class ResCardSuitMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getSuitId() {
+		public int getSuitId() {
 		return suitId;
 	}
 
@@ -70,23 +66,21 @@ public class ResCardSuitMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.suitId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, suitId, false);
-
 		return true;
 	}
 }
-

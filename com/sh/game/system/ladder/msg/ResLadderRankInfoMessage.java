@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.ladder.msg.bean.LadderRankBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回天梯排行榜</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderRankInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,17 +36,14 @@ public class ResLadderRankInfoMessage extends AbstractMessage {
 	 * 领取状态  1可领 2已领
 	 */
 	private int rewardState;
-
 	/**
 	 * 当前赛季
 	 */
 	private int week;
-
 	/**
 	 * 天梯排行榜数据
 	 */
-	private List<LadderRankBean> ladderRankBean = new ArrayList<LadderRankBean>();
-
+	private List<LadderRankBean> ladderRankBean = new ArrayList<>();
 
 	public int getRewardState() {
 		return rewardState;
@@ -53,8 +53,7 @@ public class ResLadderRankInfoMessage extends AbstractMessage {
 		this.rewardState = rewardState;
 	}
 
-	
-	public int getWeek() {
+		public int getWeek() {
 		return week;
 	}
 
@@ -62,8 +61,7 @@ public class ResLadderRankInfoMessage extends AbstractMessage {
 		this.week = week;
 	}
 
-	
-	public List<LadderRankBean> getLadderRankBean() {
+		public List<LadderRankBean> getLadderRankBean() {
 		return ladderRankBean;
 	}
 
@@ -71,9 +69,9 @@ public class ResLadderRankInfoMessage extends AbstractMessage {
 		this.ladderRankBean = ladderRankBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rewardState = readInt(buf, false);
 		this.week = readInt(buf, false);
 		int ladderRankBeanLength = readShort(buf);
@@ -86,22 +84,18 @@ public class ResLadderRankInfoMessage extends AbstractMessage {
 				this.ladderRankBean.add(ladderRankBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rewardState, false);
 		this.writeInt(buf, week, false);
 		writeShort(buf, this.ladderRankBean.size());
 		for (int ladderRankBeanI = 0; ladderRankBeanI < this.ladderRankBean.size(); ladderRankBeanI++) {
 			this.writeBean(buf, this.ladderRankBean.get(ladderRankBeanI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回限时任务额外奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResExtraRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResExtraRewardMessage extends AbstractMessage {
 	 * 活动id
 	 */
 	private int activityId;
-
 	/**
 	 * 剩余时间
 	 */
 	private int time;
-
 	/**
 	 * 当前第几轮
 	 */
 	private int goalType;
-
 	/**
 	 * 奖励领取状态
 	 */
 	private int state;
-
 
 	public int getActivityId() {
 		return activityId;
@@ -56,8 +53,7 @@ public class ResExtraRewardMessage extends AbstractMessage {
 		this.activityId = activityId;
 	}
 
-	
-	public int getTime() {
+		public int getTime() {
 		return time;
 	}
 
@@ -65,8 +61,7 @@ public class ResExtraRewardMessage extends AbstractMessage {
 		this.time = time;
 	}
 
-	
-	public int getGoalType() {
+		public int getGoalType() {
 		return goalType;
 	}
 
@@ -74,8 +69,7 @@ public class ResExtraRewardMessage extends AbstractMessage {
 		this.goalType = goalType;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -84,25 +78,23 @@ public class ResExtraRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		this.time = readInt(buf, false);
 		this.goalType = readInt(buf, false);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeInt(buf, time, false);
 		this.writeInt(buf, goalType, false);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

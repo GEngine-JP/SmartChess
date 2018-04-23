@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回购买竞技场挑战次数</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResBuyArenaNumMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResBuyArenaNumMessage extends AbstractMessage {
 	 * 剩余挑战次数
 	 */
 	private int count;
-
 	/**
 	 * 当前第几次购买
 	 */
 	private int nowCount;
-
 	/**
 	 * 可购买次数上限
 	 */
 	private int limit;
-
 	/**
 	 * 下次增加次数的时间（秒数）
 	 */
 	private int needAddTime;
-
 
 	public int getCount() {
 		return count;
@@ -56,8 +53,7 @@ public class ResBuyArenaNumMessage extends AbstractMessage {
 		this.count = count;
 	}
 
-	
-	public int getNowCount() {
+		public int getNowCount() {
 		return nowCount;
 	}
 
@@ -65,8 +61,7 @@ public class ResBuyArenaNumMessage extends AbstractMessage {
 		this.nowCount = nowCount;
 	}
 
-	
-	public int getLimit() {
+		public int getLimit() {
 		return limit;
 	}
 
@@ -74,8 +69,7 @@ public class ResBuyArenaNumMessage extends AbstractMessage {
 		this.limit = limit;
 	}
 
-	
-	public int getNeedAddTime() {
+		public int getNeedAddTime() {
 		return needAddTime;
 	}
 
@@ -84,25 +78,23 @@ public class ResBuyArenaNumMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.count = readInt(buf, false);
 		this.nowCount = readInt(buf, false);
 		this.limit = readInt(buf, false);
 		this.needAddTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, count, false);
 		this.writeInt(buf, nowCount, false);
 		this.writeInt(buf, limit, false);
 		this.writeInt(buf, needAddTime, false);
-
 		return true;
 	}
 }
-

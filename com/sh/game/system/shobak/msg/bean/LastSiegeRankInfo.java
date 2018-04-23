@@ -1,43 +1,39 @@
 package com.sh.game.system.shobak.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class LastSiegeRankInfo extends KryoBean {
 
 	/**
 	 * 名次
 	 */
 	private int rank;
-
 	/**
 	 * 行会名
 	 */
 	private String unionName;
-
 	/**
 	 * 会长名
 	 */
 	private String leaderName;
-
 	/**
 	 * 个人名
 	 */
 	private String personalName;
-
 	/**
 	 * 积分
 	 */
 	private int score;
-
 
 	public int getRank() {
 		return rank;
@@ -47,8 +43,7 @@ public class LastSiegeRankInfo extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -56,8 +51,7 @@ public class LastSiegeRankInfo extends KryoBean {
 		this.unionName = unionName;
 	}
 
-	
-	public String getLeaderName() {
+		public String getLeaderName() {
 		return leaderName;
 	}
 
@@ -65,8 +59,7 @@ public class LastSiegeRankInfo extends KryoBean {
 		this.leaderName = leaderName;
 	}
 
-	
-	public String getPersonalName() {
+		public String getPersonalName() {
 		return personalName;
 	}
 
@@ -74,8 +67,7 @@ public class LastSiegeRankInfo extends KryoBean {
 		this.personalName = personalName;
 	}
 
-	
-	public int getScore() {
+		public int getScore() {
 		return score;
 	}
 
@@ -84,27 +76,25 @@ public class LastSiegeRankInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rank = readInt(buf, false);
 		this.unionName = readString(buf);
 		this.leaderName = readString(buf);
 		this.personalName = readString(buf);
 		this.score = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rank, false);
 		this.writeString(buf, unionName);
 		this.writeString(buf, leaderName);
 		this.writeString(buf, personalName);
 		this.writeInt(buf, score, false);
-
 		return true;
 	}
 }
-

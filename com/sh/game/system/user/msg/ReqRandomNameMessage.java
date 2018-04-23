@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>随机名字</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRandomNameMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqRandomNameMessage extends AbstractMessage {
 	 */
 	private int sex;
 
-
 	public int getSex() {
 		return sex;
 	}
@@ -42,19 +42,17 @@ public class ReqRandomNameMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.sex = readInt(buf, false);
 
+		this.sex = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, sex, false);
 
+		this.writeInt(buf, sex, false);
 		return true;
 	}
 }
-

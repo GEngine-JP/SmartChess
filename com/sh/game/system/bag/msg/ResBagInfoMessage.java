@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.bag.msg.bean.BagItemBean;
 import com.sh.game.system.bag.msg.bean.CoinBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回请求背包</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResBagInfoMessage extends AbstractMessage {
 
 	@Override
@@ -34,42 +37,34 @@ public class ResBagInfoMessage extends AbstractMessage {
 	 * 背包道具页签剩余空格的数量
 	 */
 	private int emptyItemGridCount;
-
 	/**
 	 * 背包装备页签剩余空格的数量
 	 */
 	private int emptyEquipGridCount;
-
 	/**
 	 * 背包装备页签总的格子的数量
 	 */
 	private int maxEquipGridCount;
-
 	/**
 	 * 符文剩余格子
 	 */
 	private int emptyRuneGridCount;
-
 	/**
 	 * 符文总格子
 	 */
 	private int maxRuneGridCount;
-
 	/**
 	 * 背包装备页签扩容的次数
 	 */
 	private int addGridCount;
-
 	/**
 	 * 道具列表
 	 */
-	private List<BagItemBean> itemList = new ArrayList<BagItemBean>();
-
+	private List<BagItemBean> itemList = new ArrayList<>();
 	/**
 	 * 货币列表
 	 */
-	private List<CoinBean> coinList = new ArrayList<CoinBean>();
-
+	private List<CoinBean> coinList = new ArrayList<>();
 
 	public int getEmptyItemGridCount() {
 		return emptyItemGridCount;
@@ -79,8 +74,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.emptyItemGridCount = emptyItemGridCount;
 	}
 
-	
-	public int getEmptyEquipGridCount() {
+		public int getEmptyEquipGridCount() {
 		return emptyEquipGridCount;
 	}
 
@@ -88,8 +82,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.emptyEquipGridCount = emptyEquipGridCount;
 	}
 
-	
-	public int getMaxEquipGridCount() {
+		public int getMaxEquipGridCount() {
 		return maxEquipGridCount;
 	}
 
@@ -97,8 +90,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.maxEquipGridCount = maxEquipGridCount;
 	}
 
-	
-	public int getEmptyRuneGridCount() {
+		public int getEmptyRuneGridCount() {
 		return emptyRuneGridCount;
 	}
 
@@ -106,8 +98,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.emptyRuneGridCount = emptyRuneGridCount;
 	}
 
-	
-	public int getMaxRuneGridCount() {
+		public int getMaxRuneGridCount() {
 		return maxRuneGridCount;
 	}
 
@@ -115,8 +106,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.maxRuneGridCount = maxRuneGridCount;
 	}
 
-	
-	public int getAddGridCount() {
+		public int getAddGridCount() {
 		return addGridCount;
 	}
 
@@ -124,15 +114,13 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.addGridCount = addGridCount;
 	}
 
-	
-	public List<BagItemBean> getItemList() {
+		public List<BagItemBean> getItemList() {
 		return itemList;
 	}
 
 	public void setItemList(List<BagItemBean> itemList) {
 		this.itemList = itemList;
 	}
-
 	public List<CoinBean> getCoinList() {
 		return coinList;
 	}
@@ -141,9 +129,9 @@ public class ResBagInfoMessage extends AbstractMessage {
 		this.coinList = coinList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.emptyItemGridCount = readInt(buf, false);
 		this.emptyEquipGridCount = readInt(buf, false);
 		this.maxEquipGridCount = readInt(buf, false);
@@ -159,9 +147,7 @@ public class ResBagInfoMessage extends AbstractMessage {
 				bagItemBean.read(buf);
 				this.itemList.add(bagItemBean);
 			}
-		}
-
-		int coinListLength = readShort(buf);
+		}		int coinListLength = readShort(buf);
 		for (int coinListI = 0; coinListI < coinListLength; coinListI++) {
 			if (readByte(buf) == 0) { 
 				this.coinList.add(null);
@@ -171,13 +157,12 @@ public class ResBagInfoMessage extends AbstractMessage {
 				this.coinList.add(coinBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, emptyItemGridCount, false);
 		this.writeInt(buf, emptyEquipGridCount, false);
 		this.writeInt(buf, maxEquipGridCount, false);
@@ -187,15 +172,10 @@ public class ResBagInfoMessage extends AbstractMessage {
 		writeShort(buf, this.itemList.size());
 		for (int itemListI = 0; itemListI < this.itemList.size(); itemListI++) {
 			this.writeBean(buf, this.itemList.get(itemListI));
-		}
-
-		writeShort(buf, this.coinList.size());
+		}		writeShort(buf, this.coinList.size());
 		for (int coinListI = 0; coinListI < this.coinList.size(); coinListI++) {
 			this.writeBean(buf, this.coinList.get(coinListI));
 		}
-
-
 		return true;
 	}
 }
-

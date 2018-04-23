@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回每周充值累计数量</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResWeekTotalRechargeNumMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResWeekTotalRechargeNumMessage extends AbstractMessage {
 	 * 累计数量
 	 */
 	private int totalNum;
-
 	/**
 	 * 活动Id
 	 */
 	private int activityId;
-
 
 	public int getTotalNum() {
 		return totalNum;
@@ -46,8 +45,7 @@ public class ResWeekTotalRechargeNumMessage extends AbstractMessage {
 		this.totalNum = totalNum;
 	}
 
-	
-	public int getActivityId() {
+		public int getActivityId() {
 		return activityId;
 	}
 
@@ -56,21 +54,19 @@ public class ResWeekTotalRechargeNumMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.totalNum = readInt(buf, false);
 		this.activityId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, totalNum, false);
 		this.writeInt(buf, activityId, false);
-
 		return true;
 	}
 }
-

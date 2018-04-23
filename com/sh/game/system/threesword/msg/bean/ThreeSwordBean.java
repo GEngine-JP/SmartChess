@@ -1,28 +1,27 @@
 package com.sh.game.system.threesword.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ThreeSwordBean extends KryoBean {
 
 	/**
 	 * 三才装备类型
 	 */
 	private int type;
-
 	/**
 	 * 三才装备id
 	 */
 	private int itemId;
-
 
 	public int getType() {
 		return type;
@@ -32,8 +31,7 @@ public class ThreeSwordBean extends KryoBean {
 		this.type = type;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -42,21 +40,19 @@ public class ThreeSwordBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.itemId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, itemId, false);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>复活时间</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResReliveTimeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResReliveTimeMessage extends AbstractMessage {
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * 复活的时间戳（秒）
 	 */
 	private int reliveTime;
-
 
 	public int getUniqueId() {
 		return uniqueId;
@@ -46,8 +45,7 @@ public class ResReliveTimeMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getReliveTime() {
+		public int getReliveTime() {
 		return reliveTime;
 	}
 
@@ -56,21 +54,19 @@ public class ResReliveTimeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readInt(buf, false);
 		this.reliveTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, uniqueId, false);
 		this.writeInt(buf, reliveTime, false);
-
 		return true;
 	}
 }
-

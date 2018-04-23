@@ -1,43 +1,39 @@
 package com.sh.game.system.activity.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RankInfoBean extends KryoBean {
 
 	/**
 	 * 排名
 	 */
 	private int rank;
-
 	/**
 	 * 名字
 	 */
 	private String roleName;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 参数
 	 */
 	private int param;
-
 
 	public int getRank() {
 		return rank;
@@ -47,8 +43,7 @@ public class RankInfoBean extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public String getRoleName() {
+		public String getRoleName() {
 		return roleName;
 	}
 
@@ -56,8 +51,7 @@ public class RankInfoBean extends KryoBean {
 		this.roleName = roleName;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -65,8 +59,7 @@ public class RankInfoBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -74,8 +67,7 @@ public class RankInfoBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getParam() {
+		public int getParam() {
 		return param;
 	}
 
@@ -84,27 +76,25 @@ public class RankInfoBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rank = readInt(buf, false);
 		this.roleName = readString(buf);
 		this.rein = readInt(buf, false);
 		this.level = readInt(buf, false);
 		this.param = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rank, false);
 		this.writeString(buf, roleName);
 		this.writeInt(buf, rein, false);
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, param, false);
-
 		return true;
 	}
 }
-

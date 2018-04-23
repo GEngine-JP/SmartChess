@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>查看他人信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLookOtherMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqLookOtherMessage extends AbstractMessage {
 	 */
 	private long targetUid;
 
-
 	public long getTargetUid() {
 		return targetUid;
 	}
@@ -42,19 +42,17 @@ public class ReqLookOtherMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.targetUid = readLong(buf);
 
+		this.targetUid = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, targetUid);
 
+		this.writeLong(buf, targetUid);
 		return true;
 	}
 }
-

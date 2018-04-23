@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.mining.msg.bean.WarehouseBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送仓库信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResWarehouseMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResWarehouseMessage extends AbstractMessage {
 	/**
 	 * 仓库列表
 	 */
-	private List<WarehouseBean> warehouseList = new ArrayList<WarehouseBean>();
-
+	private List<WarehouseBean> warehouseList = new ArrayList<>();
 
 	public List<WarehouseBean> getWarehouseList() {
 		return warehouseList;
@@ -43,9 +45,9 @@ public class ResWarehouseMessage extends AbstractMessage {
 		this.warehouseList = warehouseList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int warehouseListLength = readShort(buf);
 		for (int warehouseListI = 0; warehouseListI < warehouseListLength; warehouseListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResWarehouseMessage extends AbstractMessage {
 				this.warehouseList.add(warehouseBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.warehouseList.size());
 		for (int warehouseListI = 0; warehouseListI < this.warehouseList.size(); warehouseListI++) {
 			this.writeBean(buf, this.warehouseList.get(warehouseListI));
 		}
-
-
 		return true;
 	}
 }
-

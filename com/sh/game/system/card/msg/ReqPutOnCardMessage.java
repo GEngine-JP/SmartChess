@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求穿戴卡片</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqPutOnCardMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ReqPutOnCardMessage extends AbstractMessage {
 	 * 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 要穿戴的位置1、2、3
 	 */
 	private int index;
-
 	/**
 	 * 卡片唯一id
 	 */
 	private long uniqueId;
-
 
 	public int getType() {
 		return type;
@@ -56,8 +53,7 @@ public class ReqPutOnCardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -65,8 +61,7 @@ public class ReqPutOnCardMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getIndex() {
+		public int getIndex() {
 		return index;
 	}
 
@@ -74,8 +69,7 @@ public class ReqPutOnCardMessage extends AbstractMessage {
 		this.index = index;
 	}
 
-	
-	public long getUniqueId() {
+		public long getUniqueId() {
 		return uniqueId;
 	}
 
@@ -84,25 +78,23 @@ public class ReqPutOnCardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.index = readInt(buf, false);
 		this.uniqueId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, index, false);
 		this.writeLong(buf, uniqueId);
-
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.soulstone.msg.bean.SoulStoneBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回魂石信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSoulStoneInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,22 +36,18 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 	 * 类型 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 魂石列表
 	 */
-	private List<SoulStoneBean> soulStoneList = new ArrayList<SoulStoneBean>();
-
+	private List<SoulStoneBean> soulStoneList = new ArrayList<>();
 
 	public int getType() {
 		return type;
@@ -58,8 +57,7 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -67,8 +65,7 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -76,8 +73,7 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public List<SoulStoneBean> getSoulStoneList() {
+		public List<SoulStoneBean> getSoulStoneList() {
 		return soulStoneList;
 	}
 
@@ -85,9 +81,9 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 		this.soulStoneList = soulStoneList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.fightValue = readInt(buf, false);
@@ -101,13 +97,12 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 				this.soulStoneList.add(soulStoneBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, fightValue, false);
@@ -115,9 +110,6 @@ public class ResSoulStoneInfoMessage extends AbstractMessage {
 		for (int soulStoneListI = 0; soulStoneListI < this.soulStoneList.size(); soulStoneListI++) {
 			this.writeBean(buf, this.soulStoneList.get(soulStoneListI));
 		}
-
-
 		return true;
 	}
 }
-

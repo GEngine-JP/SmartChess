@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>提示</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResInfoMessage extends AbstractMessage {
 	 */
 	private String info;
 
-
 	public String getInfo() {
 		return info;
 	}
@@ -42,19 +42,17 @@ public class ResInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.info = readString(buf);
 
+		this.info = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, info);
 
+		this.writeString(buf, info);
 		return true;
 	}
 }
-

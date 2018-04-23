@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求激活神器</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqActiveArtifactMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqActiveArtifactMessage extends AbstractMessage {
 	 */
 	private int artifactId;
 
-
 	public int getArtifactId() {
 		return artifactId;
 	}
@@ -42,19 +42,17 @@ public class ReqActiveArtifactMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.artifactId = readInt(buf, false);
 
+		this.artifactId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, artifactId, false);
 
+		this.writeInt(buf, artifactId, false);
 		return true;
 	}
 }
-

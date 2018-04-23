@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.boss.msg.bean.BossKillerBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回BOSS击杀记录</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResBossKillRecordMessage extends AbstractMessage {
 
 	@Override
@@ -33,12 +36,10 @@ public class ResBossKillRecordMessage extends AbstractMessage {
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 击杀记录
 	 */
-	private List<BossKillerBean> bossKillerList = new ArrayList<BossKillerBean>();
-
+	private List<BossKillerBean> bossKillerList = new ArrayList<>();
 
 	public int getInstanceId() {
 		return instanceId;
@@ -48,8 +49,7 @@ public class ResBossKillRecordMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public List<BossKillerBean> getBossKillerList() {
+		public List<BossKillerBean> getBossKillerList() {
 		return bossKillerList;
 	}
 
@@ -57,9 +57,9 @@ public class ResBossKillRecordMessage extends AbstractMessage {
 		this.bossKillerList = bossKillerList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		int bossKillerListLength = readShort(buf);
 		for (int bossKillerListI = 0; bossKillerListI < bossKillerListLength; bossKillerListI++) {
@@ -71,21 +71,17 @@ public class ResBossKillRecordMessage extends AbstractMessage {
 				this.bossKillerList.add(bossKillerBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		writeShort(buf, this.bossKillerList.size());
 		for (int bossKillerListI = 0; bossKillerListI < this.bossKillerList.size(); bossKillerListI++) {
 			this.writeBean(buf, this.bossKillerList.get(bossKillerListI));
 		}
-
-
 		return true;
 	}
 }
-

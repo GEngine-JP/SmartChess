@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送帮会活跃信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendUnionActiveInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,12 +35,10 @@ public class ResSendUnionActiveInfoMessage extends AbstractMessage {
 	 * 今日活跃点
 	 */
 	private int activePoint;
-
 	/**
 	 * 已领取的活跃奖励
 	 */
-	private List<Integer> activeId = new ArrayList<Integer>();
-
+	private List<Integer> activeId = new ArrayList<>();
 
 	public int getActivePoint() {
 		return activePoint;
@@ -47,8 +48,7 @@ public class ResSendUnionActiveInfoMessage extends AbstractMessage {
 		this.activePoint = activePoint;
 	}
 
-	
-	public List<Integer> getActiveId() {
+		public List<Integer> getActiveId() {
 		return activeId;
 	}
 
@@ -56,29 +56,25 @@ public class ResSendUnionActiveInfoMessage extends AbstractMessage {
 		this.activeId = activeId;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activePoint = readInt(buf, false);
 		int activeIdLength = readShort(buf);
 		for (int activeIdI = 0; activeIdI < activeIdLength; activeIdI++) {
 			this.activeId.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activePoint, false);
 		writeShort(buf, this.activeId.size());
 		for (int activeIdI = 0; activeIdI < this.activeId.size(); activeIdI++) {
 			this.writeInt(buf, this.activeId.get(activeIdI), false);
 		}
-
-
 		return true;
 	}
 }
-

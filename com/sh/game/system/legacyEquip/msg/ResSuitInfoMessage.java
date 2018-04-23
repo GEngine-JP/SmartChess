@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送套装信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSuitInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSuitInfoMessage extends AbstractMessage {
 	 * 套装id
 	 */
 	private int suitId;
-
 	/**
 	 * 当前个数
 	 */
 	private int nowCount;
-
 
 	public int getSuitId() {
 		return suitId;
@@ -46,8 +45,7 @@ public class ResSuitInfoMessage extends AbstractMessage {
 		this.suitId = suitId;
 	}
 
-	
-	public int getNowCount() {
+		public int getNowCount() {
 		return nowCount;
 	}
 
@@ -56,21 +54,19 @@ public class ResSuitInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.suitId = readInt(buf, false);
 		this.nowCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, suitId, false);
 		this.writeInt(buf, nowCount, false);
-
 		return true;
 	}
 }
-

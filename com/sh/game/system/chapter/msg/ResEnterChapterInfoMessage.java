@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回进入关卡副本消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResEnterChapterInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResEnterChapterInfoMessage extends AbstractMessage {
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * 副本结束时间
 	 */
 	private int endTime;
-
 
 	public int getInstanceId() {
 		return instanceId;
@@ -51,8 +49,7 @@ public class ResEnterChapterInfoMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getUniqueId() {
+		public int getUniqueId() {
 		return uniqueId;
 	}
 
@@ -60,8 +57,7 @@ public class ResEnterChapterInfoMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getEndTime() {
+		public int getEndTime() {
 		return endTime;
 	}
 
@@ -70,23 +66,21 @@ public class ResEnterChapterInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		this.uniqueId = readInt(buf, false);
 		this.endTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, uniqueId, false);
 		this.writeInt(buf, endTime, false);
-
 		return true;
 	}
 }
-

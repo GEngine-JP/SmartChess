@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求购买矿工</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBuyMinerMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqBuyMinerMessage extends AbstractMessage {
 	 */
 	private int minerId;
 
-
 	public int getMinerId() {
 		return minerId;
 	}
@@ -42,19 +42,17 @@ public class ReqBuyMinerMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.minerId = readInt(buf, false);
 
+		this.minerId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, minerId, false);
 
+		this.writeInt(buf, minerId, false);
 		return true;
 	}
 }
-

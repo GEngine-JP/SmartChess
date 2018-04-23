@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送抢夺日志列表信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRobLogListMessage extends AbstractMessage {
 
 	@Override
@@ -31,8 +34,7 @@ public class ResRobLogListMessage extends AbstractMessage {
 	/**
 	 * 抢夺日志列表
 	 */
-	private List<String> logList = new ArrayList<String>();
-
+	private List<String> logList = new ArrayList<>();
 
 	public List<String> getLogList() {
 		return logList;
@@ -42,27 +44,23 @@ public class ResRobLogListMessage extends AbstractMessage {
 		this.logList = logList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int logListLength = readShort(buf);
 		for (int logListI = 0; logListI < logListLength; logListI++) {
 			this.logList.add(this.readString(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.logList.size());
 		for (int logListI = 0; logListI < this.logList.size(); logListI++) {
 			this.writeString(buf, this.logList.get(logListI));
 		}
-
-
 		return true;
 	}
 }
-

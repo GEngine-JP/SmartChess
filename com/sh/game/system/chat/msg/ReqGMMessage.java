@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求GM命令</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGMMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqGMMessage extends AbstractMessage {
 	 */
 	private String command;
 
-
 	public String getCommand() {
 		return command;
 	}
@@ -42,19 +42,17 @@ public class ReqGMMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.command = readString(buf);
 
+		this.command = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, command);
 
+		this.writeString(buf, command);
 		return true;
 	}
 }
-

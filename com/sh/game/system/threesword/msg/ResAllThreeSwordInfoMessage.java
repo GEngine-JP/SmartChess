@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.threesword.msg.bean.ThreeSwordBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回所有三才装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAllThreeSwordInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResAllThreeSwordInfoMessage extends AbstractMessage {
 	/**
 	 * 三才装备列表
 	 */
-	private List<ThreeSwordBean> threeSwordList = new ArrayList<ThreeSwordBean>();
-
+	private List<ThreeSwordBean> threeSwordList = new ArrayList<>();
 
 	public List<ThreeSwordBean> getThreeSwordList() {
 		return threeSwordList;
@@ -43,9 +45,9 @@ public class ResAllThreeSwordInfoMessage extends AbstractMessage {
 		this.threeSwordList = threeSwordList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int threeSwordListLength = readShort(buf);
 		for (int threeSwordListI = 0; threeSwordListI < threeSwordListLength; threeSwordListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResAllThreeSwordInfoMessage extends AbstractMessage {
 				this.threeSwordList.add(threeSwordBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.threeSwordList.size());
 		for (int threeSwordListI = 0; threeSwordListI < this.threeSwordList.size(); threeSwordListI++) {
 			this.writeBean(buf, this.threeSwordList.get(threeSwordListI));
 		}
-
-
 		return true;
 	}
 }
-

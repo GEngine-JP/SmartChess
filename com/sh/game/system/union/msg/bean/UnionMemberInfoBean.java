@@ -1,118 +1,99 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionMemberInfoBean extends KryoBean {
 
 	/**
 	 * 玩家id
 	 */
 	private long id;
-
 	/**
 	 * 成员名称
 	 */
 	private String memberName;
-
 	/**
 	 * 成员职位 3会长 2副会长 0成员
 	 */
 	private int position;
-
 	/**
 	 * 成员职业
 	 */
 	private int career;
-
 	/**
 	 * 成员等级
 	 */
 	private int memberLevel;
-
 	/**
 	 * 成员离线时间
 	 */
 	private long offlineTime;
-
 	/**
 	 * 战力
 	 */
 	private int fightPower;
-
 	/**
 	 * 历史贡献
 	 */
 	private long contributionHistory;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 衣服
 	 */
 	private int cloth;
-
 	/**
 	 * 武器
 	 */
 	private int weapon;
-
 	/**
 	 * 翅膀
 	 */
 	private int wing;
-
 	/**
 	 * 称号
 	 */
 	private int fashionTitle;
-
 	/**
 	 * 衣服
 	 */
 	private int fashionCloth;
-
 	/**
 	 * 翅膀
 	 */
 	private int fashionWing;
-
 	/**
 	 * 武器
 	 */
 	private int fashionWeapon;
-
 	/**
 	 * vip等级
 	 */
 	private int vipLevel;
-
 	/**
 	 * 是否有月卡
 	 */
 	private boolean isMonthCard;
-
 	/**
 	 * 穿戴的寶物id
 	 */
 	private int treasure;
-
 	/**
 	 * 激活的神装套装id
 	 */
 	private int szSuitId;
-
 
 	public long getId() {
 		return id;
@@ -122,8 +103,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.id = id;
 	}
 
-	
-	public String getMemberName() {
+		public String getMemberName() {
 		return memberName;
 	}
 
@@ -131,8 +111,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.memberName = memberName;
 	}
 
-	
-	public int getPosition() {
+		public int getPosition() {
 		return position;
 	}
 
@@ -140,8 +119,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.position = position;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -149,8 +127,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getMemberLevel() {
+		public int getMemberLevel() {
 		return memberLevel;
 	}
 
@@ -158,8 +135,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.memberLevel = memberLevel;
 	}
 
-	
-	public long getOfflineTime() {
+		public long getOfflineTime() {
 		return offlineTime;
 	}
 
@@ -167,8 +143,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.offlineTime = offlineTime;
 	}
 
-	
-	public int getFightPower() {
+		public int getFightPower() {
 		return fightPower;
 	}
 
@@ -176,8 +151,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.fightPower = fightPower;
 	}
 
-	
-	public long getContributionHistory() {
+		public long getContributionHistory() {
 		return contributionHistory;
 	}
 
@@ -185,8 +159,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.contributionHistory = contributionHistory;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -194,8 +167,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getCloth() {
+		public int getCloth() {
 		return cloth;
 	}
 
@@ -203,8 +175,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.cloth = cloth;
 	}
 
-	
-	public int getWeapon() {
+		public int getWeapon() {
 		return weapon;
 	}
 
@@ -212,8 +183,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.weapon = weapon;
 	}
 
-	
-	public int getWing() {
+		public int getWing() {
 		return wing;
 	}
 
@@ -221,8 +191,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.wing = wing;
 	}
 
-	
-	public int getFashionTitle() {
+		public int getFashionTitle() {
 		return fashionTitle;
 	}
 
@@ -230,8 +199,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.fashionTitle = fashionTitle;
 	}
 
-	
-	public int getFashionCloth() {
+		public int getFashionCloth() {
 		return fashionCloth;
 	}
 
@@ -239,8 +207,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.fashionCloth = fashionCloth;
 	}
 
-	
-	public int getFashionWing() {
+		public int getFashionWing() {
 		return fashionWing;
 	}
 
@@ -248,8 +215,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.fashionWing = fashionWing;
 	}
 
-	
-	public int getFashionWeapon() {
+		public int getFashionWeapon() {
 		return fashionWeapon;
 	}
 
@@ -257,8 +223,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.fashionWeapon = fashionWeapon;
 	}
 
-	
-	public int getVipLevel() {
+		public int getVipLevel() {
 		return vipLevel;
 	}
 
@@ -266,8 +231,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.vipLevel = vipLevel;
 	}
 
-	
-	public boolean getIsMonthCard() {
+		public boolean getIsMonthCard() {
 		return isMonthCard;
 	}
 
@@ -275,8 +239,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.isMonthCard = isMonthCard;
 	}
 
-	
-	public int getTreasure() {
+		public int getTreasure() {
 		return treasure;
 	}
 
@@ -284,8 +247,7 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.treasure = treasure;
 	}
 
-	
-	public int getSzSuitId() {
+		public int getSzSuitId() {
 		return szSuitId;
 	}
 
@@ -294,9 +256,9 @@ public class UnionMemberInfoBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.id = readLong(buf);
 		this.memberName = readString(buf);
 		this.position = readInt(buf, false);
@@ -317,12 +279,12 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.isMonthCard = readBoolean(buf);
 		this.treasure = readInt(buf, false);
 		this.szSuitId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, id);
 		this.writeString(buf, memberName);
 		this.writeInt(buf, position, false);
@@ -343,8 +305,6 @@ public class UnionMemberInfoBean extends KryoBean {
 		this.writeBoolean(buf, isMonthCard);
 		this.writeInt(buf, treasure, false);
 		this.writeInt(buf, szSuitId, false);
-
 		return true;
 	}
 }
-

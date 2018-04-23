@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>关卡副本变化消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResChapterChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResChapterChangeMessage extends AbstractMessage {
 	 */
 	private int stageId;
 
-
 	public int getStageId() {
 		return stageId;
 	}
@@ -42,19 +42,17 @@ public class ResChapterChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.stageId = readInt(buf, false);
 
+		this.stageId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, stageId, false);
 
+		this.writeInt(buf, stageId, false);
 		return true;
 	}
 }
-

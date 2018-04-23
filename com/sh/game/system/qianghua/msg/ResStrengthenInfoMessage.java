@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.qianghua.msg.bean.StrengthenBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回强化信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResStrengthenInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,22 +36,18 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 	 * 类型 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 强化列表
 	 */
-	private List<StrengthenBean> strengthenList = new ArrayList<StrengthenBean>();
-
+	private List<StrengthenBean> strengthenList = new ArrayList<>();
 
 	public int getType() {
 		return type;
@@ -58,8 +57,7 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -67,8 +65,7 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -76,8 +73,7 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public List<StrengthenBean> getStrengthenList() {
+		public List<StrengthenBean> getStrengthenList() {
 		return strengthenList;
 	}
 
@@ -85,9 +81,9 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 		this.strengthenList = strengthenList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.fightValue = readInt(buf, false);
@@ -101,13 +97,12 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 				this.strengthenList.add(strengthenBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, fightValue, false);
@@ -115,9 +110,6 @@ public class ResStrengthenInfoMessage extends AbstractMessage {
 		for (int strengthenListI = 0; strengthenListI < this.strengthenList.size(); strengthenListI++) {
 			this.writeBean(buf, this.strengthenList.get(strengthenListI));
 		}
-
-
 		return true;
 	}
 }
-

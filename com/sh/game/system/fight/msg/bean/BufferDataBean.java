@@ -1,28 +1,27 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class BufferDataBean extends KryoBean {
 
 	/**
 	 * 目标id
 	 */
 	private long targetId;
-
 	/**
 	 * 技能id
 	 */
 	private int skillId;
-
 
 	public long getTargetId() {
 		return targetId;
@@ -32,8 +31,7 @@ public class BufferDataBean extends KryoBean {
 		this.targetId = targetId;
 	}
 
-	
-	public int getSkillId() {
+		public int getSkillId() {
 		return skillId;
 	}
 
@@ -42,21 +40,19 @@ public class BufferDataBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetId = readLong(buf);
 		this.skillId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, skillId, false);
-
 		return true;
 	}
 }
-

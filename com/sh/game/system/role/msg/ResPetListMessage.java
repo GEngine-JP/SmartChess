@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.PetBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送宠物列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResPetListMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResPetListMessage extends AbstractMessage {
 	/**
 	 * 宠物列表
 	 */
-	private List<PetBean> petBean = new ArrayList<PetBean>();
-
+	private List<PetBean> petBean = new ArrayList<>();
 
 	public List<PetBean> getPetBean() {
 		return petBean;
@@ -43,9 +45,9 @@ public class ResPetListMessage extends AbstractMessage {
 		this.petBean = petBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int petBeanLength = readShort(buf);
 		for (int petBeanI = 0; petBeanI < petBeanLength; petBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResPetListMessage extends AbstractMessage {
 				this.petBean.add(petBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.petBean.size());
 		for (int petBeanI = 0; petBeanI < this.petBean.size(); petBeanI++) {
 			this.writeBean(buf, this.petBean.get(petBeanI));
 		}
-
-
 		return true;
 	}
 }
-

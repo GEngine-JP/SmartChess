@@ -1,53 +1,47 @@
 package com.sh.game.system.ladder.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class LadderRankBean extends KryoBean {
 
 	/**
 	 * 角色id
 	 */
 	private long roleId;
-
 	/**
 	 * 排名
 	 */
 	private int rank;
-
 	/**
 	 * 玩家名
 	 */
 	private String name;
-
 	/**
 	 * 段位名字
 	 */
 	private String rankName;
-
 	/**
 	 * 积分
 	 */
 	private int point;
-
 	/**
 	 * 配置表id
 	 */
 	private int rankId;
-
 	/**
 	 * 星数
 	 */
 	private int star;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -57,8 +51,7 @@ public class LadderRankBean extends KryoBean {
 		this.roleId = roleId;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -66,8 +59,7 @@ public class LadderRankBean extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -75,8 +67,7 @@ public class LadderRankBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public String getRankName() {
+		public String getRankName() {
 		return rankName;
 	}
 
@@ -84,8 +75,7 @@ public class LadderRankBean extends KryoBean {
 		this.rankName = rankName;
 	}
 
-	
-	public int getPoint() {
+		public int getPoint() {
 		return point;
 	}
 
@@ -93,8 +83,7 @@ public class LadderRankBean extends KryoBean {
 		this.point = point;
 	}
 
-	
-	public int getRankId() {
+		public int getRankId() {
 		return rankId;
 	}
 
@@ -102,8 +91,7 @@ public class LadderRankBean extends KryoBean {
 		this.rankId = rankId;
 	}
 
-	
-	public int getStar() {
+		public int getStar() {
 		return star;
 	}
 
@@ -112,9 +100,9 @@ public class LadderRankBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.rank = readInt(buf, false);
 		this.name = readString(buf);
@@ -122,12 +110,12 @@ public class LadderRankBean extends KryoBean {
 		this.point = readInt(buf, false);
 		this.rankId = readInt(buf, false);
 		this.star = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeInt(buf, rank, false);
 		this.writeString(buf, name);
@@ -135,8 +123,6 @@ public class LadderRankBean extends KryoBean {
 		this.writeInt(buf, point, false);
 		this.writeInt(buf, rankId, false);
 		this.writeInt(buf, star, false);
-
 		return true;
 	}
 }
-

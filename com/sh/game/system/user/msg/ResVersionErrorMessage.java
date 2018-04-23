@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>版本错误的返回消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResVersionErrorMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResVersionErrorMessage extends AbstractMessage {
 	 */
 	private int version;
 
-
 	public int getVersion() {
 		return version;
 	}
@@ -42,19 +42,17 @@ public class ResVersionErrorMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.version = readInt(buf, false);
 
+		this.version = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, version, false);
 
+		this.writeInt(buf, version, false);
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.fight.msg.bean.RoleTargetInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回多人副本战斗目标信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,18 +35,15 @@ public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 	/**
 	 * 目标信息
 	 */
-	private List<RoleTargetInfoBean> targetBean = new ArrayList<RoleTargetInfoBean>();
-
+	private List<RoleTargetInfoBean> targetBean = new ArrayList<>();
 	/**
 	 * 当前的攻击模式
 	 */
 	private int attackPattern;
-
 	/**
 	 * 归属者id
 	 */
 	private long ownerId;
-
 
 	public List<RoleTargetInfoBean> getTargetBean() {
 		return targetBean;
@@ -52,7 +52,6 @@ public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 	public void setTargetBean(List<RoleTargetInfoBean> targetBean) {
 		this.targetBean = targetBean;
 	}
-
 	public int getAttackPattern() {
 		return attackPattern;
 	}
@@ -61,8 +60,7 @@ public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 		this.attackPattern = attackPattern;
 	}
 
-	
-	public long getOwnerId() {
+		public long getOwnerId() {
 		return ownerId;
 	}
 
@@ -71,9 +69,9 @@ public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int targetBeanLength = readShort(buf);
 		for (int targetBeanI = 0; targetBeanI < targetBeanLength; targetBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -83,25 +81,19 @@ public class ResMultiInsTargetInfoMessage extends AbstractMessage {
 				roleTargetInfoBean.read(buf);
 				this.targetBean.add(roleTargetInfoBean);
 			}
-		}
-
-		this.attackPattern = readInt(buf, false);
+		}		this.attackPattern = readInt(buf, false);
 		this.ownerId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.targetBean.size());
 		for (int targetBeanI = 0; targetBeanI < this.targetBean.size(); targetBeanI++) {
 			this.writeBean(buf, this.targetBean.get(targetBeanI));
-		}
-
-		this.writeInt(buf, attackPattern, false);
+		}		this.writeInt(buf, attackPattern, false);
 		this.writeLong(buf, ownerId);
-
 		return true;
 	}
 }
-

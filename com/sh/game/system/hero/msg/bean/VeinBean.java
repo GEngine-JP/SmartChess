@@ -1,46 +1,42 @@
 package com.sh.game.system.hero.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.hero.msg.bean.HeroSkillBean;
-import com.sh.game.system.hero.msg.bean.HeroAttribute;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class VeinBean extends KryoBean {
 
 	/**
 	 * 技能信息
 	 */
-	private List<HeroSkillBean> skillInfo = new ArrayList<HeroSkillBean>();
-
+	private List<HeroSkillBean> skillInfo = new ArrayList<>();
 	/**
 	 * 现在的配置表id
 	 */
 	private int newId;
-
 	/**
 	 * 经脉属性
 	 */
 	private HeroAttribute veinAttribute;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 英雄Id
 	 */
 	private long heroId;
-
 
 	public List<HeroSkillBean> getSkillInfo() {
 		return skillInfo;
@@ -49,7 +45,6 @@ public class VeinBean extends KryoBean {
 	public void setSkillInfo(List<HeroSkillBean> skillInfo) {
 		this.skillInfo = skillInfo;
 	}
-
 	public int getNewId() {
 		return newId;
 	}
@@ -58,8 +53,7 @@ public class VeinBean extends KryoBean {
 		this.newId = newId;
 	}
 
-	
-	public HeroAttribute getVeinAttribute() {
+		public HeroAttribute getVeinAttribute() {
 		return veinAttribute;
 	}
 
@@ -67,8 +61,7 @@ public class VeinBean extends KryoBean {
 		this.veinAttribute = veinAttribute;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -76,8 +69,7 @@ public class VeinBean extends KryoBean {
 		this.fightValue = fightValue;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -86,9 +78,9 @@ public class VeinBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int skillInfoLength = readShort(buf);
 		for (int skillInfoI = 0; skillInfoI < skillInfoLength; skillInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -98,9 +90,7 @@ public class VeinBean extends KryoBean {
 				heroSkillBean.read(buf);
 				this.skillInfo.add(heroSkillBean);
 			}
-		}
-
-		this.newId = readInt(buf, false);
+		}		this.newId = readInt(buf, false);
 		if (readByte(buf) != 0) {
 			HeroAttribute heroAttribute = new HeroAttribute();
 			heroAttribute.read(buf);
@@ -108,23 +98,19 @@ public class VeinBean extends KryoBean {
 		}
 		this.fightValue = readInt(buf, false);
 		this.heroId = readLong(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.skillInfo.size());
 		for (int skillInfoI = 0; skillInfoI < this.skillInfo.size(); skillInfoI++) {
 			this.writeBean(buf, this.skillInfo.get(skillInfoI));
-		}
-
-		this.writeInt(buf, newId, false);
+		}		this.writeInt(buf, newId, false);
 		this.writeBean(buf, veinAttribute);
 		this.writeInt(buf, fightValue, false);
 		this.writeLong(buf, heroId);
-
 		return true;
 	}
 }
-

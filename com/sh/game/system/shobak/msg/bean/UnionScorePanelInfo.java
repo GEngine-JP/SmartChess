@@ -1,33 +1,31 @@
 package com.sh.game.system.shobak.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionScorePanelInfo extends KryoBean {
 
 	/**
 	 * 名次
 	 */
 	private int rank;
-
 	/**
 	 * 行会名
 	 */
 	private String unionName;
-
 	/**
 	 * 积分
 	 */
 	private int score;
-
 
 	public int getRank() {
 		return rank;
@@ -37,8 +35,7 @@ public class UnionScorePanelInfo extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -46,8 +43,7 @@ public class UnionScorePanelInfo extends KryoBean {
 		this.unionName = unionName;
 	}
 
-	
-	public int getScore() {
+		public int getScore() {
 		return score;
 	}
 
@@ -56,23 +52,21 @@ public class UnionScorePanelInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rank = readInt(buf, false);
 		this.unionName = readString(buf);
 		this.score = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rank, false);
 		this.writeString(buf, unionName);
 		this.writeInt(buf, score, false);
-
 		return true;
 	}
 }
-

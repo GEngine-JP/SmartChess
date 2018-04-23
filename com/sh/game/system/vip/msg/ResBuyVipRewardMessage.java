@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>vip领过的数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResBuyVipRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,8 +34,7 @@ public class ResBuyVipRewardMessage extends AbstractMessage {
 	/**
 	 * 领过的vip等级
 	 */
-	private List<Integer> level = new ArrayList<Integer>();
-
+	private List<Integer> level = new ArrayList<>();
 
 	public List<Integer> getLevel() {
 		return level;
@@ -42,27 +44,23 @@ public class ResBuyVipRewardMessage extends AbstractMessage {
 		this.level = level;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int levelLength = readShort(buf);
 		for (int levelI = 0; levelI < levelLength; levelI++) {
 			this.level.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.level.size());
 		for (int levelI = 0; levelI < this.level.size(); levelI++) {
 			this.writeInt(buf, this.level.get(levelI), false);
 		}
-
-
 		return true;
 	}
 }
-

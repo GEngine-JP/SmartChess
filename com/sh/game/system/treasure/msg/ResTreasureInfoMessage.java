@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回宝物信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResTreasureInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResTreasureInfoMessage extends AbstractMessage {
 	 * 宝物id
 	 */
 	private int tid;
-
 	/**
 	 * 战斗力
 	 */
 	private int power;
-
 
 	public int getTid() {
 		return tid;
@@ -46,8 +45,7 @@ public class ResTreasureInfoMessage extends AbstractMessage {
 		this.tid = tid;
 	}
 
-	
-	public int getPower() {
+		public int getPower() {
 		return power;
 	}
 
@@ -56,21 +54,19 @@ public class ResTreasureInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.tid = readInt(buf, false);
 		this.power = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, tid, false);
 		this.writeInt(buf, power, false);
-
 		return true;
 	}
 }
-

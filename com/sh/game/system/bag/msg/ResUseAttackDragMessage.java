@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>使用攻击药水的返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResUseAttackDragMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResUseAttackDragMessage extends AbstractMessage {
 	 * 当前倍数
 	 */
 	private int rate;
-
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 使用次数
 	 */
 	private int useCount;
-
 
 	public int getRate() {
 		return rate;
@@ -51,8 +49,7 @@ public class ResUseAttackDragMessage extends AbstractMessage {
 		this.rate = rate;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -60,8 +57,7 @@ public class ResUseAttackDragMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getUseCount() {
+		public int getUseCount() {
 		return useCount;
 	}
 
@@ -70,23 +66,21 @@ public class ResUseAttackDragMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rate = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.useCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rate, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, useCount, false);
-
 		return true;
 	}
 }
-

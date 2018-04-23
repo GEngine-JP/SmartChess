@@ -1,28 +1,27 @@
 package com.sh.game.system.shobak.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class AttackInfoBean extends KryoBean {
 
 	/**
 	 * 攻击者
 	 */
 	private long attackers;
-
 	/**
 	 * 怪物id
 	 */
 	private long monsterId;
-
 
 	public long getAttackers() {
 		return attackers;
@@ -32,8 +31,7 @@ public class AttackInfoBean extends KryoBean {
 		this.attackers = attackers;
 	}
 
-	
-	public long getMonsterId() {
+		public long getMonsterId() {
 		return monsterId;
 	}
 
@@ -42,21 +40,19 @@ public class AttackInfoBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.attackers = readLong(buf);
 		this.monsterId = readLong(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, attackers);
 		this.writeLong(buf, monsterId);
-
 		return true;
 	}
 }
-

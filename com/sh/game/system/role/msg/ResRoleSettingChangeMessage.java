@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.RoleSettingBean;
 
-
 /**
  * <p>角色设置变化返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleSettingChangeMessage extends AbstractMessage {
 
 	@Override
@@ -33,7 +34,6 @@ public class ResRoleSettingChangeMessage extends AbstractMessage {
 	 */
 	private RoleSettingBean roleSettingBean;
 
-
 	public RoleSettingBean getRoleSettingBean() {
 		return roleSettingBean;
 	}
@@ -43,23 +43,21 @@ public class ResRoleSettingChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			RoleSettingBean roleSettingBean = new RoleSettingBean();
 			roleSettingBean.read(buf);
 			this.roleSettingBean = roleSettingBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBean(buf, roleSettingBean);
 
+		this.writeBean(buf, roleSettingBean);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回段位信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,32 +32,26 @@ public class ResLadderInfoMessage extends AbstractMessage {
 	 * 配置表id
 	 */
 	private int rankId;
-
 	/**
 	 * 段位名字
 	 */
 	private String rankName;
-
 	/**
 	 * 排名
 	 */
 	private int rank;
-
 	/**
 	 * 积分
 	 */
 	private int point;
-
 	/**
 	 * 星数
 	 */
 	private int star;
-
 	/**
 	 * 剩余次数
 	 */
 	private int leftCount;
-
 
 	public int getRankId() {
 		return rankId;
@@ -66,8 +61,7 @@ public class ResLadderInfoMessage extends AbstractMessage {
 		this.rankId = rankId;
 	}
 
-	
-	public String getRankName() {
+		public String getRankName() {
 		return rankName;
 	}
 
@@ -75,8 +69,7 @@ public class ResLadderInfoMessage extends AbstractMessage {
 		this.rankName = rankName;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -84,8 +77,7 @@ public class ResLadderInfoMessage extends AbstractMessage {
 		this.rank = rank;
 	}
 
-	
-	public int getPoint() {
+		public int getPoint() {
 		return point;
 	}
 
@@ -93,8 +85,7 @@ public class ResLadderInfoMessage extends AbstractMessage {
 		this.point = point;
 	}
 
-	
-	public int getStar() {
+		public int getStar() {
 		return star;
 	}
 
@@ -102,8 +93,7 @@ public class ResLadderInfoMessage extends AbstractMessage {
 		this.star = star;
 	}
 
-	
-	public int getLeftCount() {
+		public int getLeftCount() {
 		return leftCount;
 	}
 
@@ -112,29 +102,27 @@ public class ResLadderInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rankId = readInt(buf, false);
 		this.rankName = readString(buf);
 		this.rank = readInt(buf, false);
 		this.point = readInt(buf, false);
 		this.star = readInt(buf, false);
 		this.leftCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rankId, false);
 		this.writeString(buf, rankName);
 		this.writeInt(buf, rank, false);
 		this.writeInt(buf, point, false);
 		this.writeInt(buf, star, false);
 		this.writeInt(buf, leftCount, false);
-
 		return true;
 	}
 }
-

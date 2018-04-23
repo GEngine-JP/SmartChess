@@ -1,28 +1,27 @@
 package com.sh.game.system.robtreasure.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class FragmentBean extends KryoBean {
 
 	/**
 	 * 碎片id
 	 */
 	private int fragmentId;
-
 	/**
 	 * 碎片数量
 	 */
 	private int count;
-
 
 	public int getFragmentId() {
 		return fragmentId;
@@ -32,8 +31,7 @@ public class FragmentBean extends KryoBean {
 		this.fragmentId = fragmentId;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -42,21 +40,19 @@ public class FragmentBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.fragmentId = readInt(buf, false);
 		this.count = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, fragmentId, false);
 		this.writeInt(buf, count, false);
-
 		return true;
 	}
 }
-

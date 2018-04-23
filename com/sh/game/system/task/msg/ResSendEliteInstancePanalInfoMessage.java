@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.task.msg.bean.TaskItemBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回精英任务面板消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,42 +36,34 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 	 * 精英任务表id
 	 */
 	private int cfgId;
-
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 副本剩余次数
 	 */
 	private int remainCount;
-
 	/**
 	 * 精英任务当前星级
 	 */
 	private int starLevel;
-
 	/**
 	 * 奖励
 	 */
-	private List<TaskItemBean> rewards = new ArrayList<TaskItemBean>();
-
+	private List<TaskItemBean> rewards = new ArrayList<>();
 	/**
 	 * 任务状态0可接受1已接受2已完成
 	 */
 	private int taskState;
-
 	/**
 	 * 首次做任务0首次其他不是
 	 */
 	private int firstGet;
-
 	/**
 	 * 精英任务下次增加次数时间
 	 */
 	private int nextAddTime;
-
 
 	public int getCfgId() {
 		return cfgId;
@@ -78,8 +73,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.cfgId = cfgId;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -87,8 +81,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getRemainCount() {
+		public int getRemainCount() {
 		return remainCount;
 	}
 
@@ -96,8 +89,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.remainCount = remainCount;
 	}
 
-	
-	public int getStarLevel() {
+		public int getStarLevel() {
 		return starLevel;
 	}
 
@@ -105,15 +97,13 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.starLevel = starLevel;
 	}
 
-	
-	public List<TaskItemBean> getRewards() {
+		public List<TaskItemBean> getRewards() {
 		return rewards;
 	}
 
 	public void setRewards(List<TaskItemBean> rewards) {
 		this.rewards = rewards;
 	}
-
 	public int getTaskState() {
 		return taskState;
 	}
@@ -122,8 +112,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.taskState = taskState;
 	}
 
-	
-	public int getFirstGet() {
+		public int getFirstGet() {
 		return firstGet;
 	}
 
@@ -131,8 +120,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.firstGet = firstGet;
 	}
 
-	
-	public int getNextAddTime() {
+		public int getNextAddTime() {
 		return nextAddTime;
 	}
 
@@ -141,9 +129,9 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.cfgId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.remainCount = readInt(buf, false);
@@ -157,17 +145,15 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 				taskItemBean.read(buf);
 				this.rewards.add(taskItemBean);
 			}
-		}
-
-		this.taskState = readInt(buf, false);
+		}		this.taskState = readInt(buf, false);
 		this.firstGet = readInt(buf, false);
 		this.nextAddTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, cfgId, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, remainCount, false);
@@ -175,13 +161,9 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		writeShort(buf, this.rewards.size());
 		for (int rewardsI = 0; rewardsI < this.rewards.size(); rewardsI++) {
 			this.writeBean(buf, this.rewards.get(rewardsI));
-		}
-
-		this.writeInt(buf, taskState, false);
+		}		this.writeInt(buf, taskState, false);
 		this.writeInt(buf, firstGet, false);
 		this.writeInt(buf, nextAddTime, false);
-
 		return true;
 	}
 }
-

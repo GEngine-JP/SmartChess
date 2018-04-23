@@ -1,61 +1,54 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.fight.msg.bean.HurtDataBean;
-import com.sh.game.system.fight.msg.bean.BufferDataBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class FightDataBean extends KryoBean {
 
 	/**
 	 * 技能id
 	 */
 	private int skillId;
-
 	/**
 	 * 攻击者名字
 	 */
 	private String attacker;
-
 	/**
 	 * 被攻击者名字
 	 */
 	private String target;
-
 	/**
 	 * 攻击者id
 	 */
 	private long attackerId;
-
 	/**
 	 * 被攻击者id
 	 */
 	private long targetId;
-
 	/**
 	 * 时间
 	 */
 	private int time;
-
 	/**
 	 * 伤害列表
 	 */
-	private List<HurtDataBean> hurtDataBean = new ArrayList<HurtDataBean>();
-
+	private List<HurtDataBean> hurtDataBean = new ArrayList<>();
 	/**
 	 * buff列表
 	 */
-	private List<BufferDataBean> bufferDataBean = new ArrayList<BufferDataBean>();
-
+	private List<BufferDataBean> bufferDataBean = new ArrayList<>();
 
 	public int getSkillId() {
 		return skillId;
@@ -65,8 +58,7 @@ public class FightDataBean extends KryoBean {
 		this.skillId = skillId;
 	}
 
-	
-	public String getAttacker() {
+		public String getAttacker() {
 		return attacker;
 	}
 
@@ -74,8 +66,7 @@ public class FightDataBean extends KryoBean {
 		this.attacker = attacker;
 	}
 
-	
-	public String getTarget() {
+		public String getTarget() {
 		return target;
 	}
 
@@ -83,8 +74,7 @@ public class FightDataBean extends KryoBean {
 		this.target = target;
 	}
 
-	
-	public long getAttackerId() {
+		public long getAttackerId() {
 		return attackerId;
 	}
 
@@ -92,8 +82,7 @@ public class FightDataBean extends KryoBean {
 		this.attackerId = attackerId;
 	}
 
-	
-	public long getTargetId() {
+		public long getTargetId() {
 		return targetId;
 	}
 
@@ -101,8 +90,7 @@ public class FightDataBean extends KryoBean {
 		this.targetId = targetId;
 	}
 
-	
-	public int getTime() {
+		public int getTime() {
 		return time;
 	}
 
@@ -110,15 +98,13 @@ public class FightDataBean extends KryoBean {
 		this.time = time;
 	}
 
-	
-	public List<HurtDataBean> getHurtDataBean() {
+		public List<HurtDataBean> getHurtDataBean() {
 		return hurtDataBean;
 	}
 
 	public void setHurtDataBean(List<HurtDataBean> hurtDataBean) {
 		this.hurtDataBean = hurtDataBean;
 	}
-
 	public List<BufferDataBean> getBufferDataBean() {
 		return bufferDataBean;
 	}
@@ -127,9 +113,9 @@ public class FightDataBean extends KryoBean {
 		this.bufferDataBean = bufferDataBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.skillId = readInt(buf, false);
 		this.attacker = readString(buf);
 		this.target = readString(buf);
@@ -145,9 +131,7 @@ public class FightDataBean extends KryoBean {
 				hurtDataBean.read(buf);
 				this.hurtDataBean.add(hurtDataBean);
 			}
-		}
-
-		int bufferDataBeanLength = readShort(buf);
+		}		int bufferDataBeanLength = readShort(buf);
 		for (int bufferDataBeanI = 0; bufferDataBeanI < bufferDataBeanLength; bufferDataBeanI++) {
 			if (readByte(buf) == 0) { 
 				this.bufferDataBean.add(null);
@@ -157,13 +141,12 @@ public class FightDataBean extends KryoBean {
 				this.bufferDataBean.add(bufferDataBean);
 			}
 		}
-
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, skillId, false);
 		this.writeString(buf, attacker);
 		this.writeString(buf, target);
@@ -173,15 +156,10 @@ public class FightDataBean extends KryoBean {
 		writeShort(buf, this.hurtDataBean.size());
 		for (int hurtDataBeanI = 0; hurtDataBeanI < this.hurtDataBean.size(); hurtDataBeanI++) {
 			this.writeBean(buf, this.hurtDataBean.get(hurtDataBeanI));
-		}
-
-		writeShort(buf, this.bufferDataBean.size());
+		}		writeShort(buf, this.bufferDataBean.size());
 		for (int bufferDataBeanI = 0; bufferDataBeanI < this.bufferDataBean.size(); bufferDataBeanI++) {
 			this.writeBean(buf, this.bufferDataBean.get(bufferDataBeanI));
 		}
-
-
 		return true;
 	}
 }
-

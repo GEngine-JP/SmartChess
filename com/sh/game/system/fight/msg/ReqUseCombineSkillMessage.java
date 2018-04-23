@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求使用合击技能</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqUseCombineSkillMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 	 * 技能id
 	 */
 	private int skillId;
-
 	/**
 	 * 回合数
 	 */
 	private int wave;
-
 
 	public int getSkillId() {
 		return skillId;
@@ -46,8 +45,7 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 		this.skillId = skillId;
 	}
 
-	
-	public int getWave() {
+		public int getWave() {
 		return wave;
 	}
 
@@ -56,21 +54,19 @@ public class ReqUseCombineSkillMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.skillId = readInt(buf, false);
 		this.wave = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, skillId, false);
 		this.writeInt(buf, wave, false);
-
 		return true;
 	}
 }
-

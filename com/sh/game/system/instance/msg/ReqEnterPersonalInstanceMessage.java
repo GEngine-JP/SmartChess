@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求进入个人副本</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqEnterPersonalInstanceMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqEnterPersonalInstanceMessage extends AbstractMessage {
 	 */
 	private int instanceId;
 
-
 	public int getInstanceId() {
 		return instanceId;
 	}
@@ -42,19 +42,17 @@ public class ReqEnterPersonalInstanceMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.instanceId = readInt(buf, false);
 
+		this.instanceId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, instanceId, false);
 
+		this.writeInt(buf, instanceId, false);
 		return true;
 	}
 }
-

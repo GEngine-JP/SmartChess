@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>一键使用所有经验丹</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOneKeyUseDanMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqOneKeyUseDanMessage extends AbstractMessage {
 	 */
 	private int useType;
 
-
 	public int getUseType() {
 		return useType;
 	}
@@ -42,19 +42,17 @@ public class ReqOneKeyUseDanMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.useType = readInt(buf, false);
 
+		this.useType = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, useType, false);
 
+		this.writeInt(buf, useType, false);
 		return true;
 	}
 }
-

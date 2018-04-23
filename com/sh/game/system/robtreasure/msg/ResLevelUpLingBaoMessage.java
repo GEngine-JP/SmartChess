@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.robtreasure.msg.bean.LingBaoBean;
 
-
 /**
  * <p>返回灵宝升级</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLevelUpLingBaoMessage extends AbstractMessage {
 
 	@Override
@@ -32,17 +33,14 @@ public class ResLevelUpLingBaoMessage extends AbstractMessage {
 	 * 1、玩家 2、英雄 3、背包
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 改变的灵宝
 	 */
 	private LingBaoBean lingBaoBean;
-
 
 	public int getType() {
 		return type;
@@ -52,8 +50,7 @@ public class ResLevelUpLingBaoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -61,8 +58,7 @@ public class ResLevelUpLingBaoMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public LingBaoBean getLingBaoBean() {
+		public LingBaoBean getLingBaoBean() {
 		return lingBaoBean;
 	}
 
@@ -71,9 +67,9 @@ public class ResLevelUpLingBaoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		if (readByte(buf) != 0) {
@@ -81,17 +77,15 @@ public class ResLevelUpLingBaoMessage extends AbstractMessage {
 			lingBaoBean.read(buf);
 			this.lingBaoBean = lingBaoBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeBean(buf, lingBaoBean);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>离线收益消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOfflineRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,47 +32,38 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 	 * 离线时间
 	 */
 	private int offlineTime;
-
 	/**
 	 * 金币
 	 */
 	private int gold;
-
 	/**
 	 * 经验
 	 */
 	private int exp;
-
 	/**
 	 * 普通
 	 */
 	private int normal;
-
 	/**
 	 * 紫色
 	 */
 	private int purple;
-
 	/**
 	 * 橙色
 	 */
 	private int orange;
-
 	/**
 	 * 损失的装备
 	 */
 	private int lost;
-
 	/**
 	 * vip获得的经验
 	 */
 	private int vipExp;
-
 	/**
 	 * vip获得的金币
 	 */
 	private int vipGold;
-
 
 	public int getOfflineTime() {
 		return offlineTime;
@@ -81,8 +73,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.offlineTime = offlineTime;
 	}
 
-	
-	public int getGold() {
+		public int getGold() {
 		return gold;
 	}
 
@@ -90,8 +81,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.gold = gold;
 	}
 
-	
-	public int getExp() {
+		public int getExp() {
 		return exp;
 	}
 
@@ -99,8 +89,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.exp = exp;
 	}
 
-	
-	public int getNormal() {
+		public int getNormal() {
 		return normal;
 	}
 
@@ -108,8 +97,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.normal = normal;
 	}
 
-	
-	public int getPurple() {
+		public int getPurple() {
 		return purple;
 	}
 
@@ -117,8 +105,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.purple = purple;
 	}
 
-	
-	public int getOrange() {
+		public int getOrange() {
 		return orange;
 	}
 
@@ -126,8 +113,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.orange = orange;
 	}
 
-	
-	public int getLost() {
+		public int getLost() {
 		return lost;
 	}
 
@@ -135,8 +121,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.lost = lost;
 	}
 
-	
-	public int getVipExp() {
+		public int getVipExp() {
 		return vipExp;
 	}
 
@@ -144,8 +129,7 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.vipExp = vipExp;
 	}
 
-	
-	public int getVipGold() {
+		public int getVipGold() {
 		return vipGold;
 	}
 
@@ -154,9 +138,9 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.offlineTime = readInt(buf, false);
 		this.gold = readInt(buf, false);
 		this.exp = readInt(buf, false);
@@ -166,12 +150,12 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.lost = readInt(buf, false);
 		this.vipExp = readInt(buf, false);
 		this.vipGold = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, offlineTime, false);
 		this.writeInt(buf, gold, false);
 		this.writeInt(buf, exp, false);
@@ -181,8 +165,6 @@ public class ResOfflineRewardMessage extends AbstractMessage {
 		this.writeInt(buf, lost, false);
 		this.writeInt(buf, vipExp, false);
 		this.writeInt(buf, vipGold, false);
-
 		return true;
 	}
 }
-

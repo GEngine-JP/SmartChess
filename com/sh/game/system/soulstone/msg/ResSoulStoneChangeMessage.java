@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.soulstone.msg.bean.SoulStoneBean;
 
-
 /**
  * <p>返回魂石进阶信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSoulStoneChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,27 +33,22 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 	 * 类型 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 结果 1成功 2失败
 	 */
 	private int result;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 当前魂石信息
 	 */
 	private SoulStoneBean soulStoneBean;
-
 
 	public int getType() {
 		return type;
@@ -62,8 +58,7 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -71,8 +66,7 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getResult() {
+		public int getResult() {
 		return result;
 	}
 
@@ -80,8 +74,7 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -89,8 +82,7 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public SoulStoneBean getSoulStoneBean() {
+		public SoulStoneBean getSoulStoneBean() {
 		return soulStoneBean;
 	}
 
@@ -99,9 +91,9 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.result = readInt(buf, false);
@@ -111,19 +103,17 @@ public class ResSoulStoneChangeMessage extends AbstractMessage {
 			soulStoneBean.read(buf);
 			this.soulStoneBean = soulStoneBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, result, false);
 		this.writeInt(buf, fightValue, false);
 		this.writeBean(buf, soulStoneBean);
-
 		return true;
 	}
 }
-

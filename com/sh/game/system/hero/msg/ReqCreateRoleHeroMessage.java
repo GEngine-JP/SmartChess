@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求创建英雄</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqCreateRoleHeroMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqCreateRoleHeroMessage extends AbstractMessage {
 	 */
 	private int career;
 
-
 	public int getCareer() {
 		return career;
 	}
@@ -42,19 +42,17 @@ public class ReqCreateRoleHeroMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.career = readInt(buf, false);
 
+		this.career = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, career, false);
 
+		this.writeInt(buf, career, false);
 		return true;
 	}
 }
-

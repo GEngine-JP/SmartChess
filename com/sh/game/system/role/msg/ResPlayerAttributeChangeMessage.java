@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>通知属性发生变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResPlayerAttributeChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,22 +35,18 @@ public class ResPlayerAttributeChangeMessage extends AbstractMessage {
 	 * 玩家id
 	 */
 	private long uid;
-
 	/**
 	 * 战斗力
 	 */
 	private int power;
-
 	/**
 	 * 属性类型
 	 */
-	private List<Byte> attributeType = new ArrayList<Byte>();
-
+	private List<Byte> attributeType = new ArrayList<>();
 	/**
 	 * 属性值
 	 */
-	private List<Integer> attributeValue = new ArrayList<Integer>();
-
+	private List<Integer> attributeValue = new ArrayList<>();
 
 	public long getUid() {
 		return uid;
@@ -57,8 +56,7 @@ public class ResPlayerAttributeChangeMessage extends AbstractMessage {
 		this.uid = uid;
 	}
 
-	
-	public int getPower() {
+		public int getPower() {
 		return power;
 	}
 
@@ -66,15 +64,13 @@ public class ResPlayerAttributeChangeMessage extends AbstractMessage {
 		this.power = power;
 	}
 
-	
-	public List<Byte> getAttributeType() {
+		public List<Byte> getAttributeType() {
 		return attributeType;
 	}
 
 	public void setAttributeType(List<Byte> attributeType) {
 		this.attributeType = attributeType;
 	}
-
 	public List<Integer> getAttributeValue() {
 		return attributeValue;
 	}
@@ -83,41 +79,33 @@ public class ResPlayerAttributeChangeMessage extends AbstractMessage {
 		this.attributeValue = attributeValue;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.power = readInt(buf, false);
 		int attributeTypeLength = readShort(buf);
 		for (int attributeTypeI = 0; attributeTypeI < attributeTypeLength; attributeTypeI++) {
 			this.attributeType.add(readByte(buf));
-		}
-
-		int attributeValueLength = readShort(buf);
+		}		int attributeValueLength = readShort(buf);
 		for (int attributeValueI = 0; attributeValueI < attributeValueLength; attributeValueI++) {
 			this.attributeValue.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeInt(buf, power, false);
 		writeShort(buf, this.attributeType.size());
 		for (int attributeTypeI = 0; attributeTypeI < this.attributeType.size(); attributeTypeI++) {
 			this.writeByte(buf, this.attributeType.get(attributeTypeI));
-		}
-
-		writeShort(buf, this.attributeValue.size());
+		}		writeShort(buf, this.attributeValue.size());
 		for (int attributeValueI = 0; attributeValueI < this.attributeValue.size(); attributeValueI++) {
 			this.writeInt(buf, this.attributeValue.get(attributeValueI), false);
 		}
-
-
 		return true;
 	}
 }
-

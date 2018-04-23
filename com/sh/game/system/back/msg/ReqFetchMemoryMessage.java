@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求获取内存数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqFetchMemoryMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqFetchMemoryMessage extends AbstractMessage {
 	 * 数据类型
 	 */
 	private int tableType;
-
 	/**
 	 * id
 	 */
 	private long mid;
-
 
 	public int getTableType() {
 		return tableType;
@@ -46,8 +45,7 @@ public class ReqFetchMemoryMessage extends AbstractMessage {
 		this.tableType = tableType;
 	}
 
-	
-	public long getMid() {
+		public long getMid() {
 		return mid;
 	}
 
@@ -56,21 +54,19 @@ public class ReqFetchMemoryMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.tableType = readInt(buf, false);
 		this.mid = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, tableType, false);
 		this.writeLong(buf, mid);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>申请修改公告</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeAnnouncementMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqChangeAnnouncementMessage extends AbstractMessage {
 	 */
 	private String announcement;
 
-
 	public String getAnnouncement() {
 		return announcement;
 	}
@@ -42,19 +42,17 @@ public class ReqChangeAnnouncementMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.announcement = readString(buf);
 
+		this.announcement = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, announcement);
 
+		this.writeString(buf, announcement);
 		return true;
 	}
 }
-

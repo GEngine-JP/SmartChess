@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求副本面板信息(通用)</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqInstancePanelInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqInstancePanelInfoMessage extends AbstractMessage {
 	 */
 	private int insType;
 
-
 	public int getInsType() {
 		return insType;
 	}
@@ -42,19 +42,17 @@ public class ReqInstancePanelInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.insType = readInt(buf, false);
 
+		this.insType = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, insType, false);
 
+		this.writeInt(buf, insType, false);
 		return true;
 	}
 }
-

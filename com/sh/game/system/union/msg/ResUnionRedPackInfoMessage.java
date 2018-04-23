@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.UnionRedPackBean;
 
-
 /**
  * <p>请求重置行會挑戰</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResUnionRedPackInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,7 +34,6 @@ public class ResUnionRedPackInfoMessage extends AbstractMessage {
 	 */
 	private UnionRedPackBean unionRedPackBean;
 
-
 	public UnionRedPackBean getUnionRedPackBean() {
 		return unionRedPackBean;
 	}
@@ -43,23 +43,21 @@ public class ResUnionRedPackInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			UnionRedPackBean unionRedPackBean = new UnionRedPackBean();
 			unionRedPackBean.read(buf);
 			this.unionRedPackBean = unionRedPackBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBean(buf, unionRedPackBean);
 
+		this.writeBean(buf, unionRedPackBean);
 		return true;
 	}
 }
-

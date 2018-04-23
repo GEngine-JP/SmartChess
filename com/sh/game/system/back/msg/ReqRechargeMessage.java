@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>充值</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRechargeMessage extends AbstractMessage {
 
 	@Override
@@ -31,47 +32,38 @@ public class ReqRechargeMessage extends AbstractMessage {
 	 * 玩家登录账号
 	 */
 	private String loginName;
-
 	/**
 	 * 元宝数量
 	 */
 	private int count;
-
 	/**
 	 * sid
 	 */
 	private int sid;
-
 	/**
 	 * 平台订单号
 	 */
 	private String order_sn;
-
 	/**
 	 * 自有订单号
 	 */
 	private long order_id;
-
 	/**
 	 * 商品id
 	 */
 	private int goodsId;
-
 	/**
 	 * 0、充值元宝 1、绑定元宝
 	 */
 	private int type;
-
 	/**
 	 * 平台的商品id
 	 */
 	private String productId;
-
 	/**
 	 * 渠道id
 	 */
 	private int qudao;
-
 
 	public String getLoginName() {
 		return loginName;
@@ -81,8 +73,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.loginName = loginName;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -90,8 +81,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.count = count;
 	}
 
-	
-	public int getSid() {
+		public int getSid() {
 		return sid;
 	}
 
@@ -99,8 +89,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.sid = sid;
 	}
 
-	
-	public String getOrder_sn() {
+		public String getOrder_sn() {
 		return order_sn;
 	}
 
@@ -108,8 +97,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.order_sn = order_sn;
 	}
 
-	
-	public long getOrder_id() {
+		public long getOrder_id() {
 		return order_id;
 	}
 
@@ -117,8 +105,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.order_id = order_id;
 	}
 
-	
-	public int getGoodsId() {
+		public int getGoodsId() {
 		return goodsId;
 	}
 
@@ -126,8 +113,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.goodsId = goodsId;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -135,8 +121,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public String getProductId() {
+		public String getProductId() {
 		return productId;
 	}
 
@@ -144,8 +129,7 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.productId = productId;
 	}
 
-	
-	public int getQudao() {
+		public int getQudao() {
 		return qudao;
 	}
 
@@ -154,9 +138,9 @@ public class ReqRechargeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.loginName = readString(buf);
 		this.count = readInt(buf, false);
 		this.sid = readInt(buf, false);
@@ -166,12 +150,12 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.type = readInt(buf, false);
 		this.productId = readString(buf);
 		this.qudao = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, loginName);
 		this.writeInt(buf, count, false);
 		this.writeInt(buf, sid, false);
@@ -181,8 +165,6 @@ public class ReqRechargeMessage extends AbstractMessage {
 		this.writeInt(buf, type, false);
 		this.writeString(buf, productId);
 		this.writeInt(buf, qudao, false);
-
 		return true;
 	}
 }
-

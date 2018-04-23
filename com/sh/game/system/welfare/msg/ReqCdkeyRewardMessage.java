@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求cdkey领奖</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqCdkeyRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqCdkeyRewardMessage extends AbstractMessage {
 	 */
 	private String cdkey;
 
-
 	public String getCdkey() {
 		return cdkey;
 	}
@@ -42,19 +42,17 @@ public class ReqCdkeyRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.cdkey = readString(buf);
 
+		this.cdkey = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, cdkey);
 
+		this.writeString(buf, cdkey);
 		return true;
 	}
 }
-

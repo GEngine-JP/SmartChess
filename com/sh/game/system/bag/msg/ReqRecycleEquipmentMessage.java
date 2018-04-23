@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>请求回收装备</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRecycleEquipmentMessage extends AbstractMessage {
 
 	@Override
@@ -31,8 +34,7 @@ public class ReqRecycleEquipmentMessage extends AbstractMessage {
 	/**
 	 * 回收列表(唯一id)
 	 */
-	private List<Long> recycleList = new ArrayList<Long>();
-
+	private List<Long> recycleList = new ArrayList<>();
 
 	public List<Long> getRecycleList() {
 		return recycleList;
@@ -42,27 +44,23 @@ public class ReqRecycleEquipmentMessage extends AbstractMessage {
 		this.recycleList = recycleList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int recycleListLength = readShort(buf);
 		for (int recycleListI = 0; recycleListI < recycleListLength; recycleListI++) {
 			this.recycleList.add(this.readLong(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.recycleList.size());
 		for (int recycleListI = 0; recycleListI < this.recycleList.size(); recycleListI++) {
 			this.writeLong(buf, this.recycleList.get(recycleListI));
 		}
-
-
 		return true;
 	}
 }
-

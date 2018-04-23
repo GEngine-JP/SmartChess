@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>是否有申请角标</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHasApplyInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResHasApplyInfoMessage extends AbstractMessage {
 	 */
 	private int apply;
 
-
 	public int getApply() {
 		return apply;
 	}
@@ -42,19 +42,17 @@ public class ResHasApplyInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.apply = readInt(buf, false);
 
+		this.apply = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, apply, false);
 
+		this.writeInt(buf, apply, false);
 		return true;
 	}
 }
-

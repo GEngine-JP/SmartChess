@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.runes.msg.bean.RunesBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>符文更新消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRunesChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResRunesChangeMessage extends AbstractMessage {
 	/**
 	 * 符文列表
 	 */
-	private List<RunesBean> runesList = new ArrayList<RunesBean>();
-
+	private List<RunesBean> runesList = new ArrayList<>();
 	/**
 	 * 战斗力
 	 */
 	private int fightPower;
-
 
 	public List<RunesBean> getRunesList() {
 		return runesList;
@@ -47,7 +48,6 @@ public class ResRunesChangeMessage extends AbstractMessage {
 	public void setRunesList(List<RunesBean> runesList) {
 		this.runesList = runesList;
 	}
-
 	public int getFightPower() {
 		return fightPower;
 	}
@@ -57,9 +57,9 @@ public class ResRunesChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int runesListLength = readShort(buf);
 		for (int runesListI = 0; runesListI < runesListLength; runesListI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResRunesChangeMessage extends AbstractMessage {
 				runesBean.read(buf);
 				this.runesList.add(runesBean);
 			}
-		}
-
-		this.fightPower = readInt(buf, false);
-
+		}		this.fightPower = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.runesList.size());
 		for (int runesListI = 0; runesListI < this.runesList.size(); runesListI++) {
 			this.writeBean(buf, this.runesList.get(runesListI));
-		}
-
-		this.writeInt(buf, fightPower, false);
-
+		}		this.writeInt(buf, fightPower, false);
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.title.msg.bean.TitleBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>称号列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResTitleListMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResTitleListMessage extends AbstractMessage {
 	/**
 	 * 称号列表
 	 */
-	private List<TitleBean> titleBeanList = new ArrayList<TitleBean>();
-
+	private List<TitleBean> titleBeanList = new ArrayList<>();
 
 	public List<TitleBean> getTitleBeanList() {
 		return titleBeanList;
@@ -43,9 +45,9 @@ public class ResTitleListMessage extends AbstractMessage {
 		this.titleBeanList = titleBeanList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int titleBeanListLength = readShort(buf);
 		for (int titleBeanListI = 0; titleBeanListI < titleBeanListLength; titleBeanListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResTitleListMessage extends AbstractMessage {
 				this.titleBeanList.add(titleBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.titleBeanList.size());
 		for (int titleBeanListI = 0; titleBeanListI < this.titleBeanList.size(); titleBeanListI++) {
 			this.writeBean(buf, this.titleBeanList.get(titleBeanListI));
 		}
-
-
 		return true;
 	}
 }
-

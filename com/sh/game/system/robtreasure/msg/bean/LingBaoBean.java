@@ -1,58 +1,51 @@
 package com.sh.game.system.robtreasure.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class LingBaoBean extends KryoBean {
 
 	/**
 	 * 装备位置
 	 */
 	private int index;
-
 	/**
 	 * 唯一id
 	 */
 	private long uniqueId;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 当前经验
 	 */
 	private int nowExp;
-
 	/**
 	 * 总经验
 	 */
 	private int totalExp;
-
 	/**
 	 * 精炼阶数
 	 */
 	private int refineLv;
-
 	/**
 	 * 灵宝战力
 	 */
 	private int power;
-
 
 	public int getIndex() {
 		return index;
@@ -62,8 +55,7 @@ public class LingBaoBean extends KryoBean {
 		this.index = index;
 	}
 
-	
-	public long getUniqueId() {
+		public long getUniqueId() {
 		return uniqueId;
 	}
 
@@ -71,8 +63,7 @@ public class LingBaoBean extends KryoBean {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -80,8 +71,7 @@ public class LingBaoBean extends KryoBean {
 		this.itemId = itemId;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -89,8 +79,7 @@ public class LingBaoBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getNowExp() {
+		public int getNowExp() {
 		return nowExp;
 	}
 
@@ -98,8 +87,7 @@ public class LingBaoBean extends KryoBean {
 		this.nowExp = nowExp;
 	}
 
-	
-	public int getTotalExp() {
+		public int getTotalExp() {
 		return totalExp;
 	}
 
@@ -107,8 +95,7 @@ public class LingBaoBean extends KryoBean {
 		this.totalExp = totalExp;
 	}
 
-	
-	public int getRefineLv() {
+		public int getRefineLv() {
 		return refineLv;
 	}
 
@@ -116,8 +103,7 @@ public class LingBaoBean extends KryoBean {
 		this.refineLv = refineLv;
 	}
 
-	
-	public int getPower() {
+		public int getPower() {
 		return power;
 	}
 
@@ -126,9 +112,9 @@ public class LingBaoBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.uniqueId = readLong(buf);
 		this.itemId = readInt(buf, false);
@@ -137,12 +123,12 @@ public class LingBaoBean extends KryoBean {
 		this.totalExp = readInt(buf, false);
 		this.refineLv = readInt(buf, false);
 		this.power = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeLong(buf, uniqueId);
 		this.writeInt(buf, itemId, false);
@@ -151,8 +137,6 @@ public class LingBaoBean extends KryoBean {
 		this.writeInt(buf, totalExp, false);
 		this.writeInt(buf, refineLv, false);
 		this.writeInt(buf, power, false);
-
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.chapter.msg.bean.ChapterRankBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回关卡排行面板</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenChapterPanelMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResOpenChapterPanelMessage extends AbstractMessage {
 	/**
 	 * 关卡排行列表
 	 */
-	private List<ChapterRankBean> chapterRankBean = new ArrayList<ChapterRankBean>();
-
+	private List<ChapterRankBean> chapterRankBean = new ArrayList<>();
 
 	public List<ChapterRankBean> getChapterRankBean() {
 		return chapterRankBean;
@@ -43,9 +45,9 @@ public class ResOpenChapterPanelMessage extends AbstractMessage {
 		this.chapterRankBean = chapterRankBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int chapterRankBeanLength = readShort(buf);
 		for (int chapterRankBeanI = 0; chapterRankBeanI < chapterRankBeanLength; chapterRankBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResOpenChapterPanelMessage extends AbstractMessage {
 				this.chapterRankBean.add(chapterRankBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.chapterRankBean.size());
 		for (int chapterRankBeanI = 0; chapterRankBeanI < this.chapterRankBean.size(); chapterRankBeanI++) {
 			this.writeBean(buf, this.chapterRankBean.get(chapterRankBeanI));
 		}
-
-
 		return true;
 	}
 }
-

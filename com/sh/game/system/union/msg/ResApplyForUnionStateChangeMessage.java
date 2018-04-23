@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>申请入会状态变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResApplyForUnionStateChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResApplyForUnionStateChangeMessage extends AbstractMessage {
 	 * 帮会申请状态
 	 */
 	private int state;
-
 	/**
 	 * 帮会id
 	 */
 	private long unionId;
-
 
 	public int getState() {
 		return state;
@@ -46,8 +45,7 @@ public class ResApplyForUnionStateChangeMessage extends AbstractMessage {
 		this.state = state;
 	}
 
-	
-	public long getUnionId() {
+		public long getUnionId() {
 		return unionId;
 	}
 
@@ -56,21 +54,19 @@ public class ResApplyForUnionStateChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.state = readInt(buf, false);
 		this.unionId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, state, false);
 		this.writeLong(buf, unionId);
-
 		return true;
 	}
 }
-

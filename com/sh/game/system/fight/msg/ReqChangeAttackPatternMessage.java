@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求更改攻击模式</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeAttackPatternMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqChangeAttackPatternMessage extends AbstractMessage {
 	 */
 	private int uniqueId;
 
-
 	public int getUniqueId() {
 		return uniqueId;
 	}
@@ -42,19 +42,17 @@ public class ReqChangeAttackPatternMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.uniqueId = readInt(buf, false);
 
+		this.uniqueId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, uniqueId, false);
 
+		this.writeInt(buf, uniqueId, false);
 		return true;
 	}
 }
-

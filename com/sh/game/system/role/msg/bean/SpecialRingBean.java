@@ -1,28 +1,27 @@
 package com.sh.game.system.role.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class SpecialRingBean extends KryoBean {
 
 	/**
 	 * 特戒类型
 	 */
 	private int type;
-
 	/**
 	 * 特戒等级
 	 */
 	private int level;
-
 
 	public int getType() {
 		return type;
@@ -32,8 +31,7 @@ public class SpecialRingBean extends KryoBean {
 		this.type = type;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -42,21 +40,19 @@ public class SpecialRingBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.level = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, level, false);
-
 		return true;
 	}
 }
-

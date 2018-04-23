@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送沙巴克战斗者的信息(退出地图)</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResNoticeFighterExitMapMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResNoticeFighterExitMapMessage extends AbstractMessage {
 	 */
 	private long exitId;
 
-
 	public long getExitId() {
 		return exitId;
 	}
@@ -42,19 +42,17 @@ public class ResNoticeFighterExitMapMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.exitId = readLong(buf);
 
+		this.exitId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, exitId);
 
+		this.writeLong(buf, exitId);
 		return true;
 	}
 }
-

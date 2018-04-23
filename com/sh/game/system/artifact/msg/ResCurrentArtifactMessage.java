@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回当前神器激活状态</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCurrentArtifactMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 	 * artifactId
 	 */
 	private int artifactId;
-
 	/**
 	 * 0未激活 1可激活 2己激活
 	 */
 	private int state;
-
 
 	public int getArtifactId() {
 		return artifactId;
@@ -46,8 +45,7 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 		this.artifactId = artifactId;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -56,21 +54,19 @@ public class ResCurrentArtifactMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.artifactId = readInt(buf, false);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, artifactId, false);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送轮回boss面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 归属者行会名 没有帮会发归属者名字
 	 */
 	private String unionName;
-
 	/**
 	 * 当前血量
 	 */
 	private long hp;
-
 	/**
 	 * 活动状态 1开启
 	 */
 	private int state;
-
 
 	public int getInstanceId() {
 		return instanceId;
@@ -56,8 +53,7 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -65,8 +61,7 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 		this.unionName = unionName;
 	}
 
-	
-	public long getHp() {
+		public long getHp() {
 		return hp;
 	}
 
@@ -74,8 +69,7 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 		this.hp = hp;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -84,25 +78,23 @@ public class ResSendRecycleBossInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		this.unionName = readString(buf);
 		this.hp = readLong(buf);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		this.writeString(buf, unionName);
 		this.writeLong(buf, hp);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

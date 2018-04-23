@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求领取活动奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetActivityRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,18 @@ public class ReqGetActivityRewardMessage extends AbstractMessage {
 	 * 活动id
 	 */
 	private int activityId;
-
 	/**
 	 * 目标类型
 	 */
 	private int type;
-
 	/**
 	 * 目标参数
 	 */
 	private int goal;
-
+	/**
+	 * 多倍领取倍数
+	 */
+	private int multi;
 
 	public int getActivityId() {
 		return activityId;
@@ -51,8 +53,7 @@ public class ReqGetActivityRewardMessage extends AbstractMessage {
 		this.activityId = activityId;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -60,8 +61,7 @@ public class ReqGetActivityRewardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public int getGoal() {
+		public int getGoal() {
 		return goal;
 	}
 
@@ -69,24 +69,32 @@ public class ReqGetActivityRewardMessage extends AbstractMessage {
 		this.goal = goal;
 	}
 
-	
+		public int getMulti() {
+		return multi;
+	}
 
+	public void setMulti(int multi) {
+		this.multi = multi;
+	}
+
+	
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		this.type = readInt(buf, false);
 		this.goal = readInt(buf, false);
-
+		this.multi = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, goal, false);
-
+		this.writeInt(buf, multi, false);
 		return true;
 	}
 }
-

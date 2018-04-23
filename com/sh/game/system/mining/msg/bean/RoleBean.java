@@ -1,28 +1,27 @@
 package com.sh.game.system.mining.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RoleBean extends KryoBean {
 
 	/**
 	 * 玩家id
 	 */
 	private long roleId;
-
 	/**
 	 * 玩家名字
 	 */
 	private String roleName;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -32,8 +31,7 @@ public class RoleBean extends KryoBean {
 		this.roleId = roleId;
 	}
 
-	
-	public String getRoleName() {
+		public String getRoleName() {
 		return roleName;
 	}
 
@@ -42,21 +40,19 @@ public class RoleBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.roleName = readString(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeString(buf, roleName);
-
 		return true;
 	}
 }
-

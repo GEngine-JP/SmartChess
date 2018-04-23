@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.search.msg.bean.SearchEventBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回探索事件信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendSearchEventInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendSearchEventInfoMessage extends AbstractMessage {
 	/**
 	 * 事件列表
 	 */
-	private List<SearchEventBean> eventList = new ArrayList<SearchEventBean>();
-
+	private List<SearchEventBean> eventList = new ArrayList<>();
 
 	public List<SearchEventBean> getEventList() {
 		return eventList;
@@ -43,9 +45,9 @@ public class ResSendSearchEventInfoMessage extends AbstractMessage {
 		this.eventList = eventList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int eventListLength = readShort(buf);
 		for (int eventListI = 0; eventListI < eventListLength; eventListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendSearchEventInfoMessage extends AbstractMessage {
 				this.eventList.add(searchEventBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.eventList.size());
 		for (int eventListI = 0; eventListI < this.eventList.size(); eventListI++) {
 			this.writeBean(buf, this.eventList.get(eventListI));
 		}
-
-
 		return true;
 	}
 }
-

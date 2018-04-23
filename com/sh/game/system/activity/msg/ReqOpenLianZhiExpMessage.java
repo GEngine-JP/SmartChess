@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求打开经验炼制面板</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOpenLianZhiExpMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqOpenLianZhiExpMessage extends AbstractMessage {
 	 */
 	private int activityType;
 
-
 	public int getActivityType() {
 		return activityType;
 	}
@@ -42,19 +42,17 @@ public class ReqOpenLianZhiExpMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.activityType = readInt(buf, false);
 
+		this.activityType = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, activityType, false);
 
+		this.writeInt(buf, activityType, false);
 		return true;
 	}
 }
-

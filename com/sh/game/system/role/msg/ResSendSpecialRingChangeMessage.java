@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.SpecialRingBean;
 
-
 /**
  * <p>发送特戒变化信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendSpecialRingChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,12 +33,10 @@ public class ResSendSpecialRingChangeMessage extends AbstractMessage {
 	 * 特戒信息
 	 */
 	private SpecialRingBean info;
-
 	/**
 	 * 特戒战斗力
 	 */
 	private int fightValue;
-
 
 	public SpecialRingBean getInfo() {
 		return info;
@@ -47,8 +46,7 @@ public class ResSendSpecialRingChangeMessage extends AbstractMessage {
 		this.info = info;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -57,25 +55,23 @@ public class ResSendSpecialRingChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			SpecialRingBean specialRingBean = new SpecialRingBean();
 			specialRingBean.read(buf);
 			this.info = specialRingBean;
 		}
 		this.fightValue = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, info);
 		this.writeInt(buf, fightValue, false);
-
 		return true;
 	}
 }
-

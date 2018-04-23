@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.robtreasure.msg.bean.FakeRewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回夺五次结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRobFiveTimesMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResRobFiveTimesMessage extends AbstractMessage {
 	/**
 	 * 奖励
 	 */
-	private List<FakeRewardBean> rewardBeanList = new ArrayList<FakeRewardBean>();
-
+	private List<FakeRewardBean> rewardBeanList = new ArrayList<>();
 	/**
 	 * 是否是夺五次
 	 */
 	private int isFive;
-
 
 	public List<FakeRewardBean> getRewardBeanList() {
 		return rewardBeanList;
@@ -47,7 +48,6 @@ public class ResRobFiveTimesMessage extends AbstractMessage {
 	public void setRewardBeanList(List<FakeRewardBean> rewardBeanList) {
 		this.rewardBeanList = rewardBeanList;
 	}
-
 	public int getIsFive() {
 		return isFive;
 	}
@@ -57,9 +57,9 @@ public class ResRobFiveTimesMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int rewardBeanListLength = readShort(buf);
 		for (int rewardBeanListI = 0; rewardBeanListI < rewardBeanListLength; rewardBeanListI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResRobFiveTimesMessage extends AbstractMessage {
 				fakeRewardBean.read(buf);
 				this.rewardBeanList.add(fakeRewardBean);
 			}
-		}
-
-		this.isFive = readInt(buf, false);
-
+		}		this.isFive = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.rewardBeanList.size());
 		for (int rewardBeanListI = 0; rewardBeanListI < this.rewardBeanList.size(); rewardBeanListI++) {
 			this.writeBean(buf, this.rewardBeanList.get(rewardBeanListI));
-		}
-
-		this.writeInt(buf, isFive, false);
-
+		}		this.writeInt(buf, isFive, false);
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.RoleSettingBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>角色设置消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleSettingInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResRoleSettingInfoMessage extends AbstractMessage {
 	/**
 	 * 角色设置
 	 */
-	private List<RoleSettingBean> roleSettingBean = new ArrayList<RoleSettingBean>();
-
+	private List<RoleSettingBean> roleSettingBean = new ArrayList<>();
 
 	public List<RoleSettingBean> getRoleSettingBean() {
 		return roleSettingBean;
@@ -43,9 +45,9 @@ public class ResRoleSettingInfoMessage extends AbstractMessage {
 		this.roleSettingBean = roleSettingBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int roleSettingBeanLength = readShort(buf);
 		for (int roleSettingBeanI = 0; roleSettingBeanI < roleSettingBeanLength; roleSettingBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResRoleSettingInfoMessage extends AbstractMessage {
 				this.roleSettingBean.add(roleSettingBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.roleSettingBean.size());
 		for (int roleSettingBeanI = 0; roleSettingBeanI < this.roleSettingBean.size(); roleSettingBeanI++) {
 			this.writeBean(buf, this.roleSettingBean.get(roleSettingBeanI));
 		}
-
-
 		return true;
 	}
 }
-

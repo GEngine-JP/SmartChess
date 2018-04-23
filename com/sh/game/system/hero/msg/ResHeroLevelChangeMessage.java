@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通知玩家英雄等级发生变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeroLevelChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResHeroLevelChangeMessage extends AbstractMessage {
 	 * 玩家id
 	 */
 	private long uid;
-
 	/**
 	 * 当前英雄经验
 	 */
 	private long curExp;
-
 	/**
 	 * 当前英雄等级
 	 */
 	private int curLevel;
-
 
 	public long getUid() {
 		return uid;
@@ -51,8 +49,7 @@ public class ResHeroLevelChangeMessage extends AbstractMessage {
 		this.uid = uid;
 	}
 
-	
-	public long getCurExp() {
+		public long getCurExp() {
 		return curExp;
 	}
 
@@ -60,8 +57,7 @@ public class ResHeroLevelChangeMessage extends AbstractMessage {
 		this.curExp = curExp;
 	}
 
-	
-	public int getCurLevel() {
+		public int getCurLevel() {
 		return curLevel;
 	}
 
@@ -70,23 +66,21 @@ public class ResHeroLevelChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.curExp = readLong(buf);
 		this.curLevel = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeLong(buf, curExp);
 		this.writeInt(buf, curLevel, false);
-
 		return true;
 	}
 }
-

@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.mining.msg.bean.MinerBean;
 
-
 /**
  * <p>发送单个矿工信息，已有的矿工信息更新，或者新矿工</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResMinerMessage extends AbstractMessage {
 
 	@Override
@@ -33,7 +34,6 @@ public class ResMinerMessage extends AbstractMessage {
 	 */
 	private MinerBean miner;
 
-
 	public MinerBean getMiner() {
 		return miner;
 	}
@@ -43,23 +43,21 @@ public class ResMinerMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			MinerBean minerBean = new MinerBean();
 			minerBean.read(buf);
 			this.miner = minerBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBean(buf, miner);
 
+		this.writeBean(buf, miner);
 		return true;
 	}
 }
-

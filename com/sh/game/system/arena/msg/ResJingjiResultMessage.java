@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.arena.msg.bean.RankRewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回竞技结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResJingjiResultMessage extends AbstractMessage {
 
 	@Override
@@ -33,32 +36,26 @@ public class ResJingjiResultMessage extends AbstractMessage {
 	 * 结果 1赢了且最高名次和当前名次都提高 2赢了且当前名次提高 3赢了且名次未提高 4输了
 	 */
 	private int result;
-
 	/**
 	 * 现在名次
 	 */
 	private int nowRank;
-
 	/**
 	 * 原来名次
 	 */
 	private int oldRank;
-
 	/**
 	 * 挑战对象的名字
 	 */
 	private String targetName;
-
 	/**
 	 * 战斗结果奖励
 	 */
-	private List<RankRewardBean> resultRewardList = new ArrayList<RankRewardBean>();
-
+	private List<RankRewardBean> resultRewardList = new ArrayList<>();
 	/**
 	 * 名次提升奖励
 	 */
-	private List<RankRewardBean> rankRewardList = new ArrayList<RankRewardBean>();
-
+	private List<RankRewardBean> rankRewardList = new ArrayList<>();
 
 	public int getResult() {
 		return result;
@@ -68,8 +65,7 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public int getNowRank() {
+		public int getNowRank() {
 		return nowRank;
 	}
 
@@ -77,8 +73,7 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		this.nowRank = nowRank;
 	}
 
-	
-	public int getOldRank() {
+		public int getOldRank() {
 		return oldRank;
 	}
 
@@ -86,8 +81,7 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		this.oldRank = oldRank;
 	}
 
-	
-	public String getTargetName() {
+		public String getTargetName() {
 		return targetName;
 	}
 
@@ -95,15 +89,13 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		this.targetName = targetName;
 	}
 
-	
-	public List<RankRewardBean> getResultRewardList() {
+		public List<RankRewardBean> getResultRewardList() {
 		return resultRewardList;
 	}
 
 	public void setResultRewardList(List<RankRewardBean> resultRewardList) {
 		this.resultRewardList = resultRewardList;
 	}
-
 	public List<RankRewardBean> getRankRewardList() {
 		return rankRewardList;
 	}
@@ -112,9 +104,9 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		this.rankRewardList = rankRewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.result = readInt(buf, false);
 		this.nowRank = readInt(buf, false);
 		this.oldRank = readInt(buf, false);
@@ -128,9 +120,7 @@ public class ResJingjiResultMessage extends AbstractMessage {
 				rankRewardBean.read(buf);
 				this.resultRewardList.add(rankRewardBean);
 			}
-		}
-
-		int rankRewardListLength = readShort(buf);
+		}		int rankRewardListLength = readShort(buf);
 		for (int rankRewardListI = 0; rankRewardListI < rankRewardListLength; rankRewardListI++) {
 			if (readByte(buf) == 0) { 
 				this.rankRewardList.add(null);
@@ -140,13 +130,12 @@ public class ResJingjiResultMessage extends AbstractMessage {
 				this.rankRewardList.add(rankRewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, result, false);
 		this.writeInt(buf, nowRank, false);
 		this.writeInt(buf, oldRank, false);
@@ -154,15 +143,10 @@ public class ResJingjiResultMessage extends AbstractMessage {
 		writeShort(buf, this.resultRewardList.size());
 		for (int resultRewardListI = 0; resultRewardListI < this.resultRewardList.size(); resultRewardListI++) {
 			this.writeBean(buf, this.resultRewardList.get(resultRewardListI));
-		}
-
-		writeShort(buf, this.rankRewardList.size());
+		}		writeShort(buf, this.rankRewardList.size());
 		for (int rankRewardListI = 0; rankRewardListI < this.rankRewardList.size(); rankRewardListI++) {
 			this.writeBean(buf, this.rankRewardList.get(rankRewardListI));
 		}
-
-
 		return true;
 	}
 }
-

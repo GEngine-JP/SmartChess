@@ -1,38 +1,35 @@
 package com.sh.game.system.instance.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class HurtRankBean extends KryoBean {
 
 	/**
 	 * 角色id
 	 */
 	private long roleId;
-
 	/**
 	 * 玩家名
 	 */
 	private String name;
-
 	/**
 	 * 玩家名次
 	 */
 	private int rank;
-
 	/**
 	 * 伤害
 	 */
 	private long hurt;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -42,8 +39,7 @@ public class HurtRankBean extends KryoBean {
 		this.roleId = roleId;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -51,8 +47,7 @@ public class HurtRankBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -60,8 +55,7 @@ public class HurtRankBean extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public long getHurt() {
+		public long getHurt() {
 		return hurt;
 	}
 
@@ -70,25 +64,23 @@ public class HurtRankBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.name = readString(buf);
 		this.rank = readInt(buf, false);
 		this.hurt = readLong(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeString(buf, name);
 		this.writeInt(buf, rank, false);
 		this.writeLong(buf, hurt);
-
 		return true;
 	}
 }
-

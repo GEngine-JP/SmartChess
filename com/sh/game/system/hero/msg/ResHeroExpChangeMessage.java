@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通知玩家英雄经验发生变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeroExpChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResHeroExpChangeMessage extends AbstractMessage {
 	 * 当前经验
 	 */
 	private long curExp;
-
 	/**
 	 * 经验来源
 	 */
 	private int logAction;
-
 	/**
 	 * 增加的经验
 	 */
 	private long addExp;
-
 
 	public long getCurExp() {
 		return curExp;
@@ -51,8 +49,7 @@ public class ResHeroExpChangeMessage extends AbstractMessage {
 		this.curExp = curExp;
 	}
 
-	
-	public int getLogAction() {
+		public int getLogAction() {
 		return logAction;
 	}
 
@@ -60,8 +57,7 @@ public class ResHeroExpChangeMessage extends AbstractMessage {
 		this.logAction = logAction;
 	}
 
-	
-	public long getAddExp() {
+		public long getAddExp() {
 		return addExp;
 	}
 
@@ -70,23 +66,21 @@ public class ResHeroExpChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.curExp = readLong(buf);
 		this.logAction = readInt(buf, false);
 		this.addExp = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, curExp);
 		this.writeInt(buf, logAction, false);
 		this.writeLong(buf, addExp);
-
 		return true;
 	}
 }
-

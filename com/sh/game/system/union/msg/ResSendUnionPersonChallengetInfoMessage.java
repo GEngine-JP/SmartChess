@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送行会个人挑战信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,37 +32,30 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 	 * 本关怪物消减
 	 */
 	private int currentMonsterWeaken;
-
 	/**
 	 * 自已当前的关卡
 	 */
 	private int currentFloor;
-
 	/**
 	 * 副本Id
 	 */
 	private int instanceId;
-
 	/**
 	 * 空为没人通关 其余为通关玩家的名字
 	 */
 	private String firstSuccess;
-
 	/**
 	 * 达到的最大关数的副本id
 	 */
 	private int lifeMaxInstanceId;
-
 	/**
 	 * 当前可领取首通奖励副本id
 	 */
 	private int firstRewardInstanceId;
-
 	/**
 	 * 今日重置次數
 	 */
 	private int resetCount;
-
 
 	public int getCurrentMonsterWeaken() {
 		return currentMonsterWeaken;
@@ -71,8 +65,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.currentMonsterWeaken = currentMonsterWeaken;
 	}
 
-	
-	public int getCurrentFloor() {
+		public int getCurrentFloor() {
 		return currentFloor;
 	}
 
@@ -80,8 +73,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.currentFloor = currentFloor;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -89,8 +81,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public String getFirstSuccess() {
+		public String getFirstSuccess() {
 		return firstSuccess;
 	}
 
@@ -98,8 +89,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.firstSuccess = firstSuccess;
 	}
 
-	
-	public int getLifeMaxInstanceId() {
+		public int getLifeMaxInstanceId() {
 		return lifeMaxInstanceId;
 	}
 
@@ -107,8 +97,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.lifeMaxInstanceId = lifeMaxInstanceId;
 	}
 
-	
-	public int getFirstRewardInstanceId() {
+		public int getFirstRewardInstanceId() {
 		return firstRewardInstanceId;
 	}
 
@@ -116,8 +105,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.firstRewardInstanceId = firstRewardInstanceId;
 	}
 
-	
-	public int getResetCount() {
+		public int getResetCount() {
 		return resetCount;
 	}
 
@@ -126,9 +114,9 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.currentMonsterWeaken = readInt(buf, false);
 		this.currentFloor = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
@@ -136,12 +124,12 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.lifeMaxInstanceId = readInt(buf, false);
 		this.firstRewardInstanceId = readInt(buf, false);
 		this.resetCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, currentMonsterWeaken, false);
 		this.writeInt(buf, currentFloor, false);
 		this.writeInt(buf, instanceId, false);
@@ -149,8 +137,6 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.writeInt(buf, lifeMaxInstanceId, false);
 		this.writeInt(buf, firstRewardInstanceId, false);
 		this.writeInt(buf, resetCount, false);
-
 		return true;
 	}
 }
-

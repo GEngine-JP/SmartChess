@@ -1,63 +1,55 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionRedPackRecordBean extends KryoBean {
 
 	/**
 	 * 发送者名字
 	 */
 	private String sender;
-
 	/**
 	 * 抢夺者
 	 */
 	private String robber;
-
 	/**
 	 * 抢夺者职业
 	 */
 	private int robberCareer;
-
 	/**
 	 * 抢夺者性别
 	 */
 	private int robberSex;
-
 	/**
 	 * 发送者职业
 	 */
 	private int senderCareer;
-
 	/**
 	 * 发送者性别
 	 */
 	private int sendSex;
-
 	/**
 	 * 抢红包的时间
 	 */
 	private int robTime;
-
 	/**
 	 * 元宝
 	 */
 	private int money;
-
 	/**
 	 * 是否是最佳
 	 */
 	private boolean isBest;
-
 
 	public String getSender() {
 		return sender;
@@ -67,8 +59,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.sender = sender;
 	}
 
-	
-	public String getRobber() {
+		public String getRobber() {
 		return robber;
 	}
 
@@ -76,8 +67,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.robber = robber;
 	}
 
-	
-	public int getRobberCareer() {
+		public int getRobberCareer() {
 		return robberCareer;
 	}
 
@@ -85,8 +75,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.robberCareer = robberCareer;
 	}
 
-	
-	public int getRobberSex() {
+		public int getRobberSex() {
 		return robberSex;
 	}
 
@@ -94,8 +83,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.robberSex = robberSex;
 	}
 
-	
-	public int getSenderCareer() {
+		public int getSenderCareer() {
 		return senderCareer;
 	}
 
@@ -103,8 +91,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.senderCareer = senderCareer;
 	}
 
-	
-	public int getSendSex() {
+		public int getSendSex() {
 		return sendSex;
 	}
 
@@ -112,8 +99,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.sendSex = sendSex;
 	}
 
-	
-	public int getRobTime() {
+		public int getRobTime() {
 		return robTime;
 	}
 
@@ -121,8 +107,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.robTime = robTime;
 	}
 
-	
-	public int getMoney() {
+		public int getMoney() {
 		return money;
 	}
 
@@ -130,8 +115,7 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.money = money;
 	}
 
-	
-	public boolean getIsBest() {
+		public boolean getIsBest() {
 		return isBest;
 	}
 
@@ -140,9 +124,9 @@ public class UnionRedPackRecordBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.sender = readString(buf);
 		this.robber = readString(buf);
 		this.robberCareer = readInt(buf, false);
@@ -152,12 +136,12 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.robTime = readInt(buf, false);
 		this.money = readInt(buf, false);
 		this.isBest = readBoolean(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, sender);
 		this.writeString(buf, robber);
 		this.writeInt(buf, robberCareer, false);
@@ -167,8 +151,6 @@ public class UnionRedPackRecordBean extends KryoBean {
 		this.writeInt(buf, robTime, false);
 		this.writeInt(buf, money, false);
 		this.writeBoolean(buf, isBest);
-
 		return true;
 	}
 }
-

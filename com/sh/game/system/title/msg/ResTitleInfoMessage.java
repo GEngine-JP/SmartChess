@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送威名信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResTitleInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,37 +35,30 @@ public class ResTitleInfoMessage extends AbstractMessage {
 	 * 威名等级
 	 */
 	private int level;
-
 	/**
 	 * 威望排名 1第一 2第二 3第三 0其他
 	 */
 	private int rank;
-
 	/**
 	 * 第一名光翼id
 	 */
 	private int windId;
-
 	/**
 	 * 第一名性别
 	 */
 	private int sex;
-
 	/**
 	 * 第一名职业
 	 */
 	private int career;
-
 	/**
 	 * 第一名名字
 	 */
 	private String roleName;
-
 	/**
 	 * 第一名装备列表
 	 */
-	private List<Integer> equipmentList = new ArrayList<Integer>();
-
+	private List<Integer> equipmentList = new ArrayList<>();
 
 	public int getLevel() {
 		return level;
@@ -72,8 +68,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.level = level;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -81,8 +76,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.rank = rank;
 	}
 
-	
-	public int getWindId() {
+		public int getWindId() {
 		return windId;
 	}
 
@@ -90,8 +84,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.windId = windId;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -99,8 +92,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.sex = sex;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -108,8 +100,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.career = career;
 	}
 
-	
-	public String getRoleName() {
+		public String getRoleName() {
 		return roleName;
 	}
 
@@ -117,8 +108,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.roleName = roleName;
 	}
 
-	
-	public List<Integer> getEquipmentList() {
+		public List<Integer> getEquipmentList() {
 		return equipmentList;
 	}
 
@@ -126,9 +116,9 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		this.equipmentList = equipmentList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.level = readInt(buf, false);
 		this.rank = readInt(buf, false);
 		this.windId = readInt(buf, false);
@@ -139,13 +129,12 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		for (int equipmentListI = 0; equipmentListI < equipmentListLength; equipmentListI++) {
 			this.equipmentList.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, rank, false);
 		this.writeInt(buf, windId, false);
@@ -156,9 +145,6 @@ public class ResTitleInfoMessage extends AbstractMessage {
 		for (int equipmentListI = 0; equipmentListI < this.equipmentList.size(); equipmentListI++) {
 			this.writeInt(buf, this.equipmentList.get(equipmentListI), false);
 		}
-
-
 		return true;
 	}
 }
-

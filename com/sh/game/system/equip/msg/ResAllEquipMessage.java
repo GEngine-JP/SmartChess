@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.equip.msg.bean.EquipBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>所有装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAllEquipMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResAllEquipMessage extends AbstractMessage {
 	/**
 	 * 所有的装备信息
 	 */
-	private List<EquipBean> equipList = new ArrayList<EquipBean>();
-
+	private List<EquipBean> equipList = new ArrayList<>();
 
 	public List<EquipBean> getEquipList() {
 		return equipList;
@@ -43,9 +45,9 @@ public class ResAllEquipMessage extends AbstractMessage {
 		this.equipList = equipList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int equipListLength = readShort(buf);
 		for (int equipListI = 0; equipListI < equipListLength; equipListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResAllEquipMessage extends AbstractMessage {
 				this.equipList.add(equipBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.equipList.size());
 		for (int equipListI = 0; equipListI < this.equipList.size(); equipListI++) {
 			this.writeBean(buf, this.equipList.get(equipListI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.arena.msg.bean.RankRewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>竞技场扫荡返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResArenaSweepMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResArenaSweepMessage extends AbstractMessage {
 	/**
 	 * 战斗结果奖励
 	 */
-	private List<RankRewardBean> resultRewardList = new ArrayList<RankRewardBean>();
-
+	private List<RankRewardBean> resultRewardList = new ArrayList<>();
 
 	public List<RankRewardBean> getResultRewardList() {
 		return resultRewardList;
@@ -43,9 +45,9 @@ public class ResArenaSweepMessage extends AbstractMessage {
 		this.resultRewardList = resultRewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int resultRewardListLength = readShort(buf);
 		for (int resultRewardListI = 0; resultRewardListI < resultRewardListLength; resultRewardListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResArenaSweepMessage extends AbstractMessage {
 				this.resultRewardList.add(rankRewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.resultRewardList.size());
 		for (int resultRewardListI = 0; resultRewardListI < this.resultRewardList.size(); resultRewardListI++) {
 			this.writeBean(buf, this.resultRewardList.get(resultRewardListI));
 		}
-
-
 		return true;
 	}
 }
-

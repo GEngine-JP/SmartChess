@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.hero.msg.bean.HeroSkillBean;
 import com.sh.game.system.hero.msg.bean.HeroAttribute;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送英雄经脉变化信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendVeinChangeMessage extends AbstractMessage {
 
 	@Override
@@ -33,28 +36,23 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 	/**
 	 * 技能变化信息
 	 */
-	private List<HeroSkillBean> skillInfo = new ArrayList<HeroSkillBean>();
-
+	private List<HeroSkillBean> skillInfo = new ArrayList<>();
 	/**
 	 * 现在的配置表id
 	 */
 	private int newId;
-
 	/**
 	 * 经脉属性
 	 */
 	private HeroAttribute veinAttribute;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 英雄Id
 	 */
 	private long heroId;
-
 
 	public List<HeroSkillBean> getSkillInfo() {
 		return skillInfo;
@@ -63,7 +61,6 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 	public void setSkillInfo(List<HeroSkillBean> skillInfo) {
 		this.skillInfo = skillInfo;
 	}
-
 	public int getNewId() {
 		return newId;
 	}
@@ -72,8 +69,7 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 		this.newId = newId;
 	}
 
-	
-	public HeroAttribute getVeinAttribute() {
+		public HeroAttribute getVeinAttribute() {
 		return veinAttribute;
 	}
 
@@ -81,8 +77,7 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 		this.veinAttribute = veinAttribute;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -90,8 +85,7 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -100,9 +94,9 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int skillInfoLength = readShort(buf);
 		for (int skillInfoI = 0; skillInfoI < skillInfoLength; skillInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -112,9 +106,7 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 				heroSkillBean.read(buf);
 				this.skillInfo.add(heroSkillBean);
 			}
-		}
-
-		this.newId = readInt(buf, false);
+		}		this.newId = readInt(buf, false);
 		if (readByte(buf) != 0) {
 			HeroAttribute heroAttribute = new HeroAttribute();
 			heroAttribute.read(buf);
@@ -122,23 +114,19 @@ public class ResSendVeinChangeMessage extends AbstractMessage {
 		}
 		this.fightValue = readInt(buf, false);
 		this.heroId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.skillInfo.size());
 		for (int skillInfoI = 0; skillInfoI < this.skillInfo.size(); skillInfoI++) {
 			this.writeBean(buf, this.skillInfo.get(skillInfoI));
-		}
-
-		this.writeInt(buf, newId, false);
+		}		this.writeInt(buf, newId, false);
 		this.writeBean(buf, veinAttribute);
 		this.writeInt(buf, fightValue, false);
 		this.writeLong(buf, heroId);
-
 		return true;
 	}
 }
-

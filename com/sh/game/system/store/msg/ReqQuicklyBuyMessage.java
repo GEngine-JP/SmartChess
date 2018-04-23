@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求购买</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqQuicklyBuyMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqQuicklyBuyMessage extends AbstractMessage {
 	 * 快捷购买配置id
 	 */
 	private int storeId;
-
 	/**
 	 * 购买数量
 	 */
 	private int count;
-
 
 	public int getStoreId() {
 		return storeId;
@@ -46,8 +45,7 @@ public class ReqQuicklyBuyMessage extends AbstractMessage {
 		this.storeId = storeId;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -56,21 +54,19 @@ public class ReqQuicklyBuyMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.storeId = readInt(buf, false);
 		this.count = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, storeId, false);
 		this.writeInt(buf, count, false);
-
 		return true;
 	}
 }
-

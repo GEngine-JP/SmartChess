@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>查找角色</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResGetRoleMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResGetRoleMessage extends AbstractMessage {
 	 */
 	private byte[] byteArray;
 
-
 	public byte[] getByteArray() {
 		return byteArray;
 	}
@@ -42,19 +42,17 @@ public class ResGetRoleMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.byteArray = readBytes(buf);
 
+		this.byteArray = readBytes(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBytes(buf, byteArray);
 
+		this.writeBytes(buf, byteArray);
 		return true;
 	}
 }
-

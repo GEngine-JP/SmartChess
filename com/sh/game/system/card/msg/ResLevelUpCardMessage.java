@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回升级卡片</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLevelUpCardMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResLevelUpCardMessage extends AbstractMessage {
 	 * 1角色 2英雄 3背包
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 唯一id
 	 */
 	private long uniqueId;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 
 	public int getType() {
 		return type;
@@ -56,8 +53,7 @@ public class ResLevelUpCardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -65,8 +61,7 @@ public class ResLevelUpCardMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public long getUniqueId() {
+		public long getUniqueId() {
 		return uniqueId;
 	}
 
@@ -74,8 +69,7 @@ public class ResLevelUpCardMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -84,25 +78,23 @@ public class ResLevelUpCardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.uniqueId = readLong(buf);
 		this.itemId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeLong(buf, uniqueId);
 		this.writeInt(buf, itemId, false);
-
 		return true;
 	}
 }
-

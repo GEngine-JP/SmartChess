@@ -7,12 +7,13 @@ import com.sh.game.server.AbstractMessage;
 import com.sh.game.system.union.msg.bean.UnionMemberInfoBean;
 import com.sh.game.system.union.msg.bean.PositionInfo;
 
-
 /**
  * <p>发送调整职位信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendChangePositionMessage extends AbstractMessage {
 
 	@Override
@@ -33,17 +34,14 @@ public class ResSendChangePositionMessage extends AbstractMessage {
 	 * 玩家职位信息
 	 */
 	private UnionMemberInfoBean changePosition;
-
 	/**
 	 * 会长职位信息
 	 */
 	private UnionMemberInfoBean leaderChange;
-
 	/**
 	 * 职位信息
 	 */
 	private PositionInfo positionInfo;
-
 
 	public UnionMemberInfoBean getChangePosition() {
 		return changePosition;
@@ -53,8 +51,7 @@ public class ResSendChangePositionMessage extends AbstractMessage {
 		this.changePosition = changePosition;
 	}
 
-	
-	public UnionMemberInfoBean getLeaderChange() {
+		public UnionMemberInfoBean getLeaderChange() {
 		return leaderChange;
 	}
 
@@ -62,8 +59,7 @@ public class ResSendChangePositionMessage extends AbstractMessage {
 		this.leaderChange = leaderChange;
 	}
 
-	
-	public PositionInfo getPositionInfo() {
+		public PositionInfo getPositionInfo() {
 		return positionInfo;
 	}
 
@@ -72,9 +68,9 @@ public class ResSendChangePositionMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			UnionMemberInfoBean unionMemberInfoBean = new UnionMemberInfoBean();
 			unionMemberInfoBean.read(buf);
@@ -90,17 +86,15 @@ public class ResSendChangePositionMessage extends AbstractMessage {
 			positionInfo.read(buf);
 			this.positionInfo = positionInfo;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, changePosition);
 		this.writeBean(buf, leaderChange);
 		this.writeBean(buf, positionInfo);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>角色设置</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRoleSettingMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqRoleSettingMessage extends AbstractMessage {
 	 * 设置类型
 	 */
 	private int settingType;
-
 	/**
 	 * 参数
 	 */
 	private int parameter;
-
 	/**
 	 * 要修改的值1选中
 	 */
 	private int value;
-
 
 	public int getSettingType() {
 		return settingType;
@@ -51,8 +49,7 @@ public class ReqRoleSettingMessage extends AbstractMessage {
 		this.settingType = settingType;
 	}
 
-	
-	public int getParameter() {
+		public int getParameter() {
 		return parameter;
 	}
 
@@ -60,8 +57,7 @@ public class ReqRoleSettingMessage extends AbstractMessage {
 		this.parameter = parameter;
 	}
 
-	
-	public int getValue() {
+		public int getValue() {
 		return value;
 	}
 
@@ -70,23 +66,21 @@ public class ReqRoleSettingMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.settingType = readInt(buf, false);
 		this.parameter = readInt(buf, false);
 		this.value = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, settingType, false);
 		this.writeInt(buf, parameter, false);
 		this.writeInt(buf, value, false);
-
 		return true;
 	}
 }
-

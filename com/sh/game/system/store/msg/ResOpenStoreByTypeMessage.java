@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.store.msg.bean.StoreInfo;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回商店商品列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenStoreByTypeMessage extends AbstractMessage {
 
 	@Override
@@ -30,22 +33,31 @@ public class ResOpenStoreByTypeMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 0、不可刷新 1、可刷新
+	 */
+	private int state;
+	/**
 	 * 下次刷新时间
 	 */
 	private int nextFreshTime;
-
 	/**
 	 * 商店分类
 	 */
 	private int storeClassId;
-
 	/**
 	 * 商品列表信息
 	 */
-	private List<StoreInfo> storeInfo = new ArrayList<StoreInfo>();
+	private List<StoreInfo> storeInfo = new ArrayList<>();
 
+	public int getState() {
+		return state;
+	}
 
-	public int getNextFreshTime() {
+	public void setState(int state) {
+		this.state = state;
+	}
+
+		public int getNextFreshTime() {
 		return nextFreshTime;
 	}
 
@@ -53,8 +65,7 @@ public class ResOpenStoreByTypeMessage extends AbstractMessage {
 		this.nextFreshTime = nextFreshTime;
 	}
 
-	
-	public int getStoreClassId() {
+		public int getStoreClassId() {
 		return storeClassId;
 	}
 
@@ -62,8 +73,7 @@ public class ResOpenStoreByTypeMessage extends AbstractMessage {
 		this.storeClassId = storeClassId;
 	}
 
-	
-	public List<StoreInfo> getStoreInfo() {
+		public List<StoreInfo> getStoreInfo() {
 		return storeInfo;
 	}
 
@@ -71,9 +81,10 @@ public class ResOpenStoreByTypeMessage extends AbstractMessage {
 		this.storeInfo = storeInfo;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
+		this.state = readInt(buf, false);
 		this.nextFreshTime = readInt(buf, false);
 		this.storeClassId = readInt(buf, false);
 		int storeInfoLength = readShort(buf);
@@ -86,22 +97,19 @@ public class ResOpenStoreByTypeMessage extends AbstractMessage {
 				this.storeInfo.add(storeInfo);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
+		this.writeInt(buf, state, false);
 		this.writeInt(buf, nextFreshTime, false);
 		this.writeInt(buf, storeClassId, false);
 		writeShort(buf, this.storeInfo.size());
 		for (int storeInfoI = 0; storeInfoI < this.storeInfo.size(); storeInfoI++) {
 			this.writeBean(buf, this.storeInfo.get(storeInfoI));
 		}
-
-
 		return true;
 	}
 }
-

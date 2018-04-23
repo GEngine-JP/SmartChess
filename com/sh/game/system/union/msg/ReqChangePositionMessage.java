@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求调整职位</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangePositionMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqChangePositionMessage extends AbstractMessage {
 	 * 选择的玩家ID
 	 */
 	private long memberId;
-
 	/**
 	 * 要调整的职位
 	 */
 	private int position;
-
 
 	public long getMemberId() {
 		return memberId;
@@ -46,8 +45,7 @@ public class ReqChangePositionMessage extends AbstractMessage {
 		this.memberId = memberId;
 	}
 
-	
-	public int getPosition() {
+		public int getPosition() {
 		return position;
 	}
 
@@ -56,21 +54,19 @@ public class ReqChangePositionMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.memberId = readLong(buf);
 		this.position = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, memberId);
 		this.writeInt(buf, position, false);
-
 		return true;
 	}
 }
-

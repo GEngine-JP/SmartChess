@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送王者禁地面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,42 +32,34 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 	 * 角色当前层数
 	 */
 	private int floor;
-
 	/**
 	 * 角色本周最高层数
 	 */
 	private int maxFloor;
-
 	/**
 	 * 角色上周最高层数
 	 */
 	private int lastMaxFloor;
-
 	/**
 	 * 假人id 有怪物发0 没有怪物有假人发id
 	 */
 	private int robotId;
-
 	/**
 	 * 是否可领取每周奖励0不可领取1可领取
 	 */
 	private int canReward;
-
 	/**
 	 * 是否已领取奖励0不可领取1可领取
 	 */
 	private int state;
-
 	/**
 	 * 剩余属性领取次数
 	 */
 	private int remainNum;
-
 	/**
 	 * 最后一关假人id 有怪物发0 没有怪物有假人发id 通过最后一关才发
 	 */
 	private int lastRobotId;
-
 
 	public int getFloor() {
 		return floor;
@@ -76,8 +69,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.floor = floor;
 	}
 
-	
-	public int getMaxFloor() {
+		public int getMaxFloor() {
 		return maxFloor;
 	}
 
@@ -85,8 +77,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.maxFloor = maxFloor;
 	}
 
-	
-	public int getLastMaxFloor() {
+		public int getLastMaxFloor() {
 		return lastMaxFloor;
 	}
 
@@ -94,8 +85,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.lastMaxFloor = lastMaxFloor;
 	}
 
-	
-	public int getRobotId() {
+		public int getRobotId() {
 		return robotId;
 	}
 
@@ -103,8 +93,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.robotId = robotId;
 	}
 
-	
-	public int getCanReward() {
+		public int getCanReward() {
 		return canReward;
 	}
 
@@ -112,8 +101,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.canReward = canReward;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -121,8 +109,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.state = state;
 	}
 
-	
-	public int getRemainNum() {
+		public int getRemainNum() {
 		return remainNum;
 	}
 
@@ -130,8 +117,7 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.remainNum = remainNum;
 	}
 
-	
-	public int getLastRobotId() {
+		public int getLastRobotId() {
 		return lastRobotId;
 	}
 
@@ -140,9 +126,9 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.floor = readInt(buf, false);
 		this.maxFloor = readInt(buf, false);
 		this.lastMaxFloor = readInt(buf, false);
@@ -151,12 +137,12 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.state = readInt(buf, false);
 		this.remainNum = readInt(buf, false);
 		this.lastRobotId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, floor, false);
 		this.writeInt(buf, maxFloor, false);
 		this.writeInt(buf, lastMaxFloor, false);
@@ -165,8 +151,6 @@ public class ResSendKingForbiddenPanelInfoMessage extends AbstractMessage {
 		this.writeInt(buf, state, false);
 		this.writeInt(buf, remainNum, false);
 		this.writeInt(buf, lastRobotId, false);
-
 		return true;
 	}
 }
-

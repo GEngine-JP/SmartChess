@@ -1,73 +1,63 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionInfoBean extends KryoBean {
 
 	/**
 	 * 帮会id
 	 */
 	private long unionId;
-
 	/**
 	 * 帮会名
 	 */
 	private String unionName;
-
 	/**
 	 * 帮会会长名
 	 */
 	private String leaderName;
-
 	/**
 	 * 帮会公告
 	 */
 	private String announcement;
-
 	/**
 	 * 帮会等级
 	 */
 	private int unionLevel;
-
 	/**
 	 * 帮会人数
 	 */
 	private int unionNum;
-
 	/**
 	 * 帮会申请状态 1可申请 2已申请
 	 */
 	private int applyState;
-
 	/**
 	 * 帮会创建时间
 	 */
 	private long createTime;
-
 	/**
 	 * 帮会战力
 	 */
 	private int nbValue;
-
 	/**
 	 * 帮会资金
 	 */
 	private int unionGold;
-
 	/**
 	 * 1为自动进入
 	 */
 	private int autoEnter;
-
 
 	public long getUnionId() {
 		return unionId;
@@ -77,8 +67,7 @@ public class UnionInfoBean extends KryoBean {
 		this.unionId = unionId;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -86,8 +75,7 @@ public class UnionInfoBean extends KryoBean {
 		this.unionName = unionName;
 	}
 
-	
-	public String getLeaderName() {
+		public String getLeaderName() {
 		return leaderName;
 	}
 
@@ -95,8 +83,7 @@ public class UnionInfoBean extends KryoBean {
 		this.leaderName = leaderName;
 	}
 
-	
-	public String getAnnouncement() {
+		public String getAnnouncement() {
 		return announcement;
 	}
 
@@ -104,8 +91,7 @@ public class UnionInfoBean extends KryoBean {
 		this.announcement = announcement;
 	}
 
-	
-	public int getUnionLevel() {
+		public int getUnionLevel() {
 		return unionLevel;
 	}
 
@@ -113,8 +99,7 @@ public class UnionInfoBean extends KryoBean {
 		this.unionLevel = unionLevel;
 	}
 
-	
-	public int getUnionNum() {
+		public int getUnionNum() {
 		return unionNum;
 	}
 
@@ -122,8 +107,7 @@ public class UnionInfoBean extends KryoBean {
 		this.unionNum = unionNum;
 	}
 
-	
-	public int getApplyState() {
+		public int getApplyState() {
 		return applyState;
 	}
 
@@ -131,8 +115,7 @@ public class UnionInfoBean extends KryoBean {
 		this.applyState = applyState;
 	}
 
-	
-	public long getCreateTime() {
+		public long getCreateTime() {
 		return createTime;
 	}
 
@@ -140,8 +123,7 @@ public class UnionInfoBean extends KryoBean {
 		this.createTime = createTime;
 	}
 
-	
-	public int getNbValue() {
+		public int getNbValue() {
 		return nbValue;
 	}
 
@@ -149,8 +131,7 @@ public class UnionInfoBean extends KryoBean {
 		this.nbValue = nbValue;
 	}
 
-	
-	public int getUnionGold() {
+		public int getUnionGold() {
 		return unionGold;
 	}
 
@@ -158,8 +139,7 @@ public class UnionInfoBean extends KryoBean {
 		this.unionGold = unionGold;
 	}
 
-	
-	public int getAutoEnter() {
+		public int getAutoEnter() {
 		return autoEnter;
 	}
 
@@ -168,9 +148,9 @@ public class UnionInfoBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.unionId = readLong(buf);
 		this.unionName = readString(buf);
 		this.leaderName = readString(buf);
@@ -182,12 +162,12 @@ public class UnionInfoBean extends KryoBean {
 		this.nbValue = readInt(buf, false);
 		this.unionGold = readInt(buf, false);
 		this.autoEnter = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, unionId);
 		this.writeString(buf, unionName);
 		this.writeString(buf, leaderName);
@@ -199,8 +179,6 @@ public class UnionInfoBean extends KryoBean {
 		this.writeInt(buf, nbValue, false);
 		this.writeInt(buf, unionGold, false);
 		this.writeInt(buf, autoEnter, false);
-
 		return true;
 	}
 }
-

@@ -1,68 +1,59 @@
 package com.sh.game.system.boss.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class BossInfo extends KryoBean {
 
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 类型
 	 */
 	private int type;
-
 	/**
 	 * 剩余次数
 	 */
 	private int surplusNum;
-
 	/**
 	 * 下次刷新时间
 	 */
 	private int freshTime;
-
 	/**
 	 * 当前血量
 	 */
 	private long hp;
-
 	/**
 	 * 人数
 	 */
 	private int num;
-
 	/**
 	 * 归属人
 	 */
 	private String ownerName;
-
 	/**
 	 * 状态 0未勾选 1勾选 
 	 */
 	private int state;
-
 	/**
 	 * 扫荡次数
 	 */
 	private int sweepCount;
-
 	/**
 	 * 是否通关过这个副本
 	 */
 	private int isSucceed;
-
 
 	public int getInstanceId() {
 		return instanceId;
@@ -72,8 +63,7 @@ public class BossInfo extends KryoBean {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -81,8 +71,7 @@ public class BossInfo extends KryoBean {
 		this.type = type;
 	}
 
-	
-	public int getSurplusNum() {
+		public int getSurplusNum() {
 		return surplusNum;
 	}
 
@@ -90,8 +79,7 @@ public class BossInfo extends KryoBean {
 		this.surplusNum = surplusNum;
 	}
 
-	
-	public int getFreshTime() {
+		public int getFreshTime() {
 		return freshTime;
 	}
 
@@ -99,8 +87,7 @@ public class BossInfo extends KryoBean {
 		this.freshTime = freshTime;
 	}
 
-	
-	public long getHp() {
+		public long getHp() {
 		return hp;
 	}
 
@@ -108,8 +95,7 @@ public class BossInfo extends KryoBean {
 		this.hp = hp;
 	}
 
-	
-	public int getNum() {
+		public int getNum() {
 		return num;
 	}
 
@@ -117,8 +103,7 @@ public class BossInfo extends KryoBean {
 		this.num = num;
 	}
 
-	
-	public String getOwnerName() {
+		public String getOwnerName() {
 		return ownerName;
 	}
 
@@ -126,8 +111,7 @@ public class BossInfo extends KryoBean {
 		this.ownerName = ownerName;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -135,8 +119,7 @@ public class BossInfo extends KryoBean {
 		this.state = state;
 	}
 
-	
-	public int getSweepCount() {
+		public int getSweepCount() {
 		return sweepCount;
 	}
 
@@ -144,8 +127,7 @@ public class BossInfo extends KryoBean {
 		this.sweepCount = sweepCount;
 	}
 
-	
-	public int getIsSucceed() {
+		public int getIsSucceed() {
 		return isSucceed;
 	}
 
@@ -154,9 +136,9 @@ public class BossInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		this.type = readInt(buf, false);
 		this.surplusNum = readInt(buf, false);
@@ -167,12 +149,12 @@ public class BossInfo extends KryoBean {
 		this.state = readInt(buf, false);
 		this.sweepCount = readInt(buf, false);
 		this.isSucceed = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, surplusNum, false);
@@ -183,8 +165,6 @@ public class BossInfo extends KryoBean {
 		this.writeInt(buf, state, false);
 		this.writeInt(buf, sweepCount, false);
 		this.writeInt(buf, isSucceed, false);
-
 		return true;
 	}
 }
-

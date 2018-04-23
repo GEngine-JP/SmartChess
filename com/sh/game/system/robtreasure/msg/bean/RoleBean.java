@@ -1,58 +1,51 @@
 package com.sh.game.system.robtreasure.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RoleBean extends KryoBean {
 
 	/**
 	 * 玩家id
 	 */
 	private long roleId;
-
 	/**
 	 * 是否是假人 假人1不是假人0
 	 */
 	private int isFake;
-
 	/**
 	 * 玩家姓名
 	 */
 	private String name;
-
 	/**
 	 * 性别 1.男 2.女
 	 */
 	private int sex;
-
 	/**
 	 * 职业 0.通用 1.战 2.法 3.道
 	 */
 	private int career;
-
 	/**
 	 * 玩家等级
 	 */
 	private int level;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 战力
 	 */
 	private int fightPower;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -62,8 +55,7 @@ public class RoleBean extends KryoBean {
 		this.roleId = roleId;
 	}
 
-	
-	public int getIsFake() {
+		public int getIsFake() {
 		return isFake;
 	}
 
@@ -71,8 +63,7 @@ public class RoleBean extends KryoBean {
 		this.isFake = isFake;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -80,8 +71,7 @@ public class RoleBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -89,8 +79,7 @@ public class RoleBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -98,8 +87,7 @@ public class RoleBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -107,8 +95,7 @@ public class RoleBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -116,8 +103,7 @@ public class RoleBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getFightPower() {
+		public int getFightPower() {
 		return fightPower;
 	}
 
@@ -126,9 +112,9 @@ public class RoleBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.isFake = readInt(buf, false);
 		this.name = readString(buf);
@@ -137,12 +123,12 @@ public class RoleBean extends KryoBean {
 		this.level = readInt(buf, false);
 		this.rein = readInt(buf, false);
 		this.fightPower = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeInt(buf, isFake, false);
 		this.writeString(buf, name);
@@ -151,8 +137,6 @@ public class RoleBean extends KryoBean {
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, rein, false);
 		this.writeInt(buf, fightPower, false);
-
 		return true;
 	}
 }
-

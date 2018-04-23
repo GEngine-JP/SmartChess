@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求封禁</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackBanMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ReqBackBanMessage extends AbstractMessage {
 	 * 1账号 2ip
 	 */
 	private int banType;
-
 	/**
 	 * 参数
 	 */
 	private String banParam;
-
 	/**
 	 * 封号理由
 	 */
 	private String banReason;
-
 	/**
 	 * 封禁时间（秒）
 	 */
 	private int time;
-
 
 	public int getBanType() {
 		return banType;
@@ -56,8 +53,7 @@ public class ReqBackBanMessage extends AbstractMessage {
 		this.banType = banType;
 	}
 
-	
-	public String getBanParam() {
+		public String getBanParam() {
 		return banParam;
 	}
 
@@ -65,8 +61,7 @@ public class ReqBackBanMessage extends AbstractMessage {
 		this.banParam = banParam;
 	}
 
-	
-	public String getBanReason() {
+		public String getBanReason() {
 		return banReason;
 	}
 
@@ -74,8 +69,7 @@ public class ReqBackBanMessage extends AbstractMessage {
 		this.banReason = banReason;
 	}
 
-	
-	public int getTime() {
+		public int getTime() {
 		return time;
 	}
 
@@ -84,25 +78,23 @@ public class ReqBackBanMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.banType = readInt(buf, false);
 		this.banParam = readString(buf);
 		this.banReason = readString(buf);
 		this.time = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, banType, false);
 		this.writeString(buf, banParam);
 		this.writeString(buf, banReason);
 		this.writeInt(buf, time, false);
-
 		return true;
 	}
 }
-

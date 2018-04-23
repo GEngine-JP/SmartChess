@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求一键夺宝</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOneKeyRobTreasureMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqOneKeyRobTreasureMessage extends AbstractMessage {
 	 * 宝物id
 	 */
 	private int itemId;
-
 	/**
 	 * 是否自动使用精力丹补充精力 1.是 0.否
 	 */
 	private int state;
-
 
 	public int getItemId() {
 		return itemId;
@@ -46,8 +45,7 @@ public class ReqOneKeyRobTreasureMessage extends AbstractMessage {
 		this.itemId = itemId;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -56,21 +54,19 @@ public class ReqOneKeyRobTreasureMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.itemId = readInt(buf, false);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

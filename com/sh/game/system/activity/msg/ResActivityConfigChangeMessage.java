@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送活动配置改变</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResActivityConfigChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,13 +34,11 @@ public class ResActivityConfigChangeMessage extends AbstractMessage {
 	/**
 	 * activityChange
 	 */
-	private List<String> changedActivityList = new ArrayList<String>();
-
+	private List<String> changedActivityList = new ArrayList<>();
 	/**
 	 * activityGoalChange
 	 */
-	private List<String> changedGoalList = new ArrayList<String>();
-
+	private List<String> changedGoalList = new ArrayList<>();
 
 	public List<String> getChangedActivityList() {
 		return changedActivityList;
@@ -46,7 +47,6 @@ public class ResActivityConfigChangeMessage extends AbstractMessage {
 	public void setChangedActivityList(List<String> changedActivityList) {
 		this.changedActivityList = changedActivityList;
 	}
-
 	public List<String> getChangedGoalList() {
 		return changedGoalList;
 	}
@@ -55,37 +55,29 @@ public class ResActivityConfigChangeMessage extends AbstractMessage {
 		this.changedGoalList = changedGoalList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int changedActivityListLength = readShort(buf);
 		for (int changedActivityListI = 0; changedActivityListI < changedActivityListLength; changedActivityListI++) {
 			this.changedActivityList.add(this.readString(buf));
-		}
-
-		int changedGoalListLength = readShort(buf);
+		}		int changedGoalListLength = readShort(buf);
 		for (int changedGoalListI = 0; changedGoalListI < changedGoalListLength; changedGoalListI++) {
 			this.changedGoalList.add(this.readString(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.changedActivityList.size());
 		for (int changedActivityListI = 0; changedActivityListI < this.changedActivityList.size(); changedActivityListI++) {
 			this.writeString(buf, this.changedActivityList.get(changedActivityListI));
-		}
-
-		writeShort(buf, this.changedGoalList.size());
+		}		writeShort(buf, this.changedGoalList.size());
 		for (int changedGoalListI = 0; changedGoalListI < this.changedGoalList.size(); changedGoalListI++) {
 			this.writeString(buf, this.changedGoalList.get(changedGoalListI));
 		}
-
-
 		return true;
 	}
 }
-

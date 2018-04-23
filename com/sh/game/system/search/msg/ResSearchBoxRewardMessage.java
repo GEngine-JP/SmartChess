@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.search.msg.bean.SearchItemBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送探索宝箱面板奖励信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSearchBoxRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSearchBoxRewardMessage extends AbstractMessage {
 	/**
 	 * 装备
 	 */
-	private List<SearchItemBean> itemBean = new ArrayList<SearchItemBean>();
-
+	private List<SearchItemBean> itemBean = new ArrayList<>();
 
 	public List<SearchItemBean> getItemBean() {
 		return itemBean;
@@ -43,9 +45,9 @@ public class ResSearchBoxRewardMessage extends AbstractMessage {
 		this.itemBean = itemBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int itemBeanLength = readShort(buf);
 		for (int itemBeanI = 0; itemBeanI < itemBeanLength; itemBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSearchBoxRewardMessage extends AbstractMessage {
 				this.itemBean.add(searchItemBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.itemBean.size());
 		for (int itemBeanI = 0; itemBeanI < this.itemBean.size(); itemBeanI++) {
 			this.writeBean(buf, this.itemBean.get(itemBeanI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>删除邮件</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResDeleteEmailMessage extends AbstractMessage {
 
 	@Override
@@ -31,8 +34,7 @@ public class ResDeleteEmailMessage extends AbstractMessage {
 	/**
 	 * 删除的邮件id
 	 */
-	private List<Long> emailId = new ArrayList<Long>();
-
+	private List<Long> emailId = new ArrayList<>();
 
 	public List<Long> getEmailId() {
 		return emailId;
@@ -42,27 +44,23 @@ public class ResDeleteEmailMessage extends AbstractMessage {
 		this.emailId = emailId;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int emailIdLength = readShort(buf);
 		for (int emailIdI = 0; emailIdI < emailIdLength; emailIdI++) {
 			this.emailId.add(this.readLong(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.emailId.size());
 		for (int emailIdI = 0; emailIdI < this.emailId.size(); emailIdI++) {
 			this.writeLong(buf, this.emailId.get(emailIdI));
 		}
-
-
 		return true;
 	}
 }
-

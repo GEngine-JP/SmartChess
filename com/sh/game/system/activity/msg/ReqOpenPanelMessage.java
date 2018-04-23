@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求打开活动面板</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOpenPanelMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqOpenPanelMessage extends AbstractMessage {
 	 */
 	private int groupId;
 
-
 	public int getGroupId() {
 		return groupId;
 	}
@@ -42,19 +42,17 @@ public class ReqOpenPanelMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.groupId = readInt(buf, false);
 
+		this.groupId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, groupId, false);
 
+		this.writeInt(buf, groupId, false);
 		return true;
 	}
 }
-

@@ -1,53 +1,47 @@
 package com.sh.game.system.chat.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ChatItemBean extends KryoBean {
 
 	/**
 	 * 道具唯一id
 	 */
 	private long uniqueId;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 	/**
 	 * 属性类型
 	 */
 	private int attType;
-
 	/**
 	 * 值
 	 */
 	private int value;
-
 	/**
 	 * 参数
 	 */
 	private int param;
-
 	/**
 	 * 战力
 	 */
 	private int power;
-
 	/**
 	 * 配置表id
 	 */
 	private int configId;
-
 
 	public long getUniqueId() {
 		return uniqueId;
@@ -57,8 +51,7 @@ public class ChatItemBean extends KryoBean {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -66,8 +59,7 @@ public class ChatItemBean extends KryoBean {
 		this.itemId = itemId;
 	}
 
-	
-	public int getAttType() {
+		public int getAttType() {
 		return attType;
 	}
 
@@ -75,8 +67,7 @@ public class ChatItemBean extends KryoBean {
 		this.attType = attType;
 	}
 
-	
-	public int getValue() {
+		public int getValue() {
 		return value;
 	}
 
@@ -84,8 +75,7 @@ public class ChatItemBean extends KryoBean {
 		this.value = value;
 	}
 
-	
-	public int getParam() {
+		public int getParam() {
 		return param;
 	}
 
@@ -93,8 +83,7 @@ public class ChatItemBean extends KryoBean {
 		this.param = param;
 	}
 
-	
-	public int getPower() {
+		public int getPower() {
 		return power;
 	}
 
@@ -102,8 +91,7 @@ public class ChatItemBean extends KryoBean {
 		this.power = power;
 	}
 
-	
-	public int getConfigId() {
+		public int getConfigId() {
 		return configId;
 	}
 
@@ -112,9 +100,9 @@ public class ChatItemBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readLong(buf);
 		this.itemId = readInt(buf, false);
 		this.attType = readInt(buf, false);
@@ -122,12 +110,12 @@ public class ChatItemBean extends KryoBean {
 		this.param = readInt(buf, false);
 		this.power = readInt(buf, false);
 		this.configId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uniqueId);
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, attType, false);
@@ -135,8 +123,6 @@ public class ChatItemBean extends KryoBean {
 		this.writeInt(buf, param, false);
 		this.writeInt(buf, power, false);
 		this.writeInt(buf, configId, false);
-
 		return true;
 	}
 }
-

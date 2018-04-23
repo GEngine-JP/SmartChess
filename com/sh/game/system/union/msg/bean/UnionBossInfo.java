@@ -1,43 +1,39 @@
 package com.sh.game.system.union.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionBossInfo extends KryoBean {
 
 	/**
 	 * 副本唯一
 	 */
 	private int instanceUniqueId;
-
 	/**
 	 * 副本
 	 */
 	private int instanceId;
-
 	/**
 	 * 怪物当前血量
 	 */
 	private long monsterHp;
-
 	/**
 	 * 副本归属者id
 	 */
 	private long ownerId;
-
 	/**
 	 * 副本归属者名字
 	 */
 	private String ownerName;
-
 
 	public int getInstanceUniqueId() {
 		return instanceUniqueId;
@@ -47,8 +43,7 @@ public class UnionBossInfo extends KryoBean {
 		this.instanceUniqueId = instanceUniqueId;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -56,8 +51,7 @@ public class UnionBossInfo extends KryoBean {
 		this.instanceId = instanceId;
 	}
 
-	
-	public long getMonsterHp() {
+		public long getMonsterHp() {
 		return monsterHp;
 	}
 
@@ -65,8 +59,7 @@ public class UnionBossInfo extends KryoBean {
 		this.monsterHp = monsterHp;
 	}
 
-	
-	public long getOwnerId() {
+		public long getOwnerId() {
 		return ownerId;
 	}
 
@@ -74,8 +67,7 @@ public class UnionBossInfo extends KryoBean {
 		this.ownerId = ownerId;
 	}
 
-	
-	public String getOwnerName() {
+		public String getOwnerName() {
 		return ownerName;
 	}
 
@@ -84,27 +76,25 @@ public class UnionBossInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceUniqueId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.monsterHp = readLong(buf);
 		this.ownerId = readLong(buf);
 		this.ownerName = readString(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceUniqueId, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeLong(buf, monsterHp);
 		this.writeLong(buf, ownerId);
 		this.writeString(buf, ownerName);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>聊天禁言</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBandChatMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqBandChatMessage extends AbstractMessage {
 	 * 对象的uid
 	 */
 	private String uid;
-
 	/**
 	 * 禁言理由
 	 */
 	private String banReason;
-
 	/**
 	 * 禁聊时间(要禁言的秒数)
 	 */
 	private int bandTime;
-
 
 	public String getUid() {
 		return uid;
@@ -51,8 +49,7 @@ public class ReqBandChatMessage extends AbstractMessage {
 		this.uid = uid;
 	}
 
-	
-	public String getBanReason() {
+		public String getBanReason() {
 		return banReason;
 	}
 
@@ -60,8 +57,7 @@ public class ReqBandChatMessage extends AbstractMessage {
 		this.banReason = banReason;
 	}
 
-	
-	public int getBandTime() {
+		public int getBandTime() {
 		return bandTime;
 	}
 
@@ -70,23 +66,21 @@ public class ReqBandChatMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readString(buf);
 		this.banReason = readString(buf);
 		this.bandTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, uid);
 		this.writeString(buf, banReason);
 		this.writeInt(buf, bandTime, false);
-
 		return true;
 	}
 }
-

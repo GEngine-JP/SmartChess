@@ -1,33 +1,31 @@
 package com.sh.game.system.wing.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class WingBean extends KryoBean {
 
 	/**
 	 * 光翼id
 	 */
 	private int wingId;
-
 	/**
 	 * 当前祝福值
 	 */
 	private int blessingValue;
-
 	/**
 	 * 直升丹已使用数量
 	 */
 	private int danNum;
-
 
 	public int getWingId() {
 		return wingId;
@@ -37,8 +35,7 @@ public class WingBean extends KryoBean {
 		this.wingId = wingId;
 	}
 
-	
-	public int getBlessingValue() {
+		public int getBlessingValue() {
 		return blessingValue;
 	}
 
@@ -46,8 +43,7 @@ public class WingBean extends KryoBean {
 		this.blessingValue = blessingValue;
 	}
 
-	
-	public int getDanNum() {
+		public int getDanNum() {
 		return danNum;
 	}
 
@@ -56,23 +52,21 @@ public class WingBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.wingId = readInt(buf, false);
 		this.blessingValue = readInt(buf, false);
 		this.danNum = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, wingId, false);
 		this.writeInt(buf, blessingValue, false);
 		this.writeInt(buf, danNum, false);
-
 		return true;
 	}
 }
-

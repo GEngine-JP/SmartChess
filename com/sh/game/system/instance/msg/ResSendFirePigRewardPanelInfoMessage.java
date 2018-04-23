@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.instance.msg.bean.FirePigInfo;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>烧猪副本结算面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendFirePigRewardPanelInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendFirePigRewardPanelInfoMessage extends AbstractMessage {
 	/**
 	 * 奖励信息
 	 */
-	private List<FirePigInfo> rewardInfo = new ArrayList<FirePigInfo>();
-
+	private List<FirePigInfo> rewardInfo = new ArrayList<>();
 
 	public List<FirePigInfo> getRewardInfo() {
 		return rewardInfo;
@@ -43,9 +45,9 @@ public class ResSendFirePigRewardPanelInfoMessage extends AbstractMessage {
 		this.rewardInfo = rewardInfo;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int rewardInfoLength = readShort(buf);
 		for (int rewardInfoI = 0; rewardInfoI < rewardInfoLength; rewardInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendFirePigRewardPanelInfoMessage extends AbstractMessage {
 				this.rewardInfo.add(firePigInfo);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.rewardInfo.size());
 		for (int rewardInfoI = 0; rewardInfoI < this.rewardInfo.size(); rewardInfoI++) {
 			this.writeBean(buf, this.rewardInfo.get(rewardInfoI));
 		}
-
-
 		return true;
 	}
 }
-

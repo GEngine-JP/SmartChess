@@ -1,148 +1,123 @@
 package com.sh.game.system.chat.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class PlayerAttribute extends KryoBean {
 
 	/**
 	 * 血量最大值
 	 */
 	private int hpMax;
-
 	/**
 	 * 攻击
 	 */
 	private int attack;
-
 	/**
 	 * 物理防御
 	 */
 	private int phyDefence;
-
 	/**
 	 * 物理防御比例
 	 */
 	private int phyDefenceRate;
-
 	/**
 	 * 魔法防御
 	 */
 	private int magicDefence;
-
 	/**
 	 * 魔法防御比例
 	 */
 	private int magicDefenceRate;
-
 	/**
 	 * 暴击值
 	 */
 	private int critical;
-
 	/**
 	 * 暴击概率
 	 */
 	private int criticalRate;
-
 	/**
 	 * 暴击固定伤害
 	 */
 	private int critFix;
-
 	/**
 	 * 暴击抗性（韧性）
 	 */
 	private int critResist;
-
 	/**
 	 * 暴击抗性（韧性）概率
 	 */
 	private int critResistRate;
-
 	/**
 	 * 当前血量
 	 */
 	private int hp;
-
 	/**
 	 * 当前内力
 	 */
 	private int innerPower;
-
 	/**
 	 * 对战士伤害增加
 	 */
 	private int zsHurtAdd;
-
 	/**
 	 * 受战士伤害减少
 	 */
 	private int zsHurtedRelief;
-
 	/**
 	 * 对法师伤害增加
 	 */
 	private int fsHurtAdd;
-
 	/**
 	 * 受法师伤害减少
 	 */
 	private int fsHurtedRelief;
-
 	/**
 	 * 对道士伤害增加
 	 */
 	private int dsHurtAdd;
-
 	/**
 	 * 受道士伤害减少
 	 */
 	private int dsHurtedRelief;
-
 	/**
 	 * 对英雄伤害增加
 	 */
 	private int heroHurtAdd;
-
 	/**
 	 * 受英雄伤害减少
 	 */
 	private int heroHurtedRelief;
-
 	/**
 	 * 对怪物伤害增加
 	 */
 	private int monHurtAdd;
-
 	/**
 	 * 受怪物伤害减免
 	 */
 	private int monHurtedRelief;
-
 	/**
 	 * 对怪物暴击概率
 	 */
 	private int monCritical;
-
 	/**
 	 * 对怪物暴击伤害
 	 */
 	private int monCritFix;
-
 	/**
 	 * 免伤
 	 */
 	private int relief;
-
 
 	public int getHpMax() {
 		return hpMax;
@@ -152,8 +127,7 @@ public class PlayerAttribute extends KryoBean {
 		this.hpMax = hpMax;
 	}
 
-	
-	public int getAttack() {
+		public int getAttack() {
 		return attack;
 	}
 
@@ -161,8 +135,7 @@ public class PlayerAttribute extends KryoBean {
 		this.attack = attack;
 	}
 
-	
-	public int getPhyDefence() {
+		public int getPhyDefence() {
 		return phyDefence;
 	}
 
@@ -170,8 +143,7 @@ public class PlayerAttribute extends KryoBean {
 		this.phyDefence = phyDefence;
 	}
 
-	
-	public int getPhyDefenceRate() {
+		public int getPhyDefenceRate() {
 		return phyDefenceRate;
 	}
 
@@ -179,8 +151,7 @@ public class PlayerAttribute extends KryoBean {
 		this.phyDefenceRate = phyDefenceRate;
 	}
 
-	
-	public int getMagicDefence() {
+		public int getMagicDefence() {
 		return magicDefence;
 	}
 
@@ -188,8 +159,7 @@ public class PlayerAttribute extends KryoBean {
 		this.magicDefence = magicDefence;
 	}
 
-	
-	public int getMagicDefenceRate() {
+		public int getMagicDefenceRate() {
 		return magicDefenceRate;
 	}
 
@@ -197,8 +167,7 @@ public class PlayerAttribute extends KryoBean {
 		this.magicDefenceRate = magicDefenceRate;
 	}
 
-	
-	public int getCritical() {
+		public int getCritical() {
 		return critical;
 	}
 
@@ -206,8 +175,7 @@ public class PlayerAttribute extends KryoBean {
 		this.critical = critical;
 	}
 
-	
-	public int getCriticalRate() {
+		public int getCriticalRate() {
 		return criticalRate;
 	}
 
@@ -215,8 +183,7 @@ public class PlayerAttribute extends KryoBean {
 		this.criticalRate = criticalRate;
 	}
 
-	
-	public int getCritFix() {
+		public int getCritFix() {
 		return critFix;
 	}
 
@@ -224,8 +191,7 @@ public class PlayerAttribute extends KryoBean {
 		this.critFix = critFix;
 	}
 
-	
-	public int getCritResist() {
+		public int getCritResist() {
 		return critResist;
 	}
 
@@ -233,8 +199,7 @@ public class PlayerAttribute extends KryoBean {
 		this.critResist = critResist;
 	}
 
-	
-	public int getCritResistRate() {
+		public int getCritResistRate() {
 		return critResistRate;
 	}
 
@@ -242,8 +207,7 @@ public class PlayerAttribute extends KryoBean {
 		this.critResistRate = critResistRate;
 	}
 
-	
-	public int getHp() {
+		public int getHp() {
 		return hp;
 	}
 
@@ -251,8 +215,7 @@ public class PlayerAttribute extends KryoBean {
 		this.hp = hp;
 	}
 
-	
-	public int getInnerPower() {
+		public int getInnerPower() {
 		return innerPower;
 	}
 
@@ -260,8 +223,7 @@ public class PlayerAttribute extends KryoBean {
 		this.innerPower = innerPower;
 	}
 
-	
-	public int getZsHurtAdd() {
+		public int getZsHurtAdd() {
 		return zsHurtAdd;
 	}
 
@@ -269,8 +231,7 @@ public class PlayerAttribute extends KryoBean {
 		this.zsHurtAdd = zsHurtAdd;
 	}
 
-	
-	public int getZsHurtedRelief() {
+		public int getZsHurtedRelief() {
 		return zsHurtedRelief;
 	}
 
@@ -278,8 +239,7 @@ public class PlayerAttribute extends KryoBean {
 		this.zsHurtedRelief = zsHurtedRelief;
 	}
 
-	
-	public int getFsHurtAdd() {
+		public int getFsHurtAdd() {
 		return fsHurtAdd;
 	}
 
@@ -287,8 +247,7 @@ public class PlayerAttribute extends KryoBean {
 		this.fsHurtAdd = fsHurtAdd;
 	}
 
-	
-	public int getFsHurtedRelief() {
+		public int getFsHurtedRelief() {
 		return fsHurtedRelief;
 	}
 
@@ -296,8 +255,7 @@ public class PlayerAttribute extends KryoBean {
 		this.fsHurtedRelief = fsHurtedRelief;
 	}
 
-	
-	public int getDsHurtAdd() {
+		public int getDsHurtAdd() {
 		return dsHurtAdd;
 	}
 
@@ -305,8 +263,7 @@ public class PlayerAttribute extends KryoBean {
 		this.dsHurtAdd = dsHurtAdd;
 	}
 
-	
-	public int getDsHurtedRelief() {
+		public int getDsHurtedRelief() {
 		return dsHurtedRelief;
 	}
 
@@ -314,8 +271,7 @@ public class PlayerAttribute extends KryoBean {
 		this.dsHurtedRelief = dsHurtedRelief;
 	}
 
-	
-	public int getHeroHurtAdd() {
+		public int getHeroHurtAdd() {
 		return heroHurtAdd;
 	}
 
@@ -323,8 +279,7 @@ public class PlayerAttribute extends KryoBean {
 		this.heroHurtAdd = heroHurtAdd;
 	}
 
-	
-	public int getHeroHurtedRelief() {
+		public int getHeroHurtedRelief() {
 		return heroHurtedRelief;
 	}
 
@@ -332,8 +287,7 @@ public class PlayerAttribute extends KryoBean {
 		this.heroHurtedRelief = heroHurtedRelief;
 	}
 
-	
-	public int getMonHurtAdd() {
+		public int getMonHurtAdd() {
 		return monHurtAdd;
 	}
 
@@ -341,8 +295,7 @@ public class PlayerAttribute extends KryoBean {
 		this.monHurtAdd = monHurtAdd;
 	}
 
-	
-	public int getMonHurtedRelief() {
+		public int getMonHurtedRelief() {
 		return monHurtedRelief;
 	}
 
@@ -350,8 +303,7 @@ public class PlayerAttribute extends KryoBean {
 		this.monHurtedRelief = monHurtedRelief;
 	}
 
-	
-	public int getMonCritical() {
+		public int getMonCritical() {
 		return monCritical;
 	}
 
@@ -359,8 +311,7 @@ public class PlayerAttribute extends KryoBean {
 		this.monCritical = monCritical;
 	}
 
-	
-	public int getMonCritFix() {
+		public int getMonCritFix() {
 		return monCritFix;
 	}
 
@@ -368,8 +319,7 @@ public class PlayerAttribute extends KryoBean {
 		this.monCritFix = monCritFix;
 	}
 
-	
-	public int getRelief() {
+		public int getRelief() {
 		return relief;
 	}
 
@@ -378,9 +328,9 @@ public class PlayerAttribute extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.hpMax = readInt(buf, false);
 		this.attack = readInt(buf, false);
 		this.phyDefence = readInt(buf, false);
@@ -407,12 +357,12 @@ public class PlayerAttribute extends KryoBean {
 		this.monCritical = readInt(buf, false);
 		this.monCritFix = readInt(buf, false);
 		this.relief = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, hpMax, false);
 		this.writeInt(buf, attack, false);
 		this.writeInt(buf, phyDefence, false);
@@ -439,8 +389,6 @@ public class PlayerAttribute extends KryoBean {
 		this.writeInt(buf, monCritical, false);
 		this.writeInt(buf, monCritFix, false);
 		this.writeInt(buf, relief, false);
-
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.ApplyListInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送申请入会列表信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendApplyListInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendApplyListInfoMessage extends AbstractMessage {
 	/**
 	 * 申请列表信息
 	 */
-	private List<ApplyListInfoBean> applyInfo = new ArrayList<ApplyListInfoBean>();
-
+	private List<ApplyListInfoBean> applyInfo = new ArrayList<>();
 
 	public List<ApplyListInfoBean> getApplyInfo() {
 		return applyInfo;
@@ -43,9 +45,9 @@ public class ResSendApplyListInfoMessage extends AbstractMessage {
 		this.applyInfo = applyInfo;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int applyInfoLength = readShort(buf);
 		for (int applyInfoI = 0; applyInfoI < applyInfoLength; applyInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendApplyListInfoMessage extends AbstractMessage {
 				this.applyInfo.add(applyListInfoBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.applyInfo.size());
 		for (int applyInfoI = 0; applyInfoI < this.applyInfo.size(); applyInfoI++) {
 			this.writeBean(buf, this.applyInfo.get(applyInfoI));
 		}
-
-
 		return true;
 	}
 }
-

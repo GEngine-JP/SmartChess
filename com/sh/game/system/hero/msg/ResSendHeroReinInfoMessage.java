@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送英雄转生信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendHeroReinInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResSendHeroReinInfoMessage extends AbstractMessage {
 	 * 转生配置表id
 	 */
 	private int cfgId;
-
 	/**
 	 * 当前修为
 	 */
 	private int reinNum;
-
 	/**
 	 * 剩余兑换次数
 	 */
 	private int exchangeNum;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 
 	public int getCfgId() {
 		return cfgId;
@@ -56,8 +53,7 @@ public class ResSendHeroReinInfoMessage extends AbstractMessage {
 		this.cfgId = cfgId;
 	}
 
-	
-	public int getReinNum() {
+		public int getReinNum() {
 		return reinNum;
 	}
 
@@ -65,8 +61,7 @@ public class ResSendHeroReinInfoMessage extends AbstractMessage {
 		this.reinNum = reinNum;
 	}
 
-	
-	public int getExchangeNum() {
+		public int getExchangeNum() {
 		return exchangeNum;
 	}
 
@@ -74,8 +69,7 @@ public class ResSendHeroReinInfoMessage extends AbstractMessage {
 		this.exchangeNum = exchangeNum;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -84,25 +78,23 @@ public class ResSendHeroReinInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.cfgId = readInt(buf, false);
 		this.reinNum = readInt(buf, false);
 		this.exchangeNum = readInt(buf, false);
 		this.fightValue = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, cfgId, false);
 		this.writeInt(buf, reinNum, false);
 		this.writeInt(buf, exchangeNum, false);
 		this.writeInt(buf, fightValue, false);
-
 		return true;
 	}
 }
-

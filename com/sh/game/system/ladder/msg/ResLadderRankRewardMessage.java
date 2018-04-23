@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>领取天梯段位奖励的返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderRankRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResLadderRankRewardMessage extends AbstractMessage {
 	 */
 	private int state;
 
-
 	public int getState() {
 		return state;
 	}
@@ -42,19 +42,17 @@ public class ResLadderRankRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.state = readInt(buf, false);
 
+		this.state = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, state, false);
 
+		this.writeInt(buf, state, false);
 		return true;
 	}
 }
-

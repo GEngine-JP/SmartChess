@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求弹劾会长</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqImpeachLeaderMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqImpeachLeaderMessage extends AbstractMessage {
 	 */
 	private long leaderId;
 
-
 	public long getLeaderId() {
 		return leaderId;
 	}
@@ -42,19 +42,17 @@ public class ReqImpeachLeaderMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.leaderId = readLong(buf);
 
+		this.leaderId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, leaderId);
 
+		this.writeLong(buf, leaderId);
 		return true;
 	}
 }
-

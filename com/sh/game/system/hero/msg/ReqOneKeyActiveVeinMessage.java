@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求一键激活经脉</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 	 */
 	private long heroId;
 
-
 	public long getHeroId() {
 		return heroId;
 	}
@@ -42,19 +42,17 @@ public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.heroId = readLong(buf);
 
+		this.heroId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, heroId);
 
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }
-

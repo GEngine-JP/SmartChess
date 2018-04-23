@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回上士sdk参数信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResShangShiSdkInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,37 +32,30 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 	 * 订单号
 	 */
 	private String cp_trade_sn;
-
 	/**
 	 * 充值金额
 	 */
 	private int money;
-
 	/**
 	 * 玩家等级
 	 */
 	private int level;
-
 	/**
 	 * 货币类型
 	 */
 	private String money_type;
-
 	/**
 	 * 商品id
 	 */
 	private String goods_id;
-
 	/**
 	 * 时间
 	 */
 	private int time;
-
 	/**
 	 * 加密串
 	 */
 	private String sign;
-
 
 	public String getCp_trade_sn() {
 		return cp_trade_sn;
@@ -71,8 +65,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.cp_trade_sn = cp_trade_sn;
 	}
 
-	
-	public int getMoney() {
+		public int getMoney() {
 		return money;
 	}
 
@@ -80,8 +73,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.money = money;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -89,8 +81,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.level = level;
 	}
 
-	
-	public String getMoney_type() {
+		public String getMoney_type() {
 		return money_type;
 	}
 
@@ -98,8 +89,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.money_type = money_type;
 	}
 
-	
-	public String getGoods_id() {
+		public String getGoods_id() {
 		return goods_id;
 	}
 
@@ -107,8 +97,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.goods_id = goods_id;
 	}
 
-	
-	public int getTime() {
+		public int getTime() {
 		return time;
 	}
 
@@ -116,8 +105,7 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.time = time;
 	}
 
-	
-	public String getSign() {
+		public String getSign() {
 		return sign;
 	}
 
@@ -126,9 +114,9 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.cp_trade_sn = readString(buf);
 		this.money = readInt(buf, false);
 		this.level = readInt(buf, false);
@@ -136,12 +124,12 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.goods_id = readString(buf);
 		this.time = readInt(buf, false);
 		this.sign = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, cp_trade_sn);
 		this.writeInt(buf, money, false);
 		this.writeInt(buf, level, false);
@@ -149,8 +137,6 @@ public class ResShangShiSdkInfoMessage extends AbstractMessage {
 		this.writeString(buf, goods_id);
 		this.writeInt(buf, time, false);
 		this.writeString(buf, sign);
-
 		return true;
 	}
 }
-

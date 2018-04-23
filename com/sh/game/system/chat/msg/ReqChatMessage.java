@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>聊天</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChatMessage extends AbstractMessage {
 
 	@Override
@@ -32,27 +35,22 @@ public class ReqChatMessage extends AbstractMessage {
 	 * 私聊的时候的目标，其他情况发0
 	 */
 	private long targetUid;
-
 	/**
 	 * 聊天类型
 	 */
 	private int chatType;
-
 	/**
 	 * 内容
 	 */
 	private String content;
-
 	/**
 	 * 道具唯一Id
 	 */
-	private List<Long> uniqueId = new ArrayList<Long>();
-
+	private List<Long> uniqueId = new ArrayList<>();
 	/**
 	 * 道具id
 	 */
-	private List<Integer> itemId = new ArrayList<Integer>();
-
+	private List<Integer> itemId = new ArrayList<>();
 
 	public long getTargetUid() {
 		return targetUid;
@@ -62,8 +60,7 @@ public class ReqChatMessage extends AbstractMessage {
 		this.targetUid = targetUid;
 	}
 
-	
-	public int getChatType() {
+		public int getChatType() {
 		return chatType;
 	}
 
@@ -71,8 +68,7 @@ public class ReqChatMessage extends AbstractMessage {
 		this.chatType = chatType;
 	}
 
-	
-	public String getContent() {
+		public String getContent() {
 		return content;
 	}
 
@@ -80,15 +76,13 @@ public class ReqChatMessage extends AbstractMessage {
 		this.content = content;
 	}
 
-	
-	public List<Long> getUniqueId() {
+		public List<Long> getUniqueId() {
 		return uniqueId;
 	}
 
 	public void setUniqueId(List<Long> uniqueId) {
 		this.uniqueId = uniqueId;
 	}
-
 	public List<Integer> getItemId() {
 		return itemId;
 	}
@@ -97,43 +91,35 @@ public class ReqChatMessage extends AbstractMessage {
 		this.itemId = itemId;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetUid = readLong(buf);
 		this.chatType = readInt(buf, false);
 		this.content = readString(buf);
 		int uniqueIdLength = readShort(buf);
 		for (int uniqueIdI = 0; uniqueIdI < uniqueIdLength; uniqueIdI++) {
 			this.uniqueId.add(this.readLong(buf));
-		}
-
-		int itemIdLength = readShort(buf);
+		}		int itemIdLength = readShort(buf);
 		for (int itemIdI = 0; itemIdI < itemIdLength; itemIdI++) {
 			this.itemId.add(this.readInt(buf, false));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetUid);
 		this.writeInt(buf, chatType, false);
 		this.writeString(buf, content);
 		writeShort(buf, this.uniqueId.size());
 		for (int uniqueIdI = 0; uniqueIdI < this.uniqueId.size(); uniqueIdI++) {
 			this.writeLong(buf, this.uniqueId.get(uniqueIdI));
-		}
-
-		writeShort(buf, this.itemId.size());
+		}		writeShort(buf, this.itemId.size());
 		for (int itemIdI = 0; itemIdI < this.itemId.size(); itemIdI++) {
 			this.writeInt(buf, this.itemId.get(itemIdI), false);
 		}
-
-
 		return true;
 	}
 }
-

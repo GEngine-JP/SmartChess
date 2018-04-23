@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求手动刷新</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqMaualFreshMessage extends AbstractMessage {
 
 	@Override
@@ -28,12 +29,23 @@ public class ReqMaualFreshMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 0、不扣消耗 1、扣消耗
+	 */
+	private int type;
+	/**
 	 * storeClassId
 	 */
 	private int storeClassId;
 
+	public int getType() {
+		return type;
+	}
 
-	public int getStoreClassId() {
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public int getStoreClassId() {
 		return storeClassId;
 	}
 
@@ -42,19 +54,19 @@ public class ReqMaualFreshMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.storeClassId = readInt(buf, false);
 
+		this.type = readInt(buf, false);
+		this.storeClassId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, storeClassId, false);
 
+		this.writeInt(buf, type, false);
+		this.writeInt(buf, storeClassId, false);
 		return true;
 	}
 }
-

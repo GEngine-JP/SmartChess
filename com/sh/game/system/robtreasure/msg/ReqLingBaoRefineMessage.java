@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求灵宝精炼</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLingBaoRefineMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqLingBaoRefineMessage extends AbstractMessage {
 	 * 1、玩家 2、英雄 3、背包
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 唯一id
 	 */
 	private long uniqueId;
-
 
 	public int getType() {
 		return type;
@@ -51,8 +49,7 @@ public class ReqLingBaoRefineMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqLingBaoRefineMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public long getUniqueId() {
+		public long getUniqueId() {
 		return uniqueId;
 	}
 
@@ -70,23 +66,21 @@ public class ReqLingBaoRefineMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.uniqueId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeLong(buf, uniqueId);
-
 		return true;
 	}
 }
-

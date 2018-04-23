@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>公告消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAnnounceMessage extends AbstractMessage {
 
 	@Override
@@ -31,8 +34,7 @@ public class ResAnnounceMessage extends AbstractMessage {
 	/**
 	 * 参数列表
 	 */
-	private List<String> params = new ArrayList<String>();
-
+	private List<String> params = new ArrayList<>();
 
 	public List<String> getParams() {
 		return params;
@@ -42,27 +44,23 @@ public class ResAnnounceMessage extends AbstractMessage {
 		this.params = params;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int paramsLength = readShort(buf);
 		for (int paramsI = 0; paramsI < paramsLength; paramsI++) {
 			this.params.add(this.readString(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.params.size());
 		for (int paramsI = 0; paramsI < this.params.size(); paramsI++) {
 			this.writeString(buf, this.params.get(paramsI));
 		}
-
-
 		return true;
 	}
 }
-

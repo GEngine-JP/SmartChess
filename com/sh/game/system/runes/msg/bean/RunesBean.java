@@ -1,28 +1,27 @@
 package com.sh.game.system.runes.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RunesBean extends KryoBean {
 
 	/**
 	 * 装备位置
 	 */
 	private int index;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 
 	public int getIndex() {
 		return index;
@@ -32,8 +31,7 @@ public class RunesBean extends KryoBean {
 		this.index = index;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -42,21 +40,19 @@ public class RunesBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.itemId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, itemId, false);
-
 		return true;
 	}
 }
-

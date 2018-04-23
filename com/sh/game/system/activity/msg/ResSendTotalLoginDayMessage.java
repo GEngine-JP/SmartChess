@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送累计登录信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendTotalLoginDayMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSendTotalLoginDayMessage extends AbstractMessage {
 	 * 活动id
 	 */
 	private int activityId;
-
 	/**
 	 * 累计登录天数
 	 */
 	private int num;
-
 
 	public int getActivityId() {
 		return activityId;
@@ -46,8 +45,7 @@ public class ResSendTotalLoginDayMessage extends AbstractMessage {
 		this.activityId = activityId;
 	}
 
-	
-	public int getNum() {
+		public int getNum() {
 		return num;
 	}
 
@@ -56,21 +54,19 @@ public class ResSendTotalLoginDayMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		this.num = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeInt(buf, num, false);
-
 		return true;
 	}
 }
-

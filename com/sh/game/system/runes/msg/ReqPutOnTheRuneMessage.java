@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求穿戴指定符文</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqPutOnTheRuneMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqPutOnTheRuneMessage extends AbstractMessage {
 	 * 装备位置
 	 */
 	private int index;
-
 	/**
 	 * 要穿戴的符文唯一id
 	 */
 	private long uniqueId;
-
 
 	public int getIndex() {
 		return index;
@@ -46,8 +45,7 @@ public class ReqPutOnTheRuneMessage extends AbstractMessage {
 		this.index = index;
 	}
 
-	
-	public long getUniqueId() {
+		public long getUniqueId() {
 		return uniqueId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqPutOnTheRuneMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.uniqueId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeLong(buf, uniqueId);
-
 		return true;
 	}
 }
-

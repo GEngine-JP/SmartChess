@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.bag.msg.bean.BagItemBean;
 import com.sh.game.system.bag.msg.bean.CoinBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>背包发生变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResBagChangeMessage extends AbstractMessage {
 
 	@Override
@@ -34,22 +37,18 @@ public class ResBagChangeMessage extends AbstractMessage {
 	 * 变化原因
 	 */
 	private int action;
-
 	/**
 	 * 道具列表
 	 */
-	private List<BagItemBean> itemList = new ArrayList<BagItemBean>();
-
+	private List<BagItemBean> itemList = new ArrayList<>();
 	/**
 	 * 货币列表
 	 */
-	private List<CoinBean> coinList = new ArrayList<CoinBean>();
-
+	private List<CoinBean> coinList = new ArrayList<>();
 	/**
 	 * 道具移除列表
 	 */
-	private List<Long> removedIdList = new ArrayList<Long>();
-
+	private List<Long> removedIdList = new ArrayList<>();
 
 	public int getAction() {
 		return action;
@@ -59,15 +58,13 @@ public class ResBagChangeMessage extends AbstractMessage {
 		this.action = action;
 	}
 
-	
-	public List<BagItemBean> getItemList() {
+		public List<BagItemBean> getItemList() {
 		return itemList;
 	}
 
 	public void setItemList(List<BagItemBean> itemList) {
 		this.itemList = itemList;
 	}
-
 	public List<CoinBean> getCoinList() {
 		return coinList;
 	}
@@ -75,7 +72,6 @@ public class ResBagChangeMessage extends AbstractMessage {
 	public void setCoinList(List<CoinBean> coinList) {
 		this.coinList = coinList;
 	}
-
 	public List<Long> getRemovedIdList() {
 		return removedIdList;
 	}
@@ -84,9 +80,9 @@ public class ResBagChangeMessage extends AbstractMessage {
 		this.removedIdList = removedIdList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.action = readInt(buf, false);
 		int itemListLength = readShort(buf);
 		for (int itemListI = 0; itemListI < itemListLength; itemListI++) {
@@ -97,9 +93,7 @@ public class ResBagChangeMessage extends AbstractMessage {
 				bagItemBean.read(buf);
 				this.itemList.add(bagItemBean);
 			}
-		}
-
-		int coinListLength = readShort(buf);
+		}		int coinListLength = readShort(buf);
 		for (int coinListI = 0; coinListI < coinListLength; coinListI++) {
 			if (readByte(buf) == 0) { 
 				this.coinList.add(null);
@@ -108,37 +102,27 @@ public class ResBagChangeMessage extends AbstractMessage {
 				coinBean.read(buf);
 				this.coinList.add(coinBean);
 			}
-		}
-
-		int removedIdListLength = readShort(buf);
+		}		int removedIdListLength = readShort(buf);
 		for (int removedIdListI = 0; removedIdListI < removedIdListLength; removedIdListI++) {
 			this.removedIdList.add(this.readLong(buf));
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, action, false);
 		writeShort(buf, this.itemList.size());
 		for (int itemListI = 0; itemListI < this.itemList.size(); itemListI++) {
 			this.writeBean(buf, this.itemList.get(itemListI));
-		}
-
-		writeShort(buf, this.coinList.size());
+		}		writeShort(buf, this.coinList.size());
 		for (int coinListI = 0; coinListI < this.coinList.size(); coinListI++) {
 			this.writeBean(buf, this.coinList.get(coinListI));
-		}
-
-		writeShort(buf, this.removedIdList.size());
+		}		writeShort(buf, this.removedIdList.size());
 		for (int removedIdListI = 0; removedIdListI < this.removedIdList.size(); removedIdListI++) {
 			this.writeLong(buf, this.removedIdList.get(removedIdListI));
 		}
-
-
 		return true;
 	}
 }
-

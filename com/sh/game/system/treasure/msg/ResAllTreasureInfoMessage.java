@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.treasure.msg.bean.TreasureBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回所有宝物信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAllTreasureInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResAllTreasureInfoMessage extends AbstractMessage {
 	/**
 	 * 所有宝物信息
 	 */
-	private List<TreasureBean> treasureList = new ArrayList<TreasureBean>();
-
+	private List<TreasureBean> treasureList = new ArrayList<>();
 
 	public List<TreasureBean> getTreasureList() {
 		return treasureList;
@@ -43,9 +45,9 @@ public class ResAllTreasureInfoMessage extends AbstractMessage {
 		this.treasureList = treasureList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int treasureListLength = readShort(buf);
 		for (int treasureListI = 0; treasureListI < treasureListLength; treasureListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResAllTreasureInfoMessage extends AbstractMessage {
 				this.treasureList.add(treasureBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.treasureList.size());
 		for (int treasureListI = 0; treasureListI < this.treasureList.size(); treasureListI++) {
 			this.writeBean(buf, this.treasureList.get(treasureListI));
 		}
-
-
 		return true;
 	}
 }
-

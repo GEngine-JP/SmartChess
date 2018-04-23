@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求创建角色</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqCreateRoleMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqCreateRoleMessage extends AbstractMessage {
 	 * 角色名字
 	 */
 	private String roleName;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 
 	public String getRoleName() {
 		return roleName;
@@ -51,8 +49,7 @@ public class ReqCreateRoleMessage extends AbstractMessage {
 		this.roleName = roleName;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -60,8 +57,7 @@ public class ReqCreateRoleMessage extends AbstractMessage {
 		this.sex = sex;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -70,23 +66,21 @@ public class ReqCreateRoleMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleName = readString(buf);
 		this.sex = readInt(buf, false);
 		this.career = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, roleName);
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, career, false);
-
 		return true;
 	}
 }
-

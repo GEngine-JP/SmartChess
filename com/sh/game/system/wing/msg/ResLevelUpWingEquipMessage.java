@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.wing.msg.bean.WingEquipBean;
 
-
 /**
  * <p>返回升级光翼装备</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLevelUpWingEquipMessage extends AbstractMessage {
 
 	@Override
@@ -32,17 +33,14 @@ public class ResLevelUpWingEquipMessage extends AbstractMessage {
 	 * 1角色光翼 2英雄光翼
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 光翼装备
 	 */
 	private WingEquipBean wingEquipBean;
-
 
 	public int getType() {
 		return type;
@@ -52,8 +50,7 @@ public class ResLevelUpWingEquipMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -61,8 +58,7 @@ public class ResLevelUpWingEquipMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public WingEquipBean getWingEquipBean() {
+		public WingEquipBean getWingEquipBean() {
 		return wingEquipBean;
 	}
 
@@ -71,9 +67,9 @@ public class ResLevelUpWingEquipMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		if (readByte(buf) != 0) {
@@ -81,17 +77,15 @@ public class ResLevelUpWingEquipMessage extends AbstractMessage {
 			wingEquipBean.read(buf);
 			this.wingEquipBean = wingEquipBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeBean(buf, wingEquipBean);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送行会挑战下一关卡信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResUnionChallengeNextInstanceMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResUnionChallengeNextInstanceMessage extends AbstractMessage {
 	 */
 	private int nextInstanceId;
 
-
 	public int getNextInstanceId() {
 		return nextInstanceId;
 	}
@@ -42,19 +42,17 @@ public class ResUnionChallengeNextInstanceMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.nextInstanceId = readInt(buf, false);
 
+		this.nextInstanceId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, nextInstanceId, false);
 
+		this.writeInt(buf, nextInstanceId, false);
 		return true;
 	}
 }
-

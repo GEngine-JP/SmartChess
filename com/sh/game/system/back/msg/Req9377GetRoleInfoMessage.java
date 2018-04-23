@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>9377角色查询接口</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class Req9377GetRoleInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 	 * 登录账户名
 	 */
 	private String loginName;
-
 	/**
 	 * 服务器id
 	 */
 	private int sid;
-
 
 	public String getLoginName() {
 		return loginName;
@@ -46,8 +45,7 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 		this.loginName = loginName;
 	}
 
-	
-	public int getSid() {
+		public int getSid() {
 		return sid;
 	}
 
@@ -56,21 +54,19 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.loginName = readString(buf);
 		this.sid = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, loginName);
 		this.writeInt(buf, sid, false);
-
 		return true;
 	}
 }
-

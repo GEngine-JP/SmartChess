@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回精力次数信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 	 * 剩余精力次数
 	 */
 	private int remainCount;
-
 	/**
 	 * 可购买次数
 	 */
 	private int canBuyNum;
-
 	/**
 	 * 已购买次数
 	 */
 	private int hasBuyNum;
-
 	/**
 	 * 下次点数回复时间
 	 */
 	private int addTime;
-
 
 	public int getRemainCount() {
 		return remainCount;
@@ -56,8 +53,7 @@ public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 		this.remainCount = remainCount;
 	}
 
-	
-	public int getCanBuyNum() {
+		public int getCanBuyNum() {
 		return canBuyNum;
 	}
 
@@ -65,8 +61,7 @@ public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 		this.canBuyNum = canBuyNum;
 	}
 
-	
-	public int getHasBuyNum() {
+		public int getHasBuyNum() {
 		return hasBuyNum;
 	}
 
@@ -74,8 +69,7 @@ public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 		this.hasBuyNum = hasBuyNum;
 	}
 
-	
-	public int getAddTime() {
+		public int getAddTime() {
 		return addTime;
 	}
 
@@ -84,25 +78,23 @@ public class ResSendEnergyCountInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.remainCount = readInt(buf, false);
 		this.canBuyNum = readInt(buf, false);
 		this.hasBuyNum = readInt(buf, false);
 		this.addTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, remainCount, false);
 		this.writeInt(buf, canBuyNum, false);
 		this.writeInt(buf, hasBuyNum, false);
 		this.writeInt(buf, addTime, false);
-
 		return true;
 	}
 }
-

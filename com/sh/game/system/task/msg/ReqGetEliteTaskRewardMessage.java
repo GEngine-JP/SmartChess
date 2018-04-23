@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求领取精英任务奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetEliteTaskRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqGetEliteTaskRewardMessage extends AbstractMessage {
 	 */
 	private int multi;
 
-
 	public int getMulti() {
 		return multi;
 	}
@@ -42,19 +42,17 @@ public class ReqGetEliteTaskRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.multi = readInt(buf, false);
 
+		this.multi = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, multi, false);
 
+		this.writeInt(buf, multi, false);
 		return true;
 	}
 }
-

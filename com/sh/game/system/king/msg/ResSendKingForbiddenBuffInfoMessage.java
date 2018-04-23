@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送王者禁地buff属性信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,23 +34,19 @@ public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 	/**
 	 * 要显示的属性buff
 	 */
-	private List<Integer> buffIds = new ArrayList<Integer>();
-
+	private List<Integer> buffIds = new ArrayList<>();
 	/**
 	 * 已拥有的属性buff
 	 */
-	private List<Integer> hasBuffIds = new ArrayList<Integer>();
-
+	private List<Integer> hasBuffIds = new ArrayList<>();
 	/**
 	 * 剩余属性领取次数
 	 */
 	private int remainNum;
-
 	/**
 	 * 属性加的战斗力
 	 */
 	private int nbValue;
-
 
 	public List<Integer> getBuffIds() {
 		return buffIds;
@@ -56,7 +55,6 @@ public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 	public void setBuffIds(List<Integer> buffIds) {
 		this.buffIds = buffIds;
 	}
-
 	public List<Integer> getHasBuffIds() {
 		return hasBuffIds;
 	}
@@ -64,7 +62,6 @@ public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 	public void setHasBuffIds(List<Integer> hasBuffIds) {
 		this.hasBuffIds = hasBuffIds;
 	}
-
 	public int getRemainNum() {
 		return remainNum;
 	}
@@ -73,8 +70,7 @@ public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 		this.remainNum = remainNum;
 	}
 
-	
-	public int getNbValue() {
+		public int getNbValue() {
 		return nbValue;
 	}
 
@@ -83,41 +79,31 @@ public class ResSendKingForbiddenBuffInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int buffIdsLength = readShort(buf);
 		for (int buffIdsI = 0; buffIdsI < buffIdsLength; buffIdsI++) {
 			this.buffIds.add(this.readInt(buf, false));
-		}
-
-		int hasBuffIdsLength = readShort(buf);
+		}		int hasBuffIdsLength = readShort(buf);
 		for (int hasBuffIdsI = 0; hasBuffIdsI < hasBuffIdsLength; hasBuffIdsI++) {
 			this.hasBuffIds.add(this.readInt(buf, false));
-		}
-
-		this.remainNum = readInt(buf, false);
+		}		this.remainNum = readInt(buf, false);
 		this.nbValue = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.buffIds.size());
 		for (int buffIdsI = 0; buffIdsI < this.buffIds.size(); buffIdsI++) {
 			this.writeInt(buf, this.buffIds.get(buffIdsI), false);
-		}
-
-		writeShort(buf, this.hasBuffIds.size());
+		}		writeShort(buf, this.hasBuffIds.size());
 		for (int hasBuffIdsI = 0; hasBuffIdsI < this.hasBuffIds.size(); hasBuffIdsI++) {
 			this.writeInt(buf, this.hasBuffIds.get(hasBuffIdsI), false);
-		}
-
-		this.writeInt(buf, remainNum, false);
+		}		this.writeInt(buf, remainNum, false);
 		this.writeInt(buf, nbValue, false);
-
 		return true;
 	}
 }
-

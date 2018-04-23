@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>成就奖励请求</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqAchievementRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqAchievementRewardMessage extends AbstractMessage {
 	 */
 	private int achievementId;
 
-
 	public int getAchievementId() {
 		return achievementId;
 	}
@@ -42,19 +42,17 @@ public class ReqAchievementRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.achievementId = readInt(buf, false);
 
+		this.achievementId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, achievementId, false);
 
+		this.writeInt(buf, achievementId, false);
 		return true;
 	}
 }
-

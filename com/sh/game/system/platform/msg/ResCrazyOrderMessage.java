@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>疯狂订单号</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCrazyOrderMessage extends AbstractMessage {
 
 	@Override
@@ -31,37 +32,30 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 	 * 订单号
 	 */
 	private String order_id;
-
 	/**
 	 * appid
 	 */
 	private String app_id;
-
 	/**
 	 * 时间
 	 */
 	private String timestamp;
-
 	/**
 	 * nonce_str
 	 */
 	private String nonce_str;
-
 	/**
 	 * package
 	 */
 	private String packageStr;
-
 	/**
 	 * sign_type
 	 */
 	private String sign_type;
-
 	/**
 	 * pay_sign
 	 */
 	private String pay_sign;
-
 
 	public String getOrder_id() {
 		return order_id;
@@ -71,8 +65,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.order_id = order_id;
 	}
 
-	
-	public String getApp_id() {
+		public String getApp_id() {
 		return app_id;
 	}
 
@@ -80,8 +73,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.app_id = app_id;
 	}
 
-	
-	public String getTimestamp() {
+		public String getTimestamp() {
 		return timestamp;
 	}
 
@@ -89,8 +81,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.timestamp = timestamp;
 	}
 
-	
-	public String getNonce_str() {
+		public String getNonce_str() {
 		return nonce_str;
 	}
 
@@ -98,8 +89,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.nonce_str = nonce_str;
 	}
 
-	
-	public String getPackageStr() {
+		public String getPackageStr() {
 		return packageStr;
 	}
 
@@ -107,8 +97,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.packageStr = packageStr;
 	}
 
-	
-	public String getSign_type() {
+		public String getSign_type() {
 		return sign_type;
 	}
 
@@ -116,8 +105,7 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.sign_type = sign_type;
 	}
 
-	
-	public String getPay_sign() {
+		public String getPay_sign() {
 		return pay_sign;
 	}
 
@@ -126,9 +114,9 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.order_id = readString(buf);
 		this.app_id = readString(buf);
 		this.timestamp = readString(buf);
@@ -136,12 +124,12 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.packageStr = readString(buf);
 		this.sign_type = readString(buf);
 		this.pay_sign = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, order_id);
 		this.writeString(buf, app_id);
 		this.writeString(buf, timestamp);
@@ -149,8 +137,6 @@ public class ResCrazyOrderMessage extends AbstractMessage {
 		this.writeString(buf, packageStr);
 		this.writeString(buf, sign_type);
 		this.writeString(buf, pay_sign);
-
 		return true;
 	}
 }
-

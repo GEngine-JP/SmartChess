@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求登录</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLoginMessage extends AbstractMessage {
 
 	@Override
@@ -31,47 +32,38 @@ public class ReqLoginMessage extends AbstractMessage {
 	 * 登录账户
 	 */
 	private String loginName;
-
 	/**
 	 * 服务器id
 	 */
 	private int sid;
-
 	/**
 	 * 平台id
 	 */
 	private int pid;
-
 	/**
 	 * 登录方式（1、网页，2、微端
 	 */
 	private int client;
-
 	/**
 	 * 身份证号码
 	 */
 	private String idNumber;
-
 	/**
 	 * ip地址
 	 */
 	private String ip;
-
 	/**
 	 * 版本号
 	 */
 	private int version;
-
 	/**
 	 * channelId
 	 */
 	private String channelId;
-
 	/**
 	 * 渠道
 	 */
 	private String qudao;
-
 
 	public String getLoginName() {
 		return loginName;
@@ -81,8 +73,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.loginName = loginName;
 	}
 
-	
-	public int getSid() {
+		public int getSid() {
 		return sid;
 	}
 
@@ -90,8 +81,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.sid = sid;
 	}
 
-	
-	public int getPid() {
+		public int getPid() {
 		return pid;
 	}
 
@@ -99,8 +89,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.pid = pid;
 	}
 
-	
-	public int getClient() {
+		public int getClient() {
 		return client;
 	}
 
@@ -108,8 +97,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.client = client;
 	}
 
-	
-	public String getIdNumber() {
+		public String getIdNumber() {
 		return idNumber;
 	}
 
@@ -117,8 +105,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.idNumber = idNumber;
 	}
 
-	
-	public String getIp() {
+		public String getIp() {
 		return ip;
 	}
 
@@ -126,8 +113,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.ip = ip;
 	}
 
-	
-	public int getVersion() {
+		public int getVersion() {
 		return version;
 	}
 
@@ -135,8 +121,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.version = version;
 	}
 
-	
-	public String getChannelId() {
+		public String getChannelId() {
 		return channelId;
 	}
 
@@ -144,8 +129,7 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.channelId = channelId;
 	}
 
-	
-	public String getQudao() {
+		public String getQudao() {
 		return qudao;
 	}
 
@@ -154,9 +138,9 @@ public class ReqLoginMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.loginName = readString(buf);
 		this.sid = readInt(buf, false);
 		this.pid = readInt(buf, false);
@@ -166,12 +150,12 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.version = readInt(buf, false);
 		this.channelId = readString(buf);
 		this.qudao = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, loginName);
 		this.writeInt(buf, sid, false);
 		this.writeInt(buf, pid, false);
@@ -181,8 +165,6 @@ public class ReqLoginMessage extends AbstractMessage {
 		this.writeInt(buf, version, false);
 		this.writeString(buf, channelId);
 		this.writeString(buf, qudao);
-
 		return true;
 	}
 }
-

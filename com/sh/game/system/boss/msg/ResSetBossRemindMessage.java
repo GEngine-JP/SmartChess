@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回设置Boss提醒</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSetBossRemindMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSetBossRemindMessage extends AbstractMessage {
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 状态 0未勾选 1勾选 
 	 */
 	private int state;
-
 
 	public int getInstanceId() {
 		return instanceId;
@@ -46,8 +45,7 @@ public class ResSetBossRemindMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -56,21 +54,19 @@ public class ResSetBossRemindMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

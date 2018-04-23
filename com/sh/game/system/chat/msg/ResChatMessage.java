@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.chat.msg.bean.OtherMsgBean;
 import com.sh.game.system.chat.msg.bean.ChatItemBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>聊天结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResChatMessage extends AbstractMessage {
 
 	@Override
@@ -34,22 +37,18 @@ public class ResChatMessage extends AbstractMessage {
 	 * 聊天内容
 	 */
 	private String content;
-
 	/**
 	 * 聊天类型
 	 */
 	private int type;
-
 	/**
 	 * 其他杂七杂八的东西
 	 */
 	private OtherMsgBean otherMsgBean;
-
 	/**
 	 * 聊天道具信息
 	 */
-	private List<ChatItemBean> itemInfoBeans = new ArrayList<ChatItemBean>();
-
+	private List<ChatItemBean> itemInfoBeans = new ArrayList<>();
 
 	public String getContent() {
 		return content;
@@ -59,8 +58,7 @@ public class ResChatMessage extends AbstractMessage {
 		this.content = content;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -68,8 +66,7 @@ public class ResChatMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public OtherMsgBean getOtherMsgBean() {
+		public OtherMsgBean getOtherMsgBean() {
 		return otherMsgBean;
 	}
 
@@ -77,8 +74,7 @@ public class ResChatMessage extends AbstractMessage {
 		this.otherMsgBean = otherMsgBean;
 	}
 
-	
-	public List<ChatItemBean> getItemInfoBeans() {
+		public List<ChatItemBean> getItemInfoBeans() {
 		return itemInfoBeans;
 	}
 
@@ -86,9 +82,9 @@ public class ResChatMessage extends AbstractMessage {
 		this.itemInfoBeans = itemInfoBeans;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.content = readString(buf);
 		this.type = readInt(buf, false);
 		if (readByte(buf) != 0) {
@@ -106,13 +102,12 @@ public class ResChatMessage extends AbstractMessage {
 				this.itemInfoBeans.add(chatItemBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, content);
 		this.writeInt(buf, type, false);
 		this.writeBean(buf, otherMsgBean);
@@ -120,9 +115,6 @@ public class ResChatMessage extends AbstractMessage {
 		for (int itemInfoBeansI = 0; itemInfoBeansI < this.itemInfoBeans.size(); itemInfoBeansI++) {
 			this.writeBean(buf, this.itemInfoBeans.get(itemInfoBeansI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>解禁ip或账号</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackUnBanMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqBackUnBanMessage extends AbstractMessage {
 	 * 1账号 2ip
 	 */
 	private int banType;
-
 	/**
 	 * uid
 	 */
 	private String uid;
-
 
 	public int getBanType() {
 		return banType;
@@ -46,8 +45,7 @@ public class ReqBackUnBanMessage extends AbstractMessage {
 		this.banType = banType;
 	}
 
-	
-	public String getUid() {
+		public String getUid() {
 		return uid;
 	}
 
@@ -56,21 +54,19 @@ public class ReqBackUnBanMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.banType = readInt(buf, false);
 		this.uid = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, banType, false);
 		this.writeString(buf, uid);
-
 		return true;
 	}
 }
-

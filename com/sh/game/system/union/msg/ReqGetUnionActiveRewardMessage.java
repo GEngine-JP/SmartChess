@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>获取帮会活跃奖励信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetUnionActiveRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqGetUnionActiveRewardMessage extends AbstractMessage {
 	 */
 	private int activeId;
 
-
 	public int getActiveId() {
 		return activeId;
 	}
@@ -42,19 +42,17 @@ public class ReqGetUnionActiveRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.activeId = readInt(buf, false);
 
+		this.activeId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, activeId, false);
 
+		this.writeInt(buf, activeId, false);
 		return true;
 	}
 }
-

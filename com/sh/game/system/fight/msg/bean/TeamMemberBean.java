@@ -1,113 +1,95 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class TeamMemberBean extends KryoBean {
 
 	/**
 	 * 1 玩家 2 英雄战 3 英雄法 4 英雄道 5宠物
 	 */
 	private int type;
-
 	/**
 	 * 成员id
 	 */
 	private long memberId;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * bossId
 	 */
 	private int bossId;
-
 	/**
 	 * 名字
 	 */
 	private String name;
-
 	/**
 	 * 性别 1男2女
 	 */
 	private int sex;
-
 	/**
 	 * 血量
 	 */
 	private long hp;
-
 	/**
 	 * 是否有魔法盾
 	 */
 	private boolean hasEgg;
-
 	/**
 	 * 最大血量
 	 */
 	private long maxHp;
-
 	/**
 	 * 武器
 	 */
 	private int cloth;
-
 	/**
 	 * 衣服
 	 */
 	private int weapon;
-
 	/**
 	 * 翅膀
 	 */
 	private int wing;
-
 	/**
 	 * 时装衣服
 	 */
 	private int fashionCloth;
-
 	/**
 	 * 时装翅膀
 	 */
 	private int fashionWing;
-
 	/**
 	 * 时装武器
 	 */
 	private int fashionWeapon;
-
 	/**
 	 * 时装称号
 	 */
 	private int fashionTitle;
-
 	/**
 	 * 帮会名字
 	 */
 	private String unionName;
-
 	/**
 	 * 穿戴的寶物id
 	 */
 	private int treasure;
-
 	/**
 	 * 激活的神装套装id
 	 */
 	private int szSuitId;
-
 
 	public int getType() {
 		return type;
@@ -117,8 +99,7 @@ public class TeamMemberBean extends KryoBean {
 		this.type = type;
 	}
 
-	
-	public long getMemberId() {
+		public long getMemberId() {
 		return memberId;
 	}
 
@@ -126,8 +107,7 @@ public class TeamMemberBean extends KryoBean {
 		this.memberId = memberId;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -135,8 +115,7 @@ public class TeamMemberBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getBossId() {
+		public int getBossId() {
 		return bossId;
 	}
 
@@ -144,8 +123,7 @@ public class TeamMemberBean extends KryoBean {
 		this.bossId = bossId;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -153,8 +131,7 @@ public class TeamMemberBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -162,8 +139,7 @@ public class TeamMemberBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public long getHp() {
+		public long getHp() {
 		return hp;
 	}
 
@@ -171,8 +147,7 @@ public class TeamMemberBean extends KryoBean {
 		this.hp = hp;
 	}
 
-	
-	public boolean getHasEgg() {
+		public boolean getHasEgg() {
 		return hasEgg;
 	}
 
@@ -180,8 +155,7 @@ public class TeamMemberBean extends KryoBean {
 		this.hasEgg = hasEgg;
 	}
 
-	
-	public long getMaxHp() {
+		public long getMaxHp() {
 		return maxHp;
 	}
 
@@ -189,8 +163,7 @@ public class TeamMemberBean extends KryoBean {
 		this.maxHp = maxHp;
 	}
 
-	
-	public int getCloth() {
+		public int getCloth() {
 		return cloth;
 	}
 
@@ -198,8 +171,7 @@ public class TeamMemberBean extends KryoBean {
 		this.cloth = cloth;
 	}
 
-	
-	public int getWeapon() {
+		public int getWeapon() {
 		return weapon;
 	}
 
@@ -207,8 +179,7 @@ public class TeamMemberBean extends KryoBean {
 		this.weapon = weapon;
 	}
 
-	
-	public int getWing() {
+		public int getWing() {
 		return wing;
 	}
 
@@ -216,8 +187,7 @@ public class TeamMemberBean extends KryoBean {
 		this.wing = wing;
 	}
 
-	
-	public int getFashionCloth() {
+		public int getFashionCloth() {
 		return fashionCloth;
 	}
 
@@ -225,8 +195,7 @@ public class TeamMemberBean extends KryoBean {
 		this.fashionCloth = fashionCloth;
 	}
 
-	
-	public int getFashionWing() {
+		public int getFashionWing() {
 		return fashionWing;
 	}
 
@@ -234,8 +203,7 @@ public class TeamMemberBean extends KryoBean {
 		this.fashionWing = fashionWing;
 	}
 
-	
-	public int getFashionWeapon() {
+		public int getFashionWeapon() {
 		return fashionWeapon;
 	}
 
@@ -243,8 +211,7 @@ public class TeamMemberBean extends KryoBean {
 		this.fashionWeapon = fashionWeapon;
 	}
 
-	
-	public int getFashionTitle() {
+		public int getFashionTitle() {
 		return fashionTitle;
 	}
 
@@ -252,8 +219,7 @@ public class TeamMemberBean extends KryoBean {
 		this.fashionTitle = fashionTitle;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -261,8 +227,7 @@ public class TeamMemberBean extends KryoBean {
 		this.unionName = unionName;
 	}
 
-	
-	public int getTreasure() {
+		public int getTreasure() {
 		return treasure;
 	}
 
@@ -270,8 +235,7 @@ public class TeamMemberBean extends KryoBean {
 		this.treasure = treasure;
 	}
 
-	
-	public int getSzSuitId() {
+		public int getSzSuitId() {
 		return szSuitId;
 	}
 
@@ -280,9 +244,9 @@ public class TeamMemberBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.memberId = readLong(buf);
 		this.career = readInt(buf, false);
@@ -302,12 +266,12 @@ public class TeamMemberBean extends KryoBean {
 		this.unionName = readString(buf);
 		this.treasure = readInt(buf, false);
 		this.szSuitId = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, memberId);
 		this.writeInt(buf, career, false);
@@ -327,8 +291,6 @@ public class TeamMemberBean extends KryoBean {
 		this.writeString(buf, unionName);
 		this.writeInt(buf, treasure, false);
 		this.writeInt(buf, szSuitId, false);
-
 		return true;
 	}
 }
-

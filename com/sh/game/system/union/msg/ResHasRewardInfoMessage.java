@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>是否有奖励角标</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHasRewardInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResHasRewardInfoMessage extends AbstractMessage {
 	 */
 	private int reward;
 
-
 	public int getReward() {
 		return reward;
 	}
@@ -42,19 +42,17 @@ public class ResHasRewardInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.reward = readInt(buf, false);
 
+		this.reward = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, reward, false);
 
+		this.writeInt(buf, reward, false);
 		return true;
 	}
 }
-

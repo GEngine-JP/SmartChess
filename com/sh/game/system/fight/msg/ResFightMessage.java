@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.fight.msg.bean.TeamInfoBean;
 import com.sh.game.system.fight.msg.bean.FightDataBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回战斗信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResFightMessage extends AbstractMessage {
 
 	@Override
@@ -34,22 +37,18 @@ public class ResFightMessage extends AbstractMessage {
 	 * 胜方的唯一id
 	 */
 	private long result;
-
 	/**
 	 * 主动攻击一方的id
 	 */
 	private long attackId;
-
 	/**
 	 * 对方队伍信息
 	 */
 	private TeamInfoBean teamInfoBean;
-
 	/**
 	 * 战报
 	 */
-	private List<FightDataBean> fightDataBean = new ArrayList<FightDataBean>();
-
+	private List<FightDataBean> fightDataBean = new ArrayList<>();
 
 	public long getResult() {
 		return result;
@@ -59,8 +58,7 @@ public class ResFightMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public long getAttackId() {
+		public long getAttackId() {
 		return attackId;
 	}
 
@@ -68,8 +66,7 @@ public class ResFightMessage extends AbstractMessage {
 		this.attackId = attackId;
 	}
 
-	
-	public TeamInfoBean getTeamInfoBean() {
+		public TeamInfoBean getTeamInfoBean() {
 		return teamInfoBean;
 	}
 
@@ -77,8 +74,7 @@ public class ResFightMessage extends AbstractMessage {
 		this.teamInfoBean = teamInfoBean;
 	}
 
-	
-	public List<FightDataBean> getFightDataBean() {
+		public List<FightDataBean> getFightDataBean() {
 		return fightDataBean;
 	}
 
@@ -86,9 +82,9 @@ public class ResFightMessage extends AbstractMessage {
 		this.fightDataBean = fightDataBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.result = readLong(buf);
 		this.attackId = readLong(buf);
 		if (readByte(buf) != 0) {
@@ -106,13 +102,12 @@ public class ResFightMessage extends AbstractMessage {
 				this.fightDataBean.add(fightDataBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, result);
 		this.writeLong(buf, attackId);
 		this.writeBean(buf, teamInfoBean);
@@ -120,9 +115,6 @@ public class ResFightMessage extends AbstractMessage {
 		for (int fightDataBeanI = 0; fightDataBeanI < this.fightDataBean.size(); fightDataBeanI++) {
 			this.writeBean(buf, this.fightDataBean.get(fightDataBeanI));
 		}
-
-
 		return true;
 	}
 }
-

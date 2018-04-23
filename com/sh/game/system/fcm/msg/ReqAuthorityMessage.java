@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求认证</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqAuthorityMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqAuthorityMessage extends AbstractMessage {
 	 * 名字
 	 */
 	private String name;
-
 	/**
 	 * 身份证号
 	 */
 	private String idNumber;
-
 
 	public String getName() {
 		return name;
@@ -46,8 +45,7 @@ public class ReqAuthorityMessage extends AbstractMessage {
 		this.name = name;
 	}
 
-	
-	public String getIdNumber() {
+		public String getIdNumber() {
 		return idNumber;
 	}
 
@@ -56,21 +54,19 @@ public class ReqAuthorityMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.name = readString(buf);
 		this.idNumber = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, name);
 		this.writeString(buf, idNumber);
-
 		return true;
 	}
 }
-

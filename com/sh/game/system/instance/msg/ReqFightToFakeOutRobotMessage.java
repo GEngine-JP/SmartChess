@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求和野外副本假人战斗</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqFightToFakeOutRobotMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +33,14 @@ public class ReqFightToFakeOutRobotMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
+
 		return true;
 	}
 }
-

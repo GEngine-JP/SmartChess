@@ -1,143 +1,118 @@
 package com.sh.game.system.chat.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.chat.msg.bean.AttributeBean;
-import com.sh.game.system.chat.msg.bean.EquipItemBean;
-import com.sh.game.system.chat.msg.bean.ShenZhuangBean;
-import com.sh.game.system.chat.msg.bean.LingBaoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RoleInfoBean extends KryoBean {
 
 	/**
 	 * 翅膀id
 	 */
 	private int windId;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 神弓
 	 */
 	private int xueyu;
-
 	/**
 	 * 神斧
 	 */
 	private int shengdun;
-
 	/**
 	 * 神剑
 	 */
 	private int guanyin;
-
 	/**
 	 * 法宝
 	 */
 	private int longhun;
-
 	/**
 	 * 玩家名字
 	 */
 	private String name;
-
 	/**
 	 * 行会
 	 */
 	private String unionName;
-
 	/**
 	 * 称号
 	 */
 	private int fashionTitle;
-
 	/**
 	 * 衣服
 	 */
 	private int fashionCloth;
-
 	/**
 	 * 武器
 	 */
 	private int fashionWeapon;
-
 	/**
 	 * 翅膀
 	 */
 	private int fashionWing;
-
 	/**
 	 * 战力
 	 */
 	private int fightPower;
-
 	/**
 	 * 玩家基本属性
 	 */
 	private AttributeBean playerAttribute;
-
 	/**
 	 * 装备列表
 	 */
-	private List<EquipItemBean> equipItemBeanList = new ArrayList<EquipItemBean>();
-
+	private List<EquipItemBean> equipItemBeanList = new ArrayList<>();
 	/**
 	 * 强化列表
 	 */
-	private List<Integer> strengthList = new ArrayList<Integer>();
-
+	private List<Integer> strengthList = new ArrayList<>();
 	/**
 	 * 神装列表
 	 */
-	private List<ShenZhuangBean> szList = new ArrayList<ShenZhuangBean>();
-
+	private List<ShenZhuangBean> szList = new ArrayList<>();
 	/**
 	 * 神装战力
 	 */
 	private int szFightPower;
-
 	/**
 	 * 神装套装
 	 */
 	private int szSuit;
-
 	/**
 	 * 神装数量
 	 */
 	private int szCount;
-
 	/**
 	 * 灵宝列表
 	 */
-	private List<LingBaoBean> lbList = new ArrayList<LingBaoBean>();
-
+	private List<LingBaoBean> lbList = new ArrayList<>();
 
 	public int getWindId() {
 		return windId;
@@ -147,8 +122,7 @@ public class RoleInfoBean extends KryoBean {
 		this.windId = windId;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -156,8 +130,7 @@ public class RoleInfoBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -165,8 +138,7 @@ public class RoleInfoBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -174,8 +146,7 @@ public class RoleInfoBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -183,8 +154,7 @@ public class RoleInfoBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getXueyu() {
+		public int getXueyu() {
 		return xueyu;
 	}
 
@@ -192,8 +162,7 @@ public class RoleInfoBean extends KryoBean {
 		this.xueyu = xueyu;
 	}
 
-	
-	public int getShengdun() {
+		public int getShengdun() {
 		return shengdun;
 	}
 
@@ -201,8 +170,7 @@ public class RoleInfoBean extends KryoBean {
 		this.shengdun = shengdun;
 	}
 
-	
-	public int getGuanyin() {
+		public int getGuanyin() {
 		return guanyin;
 	}
 
@@ -210,8 +178,7 @@ public class RoleInfoBean extends KryoBean {
 		this.guanyin = guanyin;
 	}
 
-	
-	public int getLonghun() {
+		public int getLonghun() {
 		return longhun;
 	}
 
@@ -219,8 +186,7 @@ public class RoleInfoBean extends KryoBean {
 		this.longhun = longhun;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -228,8 +194,7 @@ public class RoleInfoBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public String getUnionName() {
+		public String getUnionName() {
 		return unionName;
 	}
 
@@ -237,8 +202,7 @@ public class RoleInfoBean extends KryoBean {
 		this.unionName = unionName;
 	}
 
-	
-	public int getFashionTitle() {
+		public int getFashionTitle() {
 		return fashionTitle;
 	}
 
@@ -246,8 +210,7 @@ public class RoleInfoBean extends KryoBean {
 		this.fashionTitle = fashionTitle;
 	}
 
-	
-	public int getFashionCloth() {
+		public int getFashionCloth() {
 		return fashionCloth;
 	}
 
@@ -255,8 +218,7 @@ public class RoleInfoBean extends KryoBean {
 		this.fashionCloth = fashionCloth;
 	}
 
-	
-	public int getFashionWeapon() {
+		public int getFashionWeapon() {
 		return fashionWeapon;
 	}
 
@@ -264,8 +226,7 @@ public class RoleInfoBean extends KryoBean {
 		this.fashionWeapon = fashionWeapon;
 	}
 
-	
-	public int getFashionWing() {
+		public int getFashionWing() {
 		return fashionWing;
 	}
 
@@ -273,8 +234,7 @@ public class RoleInfoBean extends KryoBean {
 		this.fashionWing = fashionWing;
 	}
 
-	
-	public int getFightPower() {
+		public int getFightPower() {
 		return fightPower;
 	}
 
@@ -282,8 +242,7 @@ public class RoleInfoBean extends KryoBean {
 		this.fightPower = fightPower;
 	}
 
-	
-	public AttributeBean getPlayerAttribute() {
+		public AttributeBean getPlayerAttribute() {
 		return playerAttribute;
 	}
 
@@ -291,15 +250,13 @@ public class RoleInfoBean extends KryoBean {
 		this.playerAttribute = playerAttribute;
 	}
 
-	
-	public List<EquipItemBean> getEquipItemBeanList() {
+		public List<EquipItemBean> getEquipItemBeanList() {
 		return equipItemBeanList;
 	}
 
 	public void setEquipItemBeanList(List<EquipItemBean> equipItemBeanList) {
 		this.equipItemBeanList = equipItemBeanList;
 	}
-
 	public List<Integer> getStrengthList() {
 		return strengthList;
 	}
@@ -307,7 +264,6 @@ public class RoleInfoBean extends KryoBean {
 	public void setStrengthList(List<Integer> strengthList) {
 		this.strengthList = strengthList;
 	}
-
 	public List<ShenZhuangBean> getSzList() {
 		return szList;
 	}
@@ -315,7 +271,6 @@ public class RoleInfoBean extends KryoBean {
 	public void setSzList(List<ShenZhuangBean> szList) {
 		this.szList = szList;
 	}
-
 	public int getSzFightPower() {
 		return szFightPower;
 	}
@@ -324,8 +279,7 @@ public class RoleInfoBean extends KryoBean {
 		this.szFightPower = szFightPower;
 	}
 
-	
-	public int getSzSuit() {
+		public int getSzSuit() {
 		return szSuit;
 	}
 
@@ -333,8 +287,7 @@ public class RoleInfoBean extends KryoBean {
 		this.szSuit = szSuit;
 	}
 
-	
-	public int getSzCount() {
+		public int getSzCount() {
 		return szCount;
 	}
 
@@ -342,8 +295,7 @@ public class RoleInfoBean extends KryoBean {
 		this.szCount = szCount;
 	}
 
-	
-	public List<LingBaoBean> getLbList() {
+		public List<LingBaoBean> getLbList() {
 		return lbList;
 	}
 
@@ -351,9 +303,9 @@ public class RoleInfoBean extends KryoBean {
 		this.lbList = lbList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.windId = readInt(buf, false);
 		this.sex = readInt(buf, false);
 		this.career = readInt(buf, false);
@@ -384,14 +336,10 @@ public class RoleInfoBean extends KryoBean {
 				equipItemBean.read(buf);
 				this.equipItemBeanList.add(equipItemBean);
 			}
-		}
-
-		int strengthListLength = readShort(buf);
+		}		int strengthListLength = readShort(buf);
 		for (int strengthListI = 0; strengthListI < strengthListLength; strengthListI++) {
 			this.strengthList.add(this.readInt(buf, false));
-		}
-
-		int szListLength = readShort(buf);
+		}		int szListLength = readShort(buf);
 		for (int szListI = 0; szListI < szListLength; szListI++) {
 			if (readByte(buf) == 0) { 
 				this.szList.add(null);
@@ -400,9 +348,7 @@ public class RoleInfoBean extends KryoBean {
 				shenZhuangBean.read(buf);
 				this.szList.add(shenZhuangBean);
 			}
-		}
-
-		this.szFightPower = readInt(buf, false);
+		}		this.szFightPower = readInt(buf, false);
 		this.szSuit = readInt(buf, false);
 		this.szCount = readInt(buf, false);
 		int lbListLength = readShort(buf);
@@ -415,13 +361,12 @@ public class RoleInfoBean extends KryoBean {
 				this.lbList.add(lingBaoBean);
 			}
 		}
-
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, windId, false);
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, career, false);
@@ -442,28 +387,19 @@ public class RoleInfoBean extends KryoBean {
 		writeShort(buf, this.equipItemBeanList.size());
 		for (int equipItemBeanListI = 0; equipItemBeanListI < this.equipItemBeanList.size(); equipItemBeanListI++) {
 			this.writeBean(buf, this.equipItemBeanList.get(equipItemBeanListI));
-		}
-
-		writeShort(buf, this.strengthList.size());
+		}		writeShort(buf, this.strengthList.size());
 		for (int strengthListI = 0; strengthListI < this.strengthList.size(); strengthListI++) {
 			this.writeInt(buf, this.strengthList.get(strengthListI), false);
-		}
-
-		writeShort(buf, this.szList.size());
+		}		writeShort(buf, this.szList.size());
 		for (int szListI = 0; szListI < this.szList.size(); szListI++) {
 			this.writeBean(buf, this.szList.get(szListI));
-		}
-
-		this.writeInt(buf, szFightPower, false);
+		}		this.writeInt(buf, szFightPower, false);
 		this.writeInt(buf, szSuit, false);
 		this.writeInt(buf, szCount, false);
 		writeShort(buf, this.lbList.size());
 		for (int lbListI = 0; lbListI < this.lbList.size(); lbListI++) {
 			this.writeBean(buf, this.lbList.get(lbListI));
 		}
-
-
 		return true;
 	}
 }
-

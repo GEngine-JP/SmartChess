@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.shobak.msg.bean.LastSiegeRankInfo;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>沙巴克行会排名结算显示面板</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendShobakResultRankInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResSendShobakResultRankInfoMessage extends AbstractMessage {
 	/**
 	 * 排名信息
 	 */
-	private List<LastSiegeRankInfo> infos = new ArrayList<LastSiegeRankInfo>();
-
+	private List<LastSiegeRankInfo> infos = new ArrayList<>();
 	/**
 	 * 结果 胜利1或失败0
 	 */
 	private int result;
-
 
 	public List<LastSiegeRankInfo> getInfos() {
 		return infos;
@@ -47,7 +48,6 @@ public class ResSendShobakResultRankInfoMessage extends AbstractMessage {
 	public void setInfos(List<LastSiegeRankInfo> infos) {
 		this.infos = infos;
 	}
-
 	public int getResult() {
 		return result;
 	}
@@ -57,9 +57,9 @@ public class ResSendShobakResultRankInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int infosLength = readShort(buf);
 		for (int infosI = 0; infosI < infosLength; infosI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResSendShobakResultRankInfoMessage extends AbstractMessage {
 				lastSiegeRankInfo.read(buf);
 				this.infos.add(lastSiegeRankInfo);
 			}
-		}
-
-		this.result = readInt(buf, false);
-
+		}		this.result = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.infos.size());
 		for (int infosI = 0; infosI < this.infos.size(); infosI++) {
 			this.writeBean(buf, this.infos.get(infosI));
-		}
-
-		this.writeInt(buf, result, false);
-
+		}		this.writeInt(buf, result, false);
 		return true;
 	}
 }
-

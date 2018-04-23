@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>获取装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetItemInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqGetItemInfoMessage extends AbstractMessage {
 	 * 唯一id
 	 */
 	private long armId;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 
 	public long getArmId() {
 		return armId;
@@ -46,8 +45,7 @@ public class ReqGetItemInfoMessage extends AbstractMessage {
 		this.armId = armId;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqGetItemInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.armId = readLong(buf);
 		this.itemId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, armId);
 		this.writeInt(buf, itemId, false);
-
 		return true;
 	}
 }
-

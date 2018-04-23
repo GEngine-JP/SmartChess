@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.mining.msg.bean.MinerBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送矿工信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResDigerMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResDigerMessage extends AbstractMessage {
 	/**
 	 * 矿工列表
 	 */
-	private List<MinerBean> minerList = new ArrayList<MinerBean>();
-
+	private List<MinerBean> minerList = new ArrayList<>();
 
 	public List<MinerBean> getMinerList() {
 		return minerList;
@@ -43,9 +45,9 @@ public class ResDigerMessage extends AbstractMessage {
 		this.minerList = minerList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int minerListLength = readShort(buf);
 		for (int minerListI = 0; minerListI < minerListLength; minerListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResDigerMessage extends AbstractMessage {
 				this.minerList.add(minerBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.minerList.size());
 		for (int minerListI = 0; minerListI < this.minerList.size(); minerListI++) {
 			this.writeBean(buf, this.minerList.get(minerListI));
 		}
-
-
 		return true;
 	}
 }
-

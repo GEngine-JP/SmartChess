@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>抢红包</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRobRedPackMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqRobRedPackMessage extends AbstractMessage {
 	 */
 	private long redPackId;
 
-
 	public long getRedPackId() {
 		return redPackId;
 	}
@@ -42,19 +42,17 @@ public class ReqRobRedPackMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.redPackId = readLong(buf);
 
+		this.redPackId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, redPackId);
 
+		this.writeLong(buf, redPackId);
 		return true;
 	}
 }
-

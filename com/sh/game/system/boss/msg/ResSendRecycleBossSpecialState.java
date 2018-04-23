@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通知前端加特殊buff</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendRecycleBossSpecialState extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSendRecycleBossSpecialState extends AbstractMessage {
 	 * 获得者id
 	 */
 	private long targetId;
-
 	/**
 	 * buff结束时间
 	 */
 	private int endTime;
-
 
 	public long getTargetId() {
 		return targetId;
@@ -46,8 +45,7 @@ public class ResSendRecycleBossSpecialState extends AbstractMessage {
 		this.targetId = targetId;
 	}
 
-	
-	public int getEndTime() {
+		public int getEndTime() {
 		return endTime;
 	}
 
@@ -56,21 +54,19 @@ public class ResSendRecycleBossSpecialState extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetId = readLong(buf);
 		this.endTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, endTime, false);
-
 		return true;
 	}
 }
-

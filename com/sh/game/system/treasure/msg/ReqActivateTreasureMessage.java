@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求激活宝物</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqActivateTreasureMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqActivateTreasureMessage extends AbstractMessage {
 	 */
 	private int type;
 
-
 	public int getType() {
 		return type;
 	}
@@ -42,19 +42,17 @@ public class ReqActivateTreasureMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.type = readInt(buf, false);
 
+		this.type = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, type, false);
 
+		this.writeInt(buf, type, false);
 		return true;
 	}
 }
-

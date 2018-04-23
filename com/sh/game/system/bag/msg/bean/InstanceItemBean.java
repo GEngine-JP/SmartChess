@@ -1,28 +1,27 @@
 package com.sh.game.system.bag.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class InstanceItemBean extends KryoBean {
 
 	/**
 	 * 配置id
 	 */
 	private int globalId;
-
 	/**
 	 * 已使用次数
 	 */
 	private int useNum;
-
 
 	public int getGlobalId() {
 		return globalId;
@@ -32,8 +31,7 @@ public class InstanceItemBean extends KryoBean {
 		this.globalId = globalId;
 	}
 
-	
-	public int getUseNum() {
+		public int getUseNum() {
 		return useNum;
 	}
 
@@ -42,21 +40,19 @@ public class InstanceItemBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.globalId = readInt(buf, false);
 		this.useNum = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, globalId, false);
 		this.writeInt(buf, useNum, false);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求抢夺某玩家</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRobMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqRobMessage extends AbstractMessage {
 	 */
 	private long roleId;
 
-
 	public long getRoleId() {
 		return roleId;
 	}
@@ -42,19 +42,17 @@ public class ReqRobMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.roleId = readLong(buf);
 
+		this.roleId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, roleId);
 
+		this.writeLong(buf, roleId);
 		return true;
 	}
 }
-

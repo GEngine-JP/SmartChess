@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.hero.msg.bean.VeinBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送所以英雄经脉信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendHeroAllInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendHeroAllInfoMessage extends AbstractMessage {
 	/**
 	 * 所有英雄的经脉信息
 	 */
-	private List<VeinBean> heroVeins = new ArrayList<VeinBean>();
-
+	private List<VeinBean> heroVeins = new ArrayList<>();
 
 	public List<VeinBean> getHeroVeins() {
 		return heroVeins;
@@ -43,9 +45,9 @@ public class ResSendHeroAllInfoMessage extends AbstractMessage {
 		this.heroVeins = heroVeins;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int heroVeinsLength = readShort(buf);
 		for (int heroVeinsI = 0; heroVeinsI < heroVeinsLength; heroVeinsI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendHeroAllInfoMessage extends AbstractMessage {
 				this.heroVeins.add(veinBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.heroVeins.size());
 		for (int heroVeinsI = 0; heroVeinsI < this.heroVeins.size(); heroVeinsI++) {
 			this.writeBean(buf, this.heroVeins.get(heroVeinsI));
 		}
-
-
 		return true;
 	}
 }
-

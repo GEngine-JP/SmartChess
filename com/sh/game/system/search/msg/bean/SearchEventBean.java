@@ -1,39 +1,35 @@
 package com.sh.game.system.search.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
-import com.sh.game.system.search.msg.bean.SearchTeamInfoBean;
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class SearchEventBean extends KryoBean {
 
 	/**
 	 * 事件的位置
 	 */
 	private int index;
-
 	/**
 	 * 事件的id
 	 */
 	private int eventId;
-
 	/**
 	 * 事件到期时间（秒）
 	 */
 	private int endTime;
-
 	/**
 	 * 假人的信息
 	 */
 	private SearchTeamInfoBean fakeTeamInfo;
-
 
 	public int getIndex() {
 		return index;
@@ -43,8 +39,7 @@ public class SearchEventBean extends KryoBean {
 		this.index = index;
 	}
 
-	
-	public int getEventId() {
+		public int getEventId() {
 		return eventId;
 	}
 
@@ -52,8 +47,7 @@ public class SearchEventBean extends KryoBean {
 		this.eventId = eventId;
 	}
 
-	
-	public int getEndTime() {
+		public int getEndTime() {
 		return endTime;
 	}
 
@@ -61,8 +55,7 @@ public class SearchEventBean extends KryoBean {
 		this.endTime = endTime;
 	}
 
-	
-	public SearchTeamInfoBean getFakeTeamInfo() {
+		public SearchTeamInfoBean getFakeTeamInfo() {
 		return fakeTeamInfo;
 	}
 
@@ -71,9 +64,9 @@ public class SearchEventBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.eventId = readInt(buf, false);
 		this.endTime = readInt(buf, false);
@@ -82,18 +75,16 @@ public class SearchEventBean extends KryoBean {
 			searchTeamInfoBean.read(buf);
 			this.fakeTeamInfo = searchTeamInfoBean;
 		}
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, eventId, false);
 		this.writeInt(buf, endTime, false);
 		this.writeBean(buf, fakeTeamInfo);
-
 		return true;
 	}
 }
-

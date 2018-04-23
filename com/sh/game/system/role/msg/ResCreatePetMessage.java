@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送玩家宠物信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCreatePetMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResCreatePetMessage extends AbstractMessage {
 	 * 宠物id
 	 */
 	private long petId;
-
 	/**
 	 * 1玩家 2英雄
 	 */
 	private int master;
-
 	/**
 	 * 1 神兽 2 月灵
 	 */
 	private int type;
-
 
 	public long getPetId() {
 		return petId;
@@ -51,8 +49,7 @@ public class ResCreatePetMessage extends AbstractMessage {
 		this.petId = petId;
 	}
 
-	
-	public int getMaster() {
+		public int getMaster() {
 		return master;
 	}
 
@@ -60,8 +57,7 @@ public class ResCreatePetMessage extends AbstractMessage {
 		this.master = master;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -70,23 +66,21 @@ public class ResCreatePetMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.petId = readLong(buf);
 		this.master = readInt(buf, false);
 		this.type = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, petId);
 		this.writeInt(buf, master, false);
 		this.writeInt(buf, type, false);
-
 		return true;
 	}
 }
-

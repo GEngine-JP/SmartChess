@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>是否领取过爱微游实名认证奖励（需要上线发给客户端）</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAwyAndiRewardGetMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResAwyAndiRewardGetMessage extends AbstractMessage {
 	 */
 	private int isGet;
 
-
 	public int getIsGet() {
 		return isGet;
 	}
@@ -42,19 +42,17 @@ public class ResAwyAndiRewardGetMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.isGet = readInt(buf, false);
 
+		this.isGet = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, isGet, false);
 
+		this.writeInt(buf, isGet, false);
 		return true;
 	}
 }
-

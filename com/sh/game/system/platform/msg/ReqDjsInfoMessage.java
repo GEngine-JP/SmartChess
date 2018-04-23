@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>获取独角兽信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqDjsInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqDjsInfoMessage extends AbstractMessage {
 	 */
 	private String channelId;
 
-
 	public String getChannelId() {
 		return channelId;
 	}
@@ -42,19 +42,17 @@ public class ReqDjsInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.channelId = readString(buf);
 
+		this.channelId = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, channelId);
 
+		this.writeString(buf, channelId);
 		return true;
 	}
 }
-

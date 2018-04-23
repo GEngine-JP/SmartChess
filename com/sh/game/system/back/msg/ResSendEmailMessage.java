@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回请求结果（后台用）</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendEmailMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ResSendEmailMessage extends AbstractMessage {
 	 * 收件人id
 	 */
 	private long targetId;
-
 	/**
 	 * 标题
 	 */
 	private String title;
-
 	/**
 	 * 内容
 	 */
 	private String content;
-
 	/**
 	 * 附件
 	 */
 	private String itemStr;
-
 
 	public long getTargetId() {
 		return targetId;
@@ -56,8 +53,7 @@ public class ResSendEmailMessage extends AbstractMessage {
 		this.targetId = targetId;
 	}
 
-	
-	public String getTitle() {
+		public String getTitle() {
 		return title;
 	}
 
@@ -65,8 +61,7 @@ public class ResSendEmailMessage extends AbstractMessage {
 		this.title = title;
 	}
 
-	
-	public String getContent() {
+		public String getContent() {
 		return content;
 	}
 
@@ -74,8 +69,7 @@ public class ResSendEmailMessage extends AbstractMessage {
 		this.content = content;
 	}
 
-	
-	public String getItemStr() {
+		public String getItemStr() {
 		return itemStr;
 	}
 
@@ -84,25 +78,23 @@ public class ResSendEmailMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetId = readLong(buf);
 		this.title = readString(buf);
 		this.content = readString(buf);
 		this.itemStr = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetId);
 		this.writeString(buf, title);
 		this.writeString(buf, content);
 		this.writeString(buf, itemStr);
-
 		return true;
 	}
 }
-

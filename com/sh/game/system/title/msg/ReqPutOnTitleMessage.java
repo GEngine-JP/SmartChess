@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求佩戴称号</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqPutOnTitleMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqPutOnTitleMessage extends AbstractMessage {
 	 */
 	private int titleId;
 
-
 	public int getTitleId() {
 		return titleId;
 	}
@@ -42,19 +42,17 @@ public class ReqPutOnTitleMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.titleId = readInt(buf, false);
 
+		this.titleId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, titleId, false);
 
+		this.writeInt(buf, titleId, false);
 		return true;
 	}
 }
-

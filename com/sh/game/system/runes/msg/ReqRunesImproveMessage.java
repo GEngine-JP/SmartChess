@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>符文洗练</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRunesImproveMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqRunesImproveMessage extends AbstractMessage {
 	 * 装备位置
 	 */
 	private int index;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 
 	public int getIndex() {
 		return index;
@@ -46,8 +45,7 @@ public class ReqRunesImproveMessage extends AbstractMessage {
 		this.index = index;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -56,21 +54,19 @@ public class ReqRunesImproveMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.level = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, level, false);
-
 		return true;
 	}
 }
-

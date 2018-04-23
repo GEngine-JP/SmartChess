@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求分解传世装备</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqDecomposeLegacyEquipMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqDecomposeLegacyEquipMessage extends AbstractMessage {
 	 */
 	private long uniqueId;
 
-
 	public long getUniqueId() {
 		return uniqueId;
 	}
@@ -42,19 +42,17 @@ public class ReqDecomposeLegacyEquipMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.uniqueId = readLong(buf);
 
+		this.uniqueId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, uniqueId);
 
+		this.writeLong(buf, uniqueId);
 		return true;
 	}
 }
-

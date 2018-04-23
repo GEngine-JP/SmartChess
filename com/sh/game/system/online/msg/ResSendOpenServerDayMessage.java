@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送开服天数信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendOpenServerDayMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,26 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 	 * 开服天数
 	 */
 	private int day;
-
 	/**
 	 * 开服时间戳
 	 */
 	private long time;
-
+	/**
+	 * 合服天数
+	 */
+	private int combineDay;
+	/**
+	 * 合服时间戳
+	 */
+	private long combineTime;
 	/**
 	 * 创角天数
 	 */
 	private int createDays;
-
 	/**
 	 * 合服次数
 	 */
 	private int mergeCount;
-
 
 	public int getDay() {
 		return day;
@@ -56,8 +61,7 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 		this.day = day;
 	}
 
-	
-	public long getTime() {
+		public long getTime() {
 		return time;
 	}
 
@@ -65,8 +69,23 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 		this.time = time;
 	}
 
-	
-	public int getCreateDays() {
+		public int getCombineDay() {
+		return combineDay;
+	}
+
+	public void setCombineDay(int combineDay) {
+		this.combineDay = combineDay;
+	}
+
+		public long getCombineTime() {
+		return combineTime;
+	}
+
+	public void setCombineTime(long combineTime) {
+		this.combineTime = combineTime;
+	}
+
+		public int getCreateDays() {
 		return createDays;
 	}
 
@@ -74,8 +93,7 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 		this.createDays = createDays;
 	}
 
-	
-	public int getMergeCount() {
+		public int getMergeCount() {
 		return mergeCount;
 	}
 
@@ -84,25 +102,27 @@ public class ResSendOpenServerDayMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.day = readInt(buf, false);
 		this.time = readLong(buf);
+		this.combineDay = readInt(buf, false);
+		this.combineTime = readLong(buf);
 		this.createDays = readInt(buf, false);
 		this.mergeCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, day, false);
 		this.writeLong(buf, time);
+		this.writeInt(buf, combineDay, false);
+		this.writeLong(buf, combineTime);
 		this.writeInt(buf, createDays, false);
 		this.writeInt(buf, mergeCount, false);
-
 		return true;
 	}
 }
-

@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.arena.msg.bean.ArenaDataBean;
 import com.sh.game.system.arena.msg.bean.RankRewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>竞技场信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResArenaInfoMessage extends AbstractMessage {
 
 	@Override
@@ -34,17 +37,14 @@ public class ResArenaInfoMessage extends AbstractMessage {
 	 * 当前排名
 	 */
 	private int nowRank;
-
 	/**
 	 * 竞技场数据
 	 */
-	private List<ArenaDataBean> arenaDataList = new ArrayList<ArenaDataBean>();
-
+	private List<ArenaDataBean> arenaDataList = new ArrayList<>();
 	/**
 	 * 奖励数据
 	 */
-	private List<RankRewardBean> rankRewardList = new ArrayList<RankRewardBean>();
-
+	private List<RankRewardBean> rankRewardList = new ArrayList<>();
 
 	public int getNowRank() {
 		return nowRank;
@@ -54,15 +54,13 @@ public class ResArenaInfoMessage extends AbstractMessage {
 		this.nowRank = nowRank;
 	}
 
-	
-	public List<ArenaDataBean> getArenaDataList() {
+		public List<ArenaDataBean> getArenaDataList() {
 		return arenaDataList;
 	}
 
 	public void setArenaDataList(List<ArenaDataBean> arenaDataList) {
 		this.arenaDataList = arenaDataList;
 	}
-
 	public List<RankRewardBean> getRankRewardList() {
 		return rankRewardList;
 	}
@@ -71,9 +69,9 @@ public class ResArenaInfoMessage extends AbstractMessage {
 		this.rankRewardList = rankRewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.nowRank = readInt(buf, false);
 		int arenaDataListLength = readShort(buf);
 		for (int arenaDataListI = 0; arenaDataListI < arenaDataListLength; arenaDataListI++) {
@@ -84,9 +82,7 @@ public class ResArenaInfoMessage extends AbstractMessage {
 				arenaDataBean.read(buf);
 				this.arenaDataList.add(arenaDataBean);
 			}
-		}
-
-		int rankRewardListLength = readShort(buf);
+		}		int rankRewardListLength = readShort(buf);
 		for (int rankRewardListI = 0; rankRewardListI < rankRewardListLength; rankRewardListI++) {
 			if (readByte(buf) == 0) { 
 				this.rankRewardList.add(null);
@@ -96,26 +92,20 @@ public class ResArenaInfoMessage extends AbstractMessage {
 				this.rankRewardList.add(rankRewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, nowRank, false);
 		writeShort(buf, this.arenaDataList.size());
 		for (int arenaDataListI = 0; arenaDataListI < this.arenaDataList.size(); arenaDataListI++) {
 			this.writeBean(buf, this.arenaDataList.get(arenaDataListI));
-		}
-
-		writeShort(buf, this.rankRewardList.size());
+		}		writeShort(buf, this.rankRewardList.size());
 		for (int rankRewardListI = 0; rankRewardListI < this.rankRewardList.size(); rankRewardListI++) {
 			this.writeBean(buf, this.rankRewardList.get(rankRewardListI));
 		}
-
-
 		return true;
 	}
 }
-

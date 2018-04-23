@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.equip.msg.bean.EquipsChange;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>装备信息更新</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResEquipChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResEquipChangeMessage extends AbstractMessage {
 	/**
 	 * 更换的装备
 	 */
-	private List<EquipsChange> equipChange = new ArrayList<EquipsChange>();
-
+	private List<EquipsChange> equipChange = new ArrayList<>();
 
 	public List<EquipsChange> getEquipChange() {
 		return equipChange;
@@ -43,9 +45,9 @@ public class ResEquipChangeMessage extends AbstractMessage {
 		this.equipChange = equipChange;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int equipChangeLength = readShort(buf);
 		for (int equipChangeI = 0; equipChangeI < equipChangeLength; equipChangeI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResEquipChangeMessage extends AbstractMessage {
 				this.equipChange.add(equipsChange);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.equipChange.size());
 		for (int equipChangeI = 0; equipChangeI < this.equipChange.size(); equipChangeI++) {
 			this.writeBean(buf, this.equipChange.get(equipChangeI));
 		}
-
-
 		return true;
 	}
 }
-

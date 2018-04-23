@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.arena.msg.bean.ArenaRankBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送每日结算排行信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResArenaRankDailyInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResArenaRankDailyInfoMessage extends AbstractMessage {
 	/**
 	 * arenaRanklist
 	 */
-	private List<ArenaRankBean> arenaRanklist = new ArrayList<ArenaRankBean>();
-
+	private List<ArenaRankBean> arenaRanklist = new ArrayList<>();
 
 	public List<ArenaRankBean> getArenaRanklist() {
 		return arenaRanklist;
@@ -43,9 +45,9 @@ public class ResArenaRankDailyInfoMessage extends AbstractMessage {
 		this.arenaRanklist = arenaRanklist;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int arenaRanklistLength = readShort(buf);
 		for (int arenaRanklistI = 0; arenaRanklistI < arenaRanklistLength; arenaRanklistI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResArenaRankDailyInfoMessage extends AbstractMessage {
 				this.arenaRanklist.add(arenaRankBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.arenaRanklist.size());
 		for (int arenaRanklistI = 0; arenaRanklistI < this.arenaRanklist.size(); arenaRanklistI++) {
 			this.writeBean(buf, this.arenaRanklist.get(arenaRanklistI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.card.msg.bean.CardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送玩家卡片信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleCardInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,17 +36,14 @@ public class ResRoleCardInfoMessage extends AbstractMessage {
 	 * 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 卡片列表
 	 */
-	private List<CardBean> cardList = new ArrayList<CardBean>();
-
+	private List<CardBean> cardList = new ArrayList<>();
 
 	public int getType() {
 		return type;
@@ -53,8 +53,7 @@ public class ResRoleCardInfoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -62,8 +61,7 @@ public class ResRoleCardInfoMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public List<CardBean> getCardList() {
+		public List<CardBean> getCardList() {
 		return cardList;
 	}
 
@@ -71,9 +69,9 @@ public class ResRoleCardInfoMessage extends AbstractMessage {
 		this.cardList = cardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		int cardListLength = readShort(buf);
@@ -86,22 +84,18 @@ public class ResRoleCardInfoMessage extends AbstractMessage {
 				this.cardList.add(cardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		writeShort(buf, this.cardList.size());
 		for (int cardListI = 0; cardListI < this.cardList.size(); cardListI++) {
 			this.writeBean(buf, this.cardList.get(cardListI));
 		}
-
-
 		return true;
 	}
 }
-

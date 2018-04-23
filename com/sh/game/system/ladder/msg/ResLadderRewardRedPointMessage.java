@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>小红点</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderRewardRedPointMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResLadderRewardRedPointMessage extends AbstractMessage {
 	 */
 	private int ifHad;
 
-
 	public int getIfHad() {
 		return ifHad;
 	}
@@ -42,19 +42,17 @@ public class ResLadderRewardRedPointMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.ifHad = readInt(buf, false);
 
+		this.ifHad = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, ifHad, false);
 
+		this.writeInt(buf, ifHad, false);
 		return true;
 	}
 }
-

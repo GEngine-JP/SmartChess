@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送竞技场结算信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResArenaRankRewardInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResArenaRankRewardInfoMessage extends AbstractMessage {
 	 * 结算时排名
 	 */
 	private int oldRank;
-
 	/**
 	 * 奖励状态 1.可领取 2.已领取
 	 */
 	private int rewardState;
-
 
 	public int getOldRank() {
 		return oldRank;
@@ -46,8 +45,7 @@ public class ResArenaRankRewardInfoMessage extends AbstractMessage {
 		this.oldRank = oldRank;
 	}
 
-	
-	public int getRewardState() {
+		public int getRewardState() {
 		return rewardState;
 	}
 
@@ -56,21 +54,19 @@ public class ResArenaRankRewardInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.oldRank = readInt(buf, false);
 		this.rewardState = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, oldRank, false);
 		this.writeInt(buf, rewardState, false);
-
 		return true;
 	}
 }
-

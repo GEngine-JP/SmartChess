@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求召唤行会boss（进入副本）</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqCallUnionBossMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqCallUnionBossMessage extends AbstractMessage {
 	 */
 	private int itemId;
 
-
 	public int getItemId() {
 		return itemId;
 	}
@@ -42,19 +42,17 @@ public class ReqCallUnionBossMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.itemId = readInt(buf, false);
 
+		this.itemId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, itemId, false);
 
+		this.writeInt(buf, itemId, false);
 		return true;
 	}
 }
-

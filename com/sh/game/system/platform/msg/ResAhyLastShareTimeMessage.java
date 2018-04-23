@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>爱微游</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAhyLastShareTimeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResAhyLastShareTimeMessage extends AbstractMessage {
 	 * 上次分享时间
 	 */
 	private int lastShareTime;
-
 	/**
 	 * 己分享次数
 	 */
 	private int shareCount;
-
 
 	public int getLastShareTime() {
 		return lastShareTime;
@@ -46,8 +45,7 @@ public class ResAhyLastShareTimeMessage extends AbstractMessage {
 		this.lastShareTime = lastShareTime;
 	}
 
-	
-	public int getShareCount() {
+		public int getShareCount() {
 		return shareCount;
 	}
 
@@ -56,21 +54,19 @@ public class ResAhyLastShareTimeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.lastShareTime = readInt(buf, false);
 		this.shareCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, lastShareTime, false);
 		this.writeInt(buf, shareCount, false);
-
 		return true;
 	}
 }
-

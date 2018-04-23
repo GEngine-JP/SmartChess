@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求灵宝重生奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLingBaoRebirthRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqLingBaoRebirthRewardMessage extends AbstractMessage {
 	 */
 	private long uniqueId;
 
-
 	public long getUniqueId() {
 		return uniqueId;
 	}
@@ -42,19 +42,17 @@ public class ReqLingBaoRebirthRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.uniqueId = readLong(buf);
 
+		this.uniqueId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, uniqueId);
 
+		this.writeLong(buf, uniqueId);
 		return true;
 	}
 }
-

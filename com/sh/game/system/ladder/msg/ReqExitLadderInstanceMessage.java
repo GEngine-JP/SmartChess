@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求主动退出副本</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqExitLadderInstanceMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqExitLadderInstanceMessage extends AbstractMessage {
 	 * 副本唯一id
 	 */
 	private int instanceId;
-
 	/**
 	 * 播放进度
 	 */
 	private int currentTime;
-
 
 	public int getInstanceId() {
 		return instanceId;
@@ -46,8 +45,7 @@ public class ReqExitLadderInstanceMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getCurrentTime() {
+		public int getCurrentTime() {
 		return currentTime;
 	}
 
@@ -56,21 +54,19 @@ public class ReqExitLadderInstanceMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.instanceId = readInt(buf, false);
 		this.currentTime = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, currentTime, false);
-
 		return true;
 	}
 }
-

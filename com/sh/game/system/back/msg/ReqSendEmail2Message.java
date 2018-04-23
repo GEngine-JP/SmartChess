@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通过id发邮件（后台用）</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqSendEmail2Message extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqSendEmail2Message extends AbstractMessage {
 	 * 收件人id
 	 */
 	private long targetId;
-
 	/**
 	 * 邮件Id
 	 */
 	private int emailConfigId;
-
 
 	public long getTargetId() {
 		return targetId;
@@ -46,8 +45,7 @@ public class ReqSendEmail2Message extends AbstractMessage {
 		this.targetId = targetId;
 	}
 
-	
-	public int getEmailConfigId() {
+		public int getEmailConfigId() {
 		return emailConfigId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqSendEmail2Message extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetId = readLong(buf);
 		this.emailConfigId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, emailConfigId, false);
-
 		return true;
 	}
 }
-

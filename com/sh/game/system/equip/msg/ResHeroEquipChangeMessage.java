@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.equip.msg.bean.EquipsChange;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>英雄装备信息更新</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeroEquipChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResHeroEquipChangeMessage extends AbstractMessage {
 	/**
 	 * 更换的装备
 	 */
-	private List<EquipsChange> equipChange = new ArrayList<EquipsChange>();
-
+	private List<EquipsChange> equipChange = new ArrayList<>();
 	/**
 	 * 英雄的id
 	 */
 	private long heroId;
-
 
 	public List<EquipsChange> getEquipChange() {
 		return equipChange;
@@ -47,7 +48,6 @@ public class ResHeroEquipChangeMessage extends AbstractMessage {
 	public void setEquipChange(List<EquipsChange> equipChange) {
 		this.equipChange = equipChange;
 	}
-
 	public long getHeroId() {
 		return heroId;
 	}
@@ -57,9 +57,9 @@ public class ResHeroEquipChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int equipChangeLength = readShort(buf);
 		for (int equipChangeI = 0; equipChangeI < equipChangeLength; equipChangeI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResHeroEquipChangeMessage extends AbstractMessage {
 				equipsChange.read(buf);
 				this.equipChange.add(equipsChange);
 			}
-		}
-
-		this.heroId = readLong(buf);
-
+		}		this.heroId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.equipChange.size());
 		for (int equipChangeI = 0; equipChangeI < this.equipChange.size(); equipChangeI++) {
 			this.writeBean(buf, this.equipChange.get(equipChangeI));
-		}
-
-		this.writeLong(buf, heroId);
-
+		}		this.writeLong(buf, heroId);
 		return true;
 	}
 }
-

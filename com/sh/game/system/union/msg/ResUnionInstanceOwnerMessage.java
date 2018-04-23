@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回帮会BOSS副本归属信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResUnionInstanceOwnerMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResUnionInstanceOwnerMessage extends AbstractMessage {
 	 */
 	private long ownerId;
 
-
 	public long getOwnerId() {
 		return ownerId;
 	}
@@ -42,19 +42,17 @@ public class ResUnionInstanceOwnerMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.ownerId = readLong(buf);
 
+		this.ownerId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, ownerId);
 
+		this.writeLong(buf, ownerId);
 		return true;
 	}
 }
-

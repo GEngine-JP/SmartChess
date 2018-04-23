@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>获取订单号</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqOrderIdMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqOrderIdMessage extends AbstractMessage {
 	 */
 	private int goodsId;
 
-
 	public int getGoodsId() {
 		return goodsId;
 	}
@@ -42,19 +42,17 @@ public class ReqOrderIdMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.goodsId = readInt(buf, false);
 
+		this.goodsId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, goodsId, false);
 
+		this.writeInt(buf, goodsId, false);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求领取奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetLoginGiftMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqGetLoginGiftMessage extends AbstractMessage {
 	 */
 	private int loginDay;
 
-
 	public int getLoginDay() {
 		return loginDay;
 	}
@@ -42,19 +42,17 @@ public class ReqGetLoginGiftMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.loginDay = readInt(buf, false);
 
+		this.loginDay = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, loginDay, false);
 
+		this.writeInt(buf, loginDay, false);
 		return true;
 	}
 }
-

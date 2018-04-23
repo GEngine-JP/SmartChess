@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求签到领奖</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqGetSignRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqGetSignRewardMessage extends AbstractMessage {
 	 * 签到奖励id
 	 */
 	private int rewardId;
-
 	/**
 	 * 类型 1第一次领取 2再次领取
 	 */
 	private int type;
-
 
 	public int getRewardId() {
 		return rewardId;
@@ -46,8 +45,7 @@ public class ReqGetSignRewardMessage extends AbstractMessage {
 		this.rewardId = rewardId;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -56,21 +54,19 @@ public class ReqGetSignRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.rewardId = readInt(buf, false);
 		this.type = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, rewardId, false);
 		this.writeInt(buf, type, false);
-
 		return true;
 	}
 }
-

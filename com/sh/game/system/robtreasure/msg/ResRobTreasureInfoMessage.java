@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.robtreasure.msg.bean.FragmentBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回夺宝信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRobTreasureInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResRobTreasureInfoMessage extends AbstractMessage {
 	/**
 	 * 碎片
 	 */
-	private List<FragmentBean> fragmentList = new ArrayList<FragmentBean>();
-
+	private List<FragmentBean> fragmentList = new ArrayList<>();
 	/**
 	 * 免战牌结束时间戳
 	 */
 	private int endTime;
-
 
 	public List<FragmentBean> getFragmentList() {
 		return fragmentList;
@@ -47,7 +48,6 @@ public class ResRobTreasureInfoMessage extends AbstractMessage {
 	public void setFragmentList(List<FragmentBean> fragmentList) {
 		this.fragmentList = fragmentList;
 	}
-
 	public int getEndTime() {
 		return endTime;
 	}
@@ -57,9 +57,9 @@ public class ResRobTreasureInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int fragmentListLength = readShort(buf);
 		for (int fragmentListI = 0; fragmentListI < fragmentListLength; fragmentListI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResRobTreasureInfoMessage extends AbstractMessage {
 				fragmentBean.read(buf);
 				this.fragmentList.add(fragmentBean);
 			}
-		}
-
-		this.endTime = readInt(buf, false);
-
+		}		this.endTime = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.fragmentList.size());
 		for (int fragmentListI = 0; fragmentListI < this.fragmentList.size(); fragmentListI++) {
 			this.writeBean(buf, this.fragmentList.get(fragmentListI));
-		}
-
-		this.writeInt(buf, endTime, false);
-
+		}		this.writeInt(buf, endTime, false);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>取消匹配</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCancelLadderMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResCancelLadderMessage extends AbstractMessage {
 	 */
 	private int result;
 
-
 	public int getResult() {
 		return result;
 	}
@@ -42,19 +42,17 @@ public class ResCancelLadderMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.result = readInt(buf, false);
 
+		this.result = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, result, false);
 
+		this.writeInt(buf, result, false);
 		return true;
 	}
 }
-

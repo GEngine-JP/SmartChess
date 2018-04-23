@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求作假野外boss合击</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqFalseOutBossCombineSkillMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqFalseOutBossCombineSkillMessage extends AbstractMessage {
 	 */
 	private int skillId;
 
-
 	public int getSkillId() {
 		return skillId;
 	}
@@ -42,19 +42,17 @@ public class ReqFalseOutBossCombineSkillMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.skillId = readInt(buf, false);
 
+		this.skillId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, skillId, false);
 
+		this.writeInt(buf, skillId, false);
 		return true;
 	}
 }
-

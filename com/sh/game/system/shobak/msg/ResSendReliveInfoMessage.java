@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>沙巴克复活信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendReliveInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSendReliveInfoMessage extends AbstractMessage {
 	 * 复活次数
 	 */
 	private int reliveNum;
-
 	/**
 	 * 买活次数
 	 */
 	private int buyReliveNum;
-
 
 	public int getReliveNum() {
 		return reliveNum;
@@ -46,8 +45,7 @@ public class ResSendReliveInfoMessage extends AbstractMessage {
 		this.reliveNum = reliveNum;
 	}
 
-	
-	public int getBuyReliveNum() {
+		public int getBuyReliveNum() {
 		return buyReliveNum;
 	}
 
@@ -56,21 +54,19 @@ public class ResSendReliveInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.reliveNum = readInt(buf, false);
 		this.buyReliveNum = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, reliveNum, false);
 		this.writeInt(buf, buyReliveNum, false);
-
 		return true;
 	}
 }
-

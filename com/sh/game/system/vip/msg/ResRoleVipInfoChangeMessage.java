@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通知玩家vip等级发生变化</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleVipInfoChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResRoleVipInfoChangeMessage extends AbstractMessage {
 	 * 当前经验
 	 */
 	private int curExp;
-
 	/**
 	 * 当前等级
 	 */
 	private int curLevel;
-
 
 	public int getCurExp() {
 		return curExp;
@@ -46,8 +45,7 @@ public class ResRoleVipInfoChangeMessage extends AbstractMessage {
 		this.curExp = curExp;
 	}
 
-	
-	public int getCurLevel() {
+		public int getCurLevel() {
 		return curLevel;
 	}
 
@@ -56,21 +54,19 @@ public class ResRoleVipInfoChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.curExp = readInt(buf, false);
 		this.curLevel = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, curExp, false);
 		this.writeInt(buf, curLevel, false);
-
 		return true;
 	}
 }
-

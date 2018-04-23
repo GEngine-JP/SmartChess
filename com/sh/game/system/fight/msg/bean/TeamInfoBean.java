@@ -1,25 +1,26 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.fight.msg.bean.TeamMemberBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class TeamInfoBean extends KryoBean {
 
 	/**
 	 * 参战列表
 	 */
-	private List<TeamMemberBean> teamMemberBean = new ArrayList<TeamMemberBean>();
-
+	private List<TeamMemberBean> teamMemberBean = new ArrayList<>();
 
 	public List<TeamMemberBean> getTeamMemberBean() {
 		return teamMemberBean;
@@ -29,9 +30,9 @@ public class TeamInfoBean extends KryoBean {
 		this.teamMemberBean = teamMemberBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int teamMemberBeanLength = readShort(buf);
 		for (int teamMemberBeanI = 0; teamMemberBeanI < teamMemberBeanLength; teamMemberBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -42,20 +43,16 @@ public class TeamInfoBean extends KryoBean {
 				this.teamMemberBean.add(teamMemberBean);
 			}
 		}
-
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.teamMemberBean.size());
 		for (int teamMemberBeanI = 0; teamMemberBeanI < this.teamMemberBean.size(); teamMemberBeanI++) {
 			this.writeBean(buf, this.teamMemberBean.get(teamMemberBeanI));
 		}
-
-
 		return true;
 	}
 }
-

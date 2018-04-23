@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.robtreasure.msg.bean.RewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回一键夺宝结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 
 	@Override
@@ -33,27 +36,22 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 	 * 成功1失败0
 	 */
 	private int result;
-
 	/**
 	 * 夺宝次数
 	 */
 	private int count;
-
 	/**
 	 * 使用精力丹个数
 	 */
 	private int energyDanNum;
-
 	/**
 	 * 基础奖励
 	 */
-	private List<RewardBean> basicReward = new ArrayList<RewardBean>();
-
+	private List<RewardBean> basicReward = new ArrayList<>();
 	/**
 	 * 奖励
 	 */
-	private List<RewardBean> rewardList = new ArrayList<RewardBean>();
-
+	private List<RewardBean> rewardList = new ArrayList<>();
 
 	public int getResult() {
 		return result;
@@ -63,8 +61,7 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -72,8 +69,7 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 		this.count = count;
 	}
 
-	
-	public int getEnergyDanNum() {
+		public int getEnergyDanNum() {
 		return energyDanNum;
 	}
 
@@ -81,15 +77,13 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 		this.energyDanNum = energyDanNum;
 	}
 
-	
-	public List<RewardBean> getBasicReward() {
+		public List<RewardBean> getBasicReward() {
 		return basicReward;
 	}
 
 	public void setBasicReward(List<RewardBean> basicReward) {
 		this.basicReward = basicReward;
 	}
-
 	public List<RewardBean> getRewardList() {
 		return rewardList;
 	}
@@ -98,9 +92,9 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 		this.rewardList = rewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.result = readInt(buf, false);
 		this.count = readInt(buf, false);
 		this.energyDanNum = readInt(buf, false);
@@ -113,9 +107,7 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 				rewardBean.read(buf);
 				this.basicReward.add(rewardBean);
 			}
-		}
-
-		int rewardListLength = readShort(buf);
+		}		int rewardListLength = readShort(buf);
 		for (int rewardListI = 0; rewardListI < rewardListLength; rewardListI++) {
 			if (readByte(buf) == 0) { 
 				this.rewardList.add(null);
@@ -125,28 +117,22 @@ public class ResOneKeyRobTreasureMessage extends AbstractMessage {
 				this.rewardList.add(rewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, result, false);
 		this.writeInt(buf, count, false);
 		this.writeInt(buf, energyDanNum, false);
 		writeShort(buf, this.basicReward.size());
 		for (int basicRewardI = 0; basicRewardI < this.basicReward.size(); basicRewardI++) {
 			this.writeBean(buf, this.basicReward.get(basicRewardI));
-		}
-
-		writeShort(buf, this.rewardList.size());
+		}		writeShort(buf, this.rewardList.size());
 		for (int rewardListI = 0; rewardListI < this.rewardList.size(); rewardListI++) {
 			this.writeBean(buf, this.rewardList.get(rewardListI));
 		}
-
-
 		return true;
 	}
 }
-

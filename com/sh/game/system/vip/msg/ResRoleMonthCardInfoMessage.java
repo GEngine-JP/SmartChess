@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回月卡信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 	 * 是否有月卡生效 0否 1是
 	 */
 	private int isCard;
-
 	/**
 	 * 月卡剩余天数
 	 */
 	private int dayNum;
-
 	/**
 	 * 当天福利是否领取 0否 1是
 	 */
 	private int isGot;
-
 
 	public int getIsCard() {
 		return isCard;
@@ -51,8 +49,7 @@ public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 		this.isCard = isCard;
 	}
 
-	
-	public int getDayNum() {
+		public int getDayNum() {
 		return dayNum;
 	}
 
@@ -60,8 +57,7 @@ public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 		this.dayNum = dayNum;
 	}
 
-	
-	public int getIsGot() {
+		public int getIsGot() {
 		return isGot;
 	}
 
@@ -70,23 +66,21 @@ public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.isCard = readInt(buf, false);
 		this.dayNum = readInt(buf, false);
 		this.isGot = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, isCard, false);
 		this.writeInt(buf, dayNum, false);
 		this.writeInt(buf, isGot, false);
-
 		return true;
 	}
 }
-

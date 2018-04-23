@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.legacyEquip.msg.bean.LegacyEquipBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回所有传世装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 	/**
 	 * 传世装备列表
 	 */
-	private List<LegacyEquipBean> legacyEquipList = new ArrayList<LegacyEquipBean>();
-
+	private List<LegacyEquipBean> legacyEquipList = new ArrayList<>();
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 
 	public List<LegacyEquipBean> getLegacyEquipList() {
 		return legacyEquipList;
@@ -47,7 +48,6 @@ public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 	public void setLegacyEquipList(List<LegacyEquipBean> legacyEquipList) {
 		this.legacyEquipList = legacyEquipList;
 	}
-
 	public int getFightValue() {
 		return fightValue;
 	}
@@ -57,9 +57,9 @@ public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int legacyEquipListLength = readShort(buf);
 		for (int legacyEquipListI = 0; legacyEquipListI < legacyEquipListLength; legacyEquipListI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 				legacyEquipBean.read(buf);
 				this.legacyEquipList.add(legacyEquipBean);
 			}
-		}
-
-		this.fightValue = readInt(buf, false);
-
+		}		this.fightValue = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.legacyEquipList.size());
 		for (int legacyEquipListI = 0; legacyEquipListI < this.legacyEquipList.size(); legacyEquipListI++) {
 			this.writeBean(buf, this.legacyEquipList.get(legacyEquipListI));
-		}
-
-		this.writeInt(buf, fightValue, false);
-
+		}		this.writeInt(buf, fightValue, false);
 		return true;
 	}
 }
-

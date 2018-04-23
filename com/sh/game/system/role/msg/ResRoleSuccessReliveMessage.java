@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送立即复活成功消息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleSuccessReliveMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +33,14 @@ public class ResRoleSuccessReliveMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
+
 		return true;
 	}
 }
-

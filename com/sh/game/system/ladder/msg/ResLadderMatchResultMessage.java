@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回匹配结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderMatchResultMessage extends AbstractMessage {
 
 	@Override
@@ -31,32 +32,26 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 	 * 队伍id
 	 */
 	private int teamId;
-
 	/**
 	 * 目标名字
 	 */
 	private String targetName;
-
 	/**
 	 * 目标职业
 	 */
 	private int targetCareer;
-
 	/**
 	 * 目标性别
 	 */
 	private int targetSex;
-
 	/**
 	 * 目标段位
 	 */
 	private int targetRank;
-
 	/**
 	 * 目标星数
 	 */
 	private int targetStar;
-
 
 	public int getTeamId() {
 		return teamId;
@@ -66,8 +61,7 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 		this.teamId = teamId;
 	}
 
-	
-	public String getTargetName() {
+		public String getTargetName() {
 		return targetName;
 	}
 
@@ -75,8 +69,7 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 		this.targetName = targetName;
 	}
 
-	
-	public int getTargetCareer() {
+		public int getTargetCareer() {
 		return targetCareer;
 	}
 
@@ -84,8 +77,7 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 		this.targetCareer = targetCareer;
 	}
 
-	
-	public int getTargetSex() {
+		public int getTargetSex() {
 		return targetSex;
 	}
 
@@ -93,8 +85,7 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 		this.targetSex = targetSex;
 	}
 
-	
-	public int getTargetRank() {
+		public int getTargetRank() {
 		return targetRank;
 	}
 
@@ -102,8 +93,7 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 		this.targetRank = targetRank;
 	}
 
-	
-	public int getTargetStar() {
+		public int getTargetStar() {
 		return targetStar;
 	}
 
@@ -112,29 +102,27 @@ public class ResLadderMatchResultMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.teamId = readInt(buf, false);
 		this.targetName = readString(buf);
 		this.targetCareer = readInt(buf, false);
 		this.targetSex = readInt(buf, false);
 		this.targetRank = readInt(buf, false);
 		this.targetStar = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, teamId, false);
 		this.writeString(buf, targetName);
 		this.writeInt(buf, targetCareer, false);
 		this.writeInt(buf, targetSex, false);
 		this.writeInt(buf, targetRank, false);
 		this.writeInt(buf, targetStar, false);
-
 		return true;
 	}
 }
-

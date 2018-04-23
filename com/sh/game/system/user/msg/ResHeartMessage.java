@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>心跳返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeartMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResHeartMessage extends AbstractMessage {
 	 */
 	private long serverTime;
 
-
 	public long getServerTime() {
 		return serverTime;
 	}
@@ -42,19 +42,17 @@ public class ResHeartMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.serverTime = readLong(buf);
 
+		this.serverTime = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, serverTime);
 
+		this.writeLong(buf, serverTime);
 		return true;
 	}
 }
-

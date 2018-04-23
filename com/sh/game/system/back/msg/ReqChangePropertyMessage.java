@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>后台修改配置文件</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangePropertyMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqChangePropertyMessage extends AbstractMessage {
 	 * 键
 	 */
 	private String key;
-
 	/**
 	 * 值
 	 */
 	private String value;
-
 
 	public String getKey() {
 		return key;
@@ -46,8 +45,7 @@ public class ReqChangePropertyMessage extends AbstractMessage {
 		this.key = key;
 	}
 
-	
-	public String getValue() {
+		public String getValue() {
 		return value;
 	}
 
@@ -56,21 +54,19 @@ public class ReqChangePropertyMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.key = readString(buf);
 		this.value = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, key);
 		this.writeString(buf, value);
-
 		return true;
 	}
 }
-

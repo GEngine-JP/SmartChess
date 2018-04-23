@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>错误</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResErrorMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResErrorMessage extends AbstractMessage {
 	 */
 	private String error;
 
-
 	public String getError() {
 		return error;
 	}
@@ -42,19 +42,17 @@ public class ResErrorMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.error = readString(buf);
 
+		this.error = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, error);
 
+		this.writeString(buf, error);
 		return true;
 	}
 }
-

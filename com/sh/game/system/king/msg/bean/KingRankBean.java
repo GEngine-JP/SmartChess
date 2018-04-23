@@ -1,63 +1,55 @@
 package com.sh.game.system.king.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class KingRankBean extends KryoBean {
 
 	/**
 	 * 角色id
 	 */
 	private long roleId;
-
 	/**
 	 * 玩家名
 	 */
 	private String name;
-
 	/**
 	 * 排名
 	 */
 	private int rank;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 战斗力
 	 */
 	private int nbValue;
-
 	/**
 	 * 层数
 	 */
 	private int floor;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -67,8 +59,7 @@ public class KingRankBean extends KryoBean {
 		this.roleId = roleId;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -76,8 +67,7 @@ public class KingRankBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -85,8 +75,7 @@ public class KingRankBean extends KryoBean {
 		this.rank = rank;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -94,8 +83,7 @@ public class KingRankBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -103,8 +91,7 @@ public class KingRankBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getNbValue() {
+		public int getNbValue() {
 		return nbValue;
 	}
 
@@ -112,8 +99,7 @@ public class KingRankBean extends KryoBean {
 		this.nbValue = nbValue;
 	}
 
-	
-	public int getFloor() {
+		public int getFloor() {
 		return floor;
 	}
 
@@ -121,8 +107,7 @@ public class KingRankBean extends KryoBean {
 		this.floor = floor;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -130,8 +115,7 @@ public class KingRankBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -140,9 +124,9 @@ public class KingRankBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.name = readString(buf);
 		this.rank = readInt(buf, false);
@@ -152,12 +136,12 @@ public class KingRankBean extends KryoBean {
 		this.floor = readInt(buf, false);
 		this.career = readInt(buf, false);
 		this.sex = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeString(buf, name);
 		this.writeInt(buf, rank, false);
@@ -167,8 +151,6 @@ public class KingRankBean extends KryoBean {
 		this.writeInt(buf, floor, false);
 		this.writeInt(buf, career, false);
 		this.writeInt(buf, sex, false);
-
 		return true;
 	}
 }
-

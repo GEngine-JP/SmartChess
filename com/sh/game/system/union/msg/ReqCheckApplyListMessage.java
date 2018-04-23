@@ -4,14 +4,17 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>请求处理申请列表信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqCheckApplyListMessage extends AbstractMessage {
 
 	@Override
@@ -31,13 +34,11 @@ public class ReqCheckApplyListMessage extends AbstractMessage {
 	/**
 	 * 选择处理的申请玩家列表
 	 */
-	private List<Long> list = new ArrayList<Long>();
-
+	private List<Long> list = new ArrayList<>();
 	/**
 	 * 处理方式 1拒绝2同意
 	 */
 	private int checkState;
-
 
 	public List<Long> getList() {
 		return list;
@@ -46,7 +47,6 @@ public class ReqCheckApplyListMessage extends AbstractMessage {
 	public void setList(List<Long> list) {
 		this.list = list;
 	}
-
 	public int getCheckState() {
 		return checkState;
 	}
@@ -56,29 +56,23 @@ public class ReqCheckApplyListMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int listLength = readShort(buf);
 		for (int listI = 0; listI < listLength; listI++) {
 			this.list.add(this.readLong(buf));
-		}
-
-		this.checkState = readInt(buf, false);
-
+		}		this.checkState = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.list.size());
 		for (int listI = 0; listI < this.list.size(); listI++) {
 			this.writeLong(buf, this.list.get(listI));
-		}
-
-		this.writeInt(buf, checkState, false);
-
+		}		this.writeInt(buf, checkState, false);
 		return true;
 	}
 }
-

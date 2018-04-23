@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.equip.msg.bean.HeroEquipsBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送所有英雄装备信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendAllHeroEquipMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendAllHeroEquipMessage extends AbstractMessage {
 	/**
 	 * 所有英雄的装备信息
 	 */
-	private List<HeroEquipsBean> heroEquips = new ArrayList<HeroEquipsBean>();
-
+	private List<HeroEquipsBean> heroEquips = new ArrayList<>();
 
 	public List<HeroEquipsBean> getHeroEquips() {
 		return heroEquips;
@@ -43,9 +45,9 @@ public class ResSendAllHeroEquipMessage extends AbstractMessage {
 		this.heroEquips = heroEquips;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int heroEquipsLength = readShort(buf);
 		for (int heroEquipsI = 0; heroEquipsI < heroEquipsLength; heroEquipsI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendAllHeroEquipMessage extends AbstractMessage {
 				this.heroEquips.add(heroEquipsBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.heroEquips.size());
 		for (int heroEquipsI = 0; heroEquipsI < this.heroEquips.size(); heroEquipsI++) {
 			this.writeBean(buf, this.heroEquips.get(heroEquipsI));
 		}
-
-
 		return true;
 	}
 }
-

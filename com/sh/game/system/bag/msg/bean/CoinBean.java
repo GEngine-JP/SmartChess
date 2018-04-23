@@ -1,28 +1,27 @@
 package com.sh.game.system.bag.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class CoinBean extends KryoBean {
 
 	/**
 	 * 货币ID
 	 */
 	private int itemId;
-
 	/**
 	 * 货币数量
 	 */
 	private long count;
-
 
 	public int getItemId() {
 		return itemId;
@@ -32,8 +31,7 @@ public class CoinBean extends KryoBean {
 		this.itemId = itemId;
 	}
 
-	
-	public long getCount() {
+		public long getCount() {
 		return count;
 	}
 
@@ -42,21 +40,19 @@ public class CoinBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.itemId = readInt(buf, false);
 		this.count = readLong(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, itemId, false);
 		this.writeLong(buf, count);
-
 		return true;
 	}
 }
-

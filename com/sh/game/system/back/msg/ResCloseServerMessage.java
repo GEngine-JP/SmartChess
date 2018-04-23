@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求关服</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCloseServerMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResCloseServerMessage extends AbstractMessage {
 	 * 执行代码
 	 */
 	private int code;
-
 	/**
 	 * 信息
 	 */
 	private String info;
-
 
 	public int getCode() {
 		return code;
@@ -46,8 +45,7 @@ public class ResCloseServerMessage extends AbstractMessage {
 		this.code = code;
 	}
 
-	
-	public String getInfo() {
+		public String getInfo() {
 		return info;
 	}
 
@@ -56,21 +54,19 @@ public class ResCloseServerMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.code = readInt(buf, false);
 		this.info = readString(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, code, false);
 		this.writeString(buf, info);
-
 		return true;
 	}
 }
-

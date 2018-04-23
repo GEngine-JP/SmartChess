@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送烧猪副本面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendFirePigInstancePanelInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSendFirePigInstancePanelInfoMessage extends AbstractMessage {
 	 * 剩余挑战次数
 	 */
 	private int remainNum;
-
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 
 	public int getRemainNum() {
 		return remainNum;
@@ -46,8 +45,7 @@ public class ResSendFirePigInstancePanelInfoMessage extends AbstractMessage {
 		this.remainNum = remainNum;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -56,21 +54,19 @@ public class ResSendFirePigInstancePanelInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.remainNum = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, remainNum, false);
 		this.writeInt(buf, instanceId, false);
-
 		return true;
 	}
 }
-

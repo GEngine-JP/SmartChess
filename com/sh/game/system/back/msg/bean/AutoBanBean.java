@@ -1,33 +1,31 @@
 package com.sh.game.system.back.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class AutoBanBean extends KryoBean {
 
 	/**
 	 * 玩家uid
 	 */
 	private long uid;
-
 	/**
 	 * 解禁时间
 	 */
 	private int unBanTime;
-
 	/**
 	 * 封禁原因
 	 */
 	private String banReason;
-
 
 	public long getUid() {
 		return uid;
@@ -37,8 +35,7 @@ public class AutoBanBean extends KryoBean {
 		this.uid = uid;
 	}
 
-	
-	public int getUnBanTime() {
+		public int getUnBanTime() {
 		return unBanTime;
 	}
 
@@ -46,8 +43,7 @@ public class AutoBanBean extends KryoBean {
 		this.unBanTime = unBanTime;
 	}
 
-	
-	public String getBanReason() {
+		public String getBanReason() {
 		return banReason;
 	}
 
@@ -56,23 +52,21 @@ public class AutoBanBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.unBanTime = readInt(buf, false);
 		this.banReason = readString(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeInt(buf, unBanTime, false);
 		this.writeString(buf, banReason);
-
 		return true;
 	}
 }
-

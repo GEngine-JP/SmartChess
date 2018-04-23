@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.UnionInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送帮会列表信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendAllUnionInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendAllUnionInfoMessage extends AbstractMessage {
 	/**
 	 * 帮会列表信息
 	 */
-	private List<UnionInfoBean> unionInfo = new ArrayList<UnionInfoBean>();
-
+	private List<UnionInfoBean> unionInfo = new ArrayList<>();
 
 	public List<UnionInfoBean> getUnionInfo() {
 		return unionInfo;
@@ -43,9 +45,9 @@ public class ResSendAllUnionInfoMessage extends AbstractMessage {
 		this.unionInfo = unionInfo;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int unionInfoLength = readShort(buf);
 		for (int unionInfoI = 0; unionInfoI < unionInfoLength; unionInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendAllUnionInfoMessage extends AbstractMessage {
 				this.unionInfo.add(unionInfoBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.unionInfo.size());
 		for (int unionInfoI = 0; unionInfoI < this.unionInfo.size(); unionInfoI++) {
 			this.writeBean(buf, this.unionInfo.get(unionInfoI));
 		}
-
-
 		return true;
 	}
 }
-

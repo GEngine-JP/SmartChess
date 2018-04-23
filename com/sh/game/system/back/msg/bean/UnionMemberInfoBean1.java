@@ -1,58 +1,51 @@
 package com.sh.game.system.back.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class UnionMemberInfoBean1 extends KryoBean {
 
 	/**
 	 * 玩家id
 	 */
 	private long id;
-
 	/**
 	 * 成员名称
 	 */
 	private String memberName;
-
 	/**
 	 * 成员职位
 	 */
 	private int position;
-
 	/**
 	 * 成员等级
 	 */
 	private int memberLevel;
-
 	/**
 	 * 战力
 	 */
 	private int fightPower;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * vip等级
 	 */
 	private int vipLevel;
-
 	/**
 	 * 充值额
 	 */
 	private int recharge;
-
 
 	public long getId() {
 		return id;
@@ -62,8 +55,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.id = id;
 	}
 
-	
-	public String getMemberName() {
+		public String getMemberName() {
 		return memberName;
 	}
 
@@ -71,8 +63,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.memberName = memberName;
 	}
 
-	
-	public int getPosition() {
+		public int getPosition() {
 		return position;
 	}
 
@@ -80,8 +71,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.position = position;
 	}
 
-	
-	public int getMemberLevel() {
+		public int getMemberLevel() {
 		return memberLevel;
 	}
 
@@ -89,8 +79,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.memberLevel = memberLevel;
 	}
 
-	
-	public int getFightPower() {
+		public int getFightPower() {
 		return fightPower;
 	}
 
@@ -98,8 +87,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.fightPower = fightPower;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -107,8 +95,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getVipLevel() {
+		public int getVipLevel() {
 		return vipLevel;
 	}
 
@@ -116,8 +103,7 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.vipLevel = vipLevel;
 	}
 
-	
-	public int getRecharge() {
+		public int getRecharge() {
 		return recharge;
 	}
 
@@ -126,9 +112,9 @@ public class UnionMemberInfoBean1 extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.id = readLong(buf);
 		this.memberName = readString(buf);
 		this.position = readInt(buf, false);
@@ -137,12 +123,12 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.sex = readInt(buf, false);
 		this.vipLevel = readInt(buf, false);
 		this.recharge = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, id);
 		this.writeString(buf, memberName);
 		this.writeInt(buf, position, false);
@@ -151,8 +137,6 @@ public class UnionMemberInfoBean1 extends KryoBean {
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, vipLevel, false);
 		this.writeInt(buf, recharge, false);
-
 		return true;
 	}
 }
-

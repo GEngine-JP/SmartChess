@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求激活光翼装备</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqActivateWingEquipMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqActivateWingEquipMessage extends AbstractMessage {
 	 * 1角色光翼 2英雄光翼
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 光翼装备类型
 	 */
 	private int wingEquipType;
-
 
 	public int getType() {
 		return type;
@@ -51,8 +49,7 @@ public class ReqActivateWingEquipMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqActivateWingEquipMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getWingEquipType() {
+		public int getWingEquipType() {
 		return wingEquipType;
 	}
 
@@ -70,23 +66,21 @@ public class ReqActivateWingEquipMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.wingEquipType = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, wingEquipType, false);
-
 		return true;
 	}
 }
-

@@ -1,33 +1,31 @@
 package com.sh.game.system.mining.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class MinerBean extends KryoBean {
 
 	/**
 	 * 矿工id
 	 */
 	private int minerId;
-
 	/**
 	 * 矿工类型
 	 */
 	private int minerType;
-
 	/**
 	 * 收获时间
 	 */
 	private int gainTime;
-
 
 	public int getMinerId() {
 		return minerId;
@@ -37,8 +35,7 @@ public class MinerBean extends KryoBean {
 		this.minerId = minerId;
 	}
 
-	
-	public int getMinerType() {
+		public int getMinerType() {
 		return minerType;
 	}
 
@@ -46,8 +43,7 @@ public class MinerBean extends KryoBean {
 		this.minerType = minerType;
 	}
 
-	
-	public int getGainTime() {
+		public int getGainTime() {
 		return gainTime;
 	}
 
@@ -56,23 +52,21 @@ public class MinerBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.minerId = readInt(buf, false);
 		this.minerType = readInt(buf, false);
 		this.gainTime = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, minerId, false);
 		this.writeInt(buf, minerType, false);
 		this.writeInt(buf, gainTime, false);
-
 		return true;
 	}
 }
-

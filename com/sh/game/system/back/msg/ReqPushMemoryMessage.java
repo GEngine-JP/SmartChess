@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求更新内存数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqPushMemoryMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqPushMemoryMessage extends AbstractMessage {
 	 * 数据类型
 	 */
 	private int tableType;
-
 	/**
 	 * id
 	 */
 	private long mid;
-
 	/**
 	 * 数据字节数组
 	 */
 	private byte[] byteArray;
-
 
 	public int getTableType() {
 		return tableType;
@@ -51,8 +49,7 @@ public class ReqPushMemoryMessage extends AbstractMessage {
 		this.tableType = tableType;
 	}
 
-	
-	public long getMid() {
+		public long getMid() {
 		return mid;
 	}
 
@@ -60,8 +57,7 @@ public class ReqPushMemoryMessage extends AbstractMessage {
 		this.mid = mid;
 	}
 
-	
-	public byte[] getByteArray() {
+		public byte[] getByteArray() {
 		return byteArray;
 	}
 
@@ -70,23 +66,21 @@ public class ReqPushMemoryMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.tableType = readInt(buf, false);
 		this.mid = readLong(buf);
 		this.byteArray = readBytes(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, tableType, false);
 		this.writeLong(buf, mid);
 		this.writeBytes(buf, byteArray);
-
 		return true;
 	}
 }
-

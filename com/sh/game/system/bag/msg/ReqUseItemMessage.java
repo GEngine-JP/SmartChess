@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求使用道具</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqUseItemMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqUseItemMessage extends AbstractMessage {
 	 * 道具数量
 	 */
 	private int count;
-
 	/**
 	 * 道具id
 	 */
 	private int itemId;
-
 	/**
 	 * 使用参数
 	 */
 	private int clientParam;
-
 
 	public int getCount() {
 		return count;
@@ -51,8 +49,7 @@ public class ReqUseItemMessage extends AbstractMessage {
 		this.count = count;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqUseItemMessage extends AbstractMessage {
 		this.itemId = itemId;
 	}
 
-	
-	public int getClientParam() {
+		public int getClientParam() {
 		return clientParam;
 	}
 
@@ -70,23 +66,21 @@ public class ReqUseItemMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.count = readInt(buf, false);
 		this.itemId = readInt(buf, false);
 		this.clientParam = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, count, false);
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, clientParam, false);
-
 		return true;
 	}
 }
-

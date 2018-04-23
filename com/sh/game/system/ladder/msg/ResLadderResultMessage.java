@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.ladder.msg.bean.RewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回天梯战斗结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLadderResultMessage extends AbstractMessage {
 
 	@Override
@@ -33,42 +36,34 @@ public class ResLadderResultMessage extends AbstractMessage {
 	 * 成功失败
 	 */
 	private boolean result;
-
 	/**
 	 * 上次段位
 	 */
 	private int lastRank;
-
 	/**
 	 * 段位
 	 */
 	private int rank;
-
 	/**
 	 * 上次星星
 	 */
 	private int star;
-
 	/**
 	 * 星星
 	 */
 	private int lastStar;
-
 	/**
 	 * 上次积分
 	 */
 	private int point;
-
 	/**
 	 * 积分
 	 */
 	private int lastPoint;
-
 	/**
 	 * 奖励
 	 */
-	private List<RewardBean> rewardBeanList = new ArrayList<RewardBean>();
-
+	private List<RewardBean> rewardBeanList = new ArrayList<>();
 
 	public boolean getResult() {
 		return result;
@@ -78,8 +73,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public int getLastRank() {
+		public int getLastRank() {
 		return lastRank;
 	}
 
@@ -87,8 +81,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.lastRank = lastRank;
 	}
 
-	
-	public int getRank() {
+		public int getRank() {
 		return rank;
 	}
 
@@ -96,8 +89,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.rank = rank;
 	}
 
-	
-	public int getStar() {
+		public int getStar() {
 		return star;
 	}
 
@@ -105,8 +97,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.star = star;
 	}
 
-	
-	public int getLastStar() {
+		public int getLastStar() {
 		return lastStar;
 	}
 
@@ -114,8 +105,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.lastStar = lastStar;
 	}
 
-	
-	public int getPoint() {
+		public int getPoint() {
 		return point;
 	}
 
@@ -123,8 +113,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.point = point;
 	}
 
-	
-	public int getLastPoint() {
+		public int getLastPoint() {
 		return lastPoint;
 	}
 
@@ -132,8 +121,7 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.lastPoint = lastPoint;
 	}
 
-	
-	public List<RewardBean> getRewardBeanList() {
+		public List<RewardBean> getRewardBeanList() {
 		return rewardBeanList;
 	}
 
@@ -141,9 +129,9 @@ public class ResLadderResultMessage extends AbstractMessage {
 		this.rewardBeanList = rewardBeanList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.result = readBoolean(buf);
 		this.lastRank = readInt(buf, false);
 		this.rank = readInt(buf, false);
@@ -161,13 +149,12 @@ public class ResLadderResultMessage extends AbstractMessage {
 				this.rewardBeanList.add(rewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBoolean(buf, result);
 		this.writeInt(buf, lastRank, false);
 		this.writeInt(buf, rank, false);
@@ -179,9 +166,6 @@ public class ResLadderResultMessage extends AbstractMessage {
 		for (int rewardBeanListI = 0; rewardBeanListI < this.rewardBeanList.size(); rewardBeanListI++) {
 			this.writeBean(buf, this.rewardBeanList.get(rewardBeanListI));
 		}
-
-
 		return true;
 	}
 }
-

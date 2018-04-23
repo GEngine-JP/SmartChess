@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>通过后台发道具</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackAddItemMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqBackAddItemMessage extends AbstractMessage {
 	 * 玩家唯一id
 	 */
 	private long uid;
-
 	/**
 	 * 道具Id
 	 */
 	private int itemId;
-
 	/**
 	 * 数量
 	 */
 	private int count;
-
 
 	public long getUid() {
 		return uid;
@@ -51,8 +49,7 @@ public class ReqBackAddItemMessage extends AbstractMessage {
 		this.uid = uid;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqBackAddItemMessage extends AbstractMessage {
 		this.itemId = itemId;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -70,23 +66,21 @@ public class ReqBackAddItemMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.itemId = readInt(buf, false);
 		this.count = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, count, false);
-
 		return true;
 	}
 }
-

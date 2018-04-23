@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送切换地图结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendShobakMapResultMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResSendShobakMapResultMessage extends AbstractMessage {
 	 */
 	private int targetMap;
 
-
 	public int getTargetMap() {
 		return targetMap;
 	}
@@ -42,19 +42,17 @@ public class ResSendShobakMapResultMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.targetMap = readInt(buf, false);
 
+		this.targetMap = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, targetMap, false);
 
+		this.writeInt(buf, targetMap, false);
 		return true;
 	}
 }
-

@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.qianghua.msg.bean.StrengthenBean;
 
-
 /**
  * <p>强化改变信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResStrengthenChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,27 +33,22 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 	 * 类型 1角色强化 2英雄强化
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 结果 1成功 2失败 3降级
 	 */
 	private int result;
-
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
-
 	/**
 	 * 强化结果
 	 */
 	private StrengthenBean strengthenBean;
-
 
 	public int getType() {
 		return type;
@@ -62,8 +58,7 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -71,8 +66,7 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getResult() {
+		public int getResult() {
 		return result;
 	}
 
@@ -80,8 +74,7 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 		this.result = result;
 	}
 
-	
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -89,8 +82,7 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
-	
-	public StrengthenBean getStrengthenBean() {
+		public StrengthenBean getStrengthenBean() {
 		return strengthenBean;
 	}
 
@@ -99,9 +91,9 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.result = readInt(buf, false);
@@ -111,19 +103,17 @@ public class ResStrengthenChangeMessage extends AbstractMessage {
 			strengthenBean.read(buf);
 			this.strengthenBean = strengthenBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, result, false);
 		this.writeInt(buf, fightValue, false);
 		this.writeBean(buf, strengthenBean);
-
 		return true;
 	}
 }
-

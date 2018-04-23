@@ -9,14 +9,17 @@ import com.sh.game.system.union.msg.bean.PositionInfo;
 import com.sh.game.system.union.msg.bean.UnionMemberInfoBean;
 import com.sh.game.system.union.msg.bean.UnionSettingBean;
 import com.sh.game.system.union.msg.bean.UnionEventBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送玩家所在帮会信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 
 	@Override
@@ -37,37 +40,30 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 	 * 帮会信息
 	 */
 	private UnionInfoBean unionInfo;
-
 	/**
 	 * 贡献
 	 */
 	private long contribution;
-
 	/**
 	 * 历史贡献
 	 */
 	private long contributionHistory;
-
 	/**
 	 * 帮会职位信息
 	 */
 	private PositionInfo positionInfo;
-
 	/**
 	 * 帮会成员信息
 	 */
-	private List<UnionMemberInfoBean> memberInfo = new ArrayList<UnionMemberInfoBean>();
-
+	private List<UnionMemberInfoBean> memberInfo = new ArrayList<>();
 	/**
 	 * 帮会设置
 	 */
-	private List<UnionSettingBean> unionSetting = new ArrayList<UnionSettingBean>();
-
+	private List<UnionSettingBean> unionSetting = new ArrayList<>();
 	/**
 	 * 帮会时间记录
 	 */
-	private List<UnionEventBean> unionEventBean = new ArrayList<UnionEventBean>();
-
+	private List<UnionEventBean> unionEventBean = new ArrayList<>();
 
 	public UnionInfoBean getUnionInfo() {
 		return unionInfo;
@@ -77,8 +73,7 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		this.unionInfo = unionInfo;
 	}
 
-	
-	public long getContribution() {
+		public long getContribution() {
 		return contribution;
 	}
 
@@ -86,8 +81,7 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		this.contribution = contribution;
 	}
 
-	
-	public long getContributionHistory() {
+		public long getContributionHistory() {
 		return contributionHistory;
 	}
 
@@ -95,8 +89,7 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		this.contributionHistory = contributionHistory;
 	}
 
-	
-	public PositionInfo getPositionInfo() {
+		public PositionInfo getPositionInfo() {
 		return positionInfo;
 	}
 
@@ -104,15 +97,13 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		this.positionInfo = positionInfo;
 	}
 
-	
-	public List<UnionMemberInfoBean> getMemberInfo() {
+		public List<UnionMemberInfoBean> getMemberInfo() {
 		return memberInfo;
 	}
 
 	public void setMemberInfo(List<UnionMemberInfoBean> memberInfo) {
 		this.memberInfo = memberInfo;
 	}
-
 	public List<UnionSettingBean> getUnionSetting() {
 		return unionSetting;
 	}
@@ -120,7 +111,6 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 	public void setUnionSetting(List<UnionSettingBean> unionSetting) {
 		this.unionSetting = unionSetting;
 	}
-
 	public List<UnionEventBean> getUnionEventBean() {
 		return unionEventBean;
 	}
@@ -129,9 +119,9 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		this.unionEventBean = unionEventBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			UnionInfoBean unionInfoBean = new UnionInfoBean();
 			unionInfoBean.read(buf);
@@ -153,9 +143,7 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 				unionMemberInfoBean.read(buf);
 				this.memberInfo.add(unionMemberInfoBean);
 			}
-		}
-
-		int unionSettingLength = readShort(buf);
+		}		int unionSettingLength = readShort(buf);
 		for (int unionSettingI = 0; unionSettingI < unionSettingLength; unionSettingI++) {
 			if (readByte(buf) == 0) { 
 				this.unionSetting.add(null);
@@ -164,9 +152,7 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 				unionSettingBean.read(buf);
 				this.unionSetting.add(unionSettingBean);
 			}
-		}
-
-		int unionEventBeanLength = readShort(buf);
+		}		int unionEventBeanLength = readShort(buf);
 		for (int unionEventBeanI = 0; unionEventBeanI < unionEventBeanLength; unionEventBeanI++) {
 			if (readByte(buf) == 0) { 
 				this.unionEventBean.add(null);
@@ -176,13 +162,12 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 				this.unionEventBean.add(unionEventBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, unionInfo);
 		this.writeLong(buf, contribution);
 		this.writeLong(buf, contributionHistory);
@@ -190,20 +175,13 @@ public class ResSendPlayerUnionInfoMessage extends AbstractMessage {
 		writeShort(buf, this.memberInfo.size());
 		for (int memberInfoI = 0; memberInfoI < this.memberInfo.size(); memberInfoI++) {
 			this.writeBean(buf, this.memberInfo.get(memberInfoI));
-		}
-
-		writeShort(buf, this.unionSetting.size());
+		}		writeShort(buf, this.unionSetting.size());
 		for (int unionSettingI = 0; unionSettingI < this.unionSetting.size(); unionSettingI++) {
 			this.writeBean(buf, this.unionSetting.get(unionSettingI));
-		}
-
-		writeShort(buf, this.unionEventBean.size());
+		}		writeShort(buf, this.unionEventBean.size());
 		for (int unionEventBeanI = 0; unionEventBeanI < this.unionEventBean.size(); unionEventBeanI++) {
 			this.writeBean(buf, this.unionEventBean.get(unionEventBeanI));
 		}
-
-
 		return true;
 	}
 }
-

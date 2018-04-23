@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回挑战其他玩家</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResChallengeOtherMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResChallengeOtherMessage extends AbstractMessage {
 	 * 状态 1可以打 其余是lang表id
 	 */
 	private int state;
-
 	/**
 	 * 目标玩家排名
 	 */
 	private int targetRank;
-
 
 	public int getState() {
 		return state;
@@ -46,8 +45,7 @@ public class ResChallengeOtherMessage extends AbstractMessage {
 		this.state = state;
 	}
 
-	
-	public int getTargetRank() {
+		public int getTargetRank() {
 		return targetRank;
 	}
 
@@ -56,21 +54,19 @@ public class ResChallengeOtherMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.state = readInt(buf, false);
 		this.targetRank = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, state, false);
 		this.writeInt(buf, targetRank, false);
-
 		return true;
 	}
 }
-

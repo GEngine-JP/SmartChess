@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.robtreasure.msg.bean.LingBaoBean;
 import com.sh.game.system.robtreasure.msg.bean.RewardBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回灵宝重生奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 
 	@Override
@@ -33,13 +36,11 @@ public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 	/**
 	 * 返还的灵宝列表
 	 */
-	private List<LingBaoBean> lingBaoBean = new ArrayList<LingBaoBean>();
-
+	private List<LingBaoBean> lingBaoBean = new ArrayList<>();
 	/**
 	 * 返还的道具列表
 	 */
-	private List<RewardBean> rewardList = new ArrayList<RewardBean>();
-
+	private List<RewardBean> rewardList = new ArrayList<>();
 
 	public List<LingBaoBean> getLingBaoBean() {
 		return lingBaoBean;
@@ -48,7 +49,6 @@ public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 	public void setLingBaoBean(List<LingBaoBean> lingBaoBean) {
 		this.lingBaoBean = lingBaoBean;
 	}
-
 	public List<RewardBean> getRewardList() {
 		return rewardList;
 	}
@@ -57,9 +57,9 @@ public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 		this.rewardList = rewardList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int lingBaoBeanLength = readShort(buf);
 		for (int lingBaoBeanI = 0; lingBaoBeanI < lingBaoBeanLength; lingBaoBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -69,9 +69,7 @@ public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 				lingBaoBean.read(buf);
 				this.lingBaoBean.add(lingBaoBean);
 			}
-		}
-
-		int rewardListLength = readShort(buf);
+		}		int rewardListLength = readShort(buf);
 		for (int rewardListI = 0; rewardListI < rewardListLength; rewardListI++) {
 			if (readByte(buf) == 0) { 
 				this.rewardList.add(null);
@@ -81,25 +79,19 @@ public class ResLingBaoRebirthRewardMessage extends AbstractMessage {
 				this.rewardList.add(rewardBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.lingBaoBean.size());
 		for (int lingBaoBeanI = 0; lingBaoBeanI < this.lingBaoBean.size(); lingBaoBeanI++) {
 			this.writeBean(buf, this.lingBaoBean.get(lingBaoBeanI));
-		}
-
-		writeShort(buf, this.rewardList.size());
+		}		writeShort(buf, this.rewardList.size());
 		for (int rewardListI = 0; rewardListI < this.rewardList.size(); rewardListI++) {
 			this.writeBean(buf, this.rewardList.get(rewardListI));
 		}
-
-
 		return true;
 	}
 }
-

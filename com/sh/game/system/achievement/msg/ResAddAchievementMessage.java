@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.achievement.msg.bean.AchievementBean;
 
-
 /**
  * <p>增加成就</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAddAchievementMessage extends AbstractMessage {
 
 	@Override
@@ -33,7 +34,6 @@ public class ResAddAchievementMessage extends AbstractMessage {
 	 */
 	private AchievementBean achievementBean;
 
-
 	public AchievementBean getAchievementBean() {
 		return achievementBean;
 	}
@@ -43,23 +43,21 @@ public class ResAddAchievementMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			AchievementBean achievementBean = new AchievementBean();
 			achievementBean.read(buf);
 			this.achievementBean = achievementBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBean(buf, achievementBean);
 
+		this.writeBean(buf, achievementBean);
 		return true;
 	}
 }
-

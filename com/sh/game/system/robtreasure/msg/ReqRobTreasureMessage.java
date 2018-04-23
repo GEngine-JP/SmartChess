@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求抢夺宝物</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqRobTreasureMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqRobTreasureMessage extends AbstractMessage {
 	 * 被抢玩家id
 	 */
 	private long roleId;
-
 	/**
 	 * 碎片id
 	 */
 	private int fragmentId;
-
 
 	public long getRoleId() {
 		return roleId;
@@ -46,8 +45,7 @@ public class ReqRobTreasureMessage extends AbstractMessage {
 		this.roleId = roleId;
 	}
 
-	
-	public int getFragmentId() {
+		public int getFragmentId() {
 		return fragmentId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqRobTreasureMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.roleId = readLong(buf);
 		this.fragmentId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, roleId);
 		this.writeInt(buf, fragmentId, false);
-
 		return true;
 	}
 }
-

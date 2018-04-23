@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求换一批玩家</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeAnotherRoleListMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqChangeAnotherRoleListMessage extends AbstractMessage {
 	 */
 	private int fragmentId;
 
-
 	public int getFragmentId() {
 		return fragmentId;
 	}
@@ -42,19 +42,17 @@ public class ReqChangeAnotherRoleListMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.fragmentId = readInt(buf, false);
 
+		this.fragmentId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, fragmentId, false);
 
+		this.writeInt(buf, fragmentId, false);
 		return true;
 	}
 }
-

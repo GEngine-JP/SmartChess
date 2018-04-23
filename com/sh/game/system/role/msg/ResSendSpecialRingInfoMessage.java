@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.SpecialRingBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送特戒信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendSpecialRingInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResSendSpecialRingInfoMessage extends AbstractMessage {
 	/**
 	 * 特戒信息
 	 */
-	private List<SpecialRingBean> infos = new ArrayList<SpecialRingBean>();
-
+	private List<SpecialRingBean> infos = new ArrayList<>();
 	/**
 	 * 特戒战斗力
 	 */
 	private int fightValue;
-
 
 	public List<SpecialRingBean> getInfos() {
 		return infos;
@@ -47,7 +48,6 @@ public class ResSendSpecialRingInfoMessage extends AbstractMessage {
 	public void setInfos(List<SpecialRingBean> infos) {
 		this.infos = infos;
 	}
-
 	public int getFightValue() {
 		return fightValue;
 	}
@@ -57,9 +57,9 @@ public class ResSendSpecialRingInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int infosLength = readShort(buf);
 		for (int infosI = 0; infosI < infosLength; infosI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResSendSpecialRingInfoMessage extends AbstractMessage {
 				specialRingBean.read(buf);
 				this.infos.add(specialRingBean);
 			}
-		}
-
-		this.fightValue = readInt(buf, false);
-
+		}		this.fightValue = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.infos.size());
 		for (int infosI = 0; infosI < this.infos.size(); infosI++) {
 			this.writeBean(buf, this.infos.get(infosI));
-		}
-
-		this.writeInt(buf, fightValue, false);
-
+		}		this.writeInt(buf, fightValue, false);
 		return true;
 	}
 }
-

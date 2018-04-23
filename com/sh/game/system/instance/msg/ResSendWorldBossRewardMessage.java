@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.instance.msg.bean.ItemBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>怪物死亡发送奖励信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendWorldBossRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResSendWorldBossRewardMessage extends AbstractMessage {
 	/**
 	 * 奖励列表
 	 */
-	private List<ItemBean> itemBean = new ArrayList<ItemBean>();
-
+	private List<ItemBean> itemBean = new ArrayList<>();
 	/**
 	 * 奖励类型 1排名者2最后一击3归属者4参与者5召唤者6其他玩家
 	 */
 	private int type;
-
 
 	public List<ItemBean> getItemBean() {
 		return itemBean;
@@ -47,7 +48,6 @@ public class ResSendWorldBossRewardMessage extends AbstractMessage {
 	public void setItemBean(List<ItemBean> itemBean) {
 		this.itemBean = itemBean;
 	}
-
 	public int getType() {
 		return type;
 	}
@@ -57,9 +57,9 @@ public class ResSendWorldBossRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int itemBeanLength = readShort(buf);
 		for (int itemBeanI = 0; itemBeanI < itemBeanLength; itemBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResSendWorldBossRewardMessage extends AbstractMessage {
 				itemBean.read(buf);
 				this.itemBean.add(itemBean);
 			}
-		}
-
-		this.type = readInt(buf, false);
-
+		}		this.type = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.itemBean.size());
 		for (int itemBeanI = 0; itemBeanI < this.itemBean.size(); itemBeanI++) {
 			this.writeBean(buf, this.itemBean.get(itemBeanI));
-		}
-
-		this.writeInt(buf, type, false);
-
+		}		this.writeInt(buf, type, false);
 		return true;
 	}
 }
-

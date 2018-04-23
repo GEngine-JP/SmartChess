@@ -1,28 +1,27 @@
 package com.sh.game.system.legacyEquip.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ShenZhuangBean extends KryoBean {
 
 	/**
 	 * 位置
 	 */
 	private int index;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 
 	public int getIndex() {
 		return index;
@@ -32,8 +31,7 @@ public class ShenZhuangBean extends KryoBean {
 		this.index = index;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -42,21 +40,19 @@ public class ShenZhuangBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.level = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, level, false);
-
 		return true;
 	}
 }
-

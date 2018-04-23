@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>怪物死亡通知</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqMonsterDieMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqMonsterDieMessage extends AbstractMessage {
 	 */
 	private int monsterId;
 
-
 	public int getMonsterId() {
 		return monsterId;
 	}
@@ -42,19 +42,17 @@ public class ReqMonsterDieMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.monsterId = readInt(buf, false);
 
+		this.monsterId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, monsterId, false);
 
+		this.writeInt(buf, monsterId, false);
 		return true;
 	}
 }
-

@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.role.msg.bean.PlayerAttribute;
 
-
 /**
  * <p>玩家基本数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResPlayerBasicInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,72 +33,58 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 	 * 战斗力
 	 */
 	private int power;
-
 	/**
 	 * 属性
 	 */
 	private PlayerAttribute attr;
-
 	/**
 	 * 名称
 	 */
 	private String name;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 转生等级
 	 */
 	private int reinLevel;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 经验
 	 */
 	private long exp;
-
 	/**
 	 * 关卡进度
 	 */
 	private int advance;
-
 	/**
 	 * 击杀小怪进度
 	 */
 	private int wave;
-
 	/**
 	 * 佩戴的称号
 	 */
 	private int titleId;
-
 	/**
 	 * 佩戴的时装
 	 */
 	private int fashionId;
-
 	/**
 	 * 佩戴的光冀
 	 */
 	private int fashionWingId;
-
 	/**
 	 * 佩戴的幻武
 	 */
 	private int huanwu;
-
 
 	public int getPower() {
 		return power;
@@ -107,8 +94,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.power = power;
 	}
 
-	
-	public PlayerAttribute getAttr() {
+		public PlayerAttribute getAttr() {
 		return attr;
 	}
 
@@ -116,8 +102,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.attr = attr;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -125,8 +110,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.name = name;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -134,8 +118,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.level = level;
 	}
 
-	
-	public int getReinLevel() {
+		public int getReinLevel() {
 		return reinLevel;
 	}
 
@@ -143,8 +126,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.reinLevel = reinLevel;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -152,8 +134,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.career = career;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -161,8 +142,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.sex = sex;
 	}
 
-	
-	public long getExp() {
+		public long getExp() {
 		return exp;
 	}
 
@@ -170,8 +150,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.exp = exp;
 	}
 
-	
-	public int getAdvance() {
+		public int getAdvance() {
 		return advance;
 	}
 
@@ -179,8 +158,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.advance = advance;
 	}
 
-	
-	public int getWave() {
+		public int getWave() {
 		return wave;
 	}
 
@@ -188,8 +166,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.wave = wave;
 	}
 
-	
-	public int getTitleId() {
+		public int getTitleId() {
 		return titleId;
 	}
 
@@ -197,8 +174,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.titleId = titleId;
 	}
 
-	
-	public int getFashionId() {
+		public int getFashionId() {
 		return fashionId;
 	}
 
@@ -206,8 +182,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.fashionId = fashionId;
 	}
 
-	
-	public int getFashionWingId() {
+		public int getFashionWingId() {
 		return fashionWingId;
 	}
 
@@ -215,8 +190,7 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.fashionWingId = fashionWingId;
 	}
 
-	
-	public int getHuanwu() {
+		public int getHuanwu() {
 		return huanwu;
 	}
 
@@ -225,9 +199,9 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.power = readInt(buf, false);
 		if (readByte(buf) != 0) {
 			PlayerAttribute playerAttribute = new PlayerAttribute();
@@ -246,12 +220,12 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.fashionId = readInt(buf, false);
 		this.fashionWingId = readInt(buf, false);
 		this.huanwu = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, power, false);
 		this.writeBean(buf, attr);
 		this.writeString(buf, name);
@@ -266,8 +240,6 @@ public class ResPlayerBasicInfoMessage extends AbstractMessage {
 		this.writeInt(buf, fashionId, false);
 		this.writeInt(buf, fashionWingId, false);
 		this.writeInt(buf, huanwu, false);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>合击技能触发符文效果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResCombineSkillTriggerRunesMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +33,14 @@ public class ResCombineSkillTriggerRunesMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
+
 		return true;
 	}
 }
-

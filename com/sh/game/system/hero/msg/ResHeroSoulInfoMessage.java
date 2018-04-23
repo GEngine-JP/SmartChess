@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.hero.msg.bean.HeroSoulBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送英雄灵魂刻印信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeroSoulInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResHeroSoulInfoMessage extends AbstractMessage {
 	/**
 	 * 刻印信息
 	 */
-	private List<HeroSoulBean> soulInfo = new ArrayList<HeroSoulBean>();
-
+	private List<HeroSoulBean> soulInfo = new ArrayList<>();
 
 	public List<HeroSoulBean> getSoulInfo() {
 		return soulInfo;
@@ -43,9 +45,9 @@ public class ResHeroSoulInfoMessage extends AbstractMessage {
 		this.soulInfo = soulInfo;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int soulInfoLength = readShort(buf);
 		for (int soulInfoI = 0; soulInfoI < soulInfoLength; soulInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResHeroSoulInfoMessage extends AbstractMessage {
 				this.soulInfo.add(heroSoulBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.soulInfo.size());
 		for (int soulInfoI = 0; soulInfoI < this.soulInfo.size(); soulInfoI++) {
 			this.writeBean(buf, this.soulInfo.get(soulInfoI));
 		}
-
-
 		return true;
 	}
 }
-

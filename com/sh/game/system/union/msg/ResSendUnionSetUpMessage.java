@@ -6,12 +6,13 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.UnionSettingBean;
 
-
 /**
  * <p>发送帮会设置信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendUnionSetUpMessage extends AbstractMessage {
 
 	@Override
@@ -33,7 +34,6 @@ public class ResSendUnionSetUpMessage extends AbstractMessage {
 	 */
 	private UnionSettingBean settingState;
 
-
 	public UnionSettingBean getSettingState() {
 		return settingState;
 	}
@@ -43,23 +43,21 @@ public class ResSendUnionSetUpMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			UnionSettingBean unionSettingBean = new UnionSettingBean();
 			unionSettingBean.read(buf);
 			this.settingState = unionSettingBean;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBean(buf, settingState);
 
+		this.writeBean(buf, settingState);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>后台改变会长</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackChangeUnionMasterMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqBackChangeUnionMasterMessage extends AbstractMessage {
 	 * unionId
 	 */
 	private long unionId;
-
 	/**
 	 * uid
 	 */
 	private long uid;
-
 
 	public long getUnionId() {
 		return unionId;
@@ -46,8 +45,7 @@ public class ReqBackChangeUnionMasterMessage extends AbstractMessage {
 		this.unionId = unionId;
 	}
 
-	
-	public long getUid() {
+		public long getUid() {
 		return uid;
 	}
 
@@ -56,21 +54,19 @@ public class ReqBackChangeUnionMasterMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.unionId = readLong(buf);
 		this.uid = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, unionId);
 		this.writeLong(buf, uid);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发红包</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqSendUnionRedPackMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqSendUnionRedPackMessage extends AbstractMessage {
 	 * 元宝数
 	 */
 	private int money;
-
 	/**
 	 * 文字内容
 	 */
 	private String content;
-
 	/**
 	 * 个数
 	 */
 	private int count;
-
 
 	public int getMoney() {
 		return money;
@@ -51,8 +49,7 @@ public class ReqSendUnionRedPackMessage extends AbstractMessage {
 		this.money = money;
 	}
 
-	
-	public String getContent() {
+		public String getContent() {
 		return content;
 	}
 
@@ -60,8 +57,7 @@ public class ReqSendUnionRedPackMessage extends AbstractMessage {
 		this.content = content;
 	}
 
-	
-	public int getCount() {
+		public int getCount() {
 		return count;
 	}
 
@@ -70,23 +66,21 @@ public class ReqSendUnionRedPackMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.money = readInt(buf, false);
 		this.content = readString(buf);
 		this.count = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, money, false);
 		this.writeString(buf, content);
 		this.writeInt(buf, count, false);
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送总战斗力</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResTotalFightValueChangeMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResTotalFightValueChangeMessage extends AbstractMessage {
 	 */
 	private int totalFightValue;
 
-
 	public int getTotalFightValue() {
 		return totalFightValue;
 	}
@@ -42,19 +42,17 @@ public class ResTotalFightValueChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.totalFightValue = readInt(buf, false);
 
+		this.totalFightValue = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, totalFightValue, false);
 
+		this.writeInt(buf, totalFightValue, false);
 		return true;
 	}
 }
-

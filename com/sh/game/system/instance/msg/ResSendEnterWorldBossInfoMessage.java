@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回进入世界BOSS信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendEnterWorldBossInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResSendEnterWorldBossInfoMessage extends AbstractMessage {
 	 * 副本结束时间
 	 */
 	private int endTime;
-
 	/**
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 
 	public int getEndTime() {
 		return endTime;
@@ -51,8 +49,7 @@ public class ResSendEnterWorldBossInfoMessage extends AbstractMessage {
 		this.endTime = endTime;
 	}
 
-	
-	public int getUniqueId() {
+		public int getUniqueId() {
 		return uniqueId;
 	}
 
@@ -60,8 +57,7 @@ public class ResSendEnterWorldBossInfoMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -70,23 +66,21 @@ public class ResSendEnterWorldBossInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.endTime = readInt(buf, false);
 		this.uniqueId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, endTime, false);
 		this.writeInt(buf, uniqueId, false);
 		this.writeInt(buf, instanceId, false);
-
 		return true;
 	}
 }
-

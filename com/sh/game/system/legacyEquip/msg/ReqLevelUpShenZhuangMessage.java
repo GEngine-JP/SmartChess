@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求激活/升级神装</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 	 */
 	private int index;
 
-
 	public int getIndex() {
 		return index;
 	}
@@ -42,19 +42,17 @@ public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.index = readInt(buf, false);
 
+		this.index = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, index, false);
 
+		this.writeInt(buf, index, false);
 		return true;
 	}
 }
-

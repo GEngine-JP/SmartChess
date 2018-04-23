@@ -1,73 +1,63 @@
 package com.sh.game.system.rank.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RankDataBean extends KryoBean {
 
 	/**
 	 * 目标id
 	 */
 	private long uid;
-
 	/**
 	 * 名字
 	 */
 	private String name;
-
 	/**
 	 * vip等级
 	 */
 	private int vipLevel;
-
 	/**
 	 * 转生
 	 */
 	private int rein;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 战力
 	 */
 	private long fightPower;
-
 	/**
 	 * 英雄战力
 	 */
 	private long heroFightPower;
-
 	/**
 	 * 成就点
 	 */
 	private long achievementPoint;
-
 	/**
 	 * 翅膀等级
 	 */
 	private int wingLevel;
-
 	/**
 	 * 威名
 	 */
 	private long weiming;
-
 	/**
 	 * 是否有月卡
 	 */
 	private boolean isMonthCard;
-
 
 	public long getUid() {
 		return uid;
@@ -77,8 +67,7 @@ public class RankDataBean extends KryoBean {
 		this.uid = uid;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -86,8 +75,7 @@ public class RankDataBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getVipLevel() {
+		public int getVipLevel() {
 		return vipLevel;
 	}
 
@@ -95,8 +83,7 @@ public class RankDataBean extends KryoBean {
 		this.vipLevel = vipLevel;
 	}
 
-	
-	public int getRein() {
+		public int getRein() {
 		return rein;
 	}
 
@@ -104,8 +91,7 @@ public class RankDataBean extends KryoBean {
 		this.rein = rein;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -113,8 +99,7 @@ public class RankDataBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public long getFightPower() {
+		public long getFightPower() {
 		return fightPower;
 	}
 
@@ -122,8 +107,7 @@ public class RankDataBean extends KryoBean {
 		this.fightPower = fightPower;
 	}
 
-	
-	public long getHeroFightPower() {
+		public long getHeroFightPower() {
 		return heroFightPower;
 	}
 
@@ -131,8 +115,7 @@ public class RankDataBean extends KryoBean {
 		this.heroFightPower = heroFightPower;
 	}
 
-	
-	public long getAchievementPoint() {
+		public long getAchievementPoint() {
 		return achievementPoint;
 	}
 
@@ -140,8 +123,7 @@ public class RankDataBean extends KryoBean {
 		this.achievementPoint = achievementPoint;
 	}
 
-	
-	public int getWingLevel() {
+		public int getWingLevel() {
 		return wingLevel;
 	}
 
@@ -149,8 +131,7 @@ public class RankDataBean extends KryoBean {
 		this.wingLevel = wingLevel;
 	}
 
-	
-	public long getWeiming() {
+		public long getWeiming() {
 		return weiming;
 	}
 
@@ -158,8 +139,7 @@ public class RankDataBean extends KryoBean {
 		this.weiming = weiming;
 	}
 
-	
-	public boolean getIsMonthCard() {
+		public boolean getIsMonthCard() {
 		return isMonthCard;
 	}
 
@@ -168,9 +148,9 @@ public class RankDataBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uid = readLong(buf);
 		this.name = readString(buf);
 		this.vipLevel = readInt(buf, false);
@@ -182,12 +162,12 @@ public class RankDataBean extends KryoBean {
 		this.wingLevel = readInt(buf, false);
 		this.weiming = readLong(buf);
 		this.isMonthCard = readBoolean(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uid);
 		this.writeString(buf, name);
 		this.writeInt(buf, vipLevel, false);
@@ -199,8 +179,6 @@ public class RankDataBean extends KryoBean {
 		this.writeInt(buf, wingLevel, false);
 		this.writeLong(buf, weiming);
 		this.writeBoolean(buf, isMonthCard);
-
 		return true;
 	}
 }
-

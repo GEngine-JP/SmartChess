@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>认证状态</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResAuthorityStateMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResAuthorityStateMessage extends AbstractMessage {
 	 */
 	private boolean state;
 
-
 	public boolean getState() {
 		return state;
 	}
@@ -42,19 +42,17 @@ public class ResAuthorityStateMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.state = readBoolean(buf);
 
+		this.state = readBoolean(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeBoolean(buf, state);
 
+		this.writeBoolean(buf, state);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求更改沙巴克攻击状态</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeShobakAttackStateMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ReqChangeShobakAttackStateMessage extends AbstractMessage {
 	 * 攻击状态1攻击玩家2攻击雕像3守卫4走路
 	 */
 	private int state;
-
 	/**
 	 * 目标id
 	 */
 	private long targetId;
-
 
 	public int getState() {
 		return state;
@@ -46,8 +45,7 @@ public class ReqChangeShobakAttackStateMessage extends AbstractMessage {
 		this.state = state;
 	}
 
-	
-	public long getTargetId() {
+		public long getTargetId() {
 		return targetId;
 	}
 
@@ -56,21 +54,19 @@ public class ReqChangeShobakAttackStateMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.state = readInt(buf, false);
 		this.targetId = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, state, false);
 		this.writeLong(buf, targetId);
-
 		return true;
 	}
 }
-

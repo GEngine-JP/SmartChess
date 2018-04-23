@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求踢出玩家</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqKickOutMemberMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqKickOutMemberMessage extends AbstractMessage {
 	 */
 	private long memberId;
 
-
 	public long getMemberId() {
 		return memberId;
 	}
@@ -42,19 +42,17 @@ public class ReqKickOutMemberMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.memberId = readLong(buf);
 
+		this.memberId = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, memberId);
 
+		this.writeLong(buf, memberId);
 		return true;
 	}
 }
-

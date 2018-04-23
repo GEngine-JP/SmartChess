@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.hunt.msg.bean.TreasureHuntRecordBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>寻宝面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 
 	@Override
@@ -32,13 +35,11 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	/**
 	 *  寻宝记录
 	 */
-	private List<TreasureHuntRecordBean> records = new ArrayList<TreasureHuntRecordBean>();
-
+	private List<TreasureHuntRecordBean> records = new ArrayList<>();
 	/**
 	 * 寻宝次数
 	 */
 	private int huntCount;
-
 
 	public List<TreasureHuntRecordBean> getRecords() {
 		return records;
@@ -47,7 +48,6 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	public void setRecords(List<TreasureHuntRecordBean> records) {
 		this.records = records;
 	}
-
 	public int getHuntCount() {
 		return huntCount;
 	}
@@ -57,9 +57,9 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int recordsLength = readShort(buf);
 		for (int recordsI = 0; recordsI < recordsLength; recordsI++) {
 			if (readByte(buf) == 0) { 
@@ -69,23 +69,17 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 				treasureHuntRecordBean.read(buf);
 				this.records.add(treasureHuntRecordBean);
 			}
-		}
-
-		this.huntCount = readInt(buf, false);
-
+		}		this.huntCount = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.records.size());
 		for (int recordsI = 0; recordsI < this.records.size(); recordsI++) {
 			this.writeBean(buf, this.records.get(recordsI));
-		}
-
-		this.writeInt(buf, huntCount, false);
-
+		}		this.writeInt(buf, huntCount, false);
 		return true;
 	}
 }
-

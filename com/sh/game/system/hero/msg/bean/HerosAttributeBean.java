@@ -1,54 +1,47 @@
 package com.sh.game.system.hero.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
-import com.sh.game.system.hero.msg.bean.HeroAttribute;
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class HerosAttributeBean extends KryoBean {
 
 	/**
 	 * 英雄属性
 	 */
 	private HeroAttribute heroAttribute;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 战斗力
 	 */
 	private int power;
-
 	/**
 	 * 名称
 	 */
 	private String name;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 编号
 	 */
 	private int number;
-
 
 	public HeroAttribute getHeroAttribute() {
 		return heroAttribute;
@@ -58,8 +51,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.heroAttribute = heroAttribute;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -67,8 +59,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.heroId = heroId;
 	}
 
-	
-	public int getPower() {
+		public int getPower() {
 		return power;
 	}
 
@@ -76,8 +67,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.power = power;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -85,8 +75,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -94,8 +83,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -103,8 +91,7 @@ public class HerosAttributeBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getNumber() {
+		public int getNumber() {
 		return number;
 	}
 
@@ -113,9 +100,9 @@ public class HerosAttributeBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		if (readByte(buf) != 0) {
 			HeroAttribute heroAttribute = new HeroAttribute();
 			heroAttribute.read(buf);
@@ -127,12 +114,12 @@ public class HerosAttributeBean extends KryoBean {
 		this.career = readInt(buf, false);
 		this.sex = readInt(buf, false);
 		this.number = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeBean(buf, heroAttribute);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, power, false);
@@ -140,8 +127,6 @@ public class HerosAttributeBean extends KryoBean {
 		this.writeInt(buf, career, false);
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, number, false);
-
 		return true;
 	}
 }
-

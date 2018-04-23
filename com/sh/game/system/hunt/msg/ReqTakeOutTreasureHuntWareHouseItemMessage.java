@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求取出寻宝仓库道具</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage 
 	 * 道具唯一Id
 	 */
 	private long uniqueId;
-
 	/**
 	 * 道具Id
 	 */
 	private int itemId;
-
 	/**
 	 * 道具数量
 	 */
 	private int num;
-
 	/**
 	 * 是否全部取出 0不是 1是
 	 */
 	private int isAllTake;
-
 
 	public long getUniqueId() {
 		return uniqueId;
@@ -56,8 +53,7 @@ public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage 
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getItemId() {
+		public int getItemId() {
 		return itemId;
 	}
 
@@ -65,8 +61,7 @@ public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage 
 		this.itemId = itemId;
 	}
 
-	
-	public int getNum() {
+		public int getNum() {
 		return num;
 	}
 
@@ -74,8 +69,7 @@ public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage 
 		this.num = num;
 	}
 
-	
-	public int getIsAllTake() {
+		public int getIsAllTake() {
 		return isAllTake;
 	}
 
@@ -84,25 +78,23 @@ public class ReqTakeOutTreasureHuntWareHouseItemMessage extends AbstractMessage 
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readLong(buf);
 		this.itemId = readInt(buf, false);
 		this.num = readInt(buf, false);
 		this.isAllTake = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, uniqueId);
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, num, false);
 		this.writeInt(buf, isAllTake, false);
-
 		return true;
 	}
 }
-

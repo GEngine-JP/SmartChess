@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送dps改变信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendDpsChangeMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResSendDpsChangeMessage extends AbstractMessage {
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * 玩家dps
 	 */
 	private int dps;
-
 
 	public int getUniqueId() {
 		return uniqueId;
@@ -46,8 +45,7 @@ public class ResSendDpsChangeMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getDps() {
+		public int getDps() {
 		return dps;
 	}
 
@@ -56,21 +54,19 @@ public class ResSendDpsChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readInt(buf, false);
 		this.dps = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, uniqueId, false);
 		this.writeInt(buf, dps, false);
-
 		return true;
 	}
 }
-

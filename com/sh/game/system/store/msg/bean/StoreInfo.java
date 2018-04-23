@@ -1,53 +1,47 @@
 package com.sh.game.system.store.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class StoreInfo extends KryoBean {
 
 	/**
 	 * 商城id
 	 */
 	private int storeId;
-
 	/**
 	 * 单人每日限购已购数量
 	 */
 	private int dayBuyNum;
-
 	/**
 	 * 单人终身限购已购数量
 	 */
 	private int lifeBuyNum;
-
 	/**
 	 * 全服每日限购数量已购数量
 	 */
 	private int serverDayBuyNum;
-
 	/**
 	 * 全服终身限购数量已购数量
 	 */
 	private int serverLifeBuyNum;
-
 	/**
 	 * 购买和已售完状态 0可购买 1已售完
 	 */
 	private int buyState;
-
 	/**
 	 * 1 为打折
 	 */
 	private int isDiscount;
-
 
 	public int getStoreId() {
 		return storeId;
@@ -57,8 +51,7 @@ public class StoreInfo extends KryoBean {
 		this.storeId = storeId;
 	}
 
-	
-	public int getDayBuyNum() {
+		public int getDayBuyNum() {
 		return dayBuyNum;
 	}
 
@@ -66,8 +59,7 @@ public class StoreInfo extends KryoBean {
 		this.dayBuyNum = dayBuyNum;
 	}
 
-	
-	public int getLifeBuyNum() {
+		public int getLifeBuyNum() {
 		return lifeBuyNum;
 	}
 
@@ -75,8 +67,7 @@ public class StoreInfo extends KryoBean {
 		this.lifeBuyNum = lifeBuyNum;
 	}
 
-	
-	public int getServerDayBuyNum() {
+		public int getServerDayBuyNum() {
 		return serverDayBuyNum;
 	}
 
@@ -84,8 +75,7 @@ public class StoreInfo extends KryoBean {
 		this.serverDayBuyNum = serverDayBuyNum;
 	}
 
-	
-	public int getServerLifeBuyNum() {
+		public int getServerLifeBuyNum() {
 		return serverLifeBuyNum;
 	}
 
@@ -93,8 +83,7 @@ public class StoreInfo extends KryoBean {
 		this.serverLifeBuyNum = serverLifeBuyNum;
 	}
 
-	
-	public int getBuyState() {
+		public int getBuyState() {
 		return buyState;
 	}
 
@@ -102,8 +91,7 @@ public class StoreInfo extends KryoBean {
 		this.buyState = buyState;
 	}
 
-	
-	public int getIsDiscount() {
+		public int getIsDiscount() {
 		return isDiscount;
 	}
 
@@ -112,9 +100,9 @@ public class StoreInfo extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.storeId = readInt(buf, false);
 		this.dayBuyNum = readInt(buf, false);
 		this.lifeBuyNum = readInt(buf, false);
@@ -122,12 +110,12 @@ public class StoreInfo extends KryoBean {
 		this.serverLifeBuyNum = readInt(buf, false);
 		this.buyState = readInt(buf, false);
 		this.isDiscount = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, storeId, false);
 		this.writeInt(buf, dayBuyNum, false);
 		this.writeInt(buf, lifeBuyNum, false);
@@ -135,8 +123,6 @@ public class StoreInfo extends KryoBean {
 		this.writeInt(buf, serverLifeBuyNum, false);
 		this.writeInt(buf, buyState, false);
 		this.writeInt(buf, isDiscount, false);
-
 		return true;
 	}
 }
-

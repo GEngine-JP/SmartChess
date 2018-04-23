@@ -1,33 +1,31 @@
 package com.sh.game.system.runes.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RunesPositionBean extends KryoBean {
 
 	/**
 	 * 装备位置
 	 */
 	private int index;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 	/**
 	 * 祝福值
 	 */
 	private int luck;
-
 
 	public int getIndex() {
 		return index;
@@ -37,8 +35,7 @@ public class RunesPositionBean extends KryoBean {
 		this.index = index;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -46,8 +43,7 @@ public class RunesPositionBean extends KryoBean {
 		this.level = level;
 	}
 
-	
-	public int getLuck() {
+		public int getLuck() {
 		return luck;
 	}
 
@@ -56,23 +52,21 @@ public class RunesPositionBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.index = readInt(buf, false);
 		this.level = readInt(buf, false);
 		this.luck = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, luck, false);
-
 		return true;
 	}
 }
-

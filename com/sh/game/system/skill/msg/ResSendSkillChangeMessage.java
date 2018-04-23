@@ -5,14 +5,14 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.skill.msg.bean.SkillBean;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * <p>返回角色技能变化数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendSkillChangeMessage extends AbstractMessage {
 
 	@Override
@@ -30,25 +30,23 @@ public class ResSendSkillChangeMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * 技能列表
+	 * 改变的技能
 	 */
-	private List<SkillBean> skillList = new ArrayList<SkillBean>();
-
+	private SkillBean skillBean;
 	/**
 	 * 战斗力
 	 */
 	private int fightValue;
 
-
-	public List<SkillBean> getSkillList() {
-		return skillList;
+	public SkillBean getSkillBean() {
+		return skillBean;
 	}
 
-	public void setSkillList(List<SkillBean> skillList) {
-		this.skillList = skillList;
+	public void setSkillBean(SkillBean skillBean) {
+		this.skillBean = skillBean;
 	}
 
-	public int getFightValue() {
+		public int getFightValue() {
 		return fightValue;
 	}
 
@@ -57,35 +55,23 @@ public class ResSendSkillChangeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		int skillListLength = readShort(buf);
-		for (int skillListI = 0; skillListI < skillListLength; skillListI++) {
-			if (readByte(buf) == 0) { 
-				this.skillList.add(null);
-			} else {
-				SkillBean skillBean = new SkillBean();
-				skillBean.read(buf);
-				this.skillList.add(skillBean);
-			}
+
+		if (readByte(buf) != 0) {
+			SkillBean skillBean = new SkillBean();
+			skillBean.read(buf);
+			this.skillBean = skillBean;
 		}
-
 		this.fightValue = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		writeShort(buf, this.skillList.size());
-		for (int skillListI = 0; skillListI < this.skillList.size(); skillListI++) {
-			this.writeBean(buf, this.skillList.get(skillListI));
-		}
 
+		this.writeBean(buf, skillBean);
 		this.writeInt(buf, fightValue, false);
-
 		return true;
 	}
 }
-

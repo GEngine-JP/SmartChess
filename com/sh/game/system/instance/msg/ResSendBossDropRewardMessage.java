@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.instance.msg.bean.ItemBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回领取BOSS奖励列表</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendBossDropRewardMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResSendBossDropRewardMessage extends AbstractMessage {
 	/**
 	 * 奖励列表
 	 */
-	private List<ItemBean> itemBean = new ArrayList<ItemBean>();
-
+	private List<ItemBean> itemBean = new ArrayList<>();
 
 	public List<ItemBean> getItemBean() {
 		return itemBean;
@@ -43,9 +45,9 @@ public class ResSendBossDropRewardMessage extends AbstractMessage {
 		this.itemBean = itemBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int itemBeanLength = readShort(buf);
 		for (int itemBeanI = 0; itemBeanI < itemBeanLength; itemBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResSendBossDropRewardMessage extends AbstractMessage {
 				this.itemBean.add(itemBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.itemBean.size());
 		for (int itemBeanI = 0; itemBeanI < this.itemBean.size(); itemBeanI++) {
 			this.writeBean(buf, this.itemBean.get(itemBeanI));
 		}
-
-
 		return true;
 	}
 }
-

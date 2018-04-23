@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>解除聊天禁言</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqBackChatUnBanMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqBackChatUnBanMessage extends AbstractMessage {
 	 */
 	private String uid;
 
-
 	public String getUid() {
 		return uid;
 	}
@@ -42,19 +42,17 @@ public class ReqBackChatUnBanMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.uid = readString(buf);
 
+		this.uid = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, uid);
 
+		this.writeString(buf, uid);
 		return true;
 	}
 }
-

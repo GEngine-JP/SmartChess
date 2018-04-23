@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.union.msg.bean.UnionRedPackRecordBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>抢红包返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRobRedPackMessage extends AbstractMessage {
 
 	@Override
@@ -33,52 +36,42 @@ public class ResRobRedPackMessage extends AbstractMessage {
 	 * 发送者名字
 	 */
 	private String sender;
-
 	/**
 	 * 发送者职业
 	 */
 	private int senderCareer;
-
 	/**
 	 * 发送者性别
 	 */
 	private int sendSex;
-
 	/**
 	 * 抢到的红包数量
 	 */
 	private int money;
-
 	/**
 	 * 已领取个数
 	 */
 	private int getCount;
-
 	/**
 	 * 总数
 	 */
 	private int maxCount;
-
 	/**
 	 * 已领取的红包
 	 */
 	private int getMoney;
-
 	/**
 	 * 红包的总金额
 	 */
 	private int maxMoney;
-
 	/**
 	 * 祝福语
 	 */
 	private String content;
-
 	/**
 	 * 红包记录列表
 	 */
-	private List<UnionRedPackRecordBean> unionRedPackRecordBean = new ArrayList<UnionRedPackRecordBean>();
-
+	private List<UnionRedPackRecordBean> unionRedPackRecordBean = new ArrayList<>();
 
 	public String getSender() {
 		return sender;
@@ -88,8 +81,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.sender = sender;
 	}
 
-	
-	public int getSenderCareer() {
+		public int getSenderCareer() {
 		return senderCareer;
 	}
 
@@ -97,8 +89,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.senderCareer = senderCareer;
 	}
 
-	
-	public int getSendSex() {
+		public int getSendSex() {
 		return sendSex;
 	}
 
@@ -106,8 +97,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.sendSex = sendSex;
 	}
 
-	
-	public int getMoney() {
+		public int getMoney() {
 		return money;
 	}
 
@@ -115,8 +105,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.money = money;
 	}
 
-	
-	public int getGetCount() {
+		public int getGetCount() {
 		return getCount;
 	}
 
@@ -124,8 +113,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.getCount = getCount;
 	}
 
-	
-	public int getMaxCount() {
+		public int getMaxCount() {
 		return maxCount;
 	}
 
@@ -133,8 +121,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.maxCount = maxCount;
 	}
 
-	
-	public int getGetMoney() {
+		public int getGetMoney() {
 		return getMoney;
 	}
 
@@ -142,8 +129,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.getMoney = getMoney;
 	}
 
-	
-	public int getMaxMoney() {
+		public int getMaxMoney() {
 		return maxMoney;
 	}
 
@@ -151,8 +137,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.maxMoney = maxMoney;
 	}
 
-	
-	public String getContent() {
+		public String getContent() {
 		return content;
 	}
 
@@ -160,8 +145,7 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.content = content;
 	}
 
-	
-	public List<UnionRedPackRecordBean> getUnionRedPackRecordBean() {
+		public List<UnionRedPackRecordBean> getUnionRedPackRecordBean() {
 		return unionRedPackRecordBean;
 	}
 
@@ -169,9 +153,9 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		this.unionRedPackRecordBean = unionRedPackRecordBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.sender = readString(buf);
 		this.senderCareer = readInt(buf, false);
 		this.sendSex = readInt(buf, false);
@@ -191,13 +175,12 @@ public class ResRobRedPackMessage extends AbstractMessage {
 				this.unionRedPackRecordBean.add(unionRedPackRecordBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeString(buf, sender);
 		this.writeInt(buf, senderCareer, false);
 		this.writeInt(buf, sendSex, false);
@@ -211,9 +194,6 @@ public class ResRobRedPackMessage extends AbstractMessage {
 		for (int unionRedPackRecordBeanI = 0; unionRedPackRecordBeanI < this.unionRedPackRecordBean.size(); unionRedPackRecordBeanI++) {
 			this.writeBean(buf, this.unionRedPackRecordBean.get(unionRedPackRecordBeanI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回解散帮会信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResDeleteUnionMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResDeleteUnionMessage extends AbstractMessage {
 	 */
 	private long unionid;
 
-
 	public long getUnionid() {
 		return unionid;
 	}
@@ -42,19 +42,17 @@ public class ResDeleteUnionMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.unionid = readLong(buf);
 
+		this.unionid = readLong(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeLong(buf, unionid);
 
+		this.writeLong(buf, unionid);
 		return true;
 	}
 }
-

@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求上士sdk参数信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 
 	@Override
@@ -31,22 +32,18 @@ public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 	 * 充值金额
 	 */
 	private int money;
-
 	/**
 	 * 货币类型
 	 */
 	private String money_type;
-
 	/**
 	 * 商品id
 	 */
 	private String goods_id;
-
 	/**
 	 * 时间
 	 */
 	private int time;
-
 
 	public int getMoney() {
 		return money;
@@ -56,8 +53,7 @@ public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 		this.money = money;
 	}
 
-	
-	public String getMoney_type() {
+		public String getMoney_type() {
 		return money_type;
 	}
 
@@ -65,8 +61,7 @@ public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 		this.money_type = money_type;
 	}
 
-	
-	public String getGoods_id() {
+		public String getGoods_id() {
 		return goods_id;
 	}
 
@@ -74,8 +69,7 @@ public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 		this.goods_id = goods_id;
 	}
 
-	
-	public int getTime() {
+		public int getTime() {
 		return time;
 	}
 
@@ -84,25 +78,23 @@ public class ReqShangShiSdkInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.money = readInt(buf, false);
 		this.money_type = readString(buf);
 		this.goods_id = readString(buf);
 		this.time = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, money, false);
 		this.writeString(buf, money_type);
 		this.writeString(buf, goods_id);
 		this.writeInt(buf, time, false);
-
 		return true;
 	}
 }
-

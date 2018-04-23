@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>手动领取副本奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqManualGetInstanceRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqManualGetInstanceRewardMessage extends AbstractMessage {
 	 * 副本唯一id
 	 */
 	private int uniqueId;
-
 	/**
 	 * 副本id
 	 */
 	private int instanceId;
-
 	/**
 	 * 领取倍率
 	 */
 	private int multi;
-
 
 	public int getUniqueId() {
 		return uniqueId;
@@ -51,8 +49,7 @@ public class ReqManualGetInstanceRewardMessage extends AbstractMessage {
 		this.uniqueId = uniqueId;
 	}
 
-	
-	public int getInstanceId() {
+		public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqManualGetInstanceRewardMessage extends AbstractMessage {
 		this.instanceId = instanceId;
 	}
 
-	
-	public int getMulti() {
+		public int getMulti() {
 		return multi;
 	}
 
@@ -70,23 +66,21 @@ public class ReqManualGetInstanceRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.uniqueId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.multi = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, uniqueId, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, multi, false);
-
 		return true;
 	}
 }
-

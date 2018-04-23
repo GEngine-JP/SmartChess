@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>玩家挑战返回</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRoleChallengeMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResRoleChallengeMessage extends AbstractMessage {
 	 */
 	private int count;
 
-
 	public int getCount() {
 		return count;
 	}
@@ -42,19 +42,17 @@ public class ResRoleChallengeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.count = readInt(buf, false);
 
+		this.count = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, count, false);
 
+		this.writeInt(buf, count, false);
 		return true;
 	}
 }
-

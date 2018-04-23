@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送雕像死亡倒计时</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendStatusDieTimeMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ResSendStatusDieTimeMessage extends AbstractMessage {
 	 */
 	private int time;
 
-
 	public int getTime() {
 		return time;
 	}
@@ -42,19 +42,17 @@ public class ResSendStatusDieTimeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.time = readInt(buf, false);
 
+		this.time = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, time, false);
 
+		this.writeInt(buf, time, false);
 		return true;
 	}
 }
-

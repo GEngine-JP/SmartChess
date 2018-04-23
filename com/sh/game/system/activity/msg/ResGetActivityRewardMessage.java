@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>返回领取活动奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResGetActivityRewardMessage extends AbstractMessage {
 
 	@Override
@@ -31,32 +32,26 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 	 * 活动id
 	 */
 	private int activityId;
-
 	/**
 	 * 目标类型
 	 */
 	private int type;
-
 	/**
 	 * 组id
 	 */
 	private int group;
-
 	/**
 	 * 目标参数
 	 */
 	private int goal;
-
 	/**
 	 * 状态
 	 */
 	private int state;
-
 	/**
 	 * 剩余数量
 	 */
 	private int leftCount;
-
 
 	public int getActivityId() {
 		return activityId;
@@ -66,8 +61,7 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 		this.activityId = activityId;
 	}
 
-	
-	public int getType() {
+		public int getType() {
 		return type;
 	}
 
@@ -75,8 +69,7 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public int getGroup() {
+		public int getGroup() {
 		return group;
 	}
 
@@ -84,8 +77,7 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 		this.group = group;
 	}
 
-	
-	public int getGoal() {
+		public int getGoal() {
 		return goal;
 	}
 
@@ -93,8 +85,7 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 		this.goal = goal;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -102,8 +93,7 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 		this.state = state;
 	}
 
-	
-	public int getLeftCount() {
+		public int getLeftCount() {
 		return leftCount;
 	}
 
@@ -112,29 +102,27 @@ public class ResGetActivityRewardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		this.type = readInt(buf, false);
 		this.group = readInt(buf, false);
 		this.goal = readInt(buf, false);
 		this.state = readInt(buf, false);
 		this.leftCount = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, group, false);
 		this.writeInt(buf, goal, false);
 		this.writeInt(buf, state, false);
 		this.writeInt(buf, leftCount, false);
-
 		return true;
 	}
 }
-

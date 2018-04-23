@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>爱微游关注奖励</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqAiWeiYouFocusMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqAiWeiYouFocusMessage extends AbstractMessage {
 	 */
 	private int focus;
 
-
 	public int getFocus() {
 		return focus;
 	}
@@ -42,19 +42,17 @@ public class ReqAiWeiYouFocusMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.focus = readInt(buf, false);
 
+		this.focus = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, focus, false);
 
+		this.writeInt(buf, focus, false);
 		return true;
 	}
 }
-

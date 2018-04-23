@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.rank.msg.bean.RankDataBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>排行榜数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLookRankMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResLookRankMessage extends AbstractMessage {
 	/**
 	 * 排行榜数据
 	 */
-	private List<RankDataBean> rankDataBean = new ArrayList<RankDataBean>();
-
+	private List<RankDataBean> rankDataBean = new ArrayList<>();
 
 	public List<RankDataBean> getRankDataBean() {
 		return rankDataBean;
@@ -43,9 +45,9 @@ public class ResLookRankMessage extends AbstractMessage {
 		this.rankDataBean = rankDataBean;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int rankDataBeanLength = readShort(buf);
 		for (int rankDataBeanI = 0; rankDataBeanI < rankDataBeanLength; rankDataBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResLookRankMessage extends AbstractMessage {
 				this.rankDataBean.add(rankDataBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.rankDataBean.size());
 		for (int rankDataBeanI = 0; rankDataBeanI < this.rankDataBean.size(); rankDataBeanI++) {
 			this.writeBean(buf, this.rankDataBean.get(rankDataBeanI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.boss.msg.bean.BossInfo;
 import com.sh.game.system.boss.msg.bean.InstanceInfo;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>BOSS面板信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResOpenBossInfoByTypeMessage extends AbstractMessage {
 
 	@Override
@@ -33,13 +36,11 @@ public class ResOpenBossInfoByTypeMessage extends AbstractMessage {
 	/**
 	 * boss列表信息
 	 */
-	private List<BossInfo> bossInfo = new ArrayList<BossInfo>();
-
+	private List<BossInfo> bossInfo = new ArrayList<>();
 	/**
 	 * 副本信息
 	 */
 	private InstanceInfo instanceInfo;
-
 
 	public List<BossInfo> getBossInfo() {
 		return bossInfo;
@@ -48,7 +49,6 @@ public class ResOpenBossInfoByTypeMessage extends AbstractMessage {
 	public void setBossInfo(List<BossInfo> bossInfo) {
 		this.bossInfo = bossInfo;
 	}
-
 	public InstanceInfo getInstanceInfo() {
 		return instanceInfo;
 	}
@@ -58,9 +58,9 @@ public class ResOpenBossInfoByTypeMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int bossInfoLength = readShort(buf);
 		for (int bossInfoI = 0; bossInfoI < bossInfoLength; bossInfoI++) {
 			if (readByte(buf) == 0) { 
@@ -70,27 +70,21 @@ public class ResOpenBossInfoByTypeMessage extends AbstractMessage {
 				bossInfo.read(buf);
 				this.bossInfo.add(bossInfo);
 			}
-		}
-
-		if (readByte(buf) != 0) {
+		}		if (readByte(buf) != 0) {
 			InstanceInfo instanceInfo = new InstanceInfo();
 			instanceInfo.read(buf);
 			this.instanceInfo = instanceInfo;
 		}
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.bossInfo.size());
 		for (int bossInfoI = 0; bossInfoI < this.bossInfo.size(); bossInfoI++) {
 			this.writeBean(buf, this.bossInfo.get(bossInfoI));
-		}
-
-		this.writeBean(buf, instanceInfo);
-
+		}		this.writeBean(buf, instanceInfo);
 		return true;
 	}
 }
-

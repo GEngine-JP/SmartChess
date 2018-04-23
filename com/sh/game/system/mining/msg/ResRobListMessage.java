@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.mining.msg.bean.RoleBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送可抢夺玩家列表信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRobListMessage extends AbstractMessage {
 
 	@Override
@@ -32,8 +35,7 @@ public class ResRobListMessage extends AbstractMessage {
 	/**
 	 * 可抢夺玩家列表
 	 */
-	private List<RoleBean> roleList = new ArrayList<RoleBean>();
-
+	private List<RoleBean> roleList = new ArrayList<>();
 
 	public List<RoleBean> getRoleList() {
 		return roleList;
@@ -43,9 +45,9 @@ public class ResRobListMessage extends AbstractMessage {
 		this.roleList = roleList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int roleListLength = readShort(buf);
 		for (int roleListI = 0; roleListI < roleListLength; roleListI++) {
 			if (readByte(buf) == 0) { 
@@ -56,20 +58,16 @@ public class ResRobListMessage extends AbstractMessage {
 				this.roleList.add(roleBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.roleList.size());
 		for (int roleListI = 0; roleListI < this.roleList.size(); roleListI++) {
 			this.writeBean(buf, this.roleList.get(roleListI));
 		}
-
-
 		return true;
 	}
 }
-

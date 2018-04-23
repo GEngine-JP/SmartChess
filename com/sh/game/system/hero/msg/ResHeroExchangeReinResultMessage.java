@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送英雄兑换修为结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResHeroExchangeReinResultMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResHeroExchangeReinResultMessage extends AbstractMessage {
 	 * 当前修为
 	 */
 	private int reinNum;
-
 	/**
 	 * 剩余兑换次数
 	 */
 	private int exchangeNum;
-
 	/**
 	 * 兑换后英雄等级
 	 */
 	private int heroLevel;
-
 
 	public int getReinNum() {
 		return reinNum;
@@ -51,8 +49,7 @@ public class ResHeroExchangeReinResultMessage extends AbstractMessage {
 		this.reinNum = reinNum;
 	}
 
-	
-	public int getExchangeNum() {
+		public int getExchangeNum() {
 		return exchangeNum;
 	}
 
@@ -60,8 +57,7 @@ public class ResHeroExchangeReinResultMessage extends AbstractMessage {
 		this.exchangeNum = exchangeNum;
 	}
 
-	
-	public int getHeroLevel() {
+		public int getHeroLevel() {
 		return heroLevel;
 	}
 
@@ -70,23 +66,21 @@ public class ResHeroExchangeReinResultMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.reinNum = readInt(buf, false);
 		this.exchangeNum = readInt(buf, false);
 		this.heroLevel = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, reinNum, false);
 		this.writeInt(buf, exchangeNum, false);
 		this.writeInt(buf, heroLevel, false);
-
 		return true;
 	}
 }
-

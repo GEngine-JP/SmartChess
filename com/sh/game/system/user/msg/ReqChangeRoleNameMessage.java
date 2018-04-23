@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>玩家改名</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqChangeRoleNameMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqChangeRoleNameMessage extends AbstractMessage {
 	 */
 	private String newName;
 
-
 	public String getNewName() {
 		return newName;
 	}
@@ -42,19 +42,17 @@ public class ReqChangeRoleNameMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.newName = readString(buf);
 
+		this.newName = readString(buf);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeString(buf, newName);
 
+		this.writeString(buf, newName);
 		return true;
 	}
 }
-

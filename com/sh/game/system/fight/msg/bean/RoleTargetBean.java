@@ -1,58 +1,51 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RoleTargetBean extends KryoBean {
 
 	/**
 	 * 成员id
 	 */
 	private long memberId;
-
 	/**
 	 * 职业
 	 */
 	private int career;
-
 	/**
 	 * 名字
 	 */
 	private String name;
-
 	/**
 	 * 性别 1男2女
 	 */
 	private int sex;
-
 	/**
 	 * 血量
 	 */
 	private long hp;
-
 	/**
 	 * 血量
 	 */
 	private long maxHp;
-
 	/**
 	 * 是否相同帮会 1相同
 	 */
 	private int isSameUnion;
-
 	/**
 	 * 是否属于皇宫归属权行会1是
 	 */
 	private int isPalaceOwner;
-
 
 	public long getMemberId() {
 		return memberId;
@@ -62,8 +55,7 @@ public class RoleTargetBean extends KryoBean {
 		this.memberId = memberId;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -71,8 +63,7 @@ public class RoleTargetBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -80,8 +71,7 @@ public class RoleTargetBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -89,8 +79,7 @@ public class RoleTargetBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public long getHp() {
+		public long getHp() {
 		return hp;
 	}
 
@@ -98,8 +87,7 @@ public class RoleTargetBean extends KryoBean {
 		this.hp = hp;
 	}
 
-	
-	public long getMaxHp() {
+		public long getMaxHp() {
 		return maxHp;
 	}
 
@@ -107,8 +95,7 @@ public class RoleTargetBean extends KryoBean {
 		this.maxHp = maxHp;
 	}
 
-	
-	public int getIsSameUnion() {
+		public int getIsSameUnion() {
 		return isSameUnion;
 	}
 
@@ -116,8 +103,7 @@ public class RoleTargetBean extends KryoBean {
 		this.isSameUnion = isSameUnion;
 	}
 
-	
-	public int getIsPalaceOwner() {
+		public int getIsPalaceOwner() {
 		return isPalaceOwner;
 	}
 
@@ -126,9 +112,9 @@ public class RoleTargetBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.memberId = readLong(buf);
 		this.career = readInt(buf, false);
 		this.name = readString(buf);
@@ -137,12 +123,12 @@ public class RoleTargetBean extends KryoBean {
 		this.maxHp = readLong(buf);
 		this.isSameUnion = readInt(buf, false);
 		this.isPalaceOwner = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, memberId);
 		this.writeInt(buf, career, false);
 		this.writeString(buf, name);
@@ -151,8 +137,6 @@ public class RoleTargetBean extends KryoBean {
 		this.writeLong(buf, maxHp);
 		this.writeInt(buf, isSameUnion, false);
 		this.writeInt(buf, isPalaceOwner, false);
-
 		return true;
 	}
 }
-

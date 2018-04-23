@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送沙巴克战斗结果</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResSendShobakFightResultMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ResSendShobakFightResultMessage extends AbstractMessage {
 	 * 获胜者id
 	 */
 	private long winner;
-
 	/**
 	 * 失败者id
 	 */
 	private long loser;
-
 	/**
 	 * 获胜者剩余血量
 	 */
 	private long hp;
-
 
 	public long getWinner() {
 		return winner;
@@ -51,8 +49,7 @@ public class ResSendShobakFightResultMessage extends AbstractMessage {
 		this.winner = winner;
 	}
 
-	
-	public long getLoser() {
+		public long getLoser() {
 		return loser;
 	}
 
@@ -60,8 +57,7 @@ public class ResSendShobakFightResultMessage extends AbstractMessage {
 		this.loser = loser;
 	}
 
-	
-	public long getHp() {
+		public long getHp() {
 		return hp;
 	}
 
@@ -70,23 +66,21 @@ public class ResSendShobakFightResultMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.winner = readLong(buf);
 		this.loser = readLong(buf);
 		this.hp = readLong(buf);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, winner);
 		this.writeLong(buf, loser);
 		this.writeLong(buf, hp);
-
 		return true;
 	}
 }
-

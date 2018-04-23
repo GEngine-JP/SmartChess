@@ -1,28 +1,27 @@
 package com.sh.game.system.skill.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class SkillBean extends KryoBean {
 
 	/**
 	 * 技能id
 	 */
 	private int skillId;
-
 	/**
 	 * 等级
 	 */
 	private int level;
-
 
 	public int getSkillId() {
 		return skillId;
@@ -32,8 +31,7 @@ public class SkillBean extends KryoBean {
 		this.skillId = skillId;
 	}
 
-	
-	public int getLevel() {
+		public int getLevel() {
 		return level;
 	}
 
@@ -42,21 +40,19 @@ public class SkillBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.skillId = readInt(buf, false);
 		this.level = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, skillId, false);
 		this.writeInt(buf, level, false);
-
 		return true;
 	}
 }
-

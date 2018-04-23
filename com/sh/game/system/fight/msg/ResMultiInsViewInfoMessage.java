@@ -6,14 +6,17 @@ import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.fight.msg.bean.RoleTeamInfoBean;
 import com.sh.game.system.fight.msg.bean.OwnerInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回多人副本视野信息</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResMultiInsViewInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,18 +36,15 @@ public class ResMultiInsViewInfoMessage extends AbstractMessage {
 	/**
 	 * 视野信息
 	 */
-	private List<RoleTeamInfoBean> roleBean = new ArrayList<RoleTeamInfoBean>();
-
+	private List<RoleTeamInfoBean> roleBean = new ArrayList<>();
 	/**
 	 * 归属者信息
 	 */
 	private OwnerInfoBean ownerInfo;
-
 	/**
 	 * 状态 进入为1 其他为0
 	 */
 	private int state;
-
 
 	public List<RoleTeamInfoBean> getRoleBean() {
 		return roleBean;
@@ -53,7 +53,6 @@ public class ResMultiInsViewInfoMessage extends AbstractMessage {
 	public void setRoleBean(List<RoleTeamInfoBean> roleBean) {
 		this.roleBean = roleBean;
 	}
-
 	public OwnerInfoBean getOwnerInfo() {
 		return ownerInfo;
 	}
@@ -62,8 +61,7 @@ public class ResMultiInsViewInfoMessage extends AbstractMessage {
 		this.ownerInfo = ownerInfo;
 	}
 
-	
-	public int getState() {
+		public int getState() {
 		return state;
 	}
 
@@ -72,9 +70,9 @@ public class ResMultiInsViewInfoMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		int roleBeanLength = readShort(buf);
 		for (int roleBeanI = 0; roleBeanI < roleBeanLength; roleBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -84,29 +82,23 @@ public class ResMultiInsViewInfoMessage extends AbstractMessage {
 				roleTeamInfoBean.read(buf);
 				this.roleBean.add(roleTeamInfoBean);
 			}
-		}
-
-		if (readByte(buf) != 0) {
+		}		if (readByte(buf) != 0) {
 			OwnerInfoBean ownerInfoBean = new OwnerInfoBean();
 			ownerInfoBean.read(buf);
 			this.ownerInfo = ownerInfoBean;
 		}
 		this.state = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		writeShort(buf, this.roleBean.size());
 		for (int roleBeanI = 0; roleBeanI < this.roleBean.size(); roleBeanI++) {
 			this.writeBean(buf, this.roleBean.get(roleBeanI));
-		}
-
-		this.writeBean(buf, ownerInfo);
+		}		this.writeBean(buf, ownerInfo);
 		this.writeInt(buf, state, false);
-
 		return true;
 	}
 }
-

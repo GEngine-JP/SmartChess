@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>发送累计充值天数</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResLeijiRechargeDaysMessage extends AbstractMessage {
 
 	@Override
@@ -31,12 +32,10 @@ public class ResLeijiRechargeDaysMessage extends AbstractMessage {
 	 * 累计充值天数
 	 */
 	private int days;
-
 	/**
 	 * 活动Id
 	 */
 	private int activityId;
-
 
 	public int getDays() {
 		return days;
@@ -46,8 +45,7 @@ public class ResLeijiRechargeDaysMessage extends AbstractMessage {
 		this.days = days;
 	}
 
-	
-	public int getActivityId() {
+		public int getActivityId() {
 		return activityId;
 	}
 
@@ -56,21 +54,19 @@ public class ResLeijiRechargeDaysMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.days = readInt(buf, false);
 		this.activityId = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, days, false);
 		this.writeInt(buf, activityId, false);
-
 		return true;
 	}
 }
-

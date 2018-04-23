@@ -5,14 +5,17 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.runes.msg.bean.RunesPositionBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>符文数据</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ResRunesPositionInfoMessage extends AbstractMessage {
 
 	@Override
@@ -33,12 +36,10 @@ public class ResRunesPositionInfoMessage extends AbstractMessage {
 	 * 战斗力
 	 */
 	private int fightPower;
-
 	/**
 	 * 符文数据
 	 */
-	private List<RunesPositionBean> runePositionList = new ArrayList<RunesPositionBean>();
-
+	private List<RunesPositionBean> runePositionList = new ArrayList<>();
 
 	public int getFightPower() {
 		return fightPower;
@@ -48,8 +49,7 @@ public class ResRunesPositionInfoMessage extends AbstractMessage {
 		this.fightPower = fightPower;
 	}
 
-	
-	public List<RunesPositionBean> getRunePositionList() {
+		public List<RunesPositionBean> getRunePositionList() {
 		return runePositionList;
 	}
 
@@ -57,9 +57,9 @@ public class ResRunesPositionInfoMessage extends AbstractMessage {
 		this.runePositionList = runePositionList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.fightPower = readInt(buf, false);
 		int runePositionListLength = readShort(buf);
 		for (int runePositionListI = 0; runePositionListI < runePositionListLength; runePositionListI++) {
@@ -71,21 +71,17 @@ public class ResRunesPositionInfoMessage extends AbstractMessage {
 				this.runePositionList.add(runesPositionBean);
 			}
 		}
-
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, fightPower, false);
 		writeShort(buf, this.runePositionList.size());
 		for (int runePositionListI = 0; runePositionListI < this.runePositionList.size(); runePositionListI++) {
 			this.writeBean(buf, this.runePositionList.get(runePositionListI));
 		}
-
-
 		return true;
 	}
 }
-

@@ -1,78 +1,67 @@
 package com.sh.game.system.rank.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class RankRoleBean extends KryoBean {
 
 	/**
 	 * 玩家id
 	 */
 	private long id;
-
 	/**
 	 * 成员名称
 	 */
 	private String name;
-
 	/**
 	 * 成员职业
 	 */
 	private int career;
-
 	/**
 	 * 性别
 	 */
 	private int sex;
-
 	/**
 	 * 衣服
 	 */
 	private int cloth;
-
 	/**
 	 * 武器
 	 */
 	private int weapon;
-
 	/**
 	 * 翅膀
 	 */
 	private int wing;
-
 	/**
 	 * 称号
 	 */
 	private int fashionTitle;
-
 	/**
 	 * 衣服
 	 */
 	private int fashionCloth;
-
 	/**
 	 * 翅膀
 	 */
 	private int fashionWing;
-
 	/**
 	 * 武器
 	 */
 	private int fashionWeapon;
-
 	/**
 	 * 穿戴的寶物id
 	 */
 	private int treasure;
-
 
 	public long getId() {
 		return id;
@@ -82,8 +71,7 @@ public class RankRoleBean extends KryoBean {
 		this.id = id;
 	}
 
-	
-	public String getName() {
+		public String getName() {
 		return name;
 	}
 
@@ -91,8 +79,7 @@ public class RankRoleBean extends KryoBean {
 		this.name = name;
 	}
 
-	
-	public int getCareer() {
+		public int getCareer() {
 		return career;
 	}
 
@@ -100,8 +87,7 @@ public class RankRoleBean extends KryoBean {
 		this.career = career;
 	}
 
-	
-	public int getSex() {
+		public int getSex() {
 		return sex;
 	}
 
@@ -109,8 +95,7 @@ public class RankRoleBean extends KryoBean {
 		this.sex = sex;
 	}
 
-	
-	public int getCloth() {
+		public int getCloth() {
 		return cloth;
 	}
 
@@ -118,8 +103,7 @@ public class RankRoleBean extends KryoBean {
 		this.cloth = cloth;
 	}
 
-	
-	public int getWeapon() {
+		public int getWeapon() {
 		return weapon;
 	}
 
@@ -127,8 +111,7 @@ public class RankRoleBean extends KryoBean {
 		this.weapon = weapon;
 	}
 
-	
-	public int getWing() {
+		public int getWing() {
 		return wing;
 	}
 
@@ -136,8 +119,7 @@ public class RankRoleBean extends KryoBean {
 		this.wing = wing;
 	}
 
-	
-	public int getFashionTitle() {
+		public int getFashionTitle() {
 		return fashionTitle;
 	}
 
@@ -145,8 +127,7 @@ public class RankRoleBean extends KryoBean {
 		this.fashionTitle = fashionTitle;
 	}
 
-	
-	public int getFashionCloth() {
+		public int getFashionCloth() {
 		return fashionCloth;
 	}
 
@@ -154,8 +135,7 @@ public class RankRoleBean extends KryoBean {
 		this.fashionCloth = fashionCloth;
 	}
 
-	
-	public int getFashionWing() {
+		public int getFashionWing() {
 		return fashionWing;
 	}
 
@@ -163,8 +143,7 @@ public class RankRoleBean extends KryoBean {
 		this.fashionWing = fashionWing;
 	}
 
-	
-	public int getFashionWeapon() {
+		public int getFashionWeapon() {
 		return fashionWeapon;
 	}
 
@@ -172,8 +151,7 @@ public class RankRoleBean extends KryoBean {
 		this.fashionWeapon = fashionWeapon;
 	}
 
-	
-	public int getTreasure() {
+		public int getTreasure() {
 		return treasure;
 	}
 
@@ -182,9 +160,9 @@ public class RankRoleBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.id = readLong(buf);
 		this.name = readString(buf);
 		this.career = readInt(buf, false);
@@ -197,12 +175,12 @@ public class RankRoleBean extends KryoBean {
 		this.fashionWing = readInt(buf, false);
 		this.fashionWeapon = readInt(buf, false);
 		this.treasure = readInt(buf, false);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, id);
 		this.writeString(buf, name);
 		this.writeInt(buf, career, false);
@@ -215,8 +193,6 @@ public class RankRoleBean extends KryoBean {
 		this.writeInt(buf, fashionWing, false);
 		this.writeInt(buf, fashionWeapon, false);
 		this.writeInt(buf, treasure, false);
-
 		return true;
 	}
 }
-

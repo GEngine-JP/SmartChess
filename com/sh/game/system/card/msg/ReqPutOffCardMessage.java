@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求脱下卡片</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqPutOffCardMessage extends AbstractMessage {
 
 	@Override
@@ -31,17 +32,14 @@ public class ReqPutOffCardMessage extends AbstractMessage {
 	 * 1角色 2英雄
 	 */
 	private int type;
-
 	/**
 	 * 英雄id
 	 */
 	private long heroId;
-
 	/**
 	 * 位置1、2、3
 	 */
 	private int index;
-
 
 	public int getType() {
 		return type;
@@ -51,8 +49,7 @@ public class ReqPutOffCardMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-	
-	public long getHeroId() {
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -60,8 +57,7 @@ public class ReqPutOffCardMessage extends AbstractMessage {
 		this.heroId = heroId;
 	}
 
-	
-	public int getIndex() {
+		public int getIndex() {
 		return index;
 	}
 
@@ -70,23 +66,21 @@ public class ReqPutOffCardMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.index = readInt(buf, false);
-
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, index, false);
-
 		return true;
 	}
 }
-

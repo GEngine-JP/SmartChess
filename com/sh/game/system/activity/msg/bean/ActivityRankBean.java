@@ -1,36 +1,34 @@
 package com.sh.game.system.activity.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.activity.msg.bean.FirstRoleBean;
-import com.sh.game.system.activity.msg.bean.RankInfoBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ActivityRankBean extends KryoBean {
 
 	/**
 	 * activityId
 	 */
 	private int activityId;
-
 	/**
 	 * 排名第一玩家的模型
 	 */
 	private FirstRoleBean firstRoleBean;
-
 	/**
 	 * 排行榜数据
 	 */
-	private List<RankInfoBean> rankInfoList = new ArrayList<RankInfoBean>();
-
+	private List<RankInfoBean> rankInfoList = new ArrayList<>();
 
 	public int getActivityId() {
 		return activityId;
@@ -40,8 +38,7 @@ public class ActivityRankBean extends KryoBean {
 		this.activityId = activityId;
 	}
 
-	
-	public FirstRoleBean getFirstRoleBean() {
+		public FirstRoleBean getFirstRoleBean() {
 		return firstRoleBean;
 	}
 
@@ -49,8 +46,7 @@ public class ActivityRankBean extends KryoBean {
 		this.firstRoleBean = firstRoleBean;
 	}
 
-	
-	public List<RankInfoBean> getRankInfoList() {
+		public List<RankInfoBean> getRankInfoList() {
 		return rankInfoList;
 	}
 
@@ -58,9 +54,9 @@ public class ActivityRankBean extends KryoBean {
 		this.rankInfoList = rankInfoList;
 	}
 
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.activityId = readInt(buf, false);
 		if (readByte(buf) != 0) {
 			FirstRoleBean firstRoleBean = new FirstRoleBean();
@@ -77,22 +73,18 @@ public class ActivityRankBean extends KryoBean {
 				this.rankInfoList.add(rankInfoBean);
 			}
 		}
-
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, activityId, false);
 		this.writeBean(buf, firstRoleBean);
 		writeShort(buf, this.rankInfoList.size());
 		for (int rankInfoListI = 0; rankInfoListI < this.rankInfoList.size(); rankInfoListI++) {
 			this.writeBean(buf, this.rankInfoList.get(rankInfoListI));
 		}
-
-
 		return true;
 	}
 }
-

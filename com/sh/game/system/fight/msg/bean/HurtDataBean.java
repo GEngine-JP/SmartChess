@@ -1,60 +1,54 @@
 package com.sh.game.system.fight.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
 
-import com.sh.game.system.fight.msg.bean.RingTriggerDataBean;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class HurtDataBean extends KryoBean {
 
 	/**
 	 * 1 玩家 2英雄战 3 英雄法 4 英雄道
 	 */
 	private int type;
-
 	/**
 	 * 目标id
 	 */
 	private long targetId;
-
 	/**
 	 * 伤害值
 	 */
 	private int hurt;
-
 	/**
 	 * 额外效果 0无 1爆击 2威慑
 	 */
 	private int extraEffect;
-
 	/**
 	 * 剩余血量
 	 */
 	private long remainHp;
-
 	/**
 	 * 目标是否死亡
 	 */
 	private int isDead;
-
 	/**
 	 * 特戒触发数据
 	 */
-	private List<RingTriggerDataBean> ringInfo = new ArrayList<RingTriggerDataBean>();
-
+	private List<RingTriggerDataBean> ringInfo = new ArrayList<>();
 	/**
 	 * 名字
 	 */
 	private String name;
-
 
 	public int getType() {
 		return type;
@@ -64,8 +58,7 @@ public class HurtDataBean extends KryoBean {
 		this.type = type;
 	}
 
-	
-	public long getTargetId() {
+		public long getTargetId() {
 		return targetId;
 	}
 
@@ -73,8 +66,7 @@ public class HurtDataBean extends KryoBean {
 		this.targetId = targetId;
 	}
 
-	
-	public int getHurt() {
+		public int getHurt() {
 		return hurt;
 	}
 
@@ -82,8 +74,7 @@ public class HurtDataBean extends KryoBean {
 		this.hurt = hurt;
 	}
 
-	
-	public int getExtraEffect() {
+		public int getExtraEffect() {
 		return extraEffect;
 	}
 
@@ -91,8 +82,7 @@ public class HurtDataBean extends KryoBean {
 		this.extraEffect = extraEffect;
 	}
 
-	
-	public long getRemainHp() {
+		public long getRemainHp() {
 		return remainHp;
 	}
 
@@ -100,8 +90,7 @@ public class HurtDataBean extends KryoBean {
 		this.remainHp = remainHp;
 	}
 
-	
-	public int getIsDead() {
+		public int getIsDead() {
 		return isDead;
 	}
 
@@ -109,15 +98,13 @@ public class HurtDataBean extends KryoBean {
 		this.isDead = isDead;
 	}
 
-	
-	public List<RingTriggerDataBean> getRingInfo() {
+		public List<RingTriggerDataBean> getRingInfo() {
 		return ringInfo;
 	}
 
 	public void setRingInfo(List<RingTriggerDataBean> ringInfo) {
 		this.ringInfo = ringInfo;
 	}
-
 	public String getName() {
 		return name;
 	}
@@ -127,9 +114,9 @@ public class HurtDataBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.type = readInt(buf, false);
 		this.targetId = readLong(buf);
 		this.hurt = readInt(buf, false);
@@ -145,15 +132,13 @@ public class HurtDataBean extends KryoBean {
 				ringTriggerDataBean.read(buf);
 				this.ringInfo.add(ringTriggerDataBean);
 			}
-		}
-
-		this.name = readString(buf);
-
+		}		this.name = readString(buf);
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, hurt, false);
@@ -163,11 +148,7 @@ public class HurtDataBean extends KryoBean {
 		writeShort(buf, this.ringInfo.size());
 		for (int ringInfoI = 0; ringInfoI < this.ringInfo.size(); ringInfoI++) {
 			this.writeBean(buf, this.ringInfo.get(ringInfoI));
-		}
-
-		this.writeString(buf, name);
-
+		}		this.writeString(buf, name);
 		return true;
 	}
 }
-

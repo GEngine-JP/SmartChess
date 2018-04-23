@@ -1,58 +1,51 @@
 package com.sh.game.system.chat.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.net.kryo.KryoBean;
-
 
 
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class OtherMsgBean extends KryoBean {
 
 	/**
 	 * 私聊的时候的目标，其他情况发0
 	 */
 	private long targetUid;
-
 	/**
 	 * 发送者id
 	 */
 	private long sendUid;
-
 	/**
 	 * 发送者名字
 	 */
 	private String sendName;
-
 	/**
 	 * 接收者id
 	 */
 	private long receivedUid;
-
 	/**
 	 * 接受者名字
 	 */
 	private String receivedName;
-
 	/**
 	 * 称号
 	 */
 	private int titleId;
-
 	/**
 	 * vip等级
 	 */
 	private int vipLevel;
-
 	/**
 	 * 是否有月卡
 	 */
 	private boolean isMonthCard;
-
 
 	public long getTargetUid() {
 		return targetUid;
@@ -62,8 +55,7 @@ public class OtherMsgBean extends KryoBean {
 		this.targetUid = targetUid;
 	}
 
-	
-	public long getSendUid() {
+		public long getSendUid() {
 		return sendUid;
 	}
 
@@ -71,8 +63,7 @@ public class OtherMsgBean extends KryoBean {
 		this.sendUid = sendUid;
 	}
 
-	
-	public String getSendName() {
+		public String getSendName() {
 		return sendName;
 	}
 
@@ -80,8 +71,7 @@ public class OtherMsgBean extends KryoBean {
 		this.sendName = sendName;
 	}
 
-	
-	public long getReceivedUid() {
+		public long getReceivedUid() {
 		return receivedUid;
 	}
 
@@ -89,8 +79,7 @@ public class OtherMsgBean extends KryoBean {
 		this.receivedUid = receivedUid;
 	}
 
-	
-	public String getReceivedName() {
+		public String getReceivedName() {
 		return receivedName;
 	}
 
@@ -98,8 +87,7 @@ public class OtherMsgBean extends KryoBean {
 		this.receivedName = receivedName;
 	}
 
-	
-	public int getTitleId() {
+		public int getTitleId() {
 		return titleId;
 	}
 
@@ -107,8 +95,7 @@ public class OtherMsgBean extends KryoBean {
 		this.titleId = titleId;
 	}
 
-	
-	public int getVipLevel() {
+		public int getVipLevel() {
 		return vipLevel;
 	}
 
@@ -116,8 +103,7 @@ public class OtherMsgBean extends KryoBean {
 		this.vipLevel = vipLevel;
 	}
 
-	
-	public boolean getIsMonthCard() {
+		public boolean getIsMonthCard() {
 		return isMonthCard;
 	}
 
@@ -126,9 +112,9 @@ public class OtherMsgBean extends KryoBean {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
+
 		this.targetUid = readLong(buf);
 		this.sendUid = readLong(buf);
 		this.sendName = readString(buf);
@@ -137,12 +123,12 @@ public class OtherMsgBean extends KryoBean {
 		this.titleId = readInt(buf, false);
 		this.vipLevel = readInt(buf, false);
 		this.isMonthCard = readBoolean(buf);
-
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
+
 		this.writeLong(buf, targetUid);
 		this.writeLong(buf, sendUid);
 		this.writeString(buf, sendName);
@@ -151,8 +137,6 @@ public class OtherMsgBean extends KryoBean {
 		this.writeInt(buf, titleId, false);
 		this.writeInt(buf, vipLevel, false);
 		this.writeBoolean(buf, isMonthCard);
-
 		return true;
 	}
 }
-

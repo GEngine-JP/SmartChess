@@ -5,12 +5,13 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 
-
 /**
  * <p>请求操作探索事件</p>
  * <p>Created by MessageUtil</p>
- * @author : lanyue group
+ *
+ * @author : admin
  */
+
 public class ReqStartSearchEventMessage extends AbstractMessage {
 
 	@Override
@@ -32,7 +33,6 @@ public class ReqStartSearchEventMessage extends AbstractMessage {
 	 */
 	private int position;
 
-
 	public int getPosition() {
 		return position;
 	}
@@ -42,19 +42,17 @@ public class ReqStartSearchEventMessage extends AbstractMessage {
 	}
 
 	
-
 	@Override
 	public boolean read(KryoInput buf) {
-		this.position = readInt(buf, false);
 
+		this.position = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
-		this.writeInt(buf, position, false);
 
+		this.writeInt(buf, position, false);
 		return true;
 	}
 }
-
