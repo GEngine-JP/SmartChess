@@ -6,46 +6,34 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>返回官职晋升结果</p>
+ * <p>发送历练点</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResOfficialUpMessage extends AbstractMessage {
+public class ResOfficialPointChangeMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ResOfficialUpMessage() {
+	public ResOfficialPointChangeMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 56003;
+		return 56006;
 	}
 	
-	/**
-	 * 职级
-	 */
-	private int officialGrade;
 	/**
 	 * 历练点
 	 */
 	private int officialPoint;
 
-	public int getOfficialGrade() {
-		return officialGrade;
-	}
-
-	public void setOfficialGrade(int officialGrade) {
-		this.officialGrade = officialGrade;
-	}
-
-		public int getOfficialPoint() {
+	public int getOfficialPoint() {
 		return officialPoint;
 	}
 
@@ -57,7 +45,6 @@ public class ResOfficialUpMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.officialGrade = readInt(buf, false);
 		this.officialPoint = readInt(buf, false);
 		return true;
 	}
@@ -65,7 +52,6 @@ public class ResOfficialUpMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, officialGrade, false);
 		this.writeInt(buf, officialPoint, false);
 		return true;
 	}

@@ -39,7 +39,7 @@ public class ResOfficialInfoMessage extends AbstractMessage {
 	/**
 	 * 历练点
 	 */
-	private int totalPoint;
+	private int officialPoint;
 	/**
 	 * 日活跃点
 	 */
@@ -61,12 +61,12 @@ public class ResOfficialInfoMessage extends AbstractMessage {
 		this.officialGrade = officialGrade;
 	}
 
-		public int getTotalPoint() {
-		return totalPoint;
+		public int getOfficialPoint() {
+		return officialPoint;
 	}
 
-	public void setTotalPoint(int totalPoint) {
-		this.totalPoint = totalPoint;
+	public void setOfficialPoint(int officialPoint) {
+		this.officialPoint = officialPoint;
 	}
 
 		public int getDailyPoint() {
@@ -96,7 +96,7 @@ public class ResOfficialInfoMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.officialGrade = readInt(buf, false);
-		this.totalPoint = readInt(buf, false);
+		this.officialPoint = readInt(buf, false);
 		this.dailyPoint = readInt(buf, false);
 		int dailyRewardDrawListLength = readShort(buf);
 		for (int dailyRewardDrawListI = 0; dailyRewardDrawListI < dailyRewardDrawListLength; dailyRewardDrawListI++) {
@@ -118,7 +118,7 @@ public class ResOfficialInfoMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, officialGrade, false);
-		this.writeInt(buf, totalPoint, false);
+		this.writeInt(buf, officialPoint, false);
 		this.writeInt(buf, dailyPoint, false);
 		writeShort(buf, this.dailyRewardDrawList.size());
 		for (int dailyRewardDrawListI = 0; dailyRewardDrawListI < this.dailyRewardDrawList.size(); dailyRewardDrawListI++) {
