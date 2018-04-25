@@ -37,7 +37,7 @@ public class ResAllLegacyEquipInfoMessage extends AbstractMessage {
 	 */
 	private List<LegacyEquipBean> legacyEquipList = new ArrayList<>();
 	/**
-	 * 战斗力
+	 * 传世装备总战斗力
 	 */
 	private int fightValue;
 

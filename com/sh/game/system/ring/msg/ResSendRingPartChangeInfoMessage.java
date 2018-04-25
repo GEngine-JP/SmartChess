@@ -45,6 +45,10 @@ public class ResSendRingPartChangeInfoMessage extends AbstractMessage {
 	 * 战斗力
 	 */
 	private int fightPower;
+	/**
+	 * 所属特戒的等级
+	 */
+	private int ringLevel;
 
 	public RingPartInfo getChangeInfo() {
 		return changeInfo;
@@ -78,6 +82,14 @@ public class ResSendRingPartChangeInfoMessage extends AbstractMessage {
 		this.fightPower = fightPower;
 	}
 
+		public int getRingLevel() {
+		return ringLevel;
+	}
+
+	public void setRingLevel(int ringLevel) {
+		this.ringLevel = ringLevel;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -90,6 +102,7 @@ public class ResSendRingPartChangeInfoMessage extends AbstractMessage {
 		this.heroId = readLong(buf);
 		this.owner = readInt(buf, false);
 		this.fightPower = readInt(buf, false);
+		this.ringLevel = readInt(buf, false);
 		return true;
 	}
 
@@ -100,6 +113,7 @@ public class ResSendRingPartChangeInfoMessage extends AbstractMessage {
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, owner, false);
 		this.writeInt(buf, fightPower, false);
+		this.writeInt(buf, ringLevel, false);
 		return true;
 	}
 }

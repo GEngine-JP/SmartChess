@@ -34,7 +34,7 @@ public class ResLegacyEquipInfoMessage extends AbstractMessage {
 	 */
 	private LegacyEquipBean legacyEquipBean;
 	/**
-	 * 战斗力
+	 * 传世装备总战斗力
 	 */
 	private int fightValue;
 

@@ -15,6 +15,10 @@ import com.sh.net.kryo.KryoOutput;
 public class LegacyEquipBean extends KryoBean {
 
 	/**
+	 * 角色或英雄唯一id
+	 */
+	private long uid;
+	/**
 	 * 装备位置
 	 */
 	private int index;
@@ -23,7 +27,15 @@ public class LegacyEquipBean extends KryoBean {
 	 */
 	private int itemId;
 
-	public int getIndex() {
+	public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
+	}
+
+		public int getIndex() {
 		return index;
 	}
 
@@ -43,6 +55,7 @@ public class LegacyEquipBean extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.uid = readLong(buf);
 		this.index = readInt(buf, false);
 		this.itemId = readInt(buf, false);
 		return true;
@@ -51,6 +64,7 @@ public class LegacyEquipBean extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeLong(buf, uid);
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, itemId, false);
 		return true;

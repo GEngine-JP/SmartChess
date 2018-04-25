@@ -36,6 +36,10 @@ public class ReqPutOnLegacyEquipMessage extends AbstractMessage {
 	 * 装备位置
 	 */
 	private int index;
+	/**
+	 * 角色或英雄唯一id
+	 */
+	private long uid;
 
 	public long getUniqueId() {
 		return uniqueId;
@@ -53,12 +57,21 @@ public class ReqPutOnLegacyEquipMessage extends AbstractMessage {
 		this.index = index;
 	}
 
+		public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.uniqueId = readLong(buf);
 		this.index = readInt(buf, false);
+		this.uid = readLong(buf);
 		return true;
 	}
 
@@ -67,6 +80,7 @@ public class ReqPutOnLegacyEquipMessage extends AbstractMessage {
 
 		this.writeLong(buf, uniqueId);
 		this.writeInt(buf, index, false);
+		this.writeLong(buf, uid);
 		return true;
 	}
 }
