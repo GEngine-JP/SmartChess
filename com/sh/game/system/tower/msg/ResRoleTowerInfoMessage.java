@@ -44,10 +44,6 @@ public class ResRoleTowerInfoMessage extends AbstractMessage {
 	 * 每日奖励领奖状态 0不可领奖 1可领取 2已领取
 	 */
 	private int rewardState;
-	/**
-	 * 是否达到最高层 0否 1是
-	 */
-	private int isHighest;
 
 	public int getGroup() {
 		return group;
@@ -81,14 +77,6 @@ public class ResRoleTowerInfoMessage extends AbstractMessage {
 		this.rewardState = rewardState;
 	}
 
-		public int getIsHighest() {
-		return isHighest;
-	}
-
-	public void setIsHighest(int isHighest) {
-		this.isHighest = isHighest;
-	}
-
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -97,7 +85,6 @@ public class ResRoleTowerInfoMessage extends AbstractMessage {
 		this.storey = readInt(buf, false);
 		this.times = readInt(buf, false);
 		this.rewardState = readInt(buf, false);
-		this.isHighest = readInt(buf, false);
 		return true;
 	}
 
@@ -108,7 +95,6 @@ public class ResRoleTowerInfoMessage extends AbstractMessage {
 		this.writeInt(buf, storey, false);
 		this.writeInt(buf, times, false);
 		this.writeInt(buf, rewardState, false);
-		this.writeInt(buf, isHighest, false);
 		return true;
 	}
 }

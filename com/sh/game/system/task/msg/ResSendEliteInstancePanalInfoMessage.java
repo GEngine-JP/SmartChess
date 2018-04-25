@@ -60,10 +60,6 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 	 * 首次做任务0首次其他不是
 	 */
 	private int firstGet;
-	/**
-	 * 精英任务下次增加次数时间
-	 */
-	private int nextAddTime;
 
 	public int getCfgId() {
 		return cfgId;
@@ -120,14 +116,6 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.firstGet = firstGet;
 	}
 
-		public int getNextAddTime() {
-		return nextAddTime;
-	}
-
-	public void setNextAddTime(int nextAddTime) {
-		this.nextAddTime = nextAddTime;
-	}
-
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -147,7 +135,6 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 			}
 		}		this.taskState = readInt(buf, false);
 		this.firstGet = readInt(buf, false);
-		this.nextAddTime = readInt(buf, false);
 		return true;
 	}
 
@@ -163,7 +150,6 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 			this.writeBean(buf, this.rewards.get(rewardsI));
 		}		this.writeInt(buf, taskState, false);
 		this.writeInt(buf, firstGet, false);
-		this.writeInt(buf, nextAddTime, false);
 		return true;
 	}
 }

@@ -1,4 +1,4 @@
-package com.sh.game.system.tower.msg;
+package com.sh.game.system.task.msg;
 
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
@@ -6,53 +6,41 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>返回开奖信息</p>
+ * <p>请求精英任务一键刷橙</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResOpenRewardMessage extends AbstractMessage {
+public class ReqOneKeyTaskOrangeMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ResOpenRewardMessage() {
+	public ReqOneKeyTaskOrangeMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 54009;
+		return 42007;
 	}
 	
-	/**
-	 * 中奖位置
-	 */
-	private int index;
 
-	public int getIndex() {
-		return index;
-	}
 
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
-	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.index = readInt(buf, false);
+
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, index, false);
+
 		return true;
 	}
 }

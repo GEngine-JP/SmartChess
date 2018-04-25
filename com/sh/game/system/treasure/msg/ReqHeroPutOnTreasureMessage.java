@@ -1,35 +1,41 @@
-package com.sh.game.system.legacyEquip.msg.bean;
+package com.sh.game.system.treasure.msg;
 
-import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
+import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p></p>
+ * <p>请求穿戴宝物</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class LegacyEquipBean extends KryoBean {
+public class ReqHeroPutOnTreasureMessage extends AbstractMessage {
 
+	@Override
+	public void doAction() {
+		
+	}
+	
+	public ReqHeroPutOnTreasureMessage() {
+		this.queueId = 2;
+	}
+	
+	@Override
+	public int getId() {
+		return 14019;
+	}
+	
 	/**
-	 * 类型 1 角色 2英雄
+	 * 宝物类型 1.神弓 2.神斧 3.神剑 4.法宝
 	 */
 	private int type;
 	/**
-	 * 英雄id
+	 * heroId
 	 */
 	private long heroId;
-	/**
-	 * 装备位置
-	 */
-	private int index;
-	/**
-	 * 传世装备id
-	 */
-	private int itemId;
 
 	public int getType() {
 		return type;
@@ -47,40 +53,20 @@ public class LegacyEquipBean extends KryoBean {
 		this.heroId = heroId;
 	}
 
-		public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
-		public int getItemId() {
-		return itemId;
-	}
-
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
-		this.index = readInt(buf, false);
-		this.itemId = readInt(buf, false);
 		return true;
 	}
-	
+
 	@Override
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
-		this.writeInt(buf, index, false);
-		this.writeInt(buf, itemId, false);
 		return true;
 	}
 }

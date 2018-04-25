@@ -27,7 +27,7 @@ public class WheelBean extends KryoBean {
 	 */
 	private int index;
 	/**
-	 * 状态 0未领取 1已领取
+	 * 状态 1未领取 2已领取
 	 */
 	private int state;
 

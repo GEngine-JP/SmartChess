@@ -33,9 +33,13 @@ public class ReqActivateLegacyEquipMessage extends AbstractMessage {
 	 */
 	private int index;
 	/**
-	 * 角色或英雄唯一id
+	 * 类型 1 角色 2 英雄
 	 */
-	private long uid;
+	private int type;
+	/**
+	 * 英雄id
+	 */
+	private long heroId;
 
 	public int getIndex() {
 		return index;
@@ -45,12 +49,20 @@ public class ReqActivateLegacyEquipMessage extends AbstractMessage {
 		this.index = index;
 	}
 
-		public long getUid() {
-		return uid;
+		public int getType() {
+		return type;
 	}
 
-	public void setUid(long uid) {
-		this.uid = uid;
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
 	}
 
 	
@@ -58,7 +70,8 @@ public class ReqActivateLegacyEquipMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.index = readInt(buf, false);
-		this.uid = readLong(buf);
+		this.type = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 
@@ -66,7 +79,8 @@ public class ReqActivateLegacyEquipMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, index, false);
-		this.writeLong(buf, uid);
+		this.writeInt(buf, type, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }
