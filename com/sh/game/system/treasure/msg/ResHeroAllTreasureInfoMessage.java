@@ -4,7 +4,7 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import com.sh.game.system.treasure.msg.bean.TreasureBean;
+import com.sh.game.system.treasure.msg.bean.HeroTreasureBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,29 +33,29 @@ public class ResHeroAllTreasureInfoMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * 所有宝物信息
+	 * 所有英难宝物信息
 	 */
-	private List<TreasureBean> treasureList = new ArrayList<>();
+	private List<HeroTreasureBean> heroTreasureList = new ArrayList<>();
 
-	public List<TreasureBean> getTreasureList() {
-		return treasureList;
+	public List<HeroTreasureBean> getHeroTreasureList() {
+		return heroTreasureList;
 	}
 
-	public void setTreasureList(List<TreasureBean> treasureList) {
-		this.treasureList = treasureList;
+	public void setHeroTreasureList(List<HeroTreasureBean> heroTreasureList) {
+		this.heroTreasureList = heroTreasureList;
 	}
 
 	@Override
 	public boolean read(KryoInput buf) {
 
-		int treasureListLength = readShort(buf);
-		for (int treasureListI = 0; treasureListI < treasureListLength; treasureListI++) {
+		int heroTreasureListLength = readShort(buf);
+		for (int heroTreasureListI = 0; heroTreasureListI < heroTreasureListLength; heroTreasureListI++) {
 			if (readByte(buf) == 0) { 
-				this.treasureList.add(null);
+				this.heroTreasureList.add(null);
 			} else {
-				TreasureBean treasureBean = new TreasureBean();
-				treasureBean.read(buf);
-				this.treasureList.add(treasureBean);
+				HeroTreasureBean heroTreasureBean = new HeroTreasureBean();
+				heroTreasureBean.read(buf);
+				this.heroTreasureList.add(heroTreasureBean);
 			}
 		}
 		return true;
@@ -64,9 +64,9 @@ public class ResHeroAllTreasureInfoMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		writeShort(buf, this.treasureList.size());
-		for (int treasureListI = 0; treasureListI < this.treasureList.size(); treasureListI++) {
-			this.writeBean(buf, this.treasureList.get(treasureListI));
+		writeShort(buf, this.heroTreasureList.size());
+		for (int heroTreasureListI = 0; heroTreasureListI < this.heroTreasureList.size(); heroTreasureListI++) {
+			this.writeBean(buf, this.heroTreasureList.get(heroTreasureListI));
 		}
 		return true;
 	}

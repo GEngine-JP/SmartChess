@@ -32,6 +32,10 @@ public class ReqHeroTreasureInfoMessage extends AbstractMessage {
 	 * 宝物类型 1.神弓 2.神斧 3.神剑 4.法宝
 	 */
 	private int type;
+	/**
+	 * heroId
+	 */
+	private long heroId;
 
 	public int getType() {
 		return type;
@@ -41,11 +45,20 @@ public class ReqHeroTreasureInfoMessage extends AbstractMessage {
 		this.type = type;
 	}
 
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.type = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 
@@ -53,6 +66,7 @@ public class ReqHeroTreasureInfoMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, type, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }
