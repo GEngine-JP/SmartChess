@@ -30,6 +30,10 @@ public class TreasureBean extends KryoBean {
 	 * 战斗力
 	 */
 	private int power;
+	/**
+	 * 英雄id
+	 */
+	private long heroId;
 
 	public int getIndex() {
 		return index;
@@ -63,6 +67,14 @@ public class TreasureBean extends KryoBean {
 		this.power = power;
 	}
 
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -71,6 +83,7 @@ public class TreasureBean extends KryoBean {
 		this.itemId = readInt(buf, false);
 		this.type = readInt(buf, false);
 		this.power = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 	
@@ -81,6 +94,7 @@ public class TreasureBean extends KryoBean {
 		this.writeInt(buf, itemId, false);
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, power, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }

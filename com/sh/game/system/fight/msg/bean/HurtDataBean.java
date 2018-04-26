@@ -46,6 +46,10 @@ public class HurtDataBean extends KryoBean {
 	 */
 	private List<RingTriggerDataBean> ringInfo = new ArrayList<>();
 	/**
+	 * 天赋卡触发数据
+	 */
+	private List<CardTriggerDataBean> cardInfo = new ArrayList<>();
+	/**
 	 * 名字
 	 */
 	private String name;
@@ -105,6 +109,13 @@ public class HurtDataBean extends KryoBean {
 	public void setRingInfo(List<RingTriggerDataBean> ringInfo) {
 		this.ringInfo = ringInfo;
 	}
+	public List<CardTriggerDataBean> getCardInfo() {
+		return cardInfo;
+	}
+
+	public void setCardInfo(List<CardTriggerDataBean> cardInfo) {
+		this.cardInfo = cardInfo;
+	}
 	public String getName() {
 		return name;
 	}
@@ -132,6 +143,15 @@ public class HurtDataBean extends KryoBean {
 				ringTriggerDataBean.read(buf);
 				this.ringInfo.add(ringTriggerDataBean);
 			}
+		}		int cardInfoLength = readShort(buf);
+		for (int cardInfoI = 0; cardInfoI < cardInfoLength; cardInfoI++) {
+			if (readByte(buf) == 0) { 
+				this.cardInfo.add(null);
+			} else {
+				CardTriggerDataBean cardTriggerDataBean = new CardTriggerDataBean();
+				cardTriggerDataBean.read(buf);
+				this.cardInfo.add(cardTriggerDataBean);
+			}
 		}		this.name = readString(buf);
 		return true;
 	}
@@ -148,6 +168,9 @@ public class HurtDataBean extends KryoBean {
 		writeShort(buf, this.ringInfo.size());
 		for (int ringInfoI = 0; ringInfoI < this.ringInfo.size(); ringInfoI++) {
 			this.writeBean(buf, this.ringInfo.get(ringInfoI));
+		}		writeShort(buf, this.cardInfo.size());
+		for (int cardInfoI = 0; cardInfoI < this.cardInfo.size(); cardInfoI++) {
+			this.writeBean(buf, this.cardInfo.get(cardInfoI));
 		}		this.writeString(buf, name);
 		return true;
 	}
