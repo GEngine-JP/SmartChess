@@ -15,7 +15,7 @@ import com.sh.net.kryo.KryoOutput;
 public class CardTriggerDataBean extends KryoBean {
 
 	/**
-	 * 类型 1回血
+	 * 类型 1吸血 2回复
 	 */
 	private int type;
 	/**
@@ -26,6 +26,10 @@ public class CardTriggerDataBean extends KryoBean {
 	 * 参数
 	 */
 	private int param;
+	/**
+	 * 目标id
+	 */
+	private long targetId;
 
 	public int getType() {
 		return type;
@@ -51,6 +55,14 @@ public class CardTriggerDataBean extends KryoBean {
 		this.param = param;
 	}
 
+		public long getTargetId() {
+		return targetId;
+	}
+
+	public void setTargetId(long targetId) {
+		this.targetId = targetId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -58,6 +70,7 @@ public class CardTriggerDataBean extends KryoBean {
 		this.type = readInt(buf, false);
 		this.isTrigger = readInt(buf, false);
 		this.param = readInt(buf, false);
+		this.targetId = readLong(buf);
 		return true;
 	}
 	
@@ -67,6 +80,7 @@ public class CardTriggerDataBean extends KryoBean {
 		this.writeInt(buf, type, false);
 		this.writeInt(buf, isTrigger, false);
 		this.writeInt(buf, param, false);
+		this.writeLong(buf, targetId);
 		return true;
 	}
 }
