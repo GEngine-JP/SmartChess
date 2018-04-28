@@ -15,7 +15,7 @@ import com.sh.net.kryo.KryoOutput;
 public class CardTriggerDataBean extends KryoBean {
 
 	/**
-	 * 类型 1吸血 2回复
+	 * 类型 1吸血 2回复 3反弹 4复活
 	 */
 	private int type;
 	/**
