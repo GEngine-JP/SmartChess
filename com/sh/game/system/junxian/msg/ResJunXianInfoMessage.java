@@ -6,26 +6,26 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>返回军衔结果</p>
+ * <p>返回军衔信息</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResUpJunXianMessage extends AbstractMessage {
+public class ResJunXianInfoMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ResUpJunXianMessage() {
+	public ResJunXianInfoMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 59002;
+		return 59003;
 	}
 	
 	/**

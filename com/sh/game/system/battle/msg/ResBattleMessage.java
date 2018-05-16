@@ -5,7 +5,7 @@ import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
 import com.sh.game.system.battle.msg.bean.TeamInfoBean;
-import FightDataBean;
+import com.sh.game.system.battle.msg.bean.BattleDataBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class ResBattleMessage extends AbstractMessage {
 	/**
 	 * 战报
 	 */
-	private List<FightDataBean> fightDataBean = new ArrayList<>();
+	private List<BattleDataBean> battleDataBean = new ArrayList<>();
 
 	public long getResult() {
 		return result;
@@ -74,12 +74,12 @@ public class ResBattleMessage extends AbstractMessage {
 		this.teamInfoBean = teamInfoBean;
 	}
 
-		public List<FightDataBean> getFightDataBean() {
-		return fightDataBean;
+		public List<BattleDataBean> getBattleDataBean() {
+		return battleDataBean;
 	}
 
-	public void setFightDataBean(List<FightDataBean> fightDataBean) {
-		this.fightDataBean = fightDataBean;
+	public void setBattleDataBean(List<BattleDataBean> battleDataBean) {
+		this.battleDataBean = battleDataBean;
 	}
 
 	@Override
@@ -92,14 +92,14 @@ public class ResBattleMessage extends AbstractMessage {
 			teamInfoBean.read(buf);
 			this.teamInfoBean = teamInfoBean;
 		}
-		int fightDataBeanLength = readShort(buf);
-		for (int fightDataBeanI = 0; fightDataBeanI < fightDataBeanLength; fightDataBeanI++) {
+		int battleDataBeanLength = readShort(buf);
+		for (int battleDataBeanI = 0; battleDataBeanI < battleDataBeanLength; battleDataBeanI++) {
 			if (readByte(buf) == 0) { 
-				this.fightDataBean.add(null);
+				this.battleDataBean.add(null);
 			} else {
-				FightDataBean fightDataBean = new FightDataBean();
-				fightDataBean.read(buf);
-				this.fightDataBean.add(fightDataBean);
+				BattleDataBean battleDataBean = new BattleDataBean();
+				battleDataBean.read(buf);
+				this.battleDataBean.add(battleDataBean);
 			}
 		}
 		return true;
@@ -111,9 +111,9 @@ public class ResBattleMessage extends AbstractMessage {
 		this.writeLong(buf, result);
 		this.writeLong(buf, attackId);
 		this.writeBean(buf, teamInfoBean);
-		writeShort(buf, this.fightDataBean.size());
-		for (int fightDataBeanI = 0; fightDataBeanI < this.fightDataBean.size(); fightDataBeanI++) {
-			this.writeBean(buf, this.fightDataBean.get(fightDataBeanI));
+		writeShort(buf, this.battleDataBean.size());
+		for (int battleDataBeanI = 0; battleDataBeanI < this.battleDataBean.size(); battleDataBeanI++) {
+			this.writeBean(buf, this.battleDataBean.get(battleDataBeanI));
 		}
 		return true;
 	}
