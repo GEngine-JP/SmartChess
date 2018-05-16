@@ -42,6 +42,10 @@ public class ResBattleMessage extends AbstractMessage {
 	 */
 	private long attackId;
 	/**
+	 * 自己的队伍信息
+	 */
+	private TeamInfoBean selfTeamBean;
+	/**
 	 * 对方队伍信息
 	 */
 	private TeamInfoBean teamInfoBean;
@@ -64,6 +68,14 @@ public class ResBattleMessage extends AbstractMessage {
 
 	public void setAttackId(long attackId) {
 		this.attackId = attackId;
+	}
+
+		public TeamInfoBean getSelfTeamBean() {
+		return selfTeamBean;
+	}
+
+	public void setSelfTeamBean(TeamInfoBean selfTeamBean) {
+		this.selfTeamBean = selfTeamBean;
 	}
 
 		public TeamInfoBean getTeamInfoBean() {
@@ -90,6 +102,11 @@ public class ResBattleMessage extends AbstractMessage {
 		if (readByte(buf) != 0) {
 			TeamInfoBean teamInfoBean = new TeamInfoBean();
 			teamInfoBean.read(buf);
+			this.selfTeamBean = teamInfoBean;
+		}
+		if (readByte(buf) != 0) {
+			TeamInfoBean teamInfoBean = new TeamInfoBean();
+			teamInfoBean.read(buf);
 			this.teamInfoBean = teamInfoBean;
 		}
 		int battleDataBeanLength = readShort(buf);
@@ -110,6 +127,7 @@ public class ResBattleMessage extends AbstractMessage {
 
 		this.writeLong(buf, result);
 		this.writeLong(buf, attackId);
+		this.writeBean(buf, selfTeamBean);
 		this.writeBean(buf, teamInfoBean);
 		writeShort(buf, this.battleDataBean.size());
 		for (int battleDataBeanI = 0; battleDataBeanI < this.battleDataBean.size(); battleDataBeanI++) {
