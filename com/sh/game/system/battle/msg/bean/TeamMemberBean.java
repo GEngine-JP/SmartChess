@@ -15,10 +15,6 @@ import com.sh.net.kryo.KryoOutput;
 public class TeamMemberBean extends KryoBean {
 
 	/**
-	 * 队伍id
-	 */
-	private long teamId;
-	/**
 	 * 成员id
 	 */
 	private long memberId;
@@ -75,15 +71,7 @@ public class TeamMemberBean extends KryoBean {
 	 */
 	private String unionName;
 
-	public long getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(long teamId) {
-		this.teamId = teamId;
-	}
-
-		public long getMemberId() {
+	public long getMemberId() {
 		return memberId;
 	}
 
@@ -199,7 +187,6 @@ public class TeamMemberBean extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.teamId = readLong(buf);
 		this.memberId = readLong(buf);
 		this.career = readInt(buf, false);
 		this.name = readString(buf);
@@ -220,7 +207,6 @@ public class TeamMemberBean extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeLong(buf, teamId);
 		this.writeLong(buf, memberId);
 		this.writeInt(buf, career, false);
 		this.writeString(buf, name);

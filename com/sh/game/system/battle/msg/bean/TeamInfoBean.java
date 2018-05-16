@@ -18,11 +18,23 @@ import java.util.List;
 public class TeamInfoBean extends KryoBean {
 
 	/**
+	 * 队伍id
+	 */
+	private long teamId;
+	/**
 	 * 参战列表
 	 */
 	private List<TeamMemberBean> teamMemberBean = new ArrayList<>();
 
-	public List<TeamMemberBean> getTeamMemberBean() {
+	public long getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(long teamId) {
+		this.teamId = teamId;
+	}
+
+		public List<TeamMemberBean> getTeamMemberBean() {
 		return teamMemberBean;
 	}
 
@@ -33,6 +45,7 @@ public class TeamInfoBean extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.teamId = readLong(buf);
 		int teamMemberBeanLength = readShort(buf);
 		for (int teamMemberBeanI = 0; teamMemberBeanI < teamMemberBeanLength; teamMemberBeanI++) {
 			if (readByte(buf) == 0) { 
@@ -49,6 +62,7 @@ public class TeamInfoBean extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeLong(buf, teamId);
 		writeShort(buf, this.teamMemberBean.size());
 		for (int teamMemberBeanI = 0; teamMemberBeanI < this.teamMemberBean.size(); teamMemberBeanI++) {
 			this.writeBean(buf, this.teamMemberBean.get(teamMemberBeanI));
