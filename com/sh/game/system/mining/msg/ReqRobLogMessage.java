@@ -25,7 +25,7 @@ public class ReqRobLogMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 48010;
+		return 48011;
 	}
 	
 

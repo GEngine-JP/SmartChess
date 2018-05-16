@@ -22,6 +22,10 @@ public class RoleBean extends KryoBean {
 	 * 玩家名字
 	 */
 	private String roleName;
+	/**
+	 * 排序
+	 */
+	private int index;
 
 	public long getRoleId() {
 		return roleId;
@@ -39,12 +43,21 @@ public class RoleBean extends KryoBean {
 		this.roleName = roleName;
 	}
 
+		public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.roleId = readLong(buf);
 		this.roleName = readString(buf);
+		this.index = readInt(buf, false);
 		return true;
 	}
 	
@@ -53,6 +66,7 @@ public class RoleBean extends KryoBean {
 
 		this.writeLong(buf, roleId);
 		this.writeString(buf, roleName);
+		this.writeInt(buf, index, false);
 		return true;
 	}
 }

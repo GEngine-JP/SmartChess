@@ -15,44 +15,58 @@ import com.sh.net.kryo.KryoOutput;
 public class WingEquipBean extends KryoBean {
 
 	/**
-	 * 光翼装备类型
+	 * 位置
 	 */
-	private int wingEquipType;
+	private int index;
 	/**
-	 * 光翼装备id
+	 * 道具id
 	 */
-	private int wingEquipId;
+	private int itemId;
+	/**
+	 * 唯一id
+	 */
+	private long uniqueId;
 
-	public int getWingEquipType() {
-		return wingEquipType;
+	public int getIndex() {
+		return index;
 	}
 
-	public void setWingEquipType(int wingEquipType) {
-		this.wingEquipType = wingEquipType;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
-		public int getWingEquipId() {
-		return wingEquipId;
+		public int getItemId() {
+		return itemId;
 	}
 
-	public void setWingEquipId(int wingEquipId) {
-		this.wingEquipId = wingEquipId;
+	public void setItemId(int itemId) {
+		this.itemId = itemId;
+	}
+
+		public long getUniqueId() {
+		return uniqueId;
+	}
+
+	public void setUniqueId(long uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.wingEquipType = readInt(buf, false);
-		this.wingEquipId = readInt(buf, false);
+		this.index = readInt(buf, false);
+		this.itemId = readInt(buf, false);
+		this.uniqueId = readLong(buf);
 		return true;
 	}
 	
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, wingEquipType, false);
-		this.writeInt(buf, wingEquipId, false);
+		this.writeInt(buf, index, false);
+		this.writeInt(buf, itemId, false);
+		this.writeLong(buf, uniqueId);
 		return true;
 	}
 }

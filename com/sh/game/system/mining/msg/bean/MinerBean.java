@@ -19,10 +19,6 @@ public class MinerBean extends KryoBean {
 	 */
 	private int minerId;
 	/**
-	 * 矿工类型
-	 */
-	private int minerType;
-	/**
 	 * 收获时间
 	 */
 	private int gainTime;
@@ -33,14 +29,6 @@ public class MinerBean extends KryoBean {
 
 	public void setMinerId(int minerId) {
 		this.minerId = minerId;
-	}
-
-		public int getMinerType() {
-		return minerType;
-	}
-
-	public void setMinerType(int minerType) {
-		this.minerType = minerType;
 	}
 
 		public int getGainTime() {
@@ -56,7 +44,6 @@ public class MinerBean extends KryoBean {
 	public boolean read(KryoInput buf) {
 
 		this.minerId = readInt(buf, false);
-		this.minerType = readInt(buf, false);
 		this.gainTime = readInt(buf, false);
 		return true;
 	}
@@ -65,7 +52,6 @@ public class MinerBean extends KryoBean {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, minerId, false);
-		this.writeInt(buf, minerType, false);
 		this.writeInt(buf, gainTime, false);
 		return true;
 	}

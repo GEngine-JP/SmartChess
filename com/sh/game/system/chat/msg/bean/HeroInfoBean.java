@@ -30,10 +30,6 @@ public class HeroInfoBean extends KryoBean {
 	 */
 	private int career;
 	/**
-	 * 转生
-	 */
-	private int rein;
-	/**
 	 * 等级
 	 */
 	private int level;
@@ -80,14 +76,6 @@ public class HeroInfoBean extends KryoBean {
 
 	public void setCareer(int career) {
 		this.career = career;
-	}
-
-		public int getRein() {
-		return rein;
-	}
-
-	public void setRein(int rein) {
-		this.rein = rein;
 	}
 
 		public int getLevel() {
@@ -142,7 +130,6 @@ public class HeroInfoBean extends KryoBean {
 		this.windId = readInt(buf, false);
 		this.sex = readInt(buf, false);
 		this.career = readInt(buf, false);
-		this.rein = readInt(buf, false);
 		this.level = readInt(buf, false);
 		this.fightPower = readInt(buf, false);
 		if (readByte(buf) != 0) {
@@ -181,7 +168,6 @@ public class HeroInfoBean extends KryoBean {
 		this.writeInt(buf, windId, false);
 		this.writeInt(buf, sex, false);
 		this.writeInt(buf, career, false);
-		this.writeInt(buf, rein, false);
 		this.writeInt(buf, level, false);
 		this.writeInt(buf, fightPower, false);
 		this.writeBean(buf, heroAttribute);

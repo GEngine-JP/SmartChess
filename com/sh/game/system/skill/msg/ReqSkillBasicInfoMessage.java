@@ -6,7 +6,7 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求角色技能数据</p>
+ * <p>请求角色和英雄技能数据</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin

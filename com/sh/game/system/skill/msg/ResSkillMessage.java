@@ -4,7 +4,7 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import com.sh.game.system.skill.msg.bean.SkillBean;
+import com.sh.game.system.skill.msg.bean.SkillBeanInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,28 +35,16 @@ public class ResSkillMessage extends AbstractMessage {
 	/**
 	 * 技能列表
 	 */
-	private List<SkillBean> skillList = new ArrayList<>();
-	/**
-	 * 战斗力
-	 */
-	private int fightValue;
+	private List<SkillBeanInfo> skillList = new ArrayList<>();
 
-	public List<SkillBean> getSkillList() {
+	public List<SkillBeanInfo> getSkillList() {
 		return skillList;
 	}
 
-	public void setSkillList(List<SkillBean> skillList) {
+	public void setSkillList(List<SkillBeanInfo> skillList) {
 		this.skillList = skillList;
 	}
-	public int getFightValue() {
-		return fightValue;
-	}
 
-	public void setFightValue(int fightValue) {
-		this.fightValue = fightValue;
-	}
-
-	
 	@Override
 	public boolean read(KryoInput buf) {
 
@@ -65,11 +53,11 @@ public class ResSkillMessage extends AbstractMessage {
 			if (readByte(buf) == 0) { 
 				this.skillList.add(null);
 			} else {
-				SkillBean skillBean = new SkillBean();
-				skillBean.read(buf);
-				this.skillList.add(skillBean);
+				SkillBeanInfo skillBeanInfo = new SkillBeanInfo();
+				skillBeanInfo.read(buf);
+				this.skillList.add(skillBeanInfo);
 			}
-		}		this.fightValue = readInt(buf, false);
+		}
 		return true;
 	}
 
@@ -79,7 +67,7 @@ public class ResSkillMessage extends AbstractMessage {
 		writeShort(buf, this.skillList.size());
 		for (int skillListI = 0; skillListI < this.skillList.size(); skillListI++) {
 			this.writeBean(buf, this.skillList.get(skillListI));
-		}		this.writeInt(buf, fightValue, false);
+		}
 		return true;
 	}
 }

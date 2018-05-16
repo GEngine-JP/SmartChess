@@ -4,7 +4,7 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import com.sh.game.system.skill.msg.bean.HeroSkillBean;
+import com.sh.game.system.skill.msg.bean.SkillBeanInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +35,17 @@ public class ResCombineSkillInfoChangeMessage extends AbstractMessage {
 	/**
 	 * 变化的英雄合击技能
 	 */
-	private List<HeroSkillBean> heroSkill = new ArrayList<>();
+	private List<SkillBeanInfo> heroSkill = new ArrayList<>();
 	/**
 	 * 是否已激活 1激活
 	 */
 	private int isActive;
 
-	public List<HeroSkillBean> getHeroSkill() {
+	public List<SkillBeanInfo> getHeroSkill() {
 		return heroSkill;
 	}
 
-	public void setHeroSkill(List<HeroSkillBean> heroSkill) {
+	public void setHeroSkill(List<SkillBeanInfo> heroSkill) {
 		this.heroSkill = heroSkill;
 	}
 	public int getIsActive() {
@@ -65,9 +65,9 @@ public class ResCombineSkillInfoChangeMessage extends AbstractMessage {
 			if (readByte(buf) == 0) { 
 				this.heroSkill.add(null);
 			} else {
-				HeroSkillBean heroSkillBean = new HeroSkillBean();
-				heroSkillBean.read(buf);
-				this.heroSkill.add(heroSkillBean);
+				SkillBeanInfo skillBeanInfo = new SkillBeanInfo();
+				skillBeanInfo.read(buf);
+				this.heroSkill.add(skillBeanInfo);
 			}
 		}		this.isActive = readInt(buf, false);
 		return true;

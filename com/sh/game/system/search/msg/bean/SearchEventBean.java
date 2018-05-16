@@ -23,10 +23,6 @@ public class SearchEventBean extends KryoBean {
 	 */
 	private int eventId;
 	/**
-	 * 事件到期时间（秒）
-	 */
-	private int endTime;
-	/**
 	 * 假人的信息
 	 */
 	private SearchTeamInfoBean fakeTeamInfo;
@@ -47,14 +43,6 @@ public class SearchEventBean extends KryoBean {
 		this.eventId = eventId;
 	}
 
-		public int getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(int endTime) {
-		this.endTime = endTime;
-	}
-
 		public SearchTeamInfoBean getFakeTeamInfo() {
 		return fakeTeamInfo;
 	}
@@ -69,7 +57,6 @@ public class SearchEventBean extends KryoBean {
 
 		this.index = readInt(buf, false);
 		this.eventId = readInt(buf, false);
-		this.endTime = readInt(buf, false);
 		if (readByte(buf) != 0) {
 			SearchTeamInfoBean searchTeamInfoBean = new SearchTeamInfoBean();
 			searchTeamInfoBean.read(buf);
@@ -83,7 +70,6 @@ public class SearchEventBean extends KryoBean {
 
 		this.writeInt(buf, index, false);
 		this.writeInt(buf, eventId, false);
-		this.writeInt(buf, endTime, false);
 		this.writeBean(buf, fakeTeamInfo);
 		return true;
 	}

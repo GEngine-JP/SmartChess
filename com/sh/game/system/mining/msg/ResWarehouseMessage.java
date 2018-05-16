@@ -29,7 +29,7 @@ public class ResWarehouseMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 48007;
+		return 48003;
 	}
 	
 	/**

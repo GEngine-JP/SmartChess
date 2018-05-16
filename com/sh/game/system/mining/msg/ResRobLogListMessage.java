@@ -28,7 +28,7 @@ public class ResRobLogListMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 48011;
+		return 48012;
 	}
 	
 	/**

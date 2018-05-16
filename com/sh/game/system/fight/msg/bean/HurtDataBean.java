@@ -30,10 +30,6 @@ public class HurtDataBean extends KryoBean {
 	 */
 	private int hurt;
 	/**
-	 * 额外效果 0无 1爆击 2威慑
-	 */
-	private int extraEffect;
-	/**
 	 * 剩余血量
 	 */
 	private long remainHp;
@@ -76,14 +72,6 @@ public class HurtDataBean extends KryoBean {
 
 	public void setHurt(int hurt) {
 		this.hurt = hurt;
-	}
-
-		public int getExtraEffect() {
-		return extraEffect;
-	}
-
-	public void setExtraEffect(int extraEffect) {
-		this.extraEffect = extraEffect;
 	}
 
 		public long getRemainHp() {
@@ -131,7 +119,6 @@ public class HurtDataBean extends KryoBean {
 		this.type = readInt(buf, false);
 		this.targetId = readLong(buf);
 		this.hurt = readInt(buf, false);
-		this.extraEffect = readInt(buf, false);
 		this.remainHp = readLong(buf);
 		this.isDead = readInt(buf, false);
 		int ringInfoLength = readShort(buf);
@@ -162,7 +149,6 @@ public class HurtDataBean extends KryoBean {
 		this.writeInt(buf, type, false);
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, hurt, false);
-		this.writeInt(buf, extraEffect, false);
 		this.writeLong(buf, remainHp);
 		this.writeInt(buf, isDead, false);
 		writeShort(buf, this.ringInfo.size());

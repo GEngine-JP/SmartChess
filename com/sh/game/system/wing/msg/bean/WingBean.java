@@ -5,6 +5,9 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <p></p>
  * <p>Created by MessageUtil</p>
@@ -26,6 +29,10 @@ public class WingBean extends KryoBean {
 	 * 直升丹已使用数量
 	 */
 	private int danNum;
+	/**
+	 * 资质列表
+	 */
+	private List<WingTalentBean> wingTalentList = new ArrayList<>();
 
 	public int getWingId() {
 		return wingId;
@@ -51,13 +58,30 @@ public class WingBean extends KryoBean {
 		this.danNum = danNum;
 	}
 
-	
+		public List<WingTalentBean> getWingTalentList() {
+		return wingTalentList;
+	}
+
+	public void setWingTalentList(List<WingTalentBean> wingTalentList) {
+		this.wingTalentList = wingTalentList;
+	}
+
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.wingId = readInt(buf, false);
 		this.blessingValue = readInt(buf, false);
 		this.danNum = readInt(buf, false);
+		int wingTalentListLength = readShort(buf);
+		for (int wingTalentListI = 0; wingTalentListI < wingTalentListLength; wingTalentListI++) {
+			if (readByte(buf) == 0) { 
+				this.wingTalentList.add(null);
+			} else {
+				WingTalentBean wingTalentBean = new WingTalentBean();
+				wingTalentBean.read(buf);
+				this.wingTalentList.add(wingTalentBean);
+			}
+		}
 		return true;
 	}
 	
@@ -67,6 +91,10 @@ public class WingBean extends KryoBean {
 		this.writeInt(buf, wingId, false);
 		this.writeInt(buf, blessingValue, false);
 		this.writeInt(buf, danNum, false);
+		writeShort(buf, this.wingTalentList.size());
+		for (int wingTalentListI = 0; wingTalentListI < this.wingTalentList.size(); wingTalentListI++) {
+			this.writeBean(buf, this.wingTalentList.get(wingTalentListI));
+		}
 		return true;
 	}
 }

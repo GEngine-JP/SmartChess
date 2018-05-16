@@ -25,15 +25,27 @@ public class ResOverseerInfoMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 48008;
+		return 48007;
 	}
 	
+	/**
+	 * 当前生效的监工
+	 */
+	private int overseerId;
 	/**
 	 * 监工结束时间
 	 */
 	private int overTime;
 
-	public int getOverTime() {
+	public int getOverseerId() {
+		return overseerId;
+	}
+
+	public void setOverseerId(int overseerId) {
+		this.overseerId = overseerId;
+	}
+
+		public int getOverTime() {
 		return overTime;
 	}
 
@@ -45,6 +57,7 @@ public class ResOverseerInfoMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.overseerId = readInt(buf, false);
 		this.overTime = readInt(buf, false);
 		return true;
 	}
@@ -52,6 +65,7 @@ public class ResOverseerInfoMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeInt(buf, overseerId, false);
 		this.writeInt(buf, overTime, false);
 		return true;
 	}

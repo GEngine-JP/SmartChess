@@ -29,11 +29,23 @@ public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 类型 1 角色 2 英雄
+	 */
+	private int type;
+	/**
 	 * 英雄id
 	 */
 	private long heroId;
 
-	public long getHeroId() {
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getHeroId() {
 		return heroId;
 	}
 
@@ -45,6 +57,7 @@ public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.type = readInt(buf, false);
 		this.heroId = readLong(buf);
 		return true;
 	}
@@ -52,6 +65,7 @@ public class ReqOneKeyActiveVeinMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeInt(buf, type, false);
 		this.writeLong(buf, heroId);
 		return true;
 	}

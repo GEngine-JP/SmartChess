@@ -55,6 +55,14 @@ public class RankDataBean extends KryoBean {
 	 */
 	private long weiming;
 	/**
+	 * 关卡
+	 */
+	private int barrier;
+	/**
+	 * 探索pk值
+	 */
+	private int pk;
+	/**
 	 * 是否有月卡
 	 */
 	private boolean isMonthCard;
@@ -139,6 +147,22 @@ public class RankDataBean extends KryoBean {
 		this.weiming = weiming;
 	}
 
+		public int getBarrier() {
+		return barrier;
+	}
+
+	public void setBarrier(int barrier) {
+		this.barrier = barrier;
+	}
+
+		public int getPk() {
+		return pk;
+	}
+
+	public void setPk(int pk) {
+		this.pk = pk;
+	}
+
 		public boolean getIsMonthCard() {
 		return isMonthCard;
 	}
@@ -161,6 +185,8 @@ public class RankDataBean extends KryoBean {
 		this.achievementPoint = readLong(buf);
 		this.wingLevel = readInt(buf, false);
 		this.weiming = readLong(buf);
+		this.barrier = readInt(buf, false);
+		this.pk = readInt(buf, false);
 		this.isMonthCard = readBoolean(buf);
 		return true;
 	}
@@ -178,6 +204,8 @@ public class RankDataBean extends KryoBean {
 		this.writeLong(buf, achievementPoint);
 		this.writeInt(buf, wingLevel, false);
 		this.writeLong(buf, weiming);
+		this.writeInt(buf, barrier, false);
+		this.writeInt(buf, pk, false);
 		this.writeBoolean(buf, isMonthCard);
 		return true;
 	}
