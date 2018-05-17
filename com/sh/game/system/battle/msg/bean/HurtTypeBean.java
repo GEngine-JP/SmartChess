@@ -12,23 +12,23 @@ import com.sh.net.kryo.KryoOutput;
  * @author : admin
  */
 
-public class BufferAdd extends KryoBean {
+public class HurtTypeBean extends KryoBean {
 
 	/**
-	 * buff的id
+	 * hurtType
 	 */
-	private int bufferId;
+	private int hurtType;
 	/**
 	 * 效果
 	 */
 	private int effect;
 
-	public int getBufferId() {
-		return bufferId;
+	public int getHurtType() {
+		return hurtType;
 	}
 
-	public void setBufferId(int bufferId) {
-		this.bufferId = bufferId;
+	public void setHurtType(int hurtType) {
+		this.hurtType = hurtType;
 	}
 
 		public int getEffect() {
@@ -43,7 +43,7 @@ public class BufferAdd extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.bufferId = readInt(buf, false);
+		this.hurtType = readInt(buf, false);
 		this.effect = readInt(buf, false);
 		return true;
 	}
@@ -51,7 +51,7 @@ public class BufferAdd extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, bufferId, false);
+		this.writeInt(buf, hurtType, false);
 		this.writeInt(buf, effect, false);
 		return true;
 	}

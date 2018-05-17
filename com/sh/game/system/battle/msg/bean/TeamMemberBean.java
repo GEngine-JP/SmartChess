@@ -23,6 +23,14 @@ public class TeamMemberBean extends KryoBean {
 	 */
 	private int career;
 	/**
+	 * bossId
+	 */
+	private int bossId;
+	/**
+	 * 类型
+	 */
+	private int type;
+	/**
 	 * 名字
 	 */
 	private String name;
@@ -85,6 +93,22 @@ public class TeamMemberBean extends KryoBean {
 
 	public void setCareer(int career) {
 		this.career = career;
+	}
+
+		public int getBossId() {
+		return bossId;
+	}
+
+	public void setBossId(int bossId) {
+		this.bossId = bossId;
+	}
+
+		public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 		public String getName() {
@@ -189,6 +213,8 @@ public class TeamMemberBean extends KryoBean {
 
 		this.memberId = readLong(buf);
 		this.career = readInt(buf, false);
+		this.bossId = readInt(buf, false);
+		this.type = readInt(buf, false);
 		this.name = readString(buf);
 		this.sex = readInt(buf, false);
 		this.hp = readLong(buf);
@@ -209,6 +235,8 @@ public class TeamMemberBean extends KryoBean {
 
 		this.writeLong(buf, memberId);
 		this.writeInt(buf, career, false);
+		this.writeInt(buf, bossId, false);
+		this.writeInt(buf, type, false);
 		this.writeString(buf, name);
 		this.writeInt(buf, sex, false);
 		this.writeLong(buf, hp);

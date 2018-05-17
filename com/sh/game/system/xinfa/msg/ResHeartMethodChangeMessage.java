@@ -37,6 +37,10 @@ public class ResHeartMethodChangeMessage extends AbstractMessage {
 	 */
 	private int methodId;
 	/**
+	 * 心法等级
+	 */
+	private int level;
+	/**
 	 * 英雄id
 	 */
 	private long heroId;
@@ -61,6 +65,14 @@ public class ResHeartMethodChangeMessage extends AbstractMessage {
 		this.methodId = methodId;
 	}
 
+		public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 		public long getHeroId() {
 		return heroId;
 	}
@@ -83,6 +95,7 @@ public class ResHeartMethodChangeMessage extends AbstractMessage {
 
 		this.position = readInt(buf, false);
 		this.methodId = readInt(buf, false);
+		this.level = readInt(buf, false);
 		this.heroId = readLong(buf);
 		this.type = readInt(buf, false);
 		return true;
@@ -93,6 +106,7 @@ public class ResHeartMethodChangeMessage extends AbstractMessage {
 
 		this.writeInt(buf, position, false);
 		this.writeInt(buf, methodId, false);
+		this.writeInt(buf, level, false);
 		this.writeLong(buf, heroId);
 		this.writeInt(buf, type, false);
 		return true;

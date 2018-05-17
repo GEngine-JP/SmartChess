@@ -26,13 +26,13 @@ public class HurtDataBean extends KryoBean {
 	 */
 	private String name;
 	/**
-	 * 伤害
+	 * 伤害类型bean
 	 */
-	private long hp;
+	private HurtTypeBean hurtTypeBean;
 	/**
-	 * 增加的buff列表
+	 * buff列表
 	 */
-	private List<BufferAdd> bufferList = new ArrayList<>();
+	private List<BufferAdd> bufferDataBean = new ArrayList<>();
 
 	public long getTargetId() {
 		return targetId;
@@ -50,20 +50,20 @@ public class HurtDataBean extends KryoBean {
 		this.name = name;
 	}
 
-		public long getHp() {
-		return hp;
+		public HurtTypeBean getHurtTypeBean() {
+		return hurtTypeBean;
 	}
 
-	public void setHp(long hp) {
-		this.hp = hp;
+	public void setHurtTypeBean(HurtTypeBean hurtTypeBean) {
+		this.hurtTypeBean = hurtTypeBean;
 	}
 
-		public List<BufferAdd> getBufferList() {
-		return bufferList;
+		public List<BufferAdd> getBufferDataBean() {
+		return bufferDataBean;
 	}
 
-	public void setBufferList(List<BufferAdd> bufferList) {
-		this.bufferList = bufferList;
+	public void setBufferDataBean(List<BufferAdd> bufferDataBean) {
+		this.bufferDataBean = bufferDataBean;
 	}
 
 	@Override
@@ -71,15 +71,19 @@ public class HurtDataBean extends KryoBean {
 
 		this.targetId = readLong(buf);
 		this.name = readString(buf);
-		this.hp = readLong(buf);
-		int bufferListLength = readShort(buf);
-		for (int bufferListI = 0; bufferListI < bufferListLength; bufferListI++) {
+		if (readByte(buf) != 0) {
+			HurtTypeBean hurtTypeBean = new HurtTypeBean();
+			hurtTypeBean.read(buf);
+			this.hurtTypeBean = hurtTypeBean;
+		}
+		int bufferDataBeanLength = readShort(buf);
+		for (int bufferDataBeanI = 0; bufferDataBeanI < bufferDataBeanLength; bufferDataBeanI++) {
 			if (readByte(buf) == 0) { 
-				this.bufferList.add(null);
+				this.bufferDataBean.add(null);
 			} else {
 				BufferAdd bufferAdd = new BufferAdd();
 				bufferAdd.read(buf);
-				this.bufferList.add(bufferAdd);
+				this.bufferDataBean.add(bufferAdd);
 			}
 		}
 		return true;
@@ -90,10 +94,10 @@ public class HurtDataBean extends KryoBean {
 
 		this.writeLong(buf, targetId);
 		this.writeString(buf, name);
-		this.writeLong(buf, hp);
-		writeShort(buf, this.bufferList.size());
-		for (int bufferListI = 0; bufferListI < this.bufferList.size(); bufferListI++) {
-			this.writeBean(buf, this.bufferList.get(bufferListI));
+		this.writeBean(buf, hurtTypeBean);
+		writeShort(buf, this.bufferDataBean.size());
+		for (int bufferDataBeanI = 0; bufferDataBeanI < this.bufferDataBean.size(); bufferDataBeanI++) {
+			this.writeBean(buf, this.bufferDataBean.get(bufferDataBeanI));
 		}
 		return true;
 	}

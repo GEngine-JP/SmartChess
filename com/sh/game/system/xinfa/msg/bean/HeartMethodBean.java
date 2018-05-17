@@ -22,6 +22,10 @@ public class HeartMethodBean extends KryoBean {
 	 * 心法id
 	 */
 	private int methodId;
+	/**
+	 * 心法等级
+	 */
+	private int level;
 
 	public int getPosition() {
 		return position;
@@ -39,12 +43,21 @@ public class HeartMethodBean extends KryoBean {
 		this.methodId = methodId;
 	}
 
+		public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.position = readInt(buf, false);
 		this.methodId = readInt(buf, false);
+		this.level = readInt(buf, false);
 		return true;
 	}
 	
@@ -53,6 +66,7 @@ public class HeartMethodBean extends KryoBean {
 
 		this.writeInt(buf, position, false);
 		this.writeInt(buf, methodId, false);
+		this.writeInt(buf, level, false);
 		return true;
 	}
 }

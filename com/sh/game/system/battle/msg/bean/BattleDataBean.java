@@ -42,21 +42,13 @@ public class BattleDataBean extends KryoBean {
 	 */
 	private int round;
 	/**
-	 * 暴击列表
-	 */
-	private List<Long> criticalList = new ArrayList<>();
-	/**
-	 * 威慑列表
-	 */
-	private List<Long> overaweList = new ArrayList<>();
-	/**
 	 * 伤害列表
 	 */
 	private List<HurtDataBean> hurtDataBean = new ArrayList<>();
 	/**
-	 * buff列表
+	 * 对自己加的buff
 	 */
-	private List<BufferAdd> bufferDataBean = new ArrayList<>();
+	private List<BufferAdd> selfBuff = new ArrayList<>();
 
 	public int getSkillId() {
 		return skillId;
@@ -106,33 +98,19 @@ public class BattleDataBean extends KryoBean {
 		this.round = round;
 	}
 
-		public List<Long> getCriticalList() {
-		return criticalList;
-	}
-
-	public void setCriticalList(List<Long> criticalList) {
-		this.criticalList = criticalList;
-	}
-	public List<Long> getOveraweList() {
-		return overaweList;
-	}
-
-	public void setOveraweList(List<Long> overaweList) {
-		this.overaweList = overaweList;
-	}
-	public List<HurtDataBean> getHurtDataBean() {
+		public List<HurtDataBean> getHurtDataBean() {
 		return hurtDataBean;
 	}
 
 	public void setHurtDataBean(List<HurtDataBean> hurtDataBean) {
 		this.hurtDataBean = hurtDataBean;
 	}
-	public List<BufferAdd> getBufferDataBean() {
-		return bufferDataBean;
+	public List<BufferAdd> getSelfBuff() {
+		return selfBuff;
 	}
 
-	public void setBufferDataBean(List<BufferAdd> bufferDataBean) {
-		this.bufferDataBean = bufferDataBean;
+	public void setSelfBuff(List<BufferAdd> selfBuff) {
+		this.selfBuff = selfBuff;
 	}
 
 	@Override
@@ -144,13 +122,7 @@ public class BattleDataBean extends KryoBean {
 		this.attackerId = readLong(buf);
 		this.targetId = readLong(buf);
 		this.round = readInt(buf, false);
-		int criticalListLength = readShort(buf);
-		for (int criticalListI = 0; criticalListI < criticalListLength; criticalListI++) {
-			this.criticalList.add(this.readLong(buf));
-		}		int overaweListLength = readShort(buf);
-		for (int overaweListI = 0; overaweListI < overaweListLength; overaweListI++) {
-			this.overaweList.add(this.readLong(buf));
-		}		int hurtDataBeanLength = readShort(buf);
+		int hurtDataBeanLength = readShort(buf);
 		for (int hurtDataBeanI = 0; hurtDataBeanI < hurtDataBeanLength; hurtDataBeanI++) {
 			if (readByte(buf) == 0) { 
 				this.hurtDataBean.add(null);
@@ -159,14 +131,14 @@ public class BattleDataBean extends KryoBean {
 				hurtDataBean.read(buf);
 				this.hurtDataBean.add(hurtDataBean);
 			}
-		}		int bufferDataBeanLength = readShort(buf);
-		for (int bufferDataBeanI = 0; bufferDataBeanI < bufferDataBeanLength; bufferDataBeanI++) {
+		}		int selfBuffLength = readShort(buf);
+		for (int selfBuffI = 0; selfBuffI < selfBuffLength; selfBuffI++) {
 			if (readByte(buf) == 0) { 
-				this.bufferDataBean.add(null);
+				this.selfBuff.add(null);
 			} else {
 				BufferAdd bufferAdd = new BufferAdd();
 				bufferAdd.read(buf);
-				this.bufferDataBean.add(bufferAdd);
+				this.selfBuff.add(bufferAdd);
 			}
 		}
 		return true;
@@ -181,18 +153,12 @@ public class BattleDataBean extends KryoBean {
 		this.writeLong(buf, attackerId);
 		this.writeLong(buf, targetId);
 		this.writeInt(buf, round, false);
-		writeShort(buf, this.criticalList.size());
-		for (int criticalListI = 0; criticalListI < this.criticalList.size(); criticalListI++) {
-			this.writeLong(buf, this.criticalList.get(criticalListI));
-		}		writeShort(buf, this.overaweList.size());
-		for (int overaweListI = 0; overaweListI < this.overaweList.size(); overaweListI++) {
-			this.writeLong(buf, this.overaweList.get(overaweListI));
-		}		writeShort(buf, this.hurtDataBean.size());
+		writeShort(buf, this.hurtDataBean.size());
 		for (int hurtDataBeanI = 0; hurtDataBeanI < this.hurtDataBean.size(); hurtDataBeanI++) {
 			this.writeBean(buf, this.hurtDataBean.get(hurtDataBeanI));
-		}		writeShort(buf, this.bufferDataBean.size());
-		for (int bufferDataBeanI = 0; bufferDataBeanI < this.bufferDataBean.size(); bufferDataBeanI++) {
-			this.writeBean(buf, this.bufferDataBean.get(bufferDataBeanI));
+		}		writeShort(buf, this.selfBuff.size());
+		for (int selfBuffI = 0; selfBuffI < this.selfBuff.size(); selfBuffI++) {
+			this.writeBean(buf, this.selfBuff.get(selfBuffI));
 		}
 		return true;
 	}
