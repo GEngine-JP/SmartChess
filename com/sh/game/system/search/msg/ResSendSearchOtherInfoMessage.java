@@ -49,10 +49,6 @@ public class ResSendSearchOtherInfoMessage extends AbstractMessage {
 	 */
 	private int hasBuyNum;
 	/**
-	 * 最大购买次数
-	 */
-	private int maxBuyNum;
-	/**
 	 * 时间间隔事件下次刷新时间（秒）
 	 */
 	private int nextTime;
@@ -97,14 +93,6 @@ public class ResSendSearchOtherInfoMessage extends AbstractMessage {
 		this.hasBuyNum = hasBuyNum;
 	}
 
-		public int getMaxBuyNum() {
-		return maxBuyNum;
-	}
-
-	public void setMaxBuyNum(int maxBuyNum) {
-		this.maxBuyNum = maxBuyNum;
-	}
-
 		public int getNextTime() {
 		return nextTime;
 	}
@@ -122,7 +110,6 @@ public class ResSendSearchOtherInfoMessage extends AbstractMessage {
 		this.tiredNum = readInt(buf, false);
 		this.canSearchTime = readInt(buf, false);
 		this.hasBuyNum = readInt(buf, false);
-		this.maxBuyNum = readInt(buf, false);
 		this.nextTime = readInt(buf, false);
 		return true;
 	}
@@ -135,7 +122,6 @@ public class ResSendSearchOtherInfoMessage extends AbstractMessage {
 		this.writeInt(buf, tiredNum, false);
 		this.writeInt(buf, canSearchTime, false);
 		this.writeInt(buf, hasBuyNum, false);
-		this.writeInt(buf, maxBuyNum, false);
 		this.writeInt(buf, nextTime, false);
 		return true;
 	}
