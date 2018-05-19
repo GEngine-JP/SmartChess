@@ -1,10 +1,10 @@
-package com.sh.game.system.fight.msg;
+package com.sh.game.system.battle.msg;
 
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
-import com.sh.game.system.fight.msg.bean.TeamInfoBean;
+import com.sh.game.system.battle.msg.bean.TeamInfoBean;
 
 /**
  * <p>返回野外副本假人信息</p>
@@ -26,7 +26,7 @@ public class ResFakeOutRobotInfoMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 25013;
+		return 60003;
 	}
 	
 	/**
