@@ -1,0 +1,163 @@
+package com.sh.game.system.fight.msg.bean;
+
+import com.sh.net.kryo.KryoBean;
+import com.sh.net.kryo.KryoInput;
+import com.sh.net.kryo.KryoOutput;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * <p></p>
+ * <p>Created by MessageUtil</p>
+ *
+ * @author : admin
+ */
+
+public class HurtDataBean extends KryoBean {
+
+	/**
+	 * 1 玩家 2英雄战 3 英雄法 4 英雄道
+	 */
+	private int type;
+	/**
+	 * 目标id
+	 */
+	private long targetId;
+	/**
+	 * 伤害值
+	 */
+	private int hurt;
+	/**
+	 * 剩余血量
+	 */
+	private long remainHp;
+	/**
+	 * 目标是否死亡
+	 */
+	private int isDead;
+	/**
+	 * 特戒触发数据
+	 */
+	private List<RingTriggerDataBean> ringInfo = new ArrayList<>();
+	/**
+	 * 天赋卡触发数据
+	 */
+	private List<CardTriggerDataBean> cardInfo = new ArrayList<>();
+	/**
+	 * 名字
+	 */
+	private String name;
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getTargetId() {
+		return targetId;
+	}
+
+	public void setTargetId(long targetId) {
+		this.targetId = targetId;
+	}
+
+		public int getHurt() {
+		return hurt;
+	}
+
+	public void setHurt(int hurt) {
+		this.hurt = hurt;
+	}
+
+		public long getRemainHp() {
+		return remainHp;
+	}
+
+	public void setRemainHp(long remainHp) {
+		this.remainHp = remainHp;
+	}
+
+		public int getIsDead() {
+		return isDead;
+	}
+
+	public void setIsDead(int isDead) {
+		this.isDead = isDead;
+	}
+
+		public List<RingTriggerDataBean> getRingInfo() {
+		return ringInfo;
+	}
+
+	public void setRingInfo(List<RingTriggerDataBean> ringInfo) {
+		this.ringInfo = ringInfo;
+	}
+	public List<CardTriggerDataBean> getCardInfo() {
+		return cardInfo;
+	}
+
+	public void setCardInfo(List<CardTriggerDataBean> cardInfo) {
+		this.cardInfo = cardInfo;
+	}
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
+	@Override
+	public boolean read(KryoInput buf) {
+
+		this.type = readInt(buf, false);
+		this.targetId = readLong(buf);
+		this.hurt = readInt(buf, false);
+		this.remainHp = readLong(buf);
+		this.isDead = readInt(buf, false);
+		int ringInfoLength = readShort(buf);
+		for (int ringInfoI = 0; ringInfoI < ringInfoLength; ringInfoI++) {
+			if (readByte(buf) == 0) { 
+				this.ringInfo.add(null);
+			} else {
+				RingTriggerDataBean ringTriggerDataBean = new RingTriggerDataBean();
+				ringTriggerDataBean.read(buf);
+				this.ringInfo.add(ringTriggerDataBean);
+			}
+		}		int cardInfoLength = readShort(buf);
+		for (int cardInfoI = 0; cardInfoI < cardInfoLength; cardInfoI++) {
+			if (readByte(buf) == 0) { 
+				this.cardInfo.add(null);
+			} else {
+				CardTriggerDataBean cardTriggerDataBean = new CardTriggerDataBean();
+				cardTriggerDataBean.read(buf);
+				this.cardInfo.add(cardTriggerDataBean);
+			}
+		}		this.name = readString(buf);
+		return true;
+	}
+	
+	@Override
+	public boolean write(KryoOutput buf) {
+
+		this.writeInt(buf, type, false);
+		this.writeLong(buf, targetId);
+		this.writeInt(buf, hurt, false);
+		this.writeLong(buf, remainHp);
+		this.writeInt(buf, isDead, false);
+		writeShort(buf, this.ringInfo.size());
+		for (int ringInfoI = 0; ringInfoI < this.ringInfo.size(); ringInfoI++) {
+			this.writeBean(buf, this.ringInfo.get(ringInfoI));
+		}		writeShort(buf, this.cardInfo.size());
+		for (int cardInfoI = 0; cardInfoI < this.cardInfo.size(); cardInfoI++) {
+			this.writeBean(buf, this.cardInfo.get(cardInfoI));
+		}		this.writeString(buf, name);
+		return true;
+	}
+}
