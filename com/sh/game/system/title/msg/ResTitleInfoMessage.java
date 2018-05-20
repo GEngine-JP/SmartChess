@@ -36,6 +36,10 @@ public class ResTitleInfoMessage extends AbstractMessage {
 	 */
 	private int level;
 	/**
+	 * 威望球值
+	 */
+	private int weiWangGlobeValue;
+	/**
 	 * 威望排名 1第一 2第二 3第三 0其他
 	 */
 	private int rank;
@@ -66,6 +70,14 @@ public class ResTitleInfoMessage extends AbstractMessage {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+		public int getWeiWangGlobeValue() {
+		return weiWangGlobeValue;
+	}
+
+	public void setWeiWangGlobeValue(int weiWangGlobeValue) {
+		this.weiWangGlobeValue = weiWangGlobeValue;
 	}
 
 		public int getRank() {
@@ -120,6 +132,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.level = readInt(buf, false);
+		this.weiWangGlobeValue = readInt(buf, false);
 		this.rank = readInt(buf, false);
 		this.windId = readInt(buf, false);
 		this.sex = readInt(buf, false);
@@ -136,6 +149,7 @@ public class ResTitleInfoMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, level, false);
+		this.writeInt(buf, weiWangGlobeValue, false);
 		this.writeInt(buf, rank, false);
 		this.writeInt(buf, windId, false);
 		this.writeInt(buf, sex, false);
