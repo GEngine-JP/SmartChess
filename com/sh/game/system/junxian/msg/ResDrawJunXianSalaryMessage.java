@@ -6,36 +6,28 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>返回军衔信息</p>
+ * <p>返回领取军衔俸禄结果</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResJunXianInfoMessage extends AbstractMessage {
+public class ResDrawJunXianSalaryMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ResJunXianInfoMessage() {
+	public ResDrawJunXianSalaryMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 59003;
+		return 59005;
 	}
 	
-	/**
-	 * 军衔等级
-	 */
-	private int lv;
-	/**
-	 * 战力
-	 */
-	private int fightValue;
 	/**
 	 * 已领取次数
 	 */
@@ -45,23 +37,7 @@ public class ResJunXianInfoMessage extends AbstractMessage {
 	 */
 	private int lastDrawTime;
 
-	public int getLv() {
-		return lv;
-	}
-
-	public void setLv(int lv) {
-		this.lv = lv;
-	}
-
-		public int getFightValue() {
-		return fightValue;
-	}
-
-	public void setFightValue(int fightValue) {
-		this.fightValue = fightValue;
-	}
-
-		public int getHasDrawCount() {
+	public int getHasDrawCount() {
 		return hasDrawCount;
 	}
 
@@ -81,8 +57,6 @@ public class ResJunXianInfoMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.lv = readInt(buf, false);
-		this.fightValue = readInt(buf, false);
 		this.hasDrawCount = readInt(buf, false);
 		this.lastDrawTime = readInt(buf, false);
 		return true;
@@ -91,8 +65,6 @@ public class ResJunXianInfoMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, lv, false);
-		this.writeInt(buf, fightValue, false);
 		this.writeInt(buf, hasDrawCount, false);
 		this.writeInt(buf, lastDrawTime, false);
 		return true;

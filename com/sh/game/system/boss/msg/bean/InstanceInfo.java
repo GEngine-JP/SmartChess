@@ -27,9 +27,13 @@ public class InstanceInfo extends KryoBean {
 	 */
 	private int surplusNum;
 	/**
-	 * 下次刷新时间
+	 * 下次增加次数时间
 	 */
 	private int freshTime;
+	/**
+	 * 下次刷新boss时间
+	 */
+	private int freshBossTime;
 
 	public int getType() {
 		return type;
@@ -63,6 +67,14 @@ public class InstanceInfo extends KryoBean {
 		this.freshTime = freshTime;
 	}
 
+		public int getFreshBossTime() {
+		return freshBossTime;
+	}
+
+	public void setFreshBossTime(int freshBossTime) {
+		this.freshBossTime = freshBossTime;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -71,6 +83,7 @@ public class InstanceInfo extends KryoBean {
 		this.count = readInt(buf, false);
 		this.surplusNum = readInt(buf, false);
 		this.freshTime = readInt(buf, false);
+		this.freshBossTime = readInt(buf, false);
 		return true;
 	}
 	
@@ -81,6 +94,7 @@ public class InstanceInfo extends KryoBean {
 		this.writeInt(buf, count, false);
 		this.writeInt(buf, surplusNum, false);
 		this.writeInt(buf, freshTime, false);
+		this.writeInt(buf, freshBossTime, false);
 		return true;
 	}
 }
