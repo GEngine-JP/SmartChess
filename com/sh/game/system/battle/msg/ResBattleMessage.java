@@ -42,6 +42,10 @@ public class ResBattleMessage extends AbstractMessage {
 	 */
 	private long attackId;
 	/**
+	 * 是否刷新战报
+	 */
+	private boolean isFresh;
+	/**
 	 * 自己的队伍信息
 	 */
 	private TeamInfoBean selfTeamBean;
@@ -68,6 +72,14 @@ public class ResBattleMessage extends AbstractMessage {
 
 	public void setAttackId(long attackId) {
 		this.attackId = attackId;
+	}
+
+		public boolean getIsFresh() {
+		return isFresh;
+	}
+
+	public void setIsFresh(boolean isFresh) {
+		this.isFresh = isFresh;
 	}
 
 		public TeamInfoBean getSelfTeamBean() {
@@ -99,6 +111,7 @@ public class ResBattleMessage extends AbstractMessage {
 
 		this.result = readLong(buf);
 		this.attackId = readLong(buf);
+		this.isFresh = readBoolean(buf);
 		if (readByte(buf) != 0) {
 			TeamInfoBean teamInfoBean = new TeamInfoBean();
 			teamInfoBean.read(buf);
@@ -127,6 +140,7 @@ public class ResBattleMessage extends AbstractMessage {
 
 		this.writeLong(buf, result);
 		this.writeLong(buf, attackId);
+		this.writeBoolean(buf, isFresh);
 		this.writeBean(buf, selfTeamBean);
 		this.writeBean(buf, teamInfoBean);
 		writeShort(buf, this.battleDataBean.size());

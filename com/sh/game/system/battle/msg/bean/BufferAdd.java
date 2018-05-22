@@ -15,20 +15,20 @@ import com.sh.net.kryo.KryoOutput;
 public class BufferAdd extends KryoBean {
 
 	/**
-	 * buff类型
+	 * buff的id
 	 */
-	private int bufferType;
+	private int bufferId;
 	/**
 	 * 效果
 	 */
 	private int effect;
 
-	public int getBufferType() {
-		return bufferType;
+	public int getBufferId() {
+		return bufferId;
 	}
 
-	public void setBufferType(int bufferType) {
-		this.bufferType = bufferType;
+	public void setBufferId(int bufferId) {
+		this.bufferId = bufferId;
 	}
 
 		public int getEffect() {
@@ -43,7 +43,7 @@ public class BufferAdd extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.bufferType = readInt(buf, false);
+		this.bufferId = readInt(buf, false);
 		this.effect = readInt(buf, false);
 		return true;
 	}
@@ -51,7 +51,7 @@ public class BufferAdd extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, bufferType, false);
+		this.writeInt(buf, bufferId, false);
 		this.writeInt(buf, effect, false);
 		return true;
 	}
