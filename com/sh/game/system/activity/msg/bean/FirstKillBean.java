@@ -23,7 +23,7 @@ public class FirstKillBean extends KryoBean {
 	 */
 	private int instanceId;
 	/**
-	 * 击杀状态0未击杀1存活
+	 * 击杀状态0未击杀1击杀
 	 */
 	private int state;
 

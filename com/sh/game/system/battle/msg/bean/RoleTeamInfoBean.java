@@ -1,38 +1,27 @@
-package com.sh.game.system.battle.msg;
+package com.sh.game.system.battle.msg.bean;
 
+import com.sh.net.kryo.KryoBean;
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
-import com.sh.game.server.AbstractMessage;
 
-import com.sh.game.system.battle.msg.bean.TeamInfoBean;
 
 /**
- * <p>返回野外副本假人信息</p>
+ * <p></p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResFakeOutRobotInfoMessage extends AbstractMessage {
+public class RoleTeamInfoBean extends KryoBean {
 
-	@Override
-	public void doAction() {
-		
-	}
-	
-	public ResFakeOutRobotInfoMessage() {
-		this.queueId = 2;
-	}
-	
-	@Override
-	public int getId() {
-		return 25003;
-	}
-	
 	/**
-	 * 假人信息
+	 * 视野信息
 	 */
 	private TeamInfoBean teamInfoBean;
+	/**
+	 * 变化玩家id
+	 */
+	private long uid;
 
 	public TeamInfoBean getTeamInfoBean() {
 		return teamInfoBean;
@@ -40,6 +29,14 @@ public class ResFakeOutRobotInfoMessage extends AbstractMessage {
 
 	public void setTeamInfoBean(TeamInfoBean teamInfoBean) {
 		this.teamInfoBean = teamInfoBean;
+	}
+
+		public long getUid() {
+		return uid;
+	}
+
+	public void setUid(long uid) {
+		this.uid = uid;
 	}
 
 	
@@ -51,13 +48,15 @@ public class ResFakeOutRobotInfoMessage extends AbstractMessage {
 			teamInfoBean.read(buf);
 			this.teamInfoBean = teamInfoBean;
 		}
+		this.uid = readLong(buf);
 		return true;
 	}
-
+	
 	@Override
 	public boolean write(KryoOutput buf) {
 
 		this.writeBean(buf, teamInfoBean);
+		this.writeLong(buf, uid);
 		return true;
 	}
 }

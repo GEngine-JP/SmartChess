@@ -30,7 +30,7 @@ public class ResBattleMessage extends AbstractMessage {
 	
 	@Override
 	public int getId() {
-		return 60002;
+		return 25002;
 	}
 	
 	/**

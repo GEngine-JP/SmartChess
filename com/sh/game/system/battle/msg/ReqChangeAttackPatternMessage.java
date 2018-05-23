@@ -6,53 +6,53 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求使用连击技能</p>
+ * <p>请求更改攻击模式</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ReqUseCombSkillMessage extends AbstractMessage {
+public class ReqChangeAttackPatternMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ReqUseCombSkillMessage() {
+	public ReqChangeAttackPatternMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 25004;
+		return 25009;
 	}
 	
 	/**
-	 * 回合数
+	 * 副本唯一id
 	 */
-	private int round;
+	private int uniqueId;
 
-	public int getRound() {
-		return round;
+	public int getUniqueId() {
+		return uniqueId;
 	}
 
-	public void setRound(int round) {
-		this.round = round;
+	public void setUniqueId(int uniqueId) {
+		this.uniqueId = uniqueId;
 	}
 
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.round = readInt(buf, false);
+		this.uniqueId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, round, false);
+		this.writeInt(buf, uniqueId, false);
 		return true;
 	}
 }

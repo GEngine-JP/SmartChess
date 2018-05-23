@@ -6,53 +6,53 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求使用连击技能</p>
+ * <p>怪物死亡通知</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ReqUseCombSkillMessage extends AbstractMessage {
+public class ReqMonsterDieMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ReqUseCombSkillMessage() {
+	public ReqMonsterDieMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 25004;
+		return 25007;
 	}
 	
 	/**
-	 * 回合数
+	 * 怪物id
 	 */
-	private int round;
+	private int monsterId;
 
-	public int getRound() {
-		return round;
+	public int getMonsterId() {
+		return monsterId;
 	}
 
-	public void setRound(int round) {
-		this.round = round;
+	public void setMonsterId(int monsterId) {
+		this.monsterId = monsterId;
 	}
 
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.round = readInt(buf, false);
+		this.monsterId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, round, false);
+		this.writeInt(buf, monsterId, false);
 		return true;
 	}
 }
