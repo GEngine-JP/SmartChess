@@ -29,30 +29,30 @@ public class ResRollPointMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * 领取倍数
+	 * 点数
 	 */
-	private int times;
+	private int count;
 
-	public int getTimes() {
-		return times;
+	public int getCount() {
+		return count;
 	}
 
-	public void setTimes(int times) {
-		this.times = times;
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.times = readInt(buf, false);
+		this.count = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, times, false);
+		this.writeInt(buf, count, false);
 		return true;
 	}
 }

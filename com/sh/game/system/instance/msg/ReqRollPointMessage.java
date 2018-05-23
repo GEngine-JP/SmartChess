@@ -28,19 +28,31 @@ public class ReqRollPointMessage extends AbstractMessage {
 		return 20034;
 	}
 	
+	/**
+	 * 副本的唯一id
+	 */
+	private int instanceId;
 
+	public int getInstanceId() {
+		return instanceId;
+	}
 
+	public void setInstanceId(int instanceId) {
+		this.instanceId = instanceId;
+	}
+
+	
 	@Override
 	public boolean read(KryoInput buf) {
 
-
+		this.instanceId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-
+		this.writeInt(buf, instanceId, false);
 		return true;
 	}
 }
