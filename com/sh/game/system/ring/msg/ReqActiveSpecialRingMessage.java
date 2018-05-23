@@ -1,4 +1,4 @@
-package com.sh.game.system.hunt.msg;
+package com.sh.game.system.ring.msg;
 
 import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
@@ -6,36 +6,40 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>请求开始寻宝</p>
+ * <p>请求激活特戒</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ReqStartTreasureHuntMessage extends AbstractMessage {
+public class ReqActiveSpecialRingMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ReqStartTreasureHuntMessage() {
+	public ReqActiveSpecialRingMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 11002;
+		return 53005;
 	}
 	
 	/**
-	 * 寻宝类型 1 装备 2 材料
+	 * 特戒类型
 	 */
 	private int type;
 	/**
-	 * 寻宝次数
+	 * 英雄id
 	 */
-	private int num;
+	private long heroId;
+	/**
+	 * 角色0英雄1
+	 */
+	private int owner;
 
 	public int getType() {
 		return type;
@@ -45,12 +49,20 @@ public class ReqStartTreasureHuntMessage extends AbstractMessage {
 		this.type = type;
 	}
 
-		public int getNum() {
-		return num;
+		public long getHeroId() {
+		return heroId;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
+		public int getOwner() {
+		return owner;
+	}
+
+	public void setOwner(int owner) {
+		this.owner = owner;
 	}
 
 	
@@ -58,7 +70,8 @@ public class ReqStartTreasureHuntMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.type = readInt(buf, false);
-		this.num = readInt(buf, false);
+		this.heroId = readLong(buf);
+		this.owner = readInt(buf, false);
 		return true;
 	}
 
@@ -66,7 +79,8 @@ public class ReqStartTreasureHuntMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, type, false);
-		this.writeInt(buf, num, false);
+		this.writeLong(buf, heroId);
+		this.writeInt(buf, owner, false);
 		return true;
 	}
 }

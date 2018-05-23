@@ -33,6 +33,10 @@ public class ResSendTreasureHuntResultMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 寻宝类型
+	 */
+	private int type;
+	/**
 	 *  寻宝获得的道具
 	 */
 	private List<ItemInfo> item = new ArrayList<>();
@@ -45,7 +49,15 @@ public class ResSendTreasureHuntResultMessage extends AbstractMessage {
 	 */
 	private int huntCount;
 
-	public List<ItemInfo> getItem() {
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public List<ItemInfo> getItem() {
 		return item;
 	}
 
@@ -72,6 +84,7 @@ public class ResSendTreasureHuntResultMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.type = readInt(buf, false);
 		int itemLength = readShort(buf);
 		for (int itemI = 0; itemI < itemLength; itemI++) {
 			if (readByte(buf) == 0) { 
@@ -89,6 +102,7 @@ public class ResSendTreasureHuntResultMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeInt(buf, type, false);
 		writeShort(buf, this.item.size());
 		for (int itemI = 0; itemI < this.item.size(); itemI++) {
 			this.writeBean(buf, this.item.get(itemI));

@@ -33,6 +33,10 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 寻宝类型
+	 */
+	private int type;
+	/**
 	 *  寻宝记录
 	 */
 	private List<TreasureHuntRecordBean> records = new ArrayList<>();
@@ -41,7 +45,15 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	 */
 	private int huntCount;
 
-	public List<TreasureHuntRecordBean> getRecords() {
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public List<TreasureHuntRecordBean> getRecords() {
 		return records;
 	}
 
@@ -60,6 +72,7 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.type = readInt(buf, false);
 		int recordsLength = readShort(buf);
 		for (int recordsI = 0; recordsI < recordsLength; recordsI++) {
 			if (readByte(buf) == 0) { 
@@ -76,6 +89,7 @@ public class ResSendTreasureHuntInfoMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeInt(buf, type, false);
 		writeShort(buf, this.records.size());
 		for (int recordsI = 0; recordsI < this.records.size(); recordsI++) {
 			this.writeBean(buf, this.records.get(recordsI));

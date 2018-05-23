@@ -37,6 +37,10 @@ public class SpecialRingInfo extends KryoBean {
 	 * 英雄id
 	 */
 	private long heroId;
+	/**
+	 * 是否已激活0未激活1已激活
+	 */
+	private int isActive;
 
 	public int getType() {
 		return type;
@@ -77,6 +81,14 @@ public class SpecialRingInfo extends KryoBean {
 		this.heroId = heroId;
 	}
 
+		public int getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -94,6 +106,7 @@ public class SpecialRingInfo extends KryoBean {
 		}		this.level = readInt(buf, false);
 		this.nbValue = readInt(buf, false);
 		this.heroId = readLong(buf);
+		this.isActive = readInt(buf, false);
 		return true;
 	}
 	
@@ -107,6 +120,7 @@ public class SpecialRingInfo extends KryoBean {
 		}		this.writeInt(buf, level, false);
 		this.writeInt(buf, nbValue, false);
 		this.writeLong(buf, heroId);
+		this.writeInt(buf, isActive, false);
 		return true;
 	}
 }
