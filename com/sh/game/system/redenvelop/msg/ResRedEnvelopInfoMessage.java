@@ -36,6 +36,10 @@ public class ResRedEnvelopInfoMessage extends AbstractMessage {
 	 * 元宝数量
 	 */
 	private int coinNum;
+	/**
+	 * 历史领取数量
+	 */
+	private int drawTotal;
 
 	public int getRedEnvelopId() {
 		return redEnvelopId;
@@ -53,12 +57,21 @@ public class ResRedEnvelopInfoMessage extends AbstractMessage {
 		this.coinNum = coinNum;
 	}
 
+		public int getDrawTotal() {
+		return drawTotal;
+	}
+
+	public void setDrawTotal(int drawTotal) {
+		this.drawTotal = drawTotal;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.redEnvelopId = readInt(buf, false);
 		this.coinNum = readInt(buf, false);
+		this.drawTotal = readInt(buf, false);
 		return true;
 	}
 
@@ -67,6 +80,7 @@ public class ResRedEnvelopInfoMessage extends AbstractMessage {
 
 		this.writeInt(buf, redEnvelopId, false);
 		this.writeInt(buf, coinNum, false);
+		this.writeInt(buf, drawTotal, false);
 		return true;
 	}
 }

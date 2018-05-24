@@ -28,19 +28,31 @@ public class ResDrawRedEnvelopMessage extends AbstractMessage {
 		return 63003;
 	}
 	
+	/**
+	 * 历史领取数量
+	 */
+	private int drawTotal;
 
+	public int getDrawTotal() {
+		return drawTotal;
+	}
 
+	public void setDrawTotal(int drawTotal) {
+		this.drawTotal = drawTotal;
+	}
+
+	
 	@Override
 	public boolean read(KryoInput buf) {
 
-
+		this.drawTotal = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-
+		this.writeInt(buf, drawTotal, false);
 		return true;
 	}
 }
