@@ -6,36 +6,36 @@ import com.sh.game.server.AbstractMessage;
 
 
 /**
- * <p>护盾值变化消息</p>
+ * <p>返回roll点结果</p>
  * <p>Created by MessageUtil</p>
  *
  * @author : admin
  */
 
-public class ResDunChangeMessage extends AbstractMessage {
+public class ResMaxRollPointMessage extends AbstractMessage {
 
 	@Override
 	public void doAction() {
 		
 	}
 	
-	public ResDunChangeMessage() {
+	public ResMaxRollPointMessage() {
 		this.queueId = 2;
 	}
 	
 	@Override
 	public int getId() {
-		return 20033;
+		return 20036;
 	}
 	
 	/**
-	 * 最大护盾值
+	 * 最大点数
 	 */
 	private int maxCount;
 	/**
-	 * 当前护盾值
+	 * 玩家名字
 	 */
-	private int dunCount;
+	private String roleName;
 
 	public int getMaxCount() {
 		return maxCount;
@@ -45,12 +45,12 @@ public class ResDunChangeMessage extends AbstractMessage {
 		this.maxCount = maxCount;
 	}
 
-		public int getDunCount() {
-		return dunCount;
+		public String getRoleName() {
+		return roleName;
 	}
 
-	public void setDunCount(int dunCount) {
-		this.dunCount = dunCount;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 
 	
@@ -58,7 +58,7 @@ public class ResDunChangeMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.maxCount = readInt(buf, false);
-		this.dunCount = readInt(buf, false);
+		this.roleName = readString(buf);
 		return true;
 	}
 
@@ -66,7 +66,7 @@ public class ResDunChangeMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, maxCount, false);
-		this.writeInt(buf, dunCount, false);
+		this.writeString(buf, roleName);
 		return true;
 	}
 }

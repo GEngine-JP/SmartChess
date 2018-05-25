@@ -47,9 +47,9 @@ public class RankDataBean extends KryoBean {
 	 */
 	private long achievementPoint;
 	/**
-	 * 翅膀等级
+	 * 翅膀战斗力
 	 */
-	private int wingLevel;
+	private long wingFightPower;
 	/**
 	 * 威名
 	 */
@@ -131,12 +131,12 @@ public class RankDataBean extends KryoBean {
 		this.achievementPoint = achievementPoint;
 	}
 
-		public int getWingLevel() {
-		return wingLevel;
+		public long getWingFightPower() {
+		return wingFightPower;
 	}
 
-	public void setWingLevel(int wingLevel) {
-		this.wingLevel = wingLevel;
+	public void setWingFightPower(long wingFightPower) {
+		this.wingFightPower = wingFightPower;
 	}
 
 		public long getWeiming() {
@@ -183,7 +183,7 @@ public class RankDataBean extends KryoBean {
 		this.fightPower = readLong(buf);
 		this.heroFightPower = readLong(buf);
 		this.achievementPoint = readLong(buf);
-		this.wingLevel = readInt(buf, false);
+		this.wingFightPower = readLong(buf);
 		this.weiming = readLong(buf);
 		this.barrier = readInt(buf, false);
 		this.pk = readInt(buf, false);
@@ -202,7 +202,7 @@ public class RankDataBean extends KryoBean {
 		this.writeLong(buf, fightPower);
 		this.writeLong(buf, heroFightPower);
 		this.writeLong(buf, achievementPoint);
-		this.writeInt(buf, wingLevel, false);
+		this.writeLong(buf, wingFightPower);
 		this.writeLong(buf, weiming);
 		this.writeInt(buf, barrier, false);
 		this.writeInt(buf, pk, false);
