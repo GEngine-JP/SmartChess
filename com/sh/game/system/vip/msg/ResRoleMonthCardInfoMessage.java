@@ -4,6 +4,10 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
+import com.sh.game.system.vip.msg.bean.CardBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>返回月卡信息</p>
@@ -29,58 +33,41 @@ public class ResRoleMonthCardInfoMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * 是否有月卡生效 0否 1是
+	 * 月卡
 	 */
-	private int isCard;
-	/**
-	 * 月卡剩余天数
-	 */
-	private int dayNum;
-	/**
-	 * 当天福利是否领取 0否 1是
-	 */
-	private int isGot;
+	private List<CardBean> cardList = new ArrayList<>();
 
-	public int getIsCard() {
-		return isCard;
+	public List<CardBean> getCardList() {
+		return cardList;
 	}
 
-	public void setIsCard(int isCard) {
-		this.isCard = isCard;
+	public void setCardList(List<CardBean> cardList) {
+		this.cardList = cardList;
 	}
 
-		public int getDayNum() {
-		return dayNum;
-	}
-
-	public void setDayNum(int dayNum) {
-		this.dayNum = dayNum;
-	}
-
-		public int getIsGot() {
-		return isGot;
-	}
-
-	public void setIsGot(int isGot) {
-		this.isGot = isGot;
-	}
-
-	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.isCard = readInt(buf, false);
-		this.dayNum = readInt(buf, false);
-		this.isGot = readInt(buf, false);
+		int cardListLength = readShort(buf);
+		for (int cardListI = 0; cardListI < cardListLength; cardListI++) {
+			if (readByte(buf) == 0) { 
+				this.cardList.add(null);
+			} else {
+				CardBean cardBean = new CardBean();
+				cardBean.read(buf);
+				this.cardList.add(cardBean);
+			}
+		}
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, isCard, false);
-		this.writeInt(buf, dayNum, false);
-		this.writeInt(buf, isGot, false);
+		writeShort(buf, this.cardList.size());
+		for (int cardListI = 0; cardListI < this.cardList.size(); cardListI++) {
+			this.writeBean(buf, this.cardList.get(cardListI));
+		}
 		return true;
 	}
 }

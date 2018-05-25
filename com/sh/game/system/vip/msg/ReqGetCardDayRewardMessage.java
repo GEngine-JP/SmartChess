@@ -28,19 +28,31 @@ public class ReqGetCardDayRewardMessage extends AbstractMessage {
 		return 28002;
 	}
 	
+	/**
+	 * 月卡id
+	 */
+	private int cardId;
 
+	public int getCardId() {
+		return cardId;
+	}
 
+	public void setCardId(int cardId) {
+		this.cardId = cardId;
+	}
+
+	
 	@Override
 	public boolean read(KryoInput buf) {
 
-
+		this.cardId = readInt(buf, false);
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-
+		this.writeInt(buf, cardId, false);
 		return true;
 	}
 }
