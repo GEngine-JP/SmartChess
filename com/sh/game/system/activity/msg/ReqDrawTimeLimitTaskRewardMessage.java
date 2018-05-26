@@ -29,11 +29,23 @@ public class ReqDrawTimeLimitTaskRewardMessage extends AbstractMessage {
 	}
 	
 	/**
+	 * 倍数
+	 */
+	private int rate;
+	/**
 	 * 任务id
 	 */
 	private int taskId;
 
-	public int getTaskId() {
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+
+		public int getTaskId() {
 		return taskId;
 	}
 
@@ -45,6 +57,7 @@ public class ReqDrawTimeLimitTaskRewardMessage extends AbstractMessage {
 	@Override
 	public boolean read(KryoInput buf) {
 
+		this.rate = readInt(buf, false);
 		this.taskId = readInt(buf, false);
 		return true;
 	}
@@ -52,6 +65,7 @@ public class ReqDrawTimeLimitTaskRewardMessage extends AbstractMessage {
 	@Override
 	public boolean write(KryoOutput buf) {
 
+		this.writeInt(buf, rate, false);
 		this.writeInt(buf, taskId, false);
 		return true;
 	}

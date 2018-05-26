@@ -33,6 +33,10 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 	 */
 	private String loginName;
 	/**
+	 * 渠道
+	 */
+	private int qudao;
+	/**
 	 * 服务器id
 	 */
 	private int sid;
@@ -43,6 +47,14 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
+	}
+
+		public int getQudao() {
+		return qudao;
+	}
+
+	public void setQudao(int qudao) {
+		this.qudao = qudao;
 	}
 
 		public int getSid() {
@@ -58,6 +70,7 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 	public boolean read(KryoInput buf) {
 
 		this.loginName = readString(buf);
+		this.qudao = readInt(buf, false);
 		this.sid = readInt(buf, false);
 		return true;
 	}
@@ -66,6 +79,7 @@ public class Req9377GetRoleInfoMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeString(buf, loginName);
+		this.writeInt(buf, qudao, false);
 		this.writeInt(buf, sid, false);
 		return true;
 	}
