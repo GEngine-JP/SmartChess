@@ -15,10 +15,6 @@ import com.sh.net.kryo.KryoOutput;
 public class FirstKillBean extends KryoBean {
 
 	/**
-	 * goals表id
-	 */
-	private int goalId;
-	/**
 	 * 对应副本id
 	 */
 	private int instanceId;
@@ -27,15 +23,7 @@ public class FirstKillBean extends KryoBean {
 	 */
 	private int state;
 
-	public int getGoalId() {
-		return goalId;
-	}
-
-	public void setGoalId(int goalId) {
-		this.goalId = goalId;
-	}
-
-		public int getInstanceId() {
+	public int getInstanceId() {
 		return instanceId;
 	}
 
@@ -55,7 +43,6 @@ public class FirstKillBean extends KryoBean {
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.goalId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.state = readInt(buf, false);
 		return true;
@@ -64,7 +51,6 @@ public class FirstKillBean extends KryoBean {
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, goalId, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, state, false);
 		return true;
