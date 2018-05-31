@@ -26,9 +26,9 @@ public class HurtDataBean extends KryoBean {
 	 */
 	private String name;
 	/**
-	 * 目标是否死亡
+	 * hp
 	 */
-	private boolean targetDie;
+	private long targetHp;
 	/**
 	 * 伤害类型bean
 	 */
@@ -54,12 +54,12 @@ public class HurtDataBean extends KryoBean {
 		this.name = name;
 	}
 
-		public boolean getTargetDie() {
-		return targetDie;
+		public long getTargetHp() {
+		return targetHp;
 	}
 
-	public void setTargetDie(boolean targetDie) {
-		this.targetDie = targetDie;
+	public void setTargetHp(long targetHp) {
+		this.targetHp = targetHp;
 	}
 
 		public HurtTypeBean getHurtTypeBean() {
@@ -83,7 +83,7 @@ public class HurtDataBean extends KryoBean {
 
 		this.targetId = readLong(buf);
 		this.name = readString(buf);
-		this.targetDie = readBoolean(buf);
+		this.targetHp = readLong(buf);
 		if (readByte(buf) != 0) {
 			HurtTypeBean hurtTypeBean = new HurtTypeBean();
 			hurtTypeBean.read(buf);
@@ -107,7 +107,7 @@ public class HurtDataBean extends KryoBean {
 
 		this.writeLong(buf, targetId);
 		this.writeString(buf, name);
-		this.writeBoolean(buf, targetDie);
+		this.writeLong(buf, targetHp);
 		this.writeBean(buf, hurtTypeBean);
 		writeShort(buf, this.bufferDataBean.size());
 		for (int bufferDataBeanI = 0; bufferDataBeanI < this.bufferDataBean.size(); bufferDataBeanI++) {

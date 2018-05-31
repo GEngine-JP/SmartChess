@@ -22,7 +22,7 @@ public class FirstKillRewardBean extends KryoBean {
 	 */
 	private List<FirstKillBean> killBeans = new ArrayList<>();
 	/**
-	 * 是否已领奖 0未领奖1已领奖
+	 * 是否已领奖 0不可领奖1可领奖2已领奖
 	 */
 	private int reward;
 

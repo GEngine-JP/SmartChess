@@ -19,6 +19,10 @@ public class BufferAdd extends KryoBean {
 	 */
 	private int bufferId;
 	/**
+	 * 释放者id
+	 */
+	private long ownerId;
+	/**
 	 * 效果
 	 */
 	private int effect;
@@ -29,6 +33,14 @@ public class BufferAdd extends KryoBean {
 
 	public void setBufferId(int bufferId) {
 		this.bufferId = bufferId;
+	}
+
+		public long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(long ownerId) {
+		this.ownerId = ownerId;
 	}
 
 		public int getEffect() {
@@ -44,6 +56,7 @@ public class BufferAdd extends KryoBean {
 	public boolean read(KryoInput buf) {
 
 		this.bufferId = readInt(buf, false);
+		this.ownerId = readLong(buf);
 		this.effect = readInt(buf, false);
 		return true;
 	}
@@ -52,6 +65,7 @@ public class BufferAdd extends KryoBean {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, bufferId, false);
+		this.writeLong(buf, ownerId);
 		this.writeInt(buf, effect, false);
 		return true;
 	}
