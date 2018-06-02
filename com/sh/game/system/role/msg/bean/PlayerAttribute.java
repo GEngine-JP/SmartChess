@@ -63,10 +63,6 @@ public class PlayerAttribute extends KryoBean {
 	 */
 	private int hp;
 	/**
-	 * 当前内力
-	 */
-	private int innerPower;
-	/**
 	 * 暴击增加
 	 */
 	private int critAdd;
@@ -94,14 +90,6 @@ public class PlayerAttribute extends KryoBean {
 	 * 受道士伤害减少
 	 */
 	private int dsHurtedRelief;
-	/**
-	 * 对英雄伤害增加
-	 */
-	private int heroHurtAdd;
-	/**
-	 * 受英雄伤害减少
-	 */
-	private int heroHurtedRelief;
 	/**
 	 * 对怪物伤害加成
 	 */
@@ -223,14 +211,6 @@ public class PlayerAttribute extends KryoBean {
 		this.hp = hp;
 	}
 
-		public int getInnerPower() {
-		return innerPower;
-	}
-
-	public void setInnerPower(int innerPower) {
-		this.innerPower = innerPower;
-	}
-
 		public int getCritAdd() {
 		return critAdd;
 	}
@@ -285,22 +265,6 @@ public class PlayerAttribute extends KryoBean {
 
 	public void setDsHurtedRelief(int dsHurtedRelief) {
 		this.dsHurtedRelief = dsHurtedRelief;
-	}
-
-		public int getHeroHurtAdd() {
-		return heroHurtAdd;
-	}
-
-	public void setHeroHurtAdd(int heroHurtAdd) {
-		this.heroHurtAdd = heroHurtAdd;
-	}
-
-		public int getHeroHurtedRelief() {
-		return heroHurtedRelief;
-	}
-
-	public void setHeroHurtedRelief(int heroHurtedRelief) {
-		this.heroHurtedRelief = heroHurtedRelief;
 	}
 
 		public int getMonHurtAdd() {
@@ -367,7 +331,6 @@ public class PlayerAttribute extends KryoBean {
 		this.critResist = readInt(buf, false);
 		this.critResistRate = readInt(buf, false);
 		this.hp = readInt(buf, false);
-		this.innerPower = readInt(buf, false);
 		this.critAdd = readInt(buf, false);
 		this.zsHurtAdd = readInt(buf, false);
 		this.zsHurtedRelief = readInt(buf, false);
@@ -375,8 +338,6 @@ public class PlayerAttribute extends KryoBean {
 		this.fsHurtedRelief = readInt(buf, false);
 		this.dsHurtAdd = readInt(buf, false);
 		this.dsHurtedRelief = readInt(buf, false);
-		this.heroHurtAdd = readInt(buf, false);
-		this.heroHurtedRelief = readInt(buf, false);
 		this.monHurtAdd = readInt(buf, false);
 		this.monHurtedRelief = readInt(buf, false);
 		this.monCritical = readInt(buf, false);
@@ -401,7 +362,6 @@ public class PlayerAttribute extends KryoBean {
 		this.writeInt(buf, critResist, false);
 		this.writeInt(buf, critResistRate, false);
 		this.writeInt(buf, hp, false);
-		this.writeInt(buf, innerPower, false);
 		this.writeInt(buf, critAdd, false);
 		this.writeInt(buf, zsHurtAdd, false);
 		this.writeInt(buf, zsHurtedRelief, false);
@@ -409,8 +369,6 @@ public class PlayerAttribute extends KryoBean {
 		this.writeInt(buf, fsHurtedRelief, false);
 		this.writeInt(buf, dsHurtAdd, false);
 		this.writeInt(buf, dsHurtedRelief, false);
-		this.writeInt(buf, heroHurtAdd, false);
-		this.writeInt(buf, heroHurtedRelief, false);
 		this.writeInt(buf, monHurtAdd, false);
 		this.writeInt(buf, monHurtedRelief, false);
 		this.writeInt(buf, monCritical, false);

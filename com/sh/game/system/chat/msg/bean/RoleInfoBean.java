@@ -38,22 +38,6 @@ public class RoleInfoBean extends KryoBean {
 	 */
 	private int level;
 	/**
-	 * 神弓
-	 */
-	private int xueyu;
-	/**
-	 * 神斧
-	 */
-	private int shengdun;
-	/**
-	 * 神剑
-	 */
-	private int guanyin;
-	/**
-	 * 法宝
-	 */
-	private int longhun;
-	/**
 	 * 玩家名字
 	 */
 	private String name;
@@ -113,6 +97,10 @@ public class RoleInfoBean extends KryoBean {
 	 * 灵宝列表
 	 */
 	private List<LingBaoBean> lbList = new ArrayList<>();
+	/**
+	 * 特戒列表
+	 */
+	private List<RingBean> ringList = new ArrayList<>();
 
 	public int getWindId() {
 		return windId;
@@ -152,38 +140,6 @@ public class RoleInfoBean extends KryoBean {
 
 	public void setLevel(int level) {
 		this.level = level;
-	}
-
-		public int getXueyu() {
-		return xueyu;
-	}
-
-	public void setXueyu(int xueyu) {
-		this.xueyu = xueyu;
-	}
-
-		public int getShengdun() {
-		return shengdun;
-	}
-
-	public void setShengdun(int shengdun) {
-		this.shengdun = shengdun;
-	}
-
-		public int getGuanyin() {
-		return guanyin;
-	}
-
-	public void setGuanyin(int guanyin) {
-		this.guanyin = guanyin;
-	}
-
-		public int getLonghun() {
-		return longhun;
-	}
-
-	public void setLonghun(int longhun) {
-		this.longhun = longhun;
 	}
 
 		public String getName() {
@@ -302,6 +258,13 @@ public class RoleInfoBean extends KryoBean {
 	public void setLbList(List<LingBaoBean> lbList) {
 		this.lbList = lbList;
 	}
+	public List<RingBean> getRingList() {
+		return ringList;
+	}
+
+	public void setRingList(List<RingBean> ringList) {
+		this.ringList = ringList;
+	}
 
 	@Override
 	public boolean read(KryoInput buf) {
@@ -311,10 +274,6 @@ public class RoleInfoBean extends KryoBean {
 		this.career = readInt(buf, false);
 		this.rein = readInt(buf, false);
 		this.level = readInt(buf, false);
-		this.xueyu = readInt(buf, false);
-		this.shengdun = readInt(buf, false);
-		this.guanyin = readInt(buf, false);
-		this.longhun = readInt(buf, false);
 		this.name = readString(buf);
 		this.unionName = readString(buf);
 		this.fashionTitle = readInt(buf, false);
@@ -360,6 +319,15 @@ public class RoleInfoBean extends KryoBean {
 				lingBaoBean.read(buf);
 				this.lbList.add(lingBaoBean);
 			}
+		}		int ringListLength = readShort(buf);
+		for (int ringListI = 0; ringListI < ringListLength; ringListI++) {
+			if (readByte(buf) == 0) { 
+				this.ringList.add(null);
+			} else {
+				RingBean ringBean = new RingBean();
+				ringBean.read(buf);
+				this.ringList.add(ringBean);
+			}
 		}
 		return true;
 	}
@@ -372,10 +340,6 @@ public class RoleInfoBean extends KryoBean {
 		this.writeInt(buf, career, false);
 		this.writeInt(buf, rein, false);
 		this.writeInt(buf, level, false);
-		this.writeInt(buf, xueyu, false);
-		this.writeInt(buf, shengdun, false);
-		this.writeInt(buf, guanyin, false);
-		this.writeInt(buf, longhun, false);
 		this.writeString(buf, name);
 		this.writeString(buf, unionName);
 		this.writeInt(buf, fashionTitle, false);
@@ -399,6 +363,9 @@ public class RoleInfoBean extends KryoBean {
 		writeShort(buf, this.lbList.size());
 		for (int lbListI = 0; lbListI < this.lbList.size(); lbListI++) {
 			this.writeBean(buf, this.lbList.get(lbListI));
+		}		writeShort(buf, this.ringList.size());
+		for (int ringListI = 0; ringListI < this.ringList.size(); ringListI++) {
+			this.writeBean(buf, this.ringList.get(ringListI));
 		}
 		return true;
 	}

@@ -53,6 +53,10 @@ public class HeroInfoBean extends KryoBean {
 	 * 灵宝列表
 	 */
 	private List<LingBaoBean> lbList = new ArrayList<>();
+	/**
+	 * 特戒列表
+	 */
+	private List<RingBean> ringList = new ArrayList<>();
 
 	public int getWindId() {
 		return windId;
@@ -123,6 +127,13 @@ public class HeroInfoBean extends KryoBean {
 	public void setLbList(List<LingBaoBean> lbList) {
 		this.lbList = lbList;
 	}
+	public List<RingBean> getRingList() {
+		return ringList;
+	}
+
+	public void setRingList(List<RingBean> ringList) {
+		this.ringList = ringList;
+	}
 
 	@Override
 	public boolean read(KryoInput buf) {
@@ -158,6 +169,15 @@ public class HeroInfoBean extends KryoBean {
 				lingBaoBean.read(buf);
 				this.lbList.add(lingBaoBean);
 			}
+		}		int ringListLength = readShort(buf);
+		for (int ringListI = 0; ringListI < ringListLength; ringListI++) {
+			if (readByte(buf) == 0) { 
+				this.ringList.add(null);
+			} else {
+				RingBean ringBean = new RingBean();
+				ringBean.read(buf);
+				this.ringList.add(ringBean);
+			}
 		}
 		return true;
 	}
@@ -180,6 +200,9 @@ public class HeroInfoBean extends KryoBean {
 		}		writeShort(buf, this.lbList.size());
 		for (int lbListI = 0; lbListI < this.lbList.size(); lbListI++) {
 			this.writeBean(buf, this.lbList.get(lbListI));
+		}		writeShort(buf, this.ringList.size());
+		for (int ringListI = 0; ringListI < this.ringList.size(); ringListI++) {
+			this.writeBean(buf, this.ringList.get(ringListI));
 		}
 		return true;
 	}
