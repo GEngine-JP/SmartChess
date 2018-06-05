@@ -56,6 +56,10 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 	 * 今日重置次數
 	 */
 	private int resetCount;
+	/**
+	 * 今日已成功挑战关卡数
+	 */
+	private int challengeBarrier;
 
 	public int getCurrentMonsterWeaken() {
 		return currentMonsterWeaken;
@@ -113,6 +117,14 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.resetCount = resetCount;
 	}
 
+		public int getChallengeBarrier() {
+		return challengeBarrier;
+	}
+
+	public void setChallengeBarrier(int challengeBarrier) {
+		this.challengeBarrier = challengeBarrier;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -124,6 +136,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.lifeMaxInstanceId = readInt(buf, false);
 		this.firstRewardInstanceId = readInt(buf, false);
 		this.resetCount = readInt(buf, false);
+		this.challengeBarrier = readInt(buf, false);
 		return true;
 	}
 
@@ -137,6 +150,7 @@ public class ResSendUnionPersonChallengetInfoMessage extends AbstractMessage {
 		this.writeInt(buf, lifeMaxInstanceId, false);
 		this.writeInt(buf, firstRewardInstanceId, false);
 		this.writeInt(buf, resetCount, false);
+		this.writeInt(buf, challengeBarrier, false);
 		return true;
 	}
 }
