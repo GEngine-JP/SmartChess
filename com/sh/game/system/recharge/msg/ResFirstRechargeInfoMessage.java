@@ -4,6 +4,10 @@ import com.sh.net.kryo.KryoInput;
 import com.sh.net.kryo.KryoOutput;
 import com.sh.game.server.AbstractMessage;
 
+import com.sh.game.system.recharge.msg.bean.FistRewardInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>发送首充奖励信息</p>
@@ -29,30 +33,41 @@ public class ResFirstRechargeInfoMessage extends AbstractMessage {
 	}
 	
 	/**
-	 * 领取状态 0不可领取 1可领取 2已领取
+	 * 每日充值信息
 	 */
-	private int state;
+	private List<FistRewardInfo> rewardInfos = new ArrayList<>();
 
-	public int getState() {
-		return state;
+	public List<FistRewardInfo> getRewardInfos() {
+		return rewardInfos;
 	}
 
-	public void setState(int state) {
-		this.state = state;
+	public void setRewardInfos(List<FistRewardInfo> rewardInfos) {
+		this.rewardInfos = rewardInfos;
 	}
 
-	
 	@Override
 	public boolean read(KryoInput buf) {
 
-		this.state = readInt(buf, false);
+		int rewardInfosLength = readShort(buf);
+		for (int rewardInfosI = 0; rewardInfosI < rewardInfosLength; rewardInfosI++) {
+			if (readByte(buf) == 0) { 
+				this.rewardInfos.add(null);
+			} else {
+				FistRewardInfo fistRewardInfo = new FistRewardInfo();
+				fistRewardInfo.read(buf);
+				this.rewardInfos.add(fistRewardInfo);
+			}
+		}
 		return true;
 	}
 
 	@Override
 	public boolean write(KryoOutput buf) {
 
-		this.writeInt(buf, state, false);
+		writeShort(buf, this.rewardInfos.size());
+		for (int rewardInfosI = 0; rewardInfosI < this.rewardInfos.size(); rewardInfosI++) {
+			this.writeBean(buf, this.rewardInfos.get(rewardInfosI));
+		}
 		return true;
 	}
 }
