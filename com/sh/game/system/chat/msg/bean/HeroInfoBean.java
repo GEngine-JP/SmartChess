@@ -57,6 +57,18 @@ public class HeroInfoBean extends KryoBean {
 	 * 特戒列表
 	 */
 	private List<RingBean> ringList = new ArrayList<>();
+	/**
+	 * 神装战力
+	 */
+	private int szFightPower;
+	/**
+	 * 神装套装
+	 */
+	private int szSuit;
+	/**
+	 * 神装数量
+	 */
+	private int szCount;
 
 	public int getWindId() {
 		return windId;
@@ -134,7 +146,31 @@ public class HeroInfoBean extends KryoBean {
 	public void setRingList(List<RingBean> ringList) {
 		this.ringList = ringList;
 	}
+	public int getSzFightPower() {
+		return szFightPower;
+	}
 
+	public void setSzFightPower(int szFightPower) {
+		this.szFightPower = szFightPower;
+	}
+
+		public int getSzSuit() {
+		return szSuit;
+	}
+
+	public void setSzSuit(int szSuit) {
+		this.szSuit = szSuit;
+	}
+
+		public int getSzCount() {
+		return szCount;
+	}
+
+	public void setSzCount(int szCount) {
+		this.szCount = szCount;
+	}
+
+	
 	@Override
 	public boolean read(KryoInput buf) {
 
@@ -178,7 +214,9 @@ public class HeroInfoBean extends KryoBean {
 				ringBean.read(buf);
 				this.ringList.add(ringBean);
 			}
-		}
+		}		this.szFightPower = readInt(buf, false);
+		this.szSuit = readInt(buf, false);
+		this.szCount = readInt(buf, false);
 		return true;
 	}
 	
@@ -203,7 +241,9 @@ public class HeroInfoBean extends KryoBean {
 		}		writeShort(buf, this.ringList.size());
 		for (int ringListI = 0; ringListI < this.ringList.size(); ringListI++) {
 			this.writeBean(buf, this.ringList.get(ringListI));
-		}
+		}		this.writeInt(buf, szFightPower, false);
+		this.writeInt(buf, szSuit, false);
+		this.writeInt(buf, szCount, false);
 		return true;
 	}
 }

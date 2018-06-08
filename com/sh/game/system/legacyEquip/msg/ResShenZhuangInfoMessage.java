@@ -37,6 +37,14 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 	 * 战斗力
 	 */
 	private int fightValue;
+	/**
+	 * 类型 1 角色 2 英雄
+	 */
+	private int type;
+	/**
+	 * 英雄id
+	 */
+	private long heroId;
 
 	public ShenZhuangBean getShenZhuangBean() {
 		return shenZhuangBean;
@@ -54,6 +62,22 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 		this.fightValue = fightValue;
 	}
 
+		public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -64,6 +88,8 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 			this.shenZhuangBean = shenZhuangBean;
 		}
 		this.fightValue = readInt(buf, false);
+		this.type = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 
@@ -72,6 +98,8 @@ public class ResShenZhuangInfoMessage extends AbstractMessage {
 
 		this.writeBean(buf, shenZhuangBean);
 		this.writeInt(buf, fightValue, false);
+		this.writeInt(buf, type, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }

@@ -36,6 +36,14 @@ public class ResSuitInfoMessage extends AbstractMessage {
 	 * 当前个数
 	 */
 	private int nowCount;
+	/**
+	 * 类型 1 角色 2 英雄
+	 */
+	private int type;
+	/**
+	 * 英雄id
+	 */
+	private long heroId;
 
 	public int getSuitId() {
 		return suitId;
@@ -53,12 +61,30 @@ public class ResSuitInfoMessage extends AbstractMessage {
 		this.nowCount = nowCount;
 	}
 
+		public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.suitId = readInt(buf, false);
 		this.nowCount = readInt(buf, false);
+		this.type = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 
@@ -67,6 +93,8 @@ public class ResSuitInfoMessage extends AbstractMessage {
 
 		this.writeInt(buf, suitId, false);
 		this.writeInt(buf, nowCount, false);
+		this.writeInt(buf, type, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }

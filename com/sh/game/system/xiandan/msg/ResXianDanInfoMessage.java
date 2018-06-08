@@ -38,10 +38,6 @@ public class ResXianDanInfoMessage extends AbstractMessage {
 	 */
 	private List<XianDanInfoBean> roleXianDanList = new ArrayList<>();
 	/**
-	 * 角色仙丹战力
-	 */
-	private int fightPower;
-	/**
 	 * 英雄仙丹信息
 	 */
 	private List<HeroXianDanInfoBean> heroXianDanList = new ArrayList<>();
@@ -53,15 +49,7 @@ public class ResXianDanInfoMessage extends AbstractMessage {
 	public void setRoleXianDanList(List<XianDanInfoBean> roleXianDanList) {
 		this.roleXianDanList = roleXianDanList;
 	}
-	public int getFightPower() {
-		return fightPower;
-	}
-
-	public void setFightPower(int fightPower) {
-		this.fightPower = fightPower;
-	}
-
-		public List<HeroXianDanInfoBean> getHeroXianDanList() {
+	public List<HeroXianDanInfoBean> getHeroXianDanList() {
 		return heroXianDanList;
 	}
 
@@ -81,8 +69,7 @@ public class ResXianDanInfoMessage extends AbstractMessage {
 				xianDanInfoBean.read(buf);
 				this.roleXianDanList.add(xianDanInfoBean);
 			}
-		}		this.fightPower = readInt(buf, false);
-		int heroXianDanListLength = readShort(buf);
+		}		int heroXianDanListLength = readShort(buf);
 		for (int heroXianDanListI = 0; heroXianDanListI < heroXianDanListLength; heroXianDanListI++) {
 			if (readByte(buf) == 0) { 
 				this.heroXianDanList.add(null);
@@ -101,8 +88,7 @@ public class ResXianDanInfoMessage extends AbstractMessage {
 		writeShort(buf, this.roleXianDanList.size());
 		for (int roleXianDanListI = 0; roleXianDanListI < this.roleXianDanList.size(); roleXianDanListI++) {
 			this.writeBean(buf, this.roleXianDanList.get(roleXianDanListI));
-		}		this.writeInt(buf, fightPower, false);
-		writeShort(buf, this.heroXianDanList.size());
+		}		writeShort(buf, this.heroXianDanList.size());
 		for (int heroXianDanListI = 0; heroXianDanListI < this.heroXianDanList.size(); heroXianDanListI++) {
 			this.writeBean(buf, this.heroXianDanList.get(heroXianDanListI));
 		}

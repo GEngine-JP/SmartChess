@@ -60,6 +60,10 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 	 * 首次做任务0首次其他不是
 	 */
 	private int firstGet;
+	/**
+	 * 下次可刷星时间（秒）
+	 */
+	private int canRefreshTime;
 
 	public int getCfgId() {
 		return cfgId;
@@ -116,6 +120,14 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.firstGet = firstGet;
 	}
 
+		public int getCanRefreshTime() {
+		return canRefreshTime;
+	}
+
+	public void setCanRefreshTime(int canRefreshTime) {
+		this.canRefreshTime = canRefreshTime;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
@@ -135,6 +147,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 			}
 		}		this.taskState = readInt(buf, false);
 		this.firstGet = readInt(buf, false);
+		this.canRefreshTime = readInt(buf, false);
 		return true;
 	}
 
@@ -150,6 +163,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 			this.writeBean(buf, this.rewards.get(rewardsI));
 		}		this.writeInt(buf, taskState, false);
 		this.writeInt(buf, firstGet, false);
+		this.writeInt(buf, canRefreshTime, false);
 		return true;
 	}
 }

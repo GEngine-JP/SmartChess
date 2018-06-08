@@ -32,6 +32,14 @@ public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 	 * 装备位置
 	 */
 	private int index;
+	/**
+	 * 类型 1 角色 2 英雄
+	 */
+	private int type;
+	/**
+	 * 英雄id
+	 */
+	private long heroId;
 
 	public int getIndex() {
 		return index;
@@ -41,11 +49,29 @@ public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 		this.index = index;
 	}
 
+		public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+		public long getHeroId() {
+		return heroId;
+	}
+
+	public void setHeroId(long heroId) {
+		this.heroId = heroId;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.index = readInt(buf, false);
+		this.type = readInt(buf, false);
+		this.heroId = readLong(buf);
 		return true;
 	}
 
@@ -53,6 +79,8 @@ public class ReqLevelUpShenZhuangMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, index, false);
+		this.writeInt(buf, type, false);
+		this.writeLong(buf, heroId);
 		return true;
 	}
 }

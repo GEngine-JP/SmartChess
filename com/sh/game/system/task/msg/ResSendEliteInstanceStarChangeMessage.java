@@ -32,6 +32,10 @@ public class ResSendEliteInstanceStarChangeMessage extends AbstractMessage {
 	 * 精英任务最新星级
 	 */
 	private int starLevel;
+	/**
+	 * 下次可刷星时间（秒）
+	 */
+	private int canRefreshTime;
 
 	public int getStarLevel() {
 		return starLevel;
@@ -41,11 +45,20 @@ public class ResSendEliteInstanceStarChangeMessage extends AbstractMessage {
 		this.starLevel = starLevel;
 	}
 
+		public int getCanRefreshTime() {
+		return canRefreshTime;
+	}
+
+	public void setCanRefreshTime(int canRefreshTime) {
+		this.canRefreshTime = canRefreshTime;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.starLevel = readInt(buf, false);
+		this.canRefreshTime = readInt(buf, false);
 		return true;
 	}
 
@@ -53,6 +66,7 @@ public class ResSendEliteInstanceStarChangeMessage extends AbstractMessage {
 	public boolean write(KryoOutput buf) {
 
 		this.writeInt(buf, starLevel, false);
+		this.writeInt(buf, canRefreshTime, false);
 		return true;
 	}
 }
