@@ -33,9 +33,13 @@ public class ResDragonChallengeInfoMessage extends AbstractMessage {
 	 */
 	private int challengeId;
 	/**
-	 * 0.可接受 1.可挑战 2.可领奖
+	 * 0.可接受 1.可挑战 2.可完成 3.可领奖 4.已领奖 
 	 */
 	private int state;
+	/**
+	 * 当前进度
+	 */
+	private int nowCount;
 
 	public int getChallengeId() {
 		return challengeId;
@@ -53,12 +57,21 @@ public class ResDragonChallengeInfoMessage extends AbstractMessage {
 		this.state = state;
 	}
 
+		public int getNowCount() {
+		return nowCount;
+	}
+
+	public void setNowCount(int nowCount) {
+		this.nowCount = nowCount;
+	}
+
 	
 	@Override
 	public boolean read(KryoInput buf) {
 
 		this.challengeId = readInt(buf, false);
 		this.state = readInt(buf, false);
+		this.nowCount = readInt(buf, false);
 		return true;
 	}
 
@@ -67,6 +80,7 @@ public class ResDragonChallengeInfoMessage extends AbstractMessage {
 
 		this.writeInt(buf, challengeId, false);
 		this.writeInt(buf, state, false);
+		this.writeInt(buf, nowCount, false);
 		return true;
 	}
 }
