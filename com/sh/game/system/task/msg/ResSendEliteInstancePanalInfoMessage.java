@@ -45,6 +45,10 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 	 */
 	private int remainCount;
 	/**
+	 * 副本总次数
+	 */
+	private int totalCount;
+	/**
 	 * 精英任务当前星级
 	 */
 	private int starLevel;
@@ -87,6 +91,14 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 
 	public void setRemainCount(int remainCount) {
 		this.remainCount = remainCount;
+	}
+
+		public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
 	}
 
 		public int getStarLevel() {
@@ -135,6 +147,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.cfgId = readInt(buf, false);
 		this.instanceId = readInt(buf, false);
 		this.remainCount = readInt(buf, false);
+		this.totalCount = readInt(buf, false);
 		this.starLevel = readInt(buf, false);
 		int rewardsLength = readShort(buf);
 		for (int rewardsI = 0; rewardsI < rewardsLength; rewardsI++) {
@@ -157,6 +170,7 @@ public class ResSendEliteInstancePanalInfoMessage extends AbstractMessage {
 		this.writeInt(buf, cfgId, false);
 		this.writeInt(buf, instanceId, false);
 		this.writeInt(buf, remainCount, false);
+		this.writeInt(buf, totalCount, false);
 		this.writeInt(buf, starLevel, false);
 		writeShort(buf, this.rewards.size());
 		for (int rewardsI = 0; rewardsI < this.rewards.size(); rewardsI++) {
