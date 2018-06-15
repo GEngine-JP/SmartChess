@@ -9,7 +9,7 @@ import com.sh.game.server.AbstractMessage;
  * <p>通过后台登录</p>
  * <p>Created by MessageUtil</p>
  *
- * @author : admin
+ * @author : xiaomo
  */
 
 public class ReqBackLoginMessage extends AbstractMessage {
