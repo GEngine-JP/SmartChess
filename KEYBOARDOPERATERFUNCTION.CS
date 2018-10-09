@@ -2,10 +2,10 @@ using System;
 using System.Drawing;
 using System.Collections;
 
-namespace 智能象棋游戏
+namespace SmartChessGame
 {
 	/// <summary>
-	/// 作用:1.增加键盘支持功能   2.使鼠标和键盘操作互斥	
+	/// 浣滅敤:1.澧炲姞閿洏鏀寔鍔熻兘   2.浣块紶鏍囧拰閿洏鎿嶄綔浜掓枼	
 	/// </summary>
 	public class KeyboardOperaterFunction
 	{

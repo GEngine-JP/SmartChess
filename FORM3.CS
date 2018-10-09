@@ -4,10 +4,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	/// <summary>
-	/// Form3 µÄÕªÒªËµÃ÷¡£
+	/// Form3 çš„æ‘˜è¦è¯´æ˜ã€‚
 	/// </summary>
 	public class Form3 : System.Windows.Forms.Form
 	{
@@ -24,24 +24,24 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.PictureBox pictureBox2;
 		/// <summary>
-		/// ±ØĞèµÄÉè¼ÆÆ÷±äÁ¿¡£
+		/// å¿…éœ€çš„è®¾è®¡å™¨å˜é‡ã€‚
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public Form3()
 		{
 			//
-			// Windows ´°ÌåÉè¼ÆÆ÷Ö§³ÖËù±ØĞèµÄ
+			// Windows çª—ä½“è®¾è®¡å™¨æ”¯æŒæ‰€å¿…éœ€çš„
 			//
 			InitializeComponent();
 
 			//
-			// TODO: ÔÚ InitializeComponent µ÷ÓÃºóÌí¼ÓÈÎºÎ¹¹Ôìº¯Êı´úÂë
+			// TODO: åœ¨ InitializeComponent è°ƒç”¨åæ·»åŠ ä»»ä½•æ„é€ å‡½æ•°ä»£ç 
 			//
 		}
 
 		/// <summary>
-		/// ÇåÀíËùÓĞÕıÔÚÊ¹ÓÃµÄ×ÊÔ´¡£
+		/// æ¸…ç†æ‰€æœ‰æ­£åœ¨ä½¿ç”¨çš„èµ„æºã€‚
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -55,10 +55,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			base.Dispose( disposing );
 		}
 
-		#region Windows ´°ÌåÉè¼ÆÆ÷Éú³ÉµÄ´úÂë
+		#region Windows çª—ä½“è®¾è®¡å™¨ç”Ÿæˆçš„ä»£ç 
 		/// <summary>
-		/// Éè¼ÆÆ÷Ö§³ÖËùĞèµÄ·½·¨ - ²»ÒªÊ¹ÓÃ´úÂë±à¼­Æ÷ĞŞ¸Ä
-		/// ´Ë·½·¨µÄÄÚÈİ¡£
+		/// è®¾è®¡å™¨æ”¯æŒæ‰€éœ€çš„æ–¹æ³• - ä¸è¦ä½¿ç”¨ä»£ç ç¼–è¾‘å™¨ä¿®æ”¹
+		/// æ­¤æ–¹æ³•çš„å†…å®¹ã€‚
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -98,24 +98,24 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			// 
 			// label1
 			// 
-			this.label1.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.label1.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.label1.ForeColor = System.Drawing.Color.Maroon;
 			this.label1.Location = new System.Drawing.Point(16, 32);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(48, 24);
 			this.label1.TabIndex = 2;
-			this.label1.Text = "ºì·½:";
+			this.label1.Text = "çº¢æ–¹:";
 			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// label2
 			// 
-			this.label2.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.label2.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
 			this.label2.Location = new System.Drawing.Point(16, 104);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(48, 24);
 			this.label2.TabIndex = 3;
-			this.label2.Text = "À¶·½:";
+			this.label2.Text = "è“æ–¹:";
 			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// button1
@@ -125,7 +125,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(64, 24);
 			this.button1.TabIndex = 5;
-			this.button1.Text = "È·¶¨";
+			this.button1.Text = "ç¡®å®š";
 			// 
 			// button2
 			// 
@@ -134,31 +134,31 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(72, 24);
 			this.button2.TabIndex = 6;
-			this.button2.Text = "ºöÂÔ";
+			this.button2.Text = "å¿½ç•¥";
 			// 
 			// radioButton1
 			// 
-			this.radioButton1.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.radioButton1.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.radioButton1.ForeColor = System.Drawing.Color.Blue;
 			this.radioButton1.Location = new System.Drawing.Point(80, 16);
 			this.radioButton1.Name = "radioButton1";
 			this.radioButton1.Size = new System.Drawing.Size(152, 24);
 			this.radioButton1.TabIndex = 2;
-			this.radioButton1.Text = "µ¥ÈËÓÎÏ·";
+			this.radioButton1.Text = "å•äººæ¸¸æˆ";
 			this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
 			// 
 			// radioButton2
 			// 
 			this.radioButton2.Checked = true;
-			this.radioButton2.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.radioButton2.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.radioButton2.ForeColor = System.Drawing.Color.Blue;
 			this.radioButton2.Location = new System.Drawing.Point(80, 56);
 			this.radioButton2.Name = "radioButton2";
 			this.radioButton2.Size = new System.Drawing.Size(152, 24);
 			this.radioButton2.TabIndex = 3;
 			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "Ë«ÈËÓÎÏ·";
+			this.radioButton2.Text = "åŒäººæ¸¸æˆ";
 			this.radioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// groupBox1
@@ -174,7 +174,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.groupBox1.Size = new System.Drawing.Size(328, 160);
 			this.groupBox1.TabIndex = 9;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "ÊäÈëÍæÕßĞÕÃû:";
+			this.groupBox1.Text = "è¾“å…¥ç©è€…å§“å:";
 			// 
 			// pictureBox2
 			// 
@@ -206,7 +206,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.groupBox2.Size = new System.Drawing.Size(328, 96);
 			this.groupBox2.TabIndex = 10;
 			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Ñ¡ÔñÓÎÏ·Ä£Ê½:";
+			this.groupBox2.Text = "é€‰æ‹©æ¸¸æˆæ¨¡å¼:";
 			// 
 			// Form3
 			// 
@@ -225,7 +225,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.Opacity = 0.9;
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "µÇÂ¼´°¿Ú";
+			this.Text = "ç™»å½•çª—å£";
 			this.TopMost = true;
 			this.Closing += new System.ComponentModel.CancelEventHandler(this.Form3_Closing);
 			this.groupBox1.ResumeLayout(false);
@@ -239,7 +239,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		{
 			if(radioButton1.Checked==false&&radioButton2.Checked==false)
 			{
-				MessageBox.Show("ÇëÑ¡ÔñÓÎÏ·Ä£Ê½!!!","ÌáÊ¾",MessageBoxButtons.OK,MessageBoxIcon.Information);
+				MessageBox.Show("è¯·é€‰æ‹©æ¸¸æˆæ¨¡å¼!!!","æç¤º",MessageBoxButtons.OK,MessageBoxIcon.Information);
 				e.Cancel=true;
 			}
 		}
@@ -248,7 +248,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		{
 			if(this.radioButton1.Checked)
 			{
-				this.textBox1.Text="µçÄÔ";
+				this.textBox1.Text="ç”µè„‘";
 				this.textBox1.Enabled=false;
 			}
 			else

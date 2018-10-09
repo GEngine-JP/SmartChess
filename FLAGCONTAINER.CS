@@ -2,23 +2,23 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	
-	//*****×Ô¶¨ÒåÀà*****
-	//*****¼ÇÂ¼ÆìÅÌÎ»ÖÃÌØµãÀà*****
-	//ÌØµã:ÒÔ·Ç³£¼¼ÇÉµÄÊı¾İ½á¹¹,¼ÇÂ¼ÁËÃ¿Ò»Ê±¿ÌÆìÅÌÉÏµÄÆì×ÓÇé¿ö
-	//»¨·ÑÊ±¼ä:3Ìì  ÄÑ¶È:3¼¶
+	//*****è‡ªå®šä¹‰ç±»*****
+	//*****è®°å½•æ——ç›˜ä½ç½®ç‰¹ç‚¹ç±»*****
+	//ç‰¹ç‚¹:ä»¥éå¸¸æŠ€å·§çš„æ•°æ®ç»“æ„,è®°å½•äº†æ¯ä¸€æ—¶åˆ»æ——ç›˜ä¸Šçš„æ——å­æƒ…å†µ
+	//èŠ±è´¹æ—¶é—´:3å¤©  éš¾åº¦:3çº§
 	
 	public class FlagContainer
 	{
-		public bool[] have=new bool[90];   //ÆìÅÌÉÏ¸÷µãÓĞÎŞÆì×Ó
-		public string[] who=new string[90];//ÊÇºì·½»¹ÊÇÀ¶·½
-		public string[] str=new string[90];//ÊÇÊ²Ã´Æì×Ó(ÈçÂí)   
+		public bool[] have=new bool[90];   //æ——ç›˜ä¸Šå„ç‚¹æœ‰æ— æ——å­
+		public string[] who=new string[90];//æ˜¯çº¢æ–¹è¿˜æ˜¯è“æ–¹
+		public string[] str=new string[90];//æ˜¯ä»€ä¹ˆæ——å­(å¦‚é©¬)   
 		
-        public Point[] allPoint=new Point[90];  //¼ÇÂ¼ÆìÅÌÉÏËùÓĞµãµÄ×ø±ê 
-		public Point[] partPoint=new Point[32];  //´æ·Å³õ¸Õ¿ªÊ¼Ê¢·Å32(ÏóÆìÆì×Ó:ºì·½/À¶·½¸÷16¸ö)¸öÆì×ÓµÄµã
-		public int[] whichPicture=new int[90];   //±êÖ¾ÆìÅÌÉÏµÄµãÉÏµ±Ç°ÊÇÄÄ¸öpictureBox¿Ø¼ş
+        public Point[] allPoint=new Point[90];  //è®°å½•æ——ç›˜ä¸Šæ‰€æœ‰ç‚¹çš„åæ ‡ 
+		public Point[] partPoint=new Point[32];  //å­˜æ”¾åˆåˆšå¼€å§‹ç››æ”¾32(è±¡æ——æ——å­:çº¢æ–¹/è“æ–¹å„16ä¸ª)ä¸ªæ——å­çš„ç‚¹
+		public int[] whichPicture=new int[90];   //æ ‡å¿—æ——ç›˜ä¸Šçš„ç‚¹ä¸Šå½“å‰æ˜¯å“ªä¸ªpictureBoxæ§ä»¶
 		
 		public int rednum=0;
 		public int bluenum=0;
@@ -41,7 +41,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		public void Initialize()
 		{
 			
-			//³õÊ¼»¯
+			//åˆå§‹åŒ–
 			for(int i=0;i<90;i++)
 				this.who[i]="";			
 			for(int i=0;i<90;i++)
@@ -146,7 +146,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			double distance=double.MaxValue;
 			for(int i=0;i<90;i++)
 			{   //                    ______________________
-				//ÇóÁ½µã¼äµÄ¾àÀë¹«Ê½ N (x2-x1)^2 - (y2-y2)^2  µÄ¼ò»¯    
+				//æ±‚ä¸¤ç‚¹é—´çš„è·ç¦»å…¬å¼ N (x2-x1)^2 - (y2-y2)^2  çš„ç®€åŒ–    
 				double end=Math.Sqrt((x-allPoint[i].X)*(x-allPoint[i].X)+(y-allPoint[i].Y)*(y-allPoint[i].Y));
 				if(end<distance)
 				{
@@ -164,8 +164,8 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		}		
 		public int CountIndex(Point point)  //width=65,height=46; firstPoint(43,22)
 		{
-			//¹¦ÄÜ:ÒÑÖªÒ»¸öµã,Çó³ö´ËµãÓ³Éäµ½Ò»Î¬Êı×é(´ú±íÆåÅÌÉÏµÄÎ»ÖÃ)¶ÔÓ¦µÄË÷Òı
-			//¹«Ê½:Ò»Î¬Êı×éÏÂ±ê=(y2-y1)/this.height*9+(x2-x1)/this.width		
+			//åŠŸèƒ½:å·²çŸ¥ä¸€ä¸ªç‚¹,æ±‚å‡ºæ­¤ç‚¹æ˜ å°„åˆ°ä¸€ç»´æ•°ç»„(ä»£è¡¨æ£‹ç›˜ä¸Šçš„ä½ç½®)å¯¹åº”çš„ç´¢å¼•
+			//å…¬å¼:ä¸€ç»´æ•°ç»„ä¸‹æ ‡=(y2-y1)/this.height*9+(x2-x1)/this.width		
 			if((point.Y-first_Y)%height!=0)
 				point.Y-=(height/2);
 			int index=(point.Y-first_Y)/height*9+(point.X-first_X)/width;
@@ -190,7 +190,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		}
 		public Point CountPoint(int index)
 		{
-			//ÒÑÖªÒ»Î¬Êı×éµÄÒ»¸öË÷Òı,Çó³öÆä¶ÔÓ¦µÄµã
+			//å·²çŸ¥ä¸€ç»´æ•°ç»„çš„ä¸€ä¸ªç´¢å¼•,æ±‚å‡ºå…¶å¯¹åº”çš„ç‚¹
 			if(index>=0&&index<90)
 			{
 				for(int i=0;i<90;i++)
@@ -211,7 +211,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				if(index>=45&&index<90)
 					return "down";
 			}
-			MessageBox.Show("IsUpOrDown³ö´í");
+			MessageBox.Show("IsUpOrDownå‡ºé”™");
 			return "wrong";
 		}
 

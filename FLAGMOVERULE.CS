@@ -2,13 +2,13 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	
-	//*****×Ô¶¨ÒåÀà*****
-	//*****¼ÇÂ¼ÆìÅÌÎ»ÖÃÌØµãÀà,¸÷¸öÆì×ÓµÄ×ß·¨*****	
+	//*****è‡ªå®šä¹‰ç±»*****
+	//*****è®°å½•æ——ç›˜ä½ç½®ç‰¹ç‚¹ç±»,å„ä¸ªæ——å­çš„èµ°æ³•*****	
 
-	public class FlagMoveRule:ÖÇÄÜÏóÆåÓÎÏ·.FlagContainer
+	public class FlagMoveRule:FlagContainer
 	{
 		public bool GenEatGen=false;
 		public FlagMoveRule()
@@ -19,85 +19,85 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		public FlagMoveRule(string[] soldiers,Point[] allPoint,Point[] partPoint,int width,int height): base(soldiers,allPoint,partPoint,width,height)
 		{ 
 		}		
-		//*****ÎªÆì×ÓÅĞ¶Ï²½·¥Ê±ºò:ÎªÁËÌá¸ßÖ´ĞĞĞ§ÂÊ,Ö»ÅĞ¶ÏÆì×Ó¿ÉÒÔ×ßµÄÇé¿ö:
-		//*****   1.×Ô¼ºÖÜÎ§µÄ¹æÔòµãÊÇ²»ÊÇÔÚÆìÅÌÉÏ; 2.Èç¹ûÖÜÎ§µÄ¹æÔòµãÔÚÆìÅÌÉÏ,Ôò¸ÃµãÊÇ·ñÊÇ×Ô¼ºµÄÆì×Ó,Èç¹ûÊÇ,Ôò²»ÔÊĞí×ß
-		public bool HorseFoot(Point fromPoint,Point toPoint) //ÅĞ¶Ï***Âí***µÄ×ß·¨ÊÇ·ñºÏÀí
+		//*****ä¸ºæ——å­åˆ¤æ–­æ­¥ä¼æ—¶å€™:ä¸ºäº†æé«˜æ‰§è¡Œæ•ˆç‡,åªåˆ¤æ–­æ——å­å¯ä»¥èµ°çš„æƒ…å†µ:
+		//*****   1.è‡ªå·±å‘¨å›´çš„è§„åˆ™ç‚¹æ˜¯ä¸æ˜¯åœ¨æ——ç›˜ä¸Š; 2.å¦‚æœå‘¨å›´çš„è§„åˆ™ç‚¹åœ¨æ——ç›˜ä¸Š,åˆ™è¯¥ç‚¹æ˜¯å¦æ˜¯è‡ªå·±çš„æ——å­,å¦‚æœæ˜¯,åˆ™ä¸å…è®¸èµ°
+		public bool HorseFoot(Point fromPoint,Point toPoint) //åˆ¤æ–­***é©¬***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÑ¡ÆäËüÂ·
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°é€‰å…¶å®ƒè·¯
 			{				
 				return true;
 			}
 			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜ×ß
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½èµ°
 			{				
 				return false;			
 			}
 			double twoPoint_Right_Distance=Math.Sqrt((this.width*this.width)+(width+width)*(width+width));
 			double twoPoint_True_Distance=Math.Sqrt((fromPoint.X-toPoint.X)*(fromPoint.X-toPoint.X)+(fromPoint.Y-toPoint.Y)*(fromPoint.Y-toPoint.Y));
-			if(this.GetNextPoint(fromPoint,-2,1)==toPoint||this.GetNextPoint(fromPoint,-2,-1)==toPoint)  //µ±ÂíÏòÉÏÌøÊ±ÓĞÁ½ÖÖÌø·¨(×óÉÏÈÕºÍÓÒÉÏÈÕ)
-				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,0))]==false)   //ÆğµãÉÏÃæÃ»ÓĞÆì×Ó,Ò²¾ÍÊÇ²» "µ²ÂíÍÈ" Ê±¿ÉÒÔÍùÉÏ×ßÆì
+			if(this.GetNextPoint(fromPoint,-2,1)==toPoint||this.GetNextPoint(fromPoint,-2,-1)==toPoint)  //å½“é©¬å‘ä¸Šè·³æ—¶æœ‰ä¸¤ç§è·³æ³•(å·¦ä¸Šæ—¥å’Œå³ä¸Šæ—¥)
+				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,0))]==false)   //èµ·ç‚¹ä¸Šé¢æ²¡æœ‰æ——å­,ä¹Ÿå°±æ˜¯ä¸ "æŒ¡é©¬è…¿" æ—¶å¯ä»¥å¾€ä¸Šèµ°æ——
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;
 				}
-			if(this.GetNextPoint(fromPoint,2,1)==toPoint||this.GetNextPoint(fromPoint,2,-1)==toPoint)   //Í¬ÉÏ,Ö»ÊÇ±äÎªÏòÏÂÌøÂíµÄÇé¿ö
+			if(this.GetNextPoint(fromPoint,2,1)==toPoint||this.GetNextPoint(fromPoint,2,-1)==toPoint)   //åŒä¸Š,åªæ˜¯å˜ä¸ºå‘ä¸‹è·³é©¬çš„æƒ…å†µ
 				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,1,0))]==false)
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;					
 				}
-			if(this.GetNextPoint(fromPoint,1,2)==toPoint||this.GetNextPoint(fromPoint,-1,2)==toPoint)   //Í¬ÉÏ,Ö»ÊÇ±äÎªÏòÓÒÌøÂíµÄÇé¿ö
+			if(this.GetNextPoint(fromPoint,1,2)==toPoint||this.GetNextPoint(fromPoint,-1,2)==toPoint)   //åŒä¸Š,åªæ˜¯å˜ä¸ºå‘å³è·³é©¬çš„æƒ…å†µ
 				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,1))]==false)
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance+5)
 						return true;
 				}
-			if(this.GetNextPoint(fromPoint,-1,-2)==toPoint||this.GetNextPoint(fromPoint,1,-2)==toPoint) //Í¬ÉÏ,Ö»ÊÇ±äÎªÏò×óÌøÂíµÄÇé¿ö
+			if(this.GetNextPoint(fromPoint,-1,-2)==toPoint||this.GetNextPoint(fromPoint,1,-2)==toPoint) //åŒä¸Š,åªæ˜¯å˜ä¸ºå‘å·¦è·³é©¬çš„æƒ…å†µ
 				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,-1))]==false)
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance+5)
 						return true;			
 				}
 			
-			return false;		      //³ıÈ¥ÒÔÉÏ¼¸ÖÖÇé¿ö,ÆäÓàÖÕµã¶¼²»ÄÜÂäÆì			
+			return false;		      //é™¤å»ä»¥ä¸Šå‡ ç§æƒ…å†µ,å…¶ä½™ç»ˆç‚¹éƒ½ä¸èƒ½è½æ——			
 		}
-		public bool ObiitFoot(Point fromPoint,Point toPoint)//ÅĞ¶Ï***±ø/×ä***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool ObiitFoot(Point fromPoint,Point toPoint)//åˆ¤æ–­***å…µ/å’***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{			
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			string isUpOrDownFromPoint=this.IsUpOrDown(fromPoint); //ÆğµãÊÇÔÚÆìÅÌÉÏ·½,»¹ÊÇÏÂ·½("±ø/Ë§" ÔÚÆì×ÓÉÏ·½ºÍÏÂ·½×ß·¨²»Ò»Ñù) 
-			string isUpOrDownToPoint=this.IsUpOrDown(toPoint);     //ÖÕµãÊÇÔÚÆìÅÌÉÏ·½,»¹ÊÇÏÂ·½("±ø/Ë§" ÔÚÆì×ÓÉÏ·½ºÍÏÂ·½×ß·¨²»Ò»Ñù)
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			string isUpOrDownFromPoint=this.IsUpOrDown(fromPoint); //èµ·ç‚¹æ˜¯åœ¨æ——ç›˜ä¸Šæ–¹,è¿˜æ˜¯ä¸‹æ–¹("å…µ/å¸…" åœ¨æ——å­ä¸Šæ–¹å’Œä¸‹æ–¹èµ°æ³•ä¸ä¸€æ ·) 
+			string isUpOrDownToPoint=this.IsUpOrDown(toPoint);     //ç»ˆç‚¹æ˜¯åœ¨æ——ç›˜ä¸Šæ–¹,è¿˜æ˜¯ä¸‹æ–¹("å…µ/å¸…" åœ¨æ——å­ä¸Šæ–¹å’Œä¸‹æ–¹èµ°æ³•ä¸ä¸€æ ·)
 			
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}
 			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜ×ß
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½èµ°
 			{				
 				return false;			
 			}
 
-			if(who[fromIndex].Equals("blue"))  //¼ÙÈçÆğÊ¼µãÊÇÀ¶±ø
+			if(who[fromIndex].Equals("blue"))  //å‡å¦‚èµ·å§‹ç‚¹æ˜¯è“å…µ
 			{	
-				if(isUpOrDownFromPoint=="down"&&isUpOrDownToPoint=="down"||isUpOrDownFromPoint=="down"&&isUpOrDownToPoint=="up")//ÆğµãºÍÖÕµã¶¼ÔÚÏÂÃæ»òÆğµãÔÚÏÂÃæÖÕµãÔÚÉÏÃæÊ±Çé¿ö
+				if(isUpOrDownFromPoint=="down"&&isUpOrDownToPoint=="down"||isUpOrDownFromPoint=="down"&&isUpOrDownToPoint=="up")//èµ·ç‚¹å’Œç»ˆç‚¹éƒ½åœ¨ä¸‹é¢æˆ–èµ·ç‚¹åœ¨ä¸‹é¢ç»ˆç‚¹åœ¨ä¸Šé¢æ—¶æƒ…å†µ
 				{					
-					if(this.GetNextPoint(fromPoint,-1,0)==toPoint)  //Èç¹ûÖÕµãÊÇÆğµãµÄÉÏÃæÒ»¸öµã,Ôò·µ»ØÕæ
+					if(this.GetNextPoint(fromPoint,-1,0)==toPoint)  //å¦‚æœç»ˆç‚¹æ˜¯èµ·ç‚¹çš„ä¸Šé¢ä¸€ä¸ªç‚¹,åˆ™è¿”å›çœŸ
 					{						
 						return true;
 					}
 				}
 				else
 				{
-					if(isUpOrDownFromPoint=="up"&&isUpOrDownToPoint=="up")//Èç¹ûÆğµãºÍÖÕµã¶¼ÔÚÉÏÃæÊ±µÄÇé¿ö
+					if(isUpOrDownFromPoint=="up"&&isUpOrDownToPoint=="up")//å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹éƒ½åœ¨ä¸Šé¢æ—¶çš„æƒ…å†µ
 					{
-						if(this.GetNextPoint(fromPoint,-1,0)==toPoint) //¹ıºÓºó¿ÉÒÔÍùÉÏ×ß
+						if(this.GetNextPoint(fromPoint,-1,0)==toPoint) //è¿‡æ²³åå¯ä»¥å¾€ä¸Šèµ°
 							return true;
-			     		if(this.GetNextPoint(fromPoint,0,1)==toPoint)  //¹ıºÓºó¿ÉÒÔÍùÓÒ×ß
+			     		if(this.GetNextPoint(fromPoint,0,1)==toPoint)  //è¿‡æ²³åå¯ä»¥å¾€å³èµ°
 							return true;
-						if(this.GetNextPoint(fromPoint,0,-1)==toPoint) //¹ıºÓºó¿ÉÒÔÍù×ó×ß
+						if(this.GetNextPoint(fromPoint,0,-1)==toPoint) //è¿‡æ²³åå¯ä»¥å¾€å·¦èµ°
 							return true;
 					}
 				}				
@@ -114,52 +114,52 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				else
 					if(isUpOrDownFromPoint=="down"&&isUpOrDownToPoint=="down")
 				    {
-					   if(this.GetNextPoint(fromPoint,1,0)==toPoint)   //¹ıºÓºó¿ÉÒÔÍùÏÂ×ß
+					   if(this.GetNextPoint(fromPoint,1,0)==toPoint)   //è¿‡æ²³åå¯ä»¥å¾€ä¸‹èµ°
 					    	return true;
-					   if(this.GetNextPoint(fromPoint,0,1)==toPoint)   //¹ıºÓºó¿ÉÒÔÍùÓÒ×ß
+					   if(this.GetNextPoint(fromPoint,0,1)==toPoint)   //è¿‡æ²³åå¯ä»¥å¾€å³èµ°
 					     	return true;
-					   if(this.GetNextPoint(fromPoint,0,-1)==toPoint)  //¹ıºÓºó¿ÉÒÔÍù×ó×ß
+					   if(this.GetNextPoint(fromPoint,0,-1)==toPoint)  //è¿‡æ²³åå¯ä»¥å¾€å·¦èµ°
 					    	return true;
 				    }				
 			}			
 			
 			return false;			
 		}
-		public bool JuFoot(Point fromPoint,Point toPoint)     //ÅĞ¶Ï***Ü‡***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool JuFoot(Point fromPoint,Point toPoint)     //åˆ¤æ–­***è»Š***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı			
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•			
 					
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜ×ß
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½èµ°
 			{				
 				return false;			
 			}
-			if(fromPoint.X==toPoint.X)   //ÅĞ¶ÏÊÇ·ñÔÚÍ¬Ò»Ìõ´¹Ö±Ö±ÏßÉÏ
+			if(fromPoint.X==toPoint.X)   //åˆ¤æ–­æ˜¯å¦åœ¨åŒä¸€æ¡å‚ç›´ç›´çº¿ä¸Š
 			{				
-				if(fromPoint.Y>toPoint.Y) //ÆğµãÔÚÖÕµãÏÂÃæÇé¿ö
-                    for(int i=-1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i--)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÓĞÎŞÆì×Ó
+				if(fromPoint.Y>toPoint.Y) //èµ·ç‚¹åœ¨ç»ˆç‚¹ä¸‹é¢æƒ…å†µ
+                    for(int i=-1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i--)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æœ‰æ— æ——å­
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,i,0))]==true)
 							return false;					
 				
-				if(fromPoint.Y<toPoint.Y)//ÆğµãÔÚÖÕµãÉÏÃæÇé¿ö
-					for(int i=1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i++)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÓĞÎŞÆì×Ó
+				if(fromPoint.Y<toPoint.Y)//èµ·ç‚¹åœ¨ç»ˆç‚¹ä¸Šé¢æƒ…å†µ
+					for(int i=1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i++)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æœ‰æ— æ——å­
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,i,0))]==true)
 							return false;	
 				return true;					
 			}
-			if(fromPoint.Y==toPoint.Y)  //ÅĞ¶ÏÊÇ·ñÔÚÍ¬Ò»ÌõË®Æ½Ö±ÏßÉÏ
+			if(fromPoint.Y==toPoint.Y)  //åˆ¤æ–­æ˜¯å¦åœ¨åŒä¸€æ¡æ°´å¹³ç›´çº¿ä¸Š
 			{				
-				if(fromPoint.X<toPoint.X)  //ÆğµãÔÚÖÕµã×ó±ß
-					for(int j=1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j++)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÓĞÎŞÆì×Ó
+				if(fromPoint.X<toPoint.X)  //èµ·ç‚¹åœ¨ç»ˆç‚¹å·¦è¾¹
+					for(int j=1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j++)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æœ‰æ— æ——å­
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,j))]==true)
 							return false;										
 				
-				if(fromPoint.X>toPoint.X)  //ÆğµãÔÚÖÕµãÓÒ±ß
-					for(int j=-1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j--)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÓĞÎŞÆì×Ó
+				if(fromPoint.X>toPoint.X)  //èµ·ç‚¹åœ¨ç»ˆç‚¹å³è¾¹
+					for(int j=-1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j--)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æœ‰æ— æ——å­
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,j))]==true)
 							return false;	
 				return true;
@@ -167,121 +167,121 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			
 			return false;			
 		}
-		public bool CannonFoot(Point fromPoint,Point toPoint) //ÅĞ¶Ï***ÅÚ***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool CannonFoot(Point fromPoint,Point toPoint) //åˆ¤æ–­***ç‚®***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı			
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•			
 					
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜÂäÆì
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½è½æ——
 			{				
 				return false;			
 			}
-			if(fromPoint.X==toPoint.X)    //ÅĞ¶ÏÆğµãºÍÖÕµãÔÚÍ¬Ò»´¹Ö±ÏßÉÏÇé¿ö
+			if(fromPoint.X==toPoint.X)    //åˆ¤æ–­èµ·ç‚¹å’Œç»ˆç‚¹åœ¨åŒä¸€å‚ç›´çº¿ä¸Šæƒ…å†µ
 			{
 				int number_QiZi=0;
-				if(fromPoint.Y>toPoint.Y) //ÆğµãÔÚÖÕµãÏÂÃæÇé¿ö
+				if(fromPoint.Y>toPoint.Y) //èµ·ç‚¹åœ¨ç»ˆç‚¹ä¸‹é¢æƒ…å†µ
 				{
-					for(int i=-1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i--)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÆì×ÓÊıÁ¿
+					for(int i=-1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i--)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æ——å­æ•°é‡
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,i,0))]==true)
 							number_QiZi++;
-					if(number_QiZi>1)          //Èç¹ûÆğµãºÍÖÕµãÖ®¼äµÄÆì×ÓÊı´óÓÚ1,Ôò²»ÄÜÂäÆì
+					if(number_QiZi>1)          //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´çš„æ——å­æ•°å¤§äº1,åˆ™ä¸èƒ½è½æ——
 						return false;
-					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)  //ÆğµãºÍÖÕµãÖ®¼äÎŞÆì×Ó,ÇÒÖÕµãÒ²ÎŞÆì×Ó,Ôò¿ÉÒÔÔÚÖÕµãÂäÆì
+					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´æ— æ——å­,ä¸”ç»ˆç‚¹ä¹Ÿæ— æ——å­,åˆ™å¯ä»¥åœ¨ç»ˆç‚¹è½æ——
 						return true;
-					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //ÆğµãºÍÖÕµãÖ®¼ä½öÓĞÒ»¸öÆì¶øÇÒÖÕµãÓĞÆì×Ó(ÕâÀïÖÕµãÓĞÆì×Ó¿Ï¶¨ÊÇ¶Ô·½µÄÆì×Ó,Èç¹ûÖÕµãÊÇ×Ô¼ºµÄÆì×Ó,Ôò³ÌĞòÖ´ĞĞµ½±¾·½·¨µÚ¶ş¸ö if Óï¾ä¾Í·µ»Ø false ÁË)
+					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´ä»…æœ‰ä¸€ä¸ªæ——è€Œä¸”ç»ˆç‚¹æœ‰æ——å­(è¿™é‡Œç»ˆç‚¹æœ‰æ——å­è‚¯å®šæ˜¯å¯¹æ–¹çš„æ——å­,å¦‚æœç»ˆç‚¹æ˜¯è‡ªå·±çš„æ——å­,åˆ™ç¨‹åºæ‰§è¡Œåˆ°æœ¬æ–¹æ³•ç¬¬äºŒä¸ª if è¯­å¥å°±è¿”å› false äº†)
 						return true;
 				}
 
 				number_QiZi=0;
-				if(fromPoint.Y<toPoint.Y) //ÆğµãÔÚÖÕµãÏÂÃæÇé¿ö
+				if(fromPoint.Y<toPoint.Y) //èµ·ç‚¹åœ¨ç»ˆç‚¹ä¸‹é¢æƒ…å†µ
 				{
-					for(int i=1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i++)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÆì×ÓÊıÁ¿
+					for(int i=1;this.GetNextPoint(fromPoint,i,0)!=toPoint;i++)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æ——å­æ•°é‡
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,i,0))]==true)
 							number_QiZi++;
-					if(number_QiZi>1)          //Èç¹ûÆğµãºÍÖÕµãÖ®¼äµÄÆì×ÓÊı´óÓÚ1,Ôò²»ÄÜÂäÆì
+					if(number_QiZi>1)          //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´çš„æ——å­æ•°å¤§äº1,åˆ™ä¸èƒ½è½æ——
 						return false;
-					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)       //ÆğµãºÍÖÕµãÖ®¼äÎŞÆì×Ó,ÇÒÖÕµãÒ²ÎŞÆì×Ó,¿ÉÒÔÔÚÖÕµãÂäÆì
+					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)       //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´æ— æ——å­,ä¸”ç»ˆç‚¹ä¹Ÿæ— æ——å­,å¯ä»¥åœ¨ç»ˆç‚¹è½æ——
 						return true;
-					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //ÆğµãºÍÖÕµãÖ®¼ä½öÓĞÒ»¸öÆì¶øÇÒÖÕµãÓĞÆì×Ó(ÕâÀïÖÕµãÓĞÆì×Ó¿Ï¶¨ÊÇ¶Ô·½µÄÆì×Ó,Èç¹ûÖÕµãÊÇ×Ô¼ºµÄÆì×Ó,Ôò³ÌĞòÖ´ĞĞµ½±¾·½·¨µÚ¶ş¸ö if Óï¾ä¾Í·µ»Ø false ÁË)
+					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´ä»…æœ‰ä¸€ä¸ªæ——è€Œä¸”ç»ˆç‚¹æœ‰æ——å­(è¿™é‡Œç»ˆç‚¹æœ‰æ——å­è‚¯å®šæ˜¯å¯¹æ–¹çš„æ——å­,å¦‚æœç»ˆç‚¹æ˜¯è‡ªå·±çš„æ——å­,åˆ™ç¨‹åºæ‰§è¡Œåˆ°æœ¬æ–¹æ³•ç¬¬äºŒä¸ª if è¯­å¥å°±è¿”å› false äº†)
 						return true;				
 				}
 			}
 			if(fromPoint.Y==toPoint.Y)
 			{
 				int number_QiZi=0;
-				if(fromPoint.X>toPoint.X) //ÆğµãÔÚÖÕµãÓÒ±ßÇé¿ö
+				if(fromPoint.X>toPoint.X) //èµ·ç‚¹åœ¨ç»ˆç‚¹å³è¾¹æƒ…å†µ
 				{
-					for(int j=-1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j--)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÆì×ÓÊıÁ¿
+					for(int j=-1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j--)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æ——å­æ•°é‡
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,j))]==true)
 							number_QiZi++;
-					if(number_QiZi>1)          //Èç¹ûÆğµãºÍÖÕµãÖ®¼äµÄÆì×ÓÊı´óÓÚ1,Ôò²»ÄÜÂäÆì
+					if(number_QiZi>1)          //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´çš„æ——å­æ•°å¤§äº1,åˆ™ä¸èƒ½è½æ——
 						return false;
-					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)  //ÆğµãºÍÖÕµãÖ®¼äÎŞÆì×Ó,ÇÒÖÕµãÒ²ÎŞÆì×Ó,Ôò¿ÉÒÔÔÚÖÕµãÂäÆì
+					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´æ— æ——å­,ä¸”ç»ˆç‚¹ä¹Ÿæ— æ——å­,åˆ™å¯ä»¥åœ¨ç»ˆç‚¹è½æ——
 						return true;
-					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //ÆğµãºÍÖÕµãÖ®¼ä½öÓĞÒ»¸öÆì¶øÇÒÖÕµãÓĞÆì×Ó(ÕâÀïÖÕµãÓĞÆì×Ó¿Ï¶¨ÊÇ¶Ô·½µÄÆì×Ó,Èç¹ûÖÕµãÊÇ×Ô¼ºµÄÆì×Ó,Ôò³ÌĞòÖ´ĞĞµ½±¾·½·¨µÚ¶ş¸ö if Óï¾ä¾Í·µ»Ø false ÁË)
+					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´ä»…æœ‰ä¸€ä¸ªæ——è€Œä¸”ç»ˆç‚¹æœ‰æ——å­(è¿™é‡Œç»ˆç‚¹æœ‰æ——å­è‚¯å®šæ˜¯å¯¹æ–¹çš„æ——å­,å¦‚æœç»ˆç‚¹æ˜¯è‡ªå·±çš„æ——å­,åˆ™ç¨‹åºæ‰§è¡Œåˆ°æœ¬æ–¹æ³•ç¬¬äºŒä¸ª if è¯­å¥å°±è¿”å› false äº†)
 						return true;
 				}
 
 				number_QiZi=0;
-				if(fromPoint.X<toPoint.X) //ÆğµãÔÚÖÕµã×ó±ßÇé¿ö
+				if(fromPoint.X<toPoint.X) //èµ·ç‚¹åœ¨ç»ˆç‚¹å·¦è¾¹æƒ…å†µ
 				{
-					for(int j=1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j++)  //ÅĞ¶ÏÆğµãÖÕµãÖ®¼äÆì×ÓÊıÁ¿
+					for(int j=1;this.GetNextPoint(fromPoint,0,j)!=toPoint;j++)  //åˆ¤æ–­èµ·ç‚¹ç»ˆç‚¹ä¹‹é—´æ——å­æ•°é‡
 						if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,0,j))]==true)
 							number_QiZi++;
-					if(number_QiZi>1)          //Èç¹ûÆğµãºÍÖÕµãÖ®¼äµÄÆì×ÓÊı´óÓÚ1,Ôò²»ÄÜÂäÆì
+					if(number_QiZi>1)          //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´çš„æ——å­æ•°å¤§äº1,åˆ™ä¸èƒ½è½æ——
 						return false;
-					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)       //ÆğµãºÍÖÕµãÖ®¼äÎŞÆì×Ó,ÇÒÖÕµãÒ²ÎŞÆì×Ó,¿ÉÒÔÔÚÖÕµãÂäÆì
+					if(number_QiZi==0&&this.have[this.CountIndex(toPoint)]==false)       //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´æ— æ——å­,ä¸”ç»ˆç‚¹ä¹Ÿæ— æ——å­,å¯ä»¥åœ¨ç»ˆç‚¹è½æ——
 						return true;
-					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //ÆğµãºÍÖÕµãÖ®¼ä½öÓĞÒ»¸öÆì¶øÇÒÖÕµãÓĞÆì×Ó(ÕâÀïÖÕµãÓĞÆì×Ó¿Ï¶¨ÊÇ¶Ô·½µÄÆì×Ó,Èç¹ûÖÕµãÊÇ×Ô¼ºµÄÆì×Ó,Ôò³ÌĞòÖ´ĞĞµ½±¾·½·¨µÚ¶ş¸ö if Óï¾ä¾Í·µ»Ø false ÁË)
+					if(number_QiZi==1&&this.have[this.CountIndex(toPoint)]==true)  //èµ·ç‚¹å’Œç»ˆç‚¹ä¹‹é—´ä»…æœ‰ä¸€ä¸ªæ——è€Œä¸”ç»ˆç‚¹æœ‰æ——å­(è¿™é‡Œç»ˆç‚¹æœ‰æ——å­è‚¯å®šæ˜¯å¯¹æ–¹çš„æ——å­,å¦‚æœç»ˆç‚¹æ˜¯è‡ªå·±çš„æ——å­,åˆ™ç¨‹åºæ‰§è¡Œåˆ°æœ¬æ–¹æ³•ç¬¬äºŒä¸ª if è¯­å¥å°±è¿”å› false äº†)
 						return true;				
 				}
 			}				
 			return false;			
 		}
-		public bool ElephantFoot(Point fromPoint,Point toPoint)//ÅĞ¶Ï***Ïó***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool ElephantFoot(Point fromPoint,Point toPoint)//åˆ¤æ–­***è±¡***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı			
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•			
 					
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜÂäÆì
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½è½æ——
 			{				
 				return false;			
 			}
-			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //Èç¹ûÆğµãºÍÖÕµãËùÔÚ±ß²»ÏàÍ¬(ÈçÒ»¸öÔÚºÓÉÏ,Ò»¸öÔÚºÓÏÂ),Ôò²»ÄÜÂäÆì(¼´¸÷±ßµÄÏó²»ÄÜ¹ıºÓ)
+			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ‰€åœ¨è¾¹ä¸ç›¸åŒ(å¦‚ä¸€ä¸ªåœ¨æ²³ä¸Š,ä¸€ä¸ªåœ¨æ²³ä¸‹),åˆ™ä¸èƒ½è½æ——(å³å„è¾¹çš„è±¡ä¸èƒ½è¿‡æ²³)
 				return false;
 			
 			double twoPoint_Right_Distance=Math.Sqrt((width+width)*(width+width)+(width+width)*(width+width));
 			double twoPoint_True_Distance=Math.Sqrt((fromPoint.X-toPoint.X)*(fromPoint.X-toPoint.X)+(fromPoint.Y-toPoint.Y)*(fromPoint.Y-toPoint.Y));
 			
-			//ÅĞ¶ÏÏóµÄËÄÖÖ×ß·¨
-			if(this.GetNextPoint(fromPoint,2,2)==toPoint)  //µ±ÏóÏòÓÒÏÂ·½ÌøÊ±Çé¿ö("ÓÒÏÂÌï")
-				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,1,1))]==false)   //ÆğµãÓÒÏÂÒ»¸öµãÉÏÃ»ÓĞÆì×Ó,Ò²¾ÍÊÇ²» "µ²ÏóÍÈ" Ê±¿ÉÒÔÍùÉÏ×ßÆì
+			//åˆ¤æ–­è±¡çš„å››ç§èµ°æ³•
+			if(this.GetNextPoint(fromPoint,2,2)==toPoint)  //å½“è±¡å‘å³ä¸‹æ–¹è·³æ—¶æƒ…å†µ("å³ä¸‹ç”°")
+				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,1,1))]==false)   //èµ·ç‚¹å³ä¸‹ä¸€ä¸ªç‚¹ä¸Šæ²¡æœ‰æ——å­,ä¹Ÿå°±æ˜¯ä¸ "æŒ¡è±¡è…¿" æ—¶å¯ä»¥å¾€ä¸Šèµ°æ——
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;
 				}
-			if(this.GetNextPoint(fromPoint,2,-2)==toPoint)  //µ±ÏóÏò×óÏÂ·½ÌøÊ±Çé¿ö("×óÏÂÌï")
-				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,1,-1))]==false)   //Æğµã×óÏÂÒ»¸öµãÉÏÃ»ÓĞÆì×Ó,Ò²¾ÍÊÇ²» "µ²ÏóÍÈ" Ê±¿ÉÒÔÍùÉÏ×ßÆì
+			if(this.GetNextPoint(fromPoint,2,-2)==toPoint)  //å½“è±¡å‘å·¦ä¸‹æ–¹è·³æ—¶æƒ…å†µ("å·¦ä¸‹ç”°")
+				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,1,-1))]==false)   //èµ·ç‚¹å·¦ä¸‹ä¸€ä¸ªç‚¹ä¸Šæ²¡æœ‰æ——å­,ä¹Ÿå°±æ˜¯ä¸ "æŒ¡è±¡è…¿" æ—¶å¯ä»¥å¾€ä¸Šèµ°æ——
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;
 				}
-			if(this.GetNextPoint(fromPoint,-2,2)==toPoint)  //µ±ÏóÏòÓÒÉÏ·½ÌøÊ±Çé¿ö("ÓÒÉÏÌï")
-				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,1))]==false)   //ÆğµãÓÒÉÏÒ»¸öµãÉÏÃ»ÓĞÆì×Ó,Ò²¾ÍÊÇ²» "µ²ÏóÍÈ" Ê±¿ÉÒÔÍùÉÏ×ßÆì
+			if(this.GetNextPoint(fromPoint,-2,2)==toPoint)  //å½“è±¡å‘å³ä¸Šæ–¹è·³æ—¶æƒ…å†µ("å³ä¸Šç”°")
+				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,1))]==false)   //èµ·ç‚¹å³ä¸Šä¸€ä¸ªç‚¹ä¸Šæ²¡æœ‰æ——å­,ä¹Ÿå°±æ˜¯ä¸ "æŒ¡è±¡è…¿" æ—¶å¯ä»¥å¾€ä¸Šèµ°æ——
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;
 				}
-			if(this.GetNextPoint(fromPoint,-2,-2)==toPoint)  //µ±ÏóÏò×óÉÏ·½ÌøÊ±Çé¿ö("×óÉÏÌï")
-				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,-1))]==false)   //Æğµã×óÉÏÒ»¸öµãÉÏÃ»ÓĞÆì×Ó,Ò²¾ÍÊÇ²» "µ²ÏóÍÈ" Ê±¿ÉÒÔÍùÉÏ×ßÆì
+			if(this.GetNextPoint(fromPoint,-2,-2)==toPoint)  //å½“è±¡å‘å·¦ä¸Šæ–¹è·³æ—¶æƒ…å†µ("å·¦ä¸Šç”°")
+				if(this.have[this.CountIndex(this.GetNextPoint(fromPoint,-1,-1))]==false)   //èµ·ç‚¹å·¦ä¸Šä¸€ä¸ªç‚¹ä¸Šæ²¡æœ‰æ——å­,ä¹Ÿå°±æ˜¯ä¸ "æŒ¡è±¡è…¿" æ—¶å¯ä»¥å¾€ä¸Šèµ°æ——
 				{					
 					if(twoPoint_True_Distance<=twoPoint_Right_Distance)
 						return true;
@@ -289,72 +289,72 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			
 			return false;			
 		}
-		public bool ScholarFoot(Point fromPoint,Point toPoint) //ÅĞ¶Ï***Ê¿***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool ScholarFoot(Point fromPoint,Point toPoint) //åˆ¤æ–­***å£«***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{  
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı			
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•			
 					
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜÂäÆì
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½è½æ——
 			{				
 				return false;			
 			}
-			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //Èç¹ûÆğµãºÍÖÕµãËùÔÚ±ß²»ÏàÍ¬(ÈçÒ»¸öÔÚºÓÉÏ,Ò»¸öÔÚºÓÏÂ),Ôò²»ÄÜÂäÆì(¼´¸÷±ßµÄÏó²»ÄÜ¹ıºÓ)
+			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ‰€åœ¨è¾¹ä¸ç›¸åŒ(å¦‚ä¸€ä¸ªåœ¨æ²³ä¸Š,ä¸€ä¸ªåœ¨æ²³ä¸‹),åˆ™ä¸èƒ½è½æ——(å³å„è¾¹çš„è±¡ä¸èƒ½è¿‡æ²³)
 				return false;
 
 			int index=this.CountIndex(toPoint);
 			if(index!=3&&index!=5&&index!=13&&index!=21&&index!=23&&index!=66)
 				if(index!=68&&index!=76&&index!=84&&index!=86)
-					return false;      //¿ØÖÆÊ¿µÄ»î¶¯·¶Î§
+					return false;      //æ§åˆ¶å£«çš„æ´»åŠ¨èŒƒå›´
 
-			//ÅĞ¶ÏÊ¿µÄËÄÖÖ×ß·¨
-			if(this.GetNextPoint(fromPoint,-1,-1)==toPoint)  //Ê¿¿ÉÒÔÍù×óÉÏ·½Ò»µãÌø
+			//åˆ¤æ–­å£«çš„å››ç§èµ°æ³•
+			if(this.GetNextPoint(fromPoint,-1,-1)==toPoint)  //å£«å¯ä»¥å¾€å·¦ä¸Šæ–¹ä¸€ç‚¹è·³
 				return true;		
-			if(this.GetNextPoint(fromPoint,1,-1)==toPoint)   //Ê¿¿ÉÒÔÍù×óÏÂ·½Ò»µãÌø
+			if(this.GetNextPoint(fromPoint,1,-1)==toPoint)   //å£«å¯ä»¥å¾€å·¦ä¸‹æ–¹ä¸€ç‚¹è·³
 				return true;	
-			if(this.GetNextPoint(fromPoint,-1,+1)==toPoint)  //Ê¿¿ÉÒÔÍùÓÒÉÏ·½Ò»µãÌø
+			if(this.GetNextPoint(fromPoint,-1,+1)==toPoint)  //å£«å¯ä»¥å¾€å³ä¸Šæ–¹ä¸€ç‚¹è·³
 				return true;	
-			if(this.GetNextPoint(fromPoint,1,1)==toPoint)  //Ê¿¿ÉÒÔÍùÓÒÏÂ·½Ò»µãÌø
+			if(this.GetNextPoint(fromPoint,1,1)==toPoint)  //å£«å¯ä»¥å¾€å³ä¸‹æ–¹ä¸€ç‚¹è·³
 				return true;
 	
 			return false;			
 		}
-		public bool AgaFoot(Point fromPoint,Point toPoint)//ÅĞ¶Ï***½«/Ë§***µÄ×ß·¨ÊÇ·ñºÏÀí
+		public bool AgaFoot(Point fromPoint,Point toPoint)//åˆ¤æ–­***å°†/å¸…***çš„èµ°æ³•æ˜¯å¦åˆç†
 		{
-			int fromIndex=this.CountIndex(fromPoint);   //Çó±êÖ¾ÆğµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);       //Çó±êÖ¾ÖÕµãĞÅÏ¢µÄÒ»Î¬Êı×éµÄË÷Òı			
+			int fromIndex=this.CountIndex(fromPoint);   //æ±‚æ ‡å¿—èµ·ç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);       //æ±‚æ ‡å¿—ç»ˆç‚¹ä¿¡æ¯çš„ä¸€ç»´æ•°ç»„çš„ç´¢å¼•			
 					
-			if(GenEatGen)  //Èç¹ûÊÇ½«ÓëË§ÏàÍû(Ö®¼äÃ»ÓĞÆì×Ó),¶øÇÒÓÖ×ßµÄÊÇ ½«³ÔË§/Ë§³Ô½« ÕâÊ±ÀÏ½«ÔÊĞíÖ±½ÓÌøºÓ³Ôµô¶Ô·½ÀÏ½«
+			if(GenEatGen)  //å¦‚æœæ˜¯å°†ä¸å¸…ç›¸æœ›(ä¹‹é—´æ²¡æœ‰æ——å­),è€Œä¸”åˆèµ°çš„æ˜¯ å°†åƒå¸…/å¸…åƒå°† è¿™æ—¶è€å°†å…è®¸ç›´æ¥è·³æ²³åƒæ‰å¯¹æ–¹è€å°†
 				if((this.whichPicture[fromIndex]==4&&this.whichPicture[toIndex]==27)||(this.whichPicture[fromIndex]==27&&this.whichPicture[toIndex]==4))
 					return true;			
 			
-			if(fromPoint==toPoint)  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,ÔòÔÊĞí·Å»ØÆì×Ó,ÖØĞÂÏÈÆäËüÂ·
+			if(fromPoint==toPoint)  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,åˆ™å…è®¸æ”¾å›æ——å­,é‡æ–°å…ˆå…¶å®ƒè·¯
 			{				
 				return true;
 			}			
-			if(who[fromIndex].Equals(who[toIndex]))  //Èç¹ûÆğµãºÍÖÕµãÊÇÍ¬Ò»±ßµÄÆì×Ó,Ôò²»ÄÜÂäÆì
+			if(who[fromIndex].Equals(who[toIndex]))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€è¾¹çš„æ——å­,åˆ™ä¸èƒ½è½æ——
 			{				
 				return false;			
 			}
-			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //Èç¹ûÆğµãºÍÖÕµãËùÔÚ±ß²»ÏàÍ¬(ÈçÒ»¸öÔÚºÓÉÏ,Ò»¸öÔÚºÓÏÂ),Ôò²»ÄÜÂäÆì(¼´¸÷±ßµÄÏó²»ÄÜ¹ıºÓ)
+			if(this.IsUpOrDown(fromPoint)!=this.IsUpOrDown(toPoint))  //å¦‚æœèµ·ç‚¹å’Œç»ˆç‚¹æ‰€åœ¨è¾¹ä¸ç›¸åŒ(å¦‚ä¸€ä¸ªåœ¨æ²³ä¸Š,ä¸€ä¸ªåœ¨æ²³ä¸‹),åˆ™ä¸èƒ½è½æ——(å³å„è¾¹çš„è±¡ä¸èƒ½è¿‡æ²³)
 				return false;			
 
 			int index=this.CountIndex(toPoint);
 			if(index!=3&&index!=4&&index!=5&&index!=12&&index!=13&&index!=14&&index!=21&&index!=22&&index!=23)
                 if(index!=66&&index!=67&&index!=68&&index!=75&&index!=76&&index!=77&&index!=84&&index!=85&&index!=86)
-					return false;        //¿ØÖÆ½«Ë§µÄ»î¶¯·¶Î§
+					return false;        //æ§åˆ¶å°†å¸…çš„æ´»åŠ¨èŒƒå›´
 			
-			//ÅĞ¶Ï ½«/Ë§ µÄËÄÖÖ×ß·¨
-			if(this.GetNextPoint(fromPoint,0,-1)==toPoint)  //½«/Ë§¿ÉÒÔÍù×ó·½Ò»µã×ß
+			//åˆ¤æ–­ å°†/å¸… çš„å››ç§èµ°æ³•
+			if(this.GetNextPoint(fromPoint,0,-1)==toPoint)  //å°†/å¸…å¯ä»¥å¾€å·¦æ–¹ä¸€ç‚¹èµ°
 				return true;		
-			if(this.GetNextPoint(fromPoint,0,1)==toPoint)   //½«/Ë§¿ÉÒÔÍùÓÒ·½Ò»µã×ß
+			if(this.GetNextPoint(fromPoint,0,1)==toPoint)   //å°†/å¸…å¯ä»¥å¾€å³æ–¹ä¸€ç‚¹èµ°
 				return true;	
-			if(this.GetNextPoint(fromPoint,-1,0)==toPoint)  //½«/Ë§¿ÉÒÔÍùÉÏ·½Ò»µã×ß
+			if(this.GetNextPoint(fromPoint,-1,0)==toPoint)  //å°†/å¸…å¯ä»¥å¾€ä¸Šæ–¹ä¸€ç‚¹èµ°
 				return true;	
-			if(this.GetNextPoint(fromPoint,1,0)==toPoint)    //½«/Ë§¿ÉÒÔÍùÏÂ·½Ò»µã×ß
+			if(this.GetNextPoint(fromPoint,1,0)==toPoint)    //å°†/å¸…å¯ä»¥å¾€ä¸‹æ–¹ä¸€ç‚¹èµ°
 				return true;			
 			
 			return false;			
@@ -368,27 +368,27 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			int index=this.CountIndex(fromPoint);			
 			switch(this.str[index])
 			{
-				case "À¶Âí":
-                case "ºìÂí":  return HorseFoot(fromPoint,toPoint); 
-                case "À¶±ø":
-                case "ºì×ä":  return ObiitFoot(fromPoint,toPoint);
-				case "À¶Ü‡":
-				case "ºìÜ‡":  return JuFoot(fromPoint,toPoint);
-				case "À¶ÅÚ":
-				case "ºìÅÚ":  return CannonFoot(fromPoint,toPoint);
-				case "À¶Ïó":
-				case "ºìÏó":  return ElephantFoot(fromPoint,toPoint);
-				case "À¶Ê¿":
-				case "ºìÊ¿":  return ScholarFoot(fromPoint,toPoint);
-				case "À¶½«":
-				case "ºìË§":  return AgaFoot(fromPoint,toPoint);                
+				case "è“é©¬":
+                case "çº¢é©¬":  return HorseFoot(fromPoint,toPoint); 
+                case "è“å…µ":
+                case "çº¢å’":  return ObiitFoot(fromPoint,toPoint);
+				case "è“è»Š":
+				case "çº¢è»Š":  return JuFoot(fromPoint,toPoint);
+				case "è“ç‚®":
+				case "çº¢ç‚®":  return CannonFoot(fromPoint,toPoint);
+				case "è“è±¡":
+				case "çº¢è±¡":  return ElephantFoot(fromPoint,toPoint);
+				case "è“å£«":
+				case "çº¢å£«":  return ScholarFoot(fromPoint,toPoint);
+				case "è“å°†":
+				case "çº¢å¸…":  return AgaFoot(fromPoint,toPoint);                
 			}			
-			//MessageBox.Show("Ã»·¨È·¶¨ÄúÄÃµÄÊÇÊ²Ã´Æì×Ó,Òò´Ë,²»ÖªµÀÆä²½·¥¹æÔò");            
+			//MessageBox.Show("æ²¡æ³•ç¡®å®šæ‚¨æ‹¿çš„æ˜¯ä»€ä¹ˆæ——å­,å› æ­¤,ä¸çŸ¥é“å…¶æ­¥ä¼è§„åˆ™");            
 			return false;
 		}
 		public bool IsAvailablePoint(Point point)
 		{  
-			//¼ÙÈç²»ÊÇÆìÅÌÉÏµÄÓĞĞ§µã,Ôò·µ»Ø¼Ù
+			//å‡å¦‚ä¸æ˜¯æ——ç›˜ä¸Šçš„æœ‰æ•ˆç‚¹,åˆ™è¿”å›å‡
 			int i;
 			for(i=0;i<90;i++)
 				if(this.allPoint[i].X==point.X&&this.allPoint[i].Y==point.Y)
@@ -397,7 +397,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return false;
 			return true;
 		}
-		public Point GetNextPoint(Point point,int x,int y)   //ÀıÈç: xÈ¡ -1,yÈ¡ +1,±íÊ¾ÍùÉÏÒÆÒ»ĞĞ,ÔÙÍùÓÒÒÆÒ»µã,¾ÍÊÇËùÇóµÄµã
+		public Point GetNextPoint(Point point,int x,int y)   //ä¾‹å¦‚: xå– -1,yå– +1,è¡¨ç¤ºå¾€ä¸Šç§»ä¸€è¡Œ,å†å¾€å³ç§»ä¸€ç‚¹,å°±æ˜¯æ‰€æ±‚çš„ç‚¹
 		{
 			int index=this.CountIndex(point);						
 			index=index+(x*9);
@@ -407,25 +407,25 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			return new Point(-1,-1);
 		}
 		public int ChangeQiZi(Point fromPoint,Point toPoint) 
-			  // index±íÊ¾µ±Ç°»î¶¯µÄpictureBox;  
-			  // fromPoint±íÊ¾pictureBoxÆğµã;  toPoint±íÊ¾Êó±êµ¯ÆğÊ±pictureBoxµÄÎ»ÖÃµã
+			  // indexè¡¨ç¤ºå½“å‰æ´»åŠ¨çš„pictureBox;  
+			  // fromPointè¡¨ç¤ºpictureBoxèµ·ç‚¹;  toPointè¡¨ç¤ºé¼ æ ‡å¼¹èµ·æ—¶pictureBoxçš„ä½ç½®ç‚¹
 		{
-			int fromIndex=this.CountIndex(fromPoint);  //ÇóµÃÆğµã¶ÔÓ¦Ò»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);      //ÇóµÃÖÕµã¶ÔÓ¦Ò»Î¬Êı×éµÄË÷Òı           
+			int fromIndex=this.CountIndex(fromPoint);  //æ±‚å¾—èµ·ç‚¹å¯¹åº”ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);      //æ±‚å¾—ç»ˆç‚¹å¯¹åº”ä¸€ç»´æ•°ç»„çš„ç´¢å¼•           
 
 			if(fromPoint==toPoint)
 			{					
-				return 0;		//ÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã,²»ĞŞ¸ÄÆìÅÌ²ÎÊı				
+				return 0;		//èµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹,ä¸ä¿®æ”¹æ——ç›˜å‚æ•°				
 			}			
 			if(!this.have[toIndex])
 			{				
-				//½«ÆìÅÌÆğµã¶ÔÓ¦µÄ²ÎÊıÒÆµ½µÚ¶ş¸öµã
+				//å°†æ——ç›˜èµ·ç‚¹å¯¹åº”çš„å‚æ•°ç§»åˆ°ç¬¬äºŒä¸ªç‚¹
 				this.have[toIndex]=this.have[fromIndex];
 				this.who[toIndex]=this.who[fromIndex].ToString();
 				this.str[toIndex]=this.str[fromIndex].ToString();
 				this.whichPicture[toIndex]=this.whichPicture[fromIndex];
                 				
-				//½«ÆìÅÌÆğµã¶ÔÓ¦µÄ²ÎÊı³õÊ¼»¯s(¼´½«Æì×ÓÒÆ¶¯Ö®Ç°Î»ÖÃÖÃÎª¿Õµã)
+				//å°†æ——ç›˜èµ·ç‚¹å¯¹åº”çš„å‚æ•°åˆå§‹åŒ–s(å³å°†æ——å­ç§»åŠ¨ä¹‹å‰ä½ç½®ç½®ä¸ºç©ºç‚¹)
 				this.have[fromIndex]=false;
 				this.who[fromIndex]="";
 				this.str[fromIndex]="";
@@ -435,21 +435,21 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			}
 			if(this.have[toIndex])
 			{			
-				//ºì·½Æì×Ó±»³ÔÒ»¸ö
+				//çº¢æ–¹æ——å­è¢«åƒä¸€ä¸ª
 				if(this.who[toIndex]=="red")  
 					rednum--;           
 
-				//À¶·½Æì×Ó±»³ÔÒ»¸ö
+				//è“æ–¹æ——å­è¢«åƒä¸€ä¸ª
 				if(this.who[toIndex]=="blue")
 					bluenum--;
 
-				//½«ÆìÅÌÆğµã¶ÔÓ¦µÄ²ÎÊıÒÆµ½µÚ¶ş¸öµã
+				//å°†æ——ç›˜èµ·ç‚¹å¯¹åº”çš„å‚æ•°ç§»åˆ°ç¬¬äºŒä¸ªç‚¹
 				this.have[toIndex]=this.have[fromIndex];
 				this.who[toIndex]=this.who[fromIndex].ToString();
 				this.str[toIndex]=this.str[fromIndex].ToString();
 				this.whichPicture[toIndex]=this.whichPicture[fromIndex];
                 				
-				//½«ÆìÅÌÆğµã¶ÔÓ¦µÄ²ÎÊı³õÊ¼»¯s(¼´½«Æì×ÓÒÆ¶¯Ö®Ç°Î»ÖÃÖÃÎª¿Õµã)
+				//å°†æ——ç›˜èµ·ç‚¹å¯¹åº”çš„å‚æ•°åˆå§‹åŒ–s(å³å°†æ——å­ç§»åŠ¨ä¹‹å‰ä½ç½®ç½®ä¸ºç©ºç‚¹)
 				this.have[fromIndex]=false;
 				this.who[fromIndex]="";
 				this.str[fromIndex]="";
@@ -460,14 +460,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			return -1;		    
 		}
 		public bool JudgeQiZi(Point fromPoint,Point toPoint) 
-			// index±íÊ¾µ±Ç°»î¶¯µÄpictureBox;  
-			// fromPoint±íÊ¾pictureBoxÆğµã;  toPoint±íÊ¾Êó±êµ¯ÆğÊ±pictureBoxµÄÎ»ÖÃµã
+			// indexè¡¨ç¤ºå½“å‰æ´»åŠ¨çš„pictureBox;  
+			// fromPointè¡¨ç¤ºpictureBoxèµ·ç‚¹;  toPointè¡¨ç¤ºé¼ æ ‡å¼¹èµ·æ—¶pictureBoxçš„ä½ç½®ç‚¹
 		{
-			int fromIndex=this.CountIndex(fromPoint);  //ÇóµÃÆğµã¶ÔÓ¦Ò»Î¬Êı×éµÄË÷Òı
-			int toIndex=this.CountIndex(toPoint);      //ÇóµÃÖÕµã¶ÔÓ¦Ò»Î¬Êı×éµÄË÷Òı
+			int fromIndex=this.CountIndex(fromPoint);  //æ±‚å¾—èµ·ç‚¹å¯¹åº”ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
+			int toIndex=this.CountIndex(toPoint);      //æ±‚å¾—ç»ˆç‚¹å¯¹åº”ä¸€ç»´æ•°ç»„çš„ç´¢å¼•
 			if(fromPoint==toPoint)
 			{					
-				return false;		//ÆğµãºÍÖÕµãÊÇÍ¬Ò»¸öµã			
+				return false;		//èµ·ç‚¹å’Œç»ˆç‚¹æ˜¯åŒä¸€ä¸ªç‚¹			
 			}			
 			if(!this.have[toIndex])
 			{			

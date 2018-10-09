@@ -6,18 +6,18 @@ using System.ComponentModel;
 //using System.Data;
 using System.Runtime.InteropServices;
 
-namespace 智能象棋游戏
+namespace SmartChessGame
 {
 	/// <summary>
-	/// 用于播放音乐
+	/// 鐢ㄤ簬鎾斁闊充箰
 	/// </summary>	
 	internal class Helpers 
 	{
 		[Flags]
 		public enum PlaySoundFlags : int 
 		{
-			SND_SYNC = 0x0000,  /* play synchronously (default) */ //同步
-			SND_ASYNC = 0x0001,  /* play asynchronously */ //异步
+			SND_SYNC = 0x0000,  /* play synchronously (default) */ //鍚屾
+			SND_ASYNC = 0x0001,  /* play asynchronously */ //寮傛
 			SND_NODEFAULT = 0x0002,  /* silence (!default) if sound not found */
 			SND_MEMORY = 0x0004,  /* pszSound points to a memory file */
 			SND_LOOP = 0x0008,  /* loop the sound until next sndPlaySound */

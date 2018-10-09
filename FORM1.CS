@@ -7,7 +7,7 @@ using System.Data;
 //using AxWMPLib;
 //using WMPLib;
 
-namespace 智能象棋游戏
+namespace SmartChessGame
 {
 	/// <summary>
 	/// ***Form类主要是绘出界面,进行一些简单的初始化操作

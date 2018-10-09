@@ -4,10 +4,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	/// <summary>
-	/// Form4 µÄÕªÒªËµÃ÷¡£
+	/// Form4 çš„æ‘˜è¦è¯´æ˜ã€‚
 	/// </summary>
 	public class Form4 : System.Windows.Forms.Form
 	{
@@ -15,24 +15,24 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
         private Label label2;
         private Label label3;
 		/// <summary>
-		/// ±ØĞèµÄÉè¼ÆÆ÷±äÁ¿¡£
+		/// å¿…éœ€çš„è®¾è®¡å™¨å˜é‡ã€‚
 		/// </summary>
 		private System.ComponentModel.Container components = null;
 
 		public Form4()
 		{
 			//
-			// Windows ´°ÌåÉè¼ÆÆ÷Ö§³ÖËù±ØĞèµÄ
+			// Windows çª—ä½“è®¾è®¡å™¨æ”¯æŒæ‰€å¿…éœ€çš„
 			//
 			InitializeComponent();
 
 			//
-			// TODO: ÔÚ InitializeComponent µ÷ÓÃºóÌí¼ÓÈÎºÎ¹¹Ôìº¯Êı´úÂë
+			// TODO: åœ¨ InitializeComponent è°ƒç”¨åæ·»åŠ ä»»ä½•æ„é€ å‡½æ•°ä»£ç 
 			//
 		}
 
 		/// <summary>
-		/// ÇåÀíËùÓĞÕıÔÚÊ¹ÓÃµÄ×ÊÔ´¡£
+		/// æ¸…ç†æ‰€æœ‰æ­£åœ¨ä½¿ç”¨çš„èµ„æºã€‚
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -46,10 +46,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			base.Dispose( disposing );
 		}
 
-		#region Windows ´°ÌåÉè¼ÆÆ÷Éú³ÉµÄ´úÂë
+		#region Windows çª—ä½“è®¾è®¡å™¨ç”Ÿæˆçš„ä»£ç 
 		/// <summary>
-		/// Éè¼ÆÆ÷Ö§³ÖËùĞèµÄ·½·¨ - ²»ÒªÊ¹ÓÃ´úÂë±à¼­Æ÷ĞŞ¸Ä
-		/// ´Ë·½·¨µÄÄÚÈİ¡£
+		/// è®¾è®¡å™¨æ”¯æŒæ‰€éœ€çš„æ–¹æ³• - ä¸è¦ä½¿ç”¨ä»£ç ç¼–è¾‘å™¨ä¿®æ”¹
+		/// æ­¤æ–¹æ³•çš„å†…å®¹ã€‚
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -60,35 +60,35 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(28, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(280, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "ÖÇÄÜÏóÆåÓÎÏ·";
+            this.label1.Text = "æ™ºèƒ½è±¡æ£‹æ¸¸æˆ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(46, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(280, 32);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Ä£·Â¿ª·¢£¬°æÈ¨ÊôÓÚ´ó¼Ò";
+            this.label2.Text = "æ¨¡ä»¿å¼€å‘ï¼Œç‰ˆæƒå±äºå¤§å®¶";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(46, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(280, 32);
             this.label3.TabIndex = 2;
-            this.label3.Text = "DOTNET¹¤×÷ÊÒ";
+            this.label3.Text = "DOTNETå·¥ä½œå®¤";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form4
@@ -102,7 +102,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
             this.MaximizeBox = false;
             this.Name = "Form4";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "°æ±¾";
+            this.Text = "ç‰ˆæœ¬";
             this.TopMost = true;
             this.ResumeLayout(false);
 

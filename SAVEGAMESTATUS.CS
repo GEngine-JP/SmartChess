@@ -4,15 +4,15 @@ using System.Drawing;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	/// <summary>
-	/// ¹¦ÄÜ:ÊµÏÖ ÓÎÏ· ÉèÖÃ¶Ïµã,¶ÁÈ¡¶Ïµã ¹¦ÄÜ 
+	/// åŠŸèƒ½:å®ç° æ¸¸æˆ è®¾ç½®æ–­ç‚¹,è¯»å–æ–­ç‚¹ åŠŸèƒ½ 
 	/// </summary>
 	public class SaveGameStatus
 	{		
-		public string openFileName="..\\..\\save\\SAVA.bin";   //´æ´¢ÎÄ¼şÃû
-		public string saveFileName="..\\..\\save\\SAVA.bin";   //´æ´¢ÎÄ¼şÃû	
+		public string openFileName="..\\..\\save\\SAVA.bin";   //å­˜å‚¨æ–‡ä»¶å
+		public string saveFileName="..\\..\\save\\SAVA.bin";   //å­˜å‚¨æ–‡ä»¶å	
 		
 		public SaveGameStatus()
 		{
@@ -21,11 +21,11 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		
 		public void Save(Form2 form2)
 		{ 
-			//******ĞòÁĞ»¯Form2ÖĞµÄÊı×éºÍ±äÁ¿ºÍÀà*******//
+			//******åºåˆ—åŒ–Form2ä¸­çš„æ•°ç»„å’Œå˜é‡å’Œç±»*******//
 			IFormatter formatter=new BinaryFormatter();			
 			Stream stream=new FileStream(this.saveFileName,FileMode.Create,FileAccess.Write,FileShare.None);			
 			
-			//ĞòÁĞ»¯Form2 ÖĞpictureBoxStatusÊı×é
+			//åºåˆ—åŒ–Form2 ä¸­pictureBoxStatusæ•°ç»„
 			formatter.Serialize(stream,form2.pictureBoxsStatus);
 
 			
@@ -48,10 +48,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			formatter.Serialize(stream,form2.whoGoString);
 
 			
-			//ĞòÁĞ»¯Form2ÖĞÀàFlagMoveRule aÖĞµÄ±äÁ¿ºÍÊı×é;
+			//åºåˆ—åŒ–Form2ä¸­ç±»FlagMoveRule aä¸­çš„å˜é‡å’Œæ•°ç»„;
 			formatter.Serialize(stream,form2.a.GenEatGen);	formatter.Serialize(stream,form2.a.have);	formatter.Serialize(stream,form2.a.who);	formatter.Serialize(stream,form2.a.str);	formatter.Serialize(stream,form2.a.allPoint);	formatter.Serialize(stream,form2.a.partPoint);	formatter.Serialize(stream,form2.a.whichPicture);	formatter.Serialize(stream,form2.a.rednum);	formatter.Serialize(stream,form2.a.bluenum);	formatter.Serialize(stream,form2.a.width);	formatter.Serialize(stream,form2.a.height);	formatter.Serialize(stream,form2.a.first_X);	formatter.Serialize(stream,form2.a.first_Y);	formatter.Serialize(stream,form2.a.blueNumTotal);	formatter.Serialize(stream,form2.a.redNumTotal);
 			
-			//ĞòÁĞ»¯Form2ÖĞRegretMoveFlag huiQiÖĞµÄ±äÁ¿/Êı×éºÍÀàÊµÀıÊı×é
+			//åºåˆ—åŒ–Form2ä¸­RegretMoveFlag huiQiä¸­çš„å˜é‡/æ•°ç»„å’Œç±»å®ä¾‹æ•°ç»„
 			formatter.Serialize(stream,form2.huiQi.fromIndex);	formatter.Serialize(stream,form2.huiQi.toIndex);	formatter.Serialize(stream,form2.huiQi.fromPoint);	formatter.Serialize(stream,form2.huiQi.toPoint);	formatter.Serialize(stream,form2.huiQi.fromPointIndex);	formatter.Serialize(stream,form2.huiQi.toPointIndex);	formatter.Serialize(stream,form2.huiQi.label3_Text);	formatter.Serialize(stream,form2.huiQi.signRight);	formatter.Serialize(stream,form2.huiQi.start);	formatter.Serialize(stream,form2.huiQi.wrongString);	formatter.Serialize(stream,form2.huiQi.whichFangQianZou);formatter.Serialize(stream,form2.huiQi.activeIndex);formatter.Serialize(stream,form2.huiQi.tailIndex);			
 			for(int i=0;i<=form2.huiQi.tailIndex;i++)
 			{
@@ -72,14 +72,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				formatter.Serialize(stream,form2.huiQi.b[i].blueNumTotal);
 			}			
 			
-			//ĞòÁĞ»¯Form2ÖĞÀàJudgeWhichOneWiner jiangJunÖĞµÄ±äÁ¿/Êı×é/ÀàÊµÀı
+			//åºåˆ—åŒ–Form2ä¸­ç±»JudgeWhichOneWiner jiangJunä¸­çš„å˜é‡/æ•°ç»„/ç±»å®ä¾‹
 	        formatter.Serialize(stream,form2.jiangJun.blueToRed);formatter.Serialize(stream,form2.jiangJun.redToBlue);
 			formatter.Serialize(stream,form2.jiangJun.shanShuo);formatter.Serialize(stream,form2.jiangJun.GenEatGen);		
-			//ĞòÁĞ»¯Form2ÖĞÀàJudgeWhichOneWiner jiangJunÖĞFlagMoveRule bµÄ±äÁ¿/Êı×é
+			//åºåˆ—åŒ–Form2ä¸­ç±»JudgeWhichOneWiner jiangJunä¸­FlagMoveRule bçš„å˜é‡/æ•°ç»„
 			formatter.Serialize(stream,form2.jiangJun.b.GenEatGen);	formatter.Serialize(stream,form2.jiangJun.b.have);	formatter.Serialize(stream,form2.jiangJun.b.who);	formatter.Serialize(stream,form2.jiangJun.b.str);	formatter.Serialize(stream,form2.jiangJun.b.allPoint);	formatter.Serialize(stream,form2.jiangJun.b.partPoint);	formatter.Serialize(stream,form2.jiangJun.b.whichPicture);	formatter.Serialize(stream,form2.jiangJun.b.rednum);	formatter.Serialize(stream,form2.jiangJun.b.bluenum);	formatter.Serialize(stream,form2.jiangJun.b.width);	formatter.Serialize(stream,form2.jiangJun.b.height);formatter.Serialize(stream,form2.jiangJun.b.first_X);	formatter.Serialize(stream,form2.jiangJun.b.first_Y);	formatter.Serialize(stream,form2.jiangJun.b.redNumTotal);	formatter.Serialize(stream,form2.jiangJun.b.blueNumTotal);
 			
            
-			//ĞòÁĞ»¯Form2ÖĞÀàKeyboardOperaterFunction keyBoardÖĞµÄ±äÁ¿ 		
+			//åºåˆ—åŒ–Form2ä¸­ç±»KeyboardOperaterFunction keyBoardä¸­çš„å˜é‡ 		
 			formatter.Serialize(stream,form2.keyBoard.KeyBoardOperating);
 			formatter.Serialize(stream,form2.keyBoard.MouseOperating);			
 			
@@ -95,7 +95,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			//Form2 a=new Form2();
 			Form2 a=form2;
 			
-			//·´ĞòÁĞ»¯Form2 ÖĞpictureBoxStatusÊı×é
+			//ååºåˆ—åŒ–Form2 ä¸­pictureBoxStatusæ•°ç»„
 			a.pictureBoxsStatus=(bool[])formatter.Deserialize(stream);
 			
 			a.battle=(string)formatter.Deserialize(stream);	
@@ -116,10 +116,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			a.shanShuoVarialbe=(int)formatter.Deserialize(stream);		
 			a.whoGoString=(string)formatter.Deserialize(stream);
 			
-			//·´ĞòÁĞ»¯Form2ÖĞFlagMoveRule aÖĞµÄ±äÁ¿ºÍÊı×é
+			//ååºåˆ—åŒ–Form2ä¸­FlagMoveRule aä¸­çš„å˜é‡å’Œæ•°ç»„
 			a.a.GenEatGen=(bool)formatter.Deserialize(stream);  a.a.have=(bool[])formatter.Deserialize(stream);	a.a.who=(string[])formatter.Deserialize(stream);	a.a.str=(string[])formatter.Deserialize(stream);	a.a.allPoint=(Point[])formatter.Deserialize(stream);	a.a.partPoint=(Point[])formatter.Deserialize(stream);	a.a.whichPicture=(int[])formatter.Deserialize(stream);	a.a.rednum=(int)formatter.Deserialize(stream);	a.a.bluenum=(int)formatter.Deserialize(stream);	a.a.width=(int)formatter.Deserialize(stream);	a.a.height=(int)formatter.Deserialize(stream);	a.a.first_X=(int)formatter.Deserialize(stream);	a.a.first_Y=(int)formatter.Deserialize(stream);	a.a.blueNumTotal=(int)formatter.Deserialize(stream);a.a.redNumTotal=(int)formatter.Deserialize(stream);
 
-            //·´ĞòÁĞ»¯Form2ÖĞRegretMoveFlag huiQiÖĞµÄ±äÁ¿/Êı×éºÍÀàÊµÀıÊı×é
+            //ååºåˆ—åŒ–Form2ä¸­RegretMoveFlag huiQiä¸­çš„å˜é‡/æ•°ç»„å’Œç±»å®ä¾‹æ•°ç»„
 			a.huiQi.fromIndex=(int[])formatter.Deserialize(stream);	a.huiQi.toIndex=(int[])formatter.Deserialize(stream);	a.huiQi.fromPoint=(Point[])formatter.Deserialize(stream);	a.huiQi.toPoint=(Point[])formatter.Deserialize(stream);	a.huiQi.fromPointIndex=(int[])formatter.Deserialize(stream);	a.huiQi.toPointIndex=(int[])formatter.Deserialize(stream);	a.huiQi.label3_Text=(string[])formatter.Deserialize(stream);	a.huiQi.signRight=(int[])formatter.Deserialize(stream);	a.huiQi.start=(bool[])formatter.Deserialize(stream);	a.huiQi.wrongString=(string[])formatter.Deserialize(stream);a.huiQi.whichFangQianZou=(bool[])formatter.Deserialize(stream);a.huiQi.activeIndex=(int)formatter.Deserialize(stream);	a.huiQi.tailIndex=(int)formatter.Deserialize(stream);
 			for(int i=0;i<=form2.huiQi.tailIndex;i++)
 			{
@@ -139,13 +139,13 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				a.huiQi.b[i].redNumTotal=(int)formatter.Deserialize(stream);
 				a.huiQi.b[i].blueNumTotal=(int)formatter.Deserialize(stream);
 			}			
-			//·´ĞòÁĞ»¯Form2ÖĞÀàJudgeWhichOneWiner jiangJunÖĞµÄ±äÁ¿/Êı×é/ÀàÊµÀı
+			//ååºåˆ—åŒ–Form2ä¸­ç±»JudgeWhichOneWiner jiangJunä¸­çš„å˜é‡/æ•°ç»„/ç±»å®ä¾‹
             a.jiangJun.blueToRed=(bool)formatter.Deserialize(stream);a.jiangJun.redToBlue=(bool)formatter.Deserialize(stream);	
 			a.jiangJun.shanShuo=(bool)formatter.Deserialize(stream);a.jiangJun.GenEatGen=(bool)formatter.Deserialize(stream);		
-			//·´ĞòÁĞ»¯Form2ÖĞÀàJudgeWhichOneWiner jiangJunÖĞFlagMoveRule bµÄ±äÁ¿/Êı×é
+			//ååºåˆ—åŒ–Form2ä¸­ç±»JudgeWhichOneWiner jiangJunä¸­FlagMoveRule bçš„å˜é‡/æ•°ç»„
 			a.jiangJun.b.GenEatGen=(bool)formatter.Deserialize(stream);	a.jiangJun.b.have=(bool[])formatter.Deserialize(stream);a.jiangJun.b.who=(string[])formatter.Deserialize(stream);	a.jiangJun.b.str=(string[])formatter.Deserialize(stream);	a.jiangJun.b.allPoint=(Point[])formatter.Deserialize(stream);	a.jiangJun.b.partPoint=(Point[])formatter.Deserialize(stream);	a.jiangJun.b.whichPicture=(int[])formatter.Deserialize(stream);	a.jiangJun.b.rednum=(int)formatter.Deserialize(stream);	a.jiangJun.b.bluenum=(int)formatter.Deserialize(stream);	a.jiangJun.b.width=(int)formatter.Deserialize(stream);	a.jiangJun.b.height=(int)formatter.Deserialize(stream);	a.jiangJun.b.first_X=(int)formatter.Deserialize(stream);a.jiangJun.b.first_Y=(int)formatter.Deserialize(stream);a.jiangJun.b.redNumTotal=(int)formatter.Deserialize(stream);a.jiangJun.b.blueNumTotal=(int)formatter.Deserialize(stream);			
 			
-			//·´ĞòÁĞ»¯Form2ÖĞÀàKeyboardOperaterFunction keyBoardÖĞµÄ±äÁ¿ 
+			//ååºåˆ—åŒ–Form2ä¸­ç±»KeyboardOperaterFunction keyBoardä¸­çš„å˜é‡ 
 			a.keyBoard.KeyBoardOperating=(bool)formatter.Deserialize(stream);
 			a.keyBoard.MouseOperating=(bool)formatter.Deserialize(stream);				
 	        	

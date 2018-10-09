@@ -6,10 +6,10 @@ using System.Windows.Forms;
 using System.Data;
 
 
-namespace 智能象棋游戏
+namespace SmartChessGame
 {
 	/// <summary>
-	/// 功能:将所有picturebox控件变为圆形
+	/// 鍔熻兘:灏嗘墍鏈塸icturebox鎺т欢鍙樹负鍦嗗舰
 	/// </summary>
 
 	public class RepaintPictureToRound

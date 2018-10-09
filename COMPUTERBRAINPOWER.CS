@@ -3,10 +3,10 @@ using System.Drawing;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	/// <summary>
-	/// ¹¦ÄÜ:ÊµÏÖµçÄÔ×Ô¶¯·ÖÎö×ßÆì
+	/// åŠŸèƒ½:å®ç°ç”µè„‘è‡ªåŠ¨åˆ†æèµ°æ——
     /// </summary>
 	public class ComputerBrainpower
 	{
@@ -27,11 +27,11 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);  			
 			
-			//·ÀÊØ
+			//é˜²å®ˆ
 			Point shuaiPoint=new Point(-1,-1);
 			shuaiPoint=b.CountPoint(b.GetIndexByPictureIndex(4));			
 			
-			if(this.jiangJun.ShuaiSymmetryJiang())   //Èç¹û½«¶ÔË§,ÔòÖ±½Ó³Ôµô½«
+			if(this.jiangJun.ShuaiSymmetryJiang())   //å¦‚æœå°†å¯¹å¸…,åˆ™ç›´æ¥åƒæ‰å°†
 			{
 				Point jiangPoint=new Point(-1,-1);
 				jiangPoint=b.CountPoint(b.GetIndexByPictureIndex(27));
@@ -41,7 +41,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return;
 			}
 
-			//³Ô½«
+			//åƒå°†
 			for(int i=89;i>=0;i--)
 			{
 				for(int j=89;j>=0;j--)
@@ -69,7 +69,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				{
 					footShuaiPoint[footShuaiIndex++]=b.allPoint[i];
 				}
-			if(footShuaiIndex==1)	  //ºìË§±»½«¾ü,Ñ°ÕÒÓĞÃ»ÓĞÖ±½Ó³Ôµô½«Ë§µÄÆì×ÓµÄÆì×Ó
+			if(footShuaiIndex==1)	  //çº¢å¸…è¢«å°†å†›,å¯»æ‰¾æœ‰æ²¡æœ‰ç›´æ¥åƒæ‰å°†å¸…çš„æ——å­çš„æ——å­
 				for(int i=0;i<90;i++)
 					if(b.who[i]=="red"&&b.AcceptJudge(b.allPoint[i],footShuaiPoint[0],false))
 					{
@@ -86,7 +86,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 			
-			if(footShuaiIndex>=1)            //×ß×Ô¼º·ÇË§Æì×Ó,½â³ı½«¾ü
+			if(footShuaiIndex>=1)            //èµ°è‡ªå·±éå¸…æ——å­,è§£é™¤å°†å†›
 			{				
 				for(int i=0;i<90;i++)
 					for(int j=0;j<90;j++)
@@ -119,7 +119,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					for(int i=0;i<30;i++)
 					{
 						this.jiangJun.Inialize(jiangJun);
-						if(b.str[i]=="ºìÊ¿")
+						if(b.str[i]=="çº¢å£«")
 							for(int j=0;j<30;j++)
 							{
 								if(b.AcceptJudge(b.allPoint[i],b.allPoint[j],false))
@@ -142,7 +142,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					for(int i=30;i>=0;i--)
 					{
 						this.jiangJun.Inialize(jiangJun);
-						if(b.str[i]=="ºìÊ¿")
+						if(b.str[i]=="çº¢å£«")
 							for(int j=0;j<30;j++)
 							{
 								if(b.AcceptJudge(b.allPoint[i],b.allPoint[j],false))
@@ -163,7 +163,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 
-			if(footShuaiIndex>=1)    //"Ë§" ×Ô¼º½â³ı½«¾ü
+			if(footShuaiIndex>=1)    //"å¸…" è‡ªå·±è§£é™¤å°†å†›
 			{
 				for(int i=0;i<90;i++)
 				{				
@@ -198,9 +198,9 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					}
 					
 
-			//½ø¹¥	
+			//è¿›æ”»	
 			
-			/*³Ô½«
+			/*åƒå°†
 			for(int i=89;i>=0;i--)
 			{
 				for(int j=89;j>=0;j--)
@@ -220,7 +220,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 			
-			//ÓĞÃ»ÓĞ¿É³ÔµÄÆì×Ó
+			//æœ‰æ²¡æœ‰å¯åƒçš„æ——å­
 			for(int i=0;i<90;i++)
 			{
 				for(int j=0;j<90;j++)
@@ -234,7 +234,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 								may=false;							
 						}
                        // if (may)
-						if(may && b.who[i] != b.who[j] )  //±ÜÃâÎóÉ±×Ô¼ºµÄÆì×Ó
+						if(may && b.who[i] != b.who[j] )  //é¿å…è¯¯æ€è‡ªå·±çš„æ——å­
 						{
 							fromPoint=b.allPoint[i]; toPoint=b.allPoint[j];
 							this.jiangJun.Inialize(jiangJun);
@@ -253,7 +253,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   			
 			
-			//±Ü¿ªÒ»·½Æì×Ó	
+			//é¿å¼€ä¸€æ–¹æ——å­	
 			bool mayGo=true;
 			int index=-1,myIndex=-1;
 			bool run=true;
@@ -262,7 +262,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				{
 					if(b.who[i]=="blue"&&b.who[j]=="red"&&b.AcceptJudge(b.allPoint[i],b.allPoint[j],false)&&run)
 					{
-						index=i;  myIndex=j;    //iÎ»ÖÃµÄÀ¶Æì×Ó½«Òª³ÔjÎ»ÖÃµÄºìÆì×Ó
+						index=i;  myIndex=j;    //iä½ç½®çš„è“æ——å­å°†è¦åƒjä½ç½®çš„çº¢æ——å­
 						run=false;
 					}
 				} 
@@ -270,7 +270,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 			
-			if(index!=-1)                       //É±ËÀÕı²ÈºìÆìÍ·µÄÆì×Ó
+			if(index!=-1)                       //æ€æ­»æ­£è¸©çº¢æ——å¤´çš„æ——å­
 				for(int i=89;i>=0;i--)
 				{
 					if(b.who[i]=="red"&&b.AcceptJudge(b.allPoint[i],b.allPoint[index],false))
@@ -289,7 +289,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 
-			if(myIndex!=-1)                    //±£»¤±»À¶Æì×Ó²ÈÍ·µÄÆì×Ó
+			if(myIndex!=-1)                    //ä¿æŠ¤è¢«è“æ——å­è¸©å¤´çš„æ——å­
 				for(int k=0;k<90;k++)
 				{
 					for(int m=0;m<90;m++)
@@ -300,7 +300,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                             b.str[m] = b.str[k];
                             try
                             {
-                                if ((b.have[m] == false || b.who[m] != "red") && b.AcceptJudge(b.allPoint[m], b.allPoint[myIndex], false)) //·ÀÖ¹ÎóÉ±×Ô¼ºÆì×Ó(2006/10)
+                                if ((b.have[m] == false || b.who[m] != "red") && b.AcceptJudge(b.allPoint[m], b.allPoint[myIndex], false)) //é˜²æ­¢è¯¯æ€è‡ªå·±æ——å­(2006/10)
                                 {
                                     fromPoint = b.allPoint[k]; toPoint = b.allPoint[m];
                                     b.Initialize(a);
@@ -325,7 +325,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 
-			//ÌÓÅÜ
+			//é€ƒè·‘
 			if(myIndex!=-1)               
 				for(int i=0;i<90;i++)
 					for(int j=0;j<90;j++)
@@ -333,7 +333,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                         if (b.who[i] == "blue" && b.who[j] == "red" && b.AcceptJudge(b.allPoint[i], b.allPoint[j], false))
                         {
 
-                            ////×Ô¼ºÆì×ÓËäÈ»±»¶Ô·½²ÈÔÚ½ÅÏÂ£¬µ«ÓĞ×Ô¼ºÆäËüµÄ "Õ½ÓÑ" "±£ÎÀ", ÔòÓĞĞ©Ê±ºò²»±ØÌÓÅÜ
+                            ////è‡ªå·±æ——å­è™½ç„¶è¢«å¯¹æ–¹è¸©åœ¨è„šä¸‹ï¼Œä½†æœ‰è‡ªå·±å…¶å®ƒçš„ "æˆ˜å‹" "ä¿å«", åˆ™æœ‰äº›æ—¶å€™ä¸å¿…é€ƒè·‘
                             //bool blnIsProtected = false;
                             //for (int x = 0; x < 90; x++)
                             //{
@@ -375,7 +375,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                                     if (bb && this.jiangJun.blueToRed == false)
                                     {
                                         fromPoint = b.allPoint[j]; toPoint = b.allPoint[k];
-                                        if (b.str[b.CountIndex(fromPoint)] == "ºì×ä" && b.CountIndex(fromPoint) == 31)
+                                        if (b.str[b.CountIndex(fromPoint)] == "çº¢å’" && b.CountIndex(fromPoint) == 31)
                                             continue;
                                         Console.WriteLine("11 11 11");
                                         if (fromPoint != toPoint)
@@ -392,7 +392,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 			
-			//ÕĞÊı×ßÆì
+			//æ‹›æ•°èµ°æ——
 			for(int i=89;i>=0;i--)
 				for(int j=89;j>=0;j--)
 				{					
@@ -440,7 +440,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			b.Initialize(a);
 			this.jiangJun.Inialize(jiangJun);   
 
-			//Ò»°ã×ßÆì
+			//ä¸€èˆ¬èµ°æ——
 			
 			Random rand=new Random();
 			int data=rand.Next(100);
@@ -468,7 +468,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 								if(fromPoint!=toPoint&&this.jiangJun.blueToRed==false)
 								{
 									
-									if(b.str[b.CountIndex(fromPoint)]=="ºì×ä"&&b.CountIndex(fromPoint)==31)
+									if(b.str[b.CountIndex(fromPoint)]=="çº¢å’"&&b.CountIndex(fromPoint)==31)
 										continue;
 									Console.WriteLine("12 12 12");
 									return;
@@ -500,7 +500,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 								if(fromPoint!=toPoint&&this.jiangJun.blueToRed==false)
 								{
 									
-									if(b.str[b.CountIndex(fromPoint)]=="ºì×ä"&&b.CountIndex(fromPoint)==31)
+									if(b.str[b.CountIndex(fromPoint)]=="çº¢å’"&&b.CountIndex(fromPoint)==31)
 										continue;
 									Console.WriteLine("13 13 13");
 									return;
@@ -515,7 +515,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.jiangJun.Inialize(jiangJun);   
 			
 						
-			//Ëæ»ú×ßÒ»¸öÆì×Ó
+			//éšæœºèµ°ä¸€ä¸ªæ——å­
 			for(int i=0;i<90;i++)
 			{
 				for(int j=89;j>=0;j--)

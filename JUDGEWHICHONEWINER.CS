@@ -3,19 +3,19 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	/// <summary>
-	/// ¹¦ÄÜ:1.×ßÍêÒ»²½Æìºó,ÅĞ¶ÏÊÇ·ñ½«¾ü
-	///      2.×ßÍêÒ»²½ÅĞ¶ÏÊÇ·ñÒ»·½Ê¤Àû	
+	/// åŠŸèƒ½:1.èµ°å®Œä¸€æ­¥æ——å,åˆ¤æ–­æ˜¯å¦å°†å†›
+	///      2.èµ°å®Œä¸€æ­¥åˆ¤æ–­æ˜¯å¦ä¸€æ–¹èƒœåˆ©	
 	/// </summary>
 	public class JudgeWhichOneWiner
 	{
-		//ºìË§:4ºÅÍ¼Æ¬  À¶½«:27ºÅÍ¼Æ¬
-		public FlagMoveRule b=new FlagMoveRule();  //½ÓÊÜ a µÄÖµ,½øĞĞÅĞ¶Ï
-        public bool blueToRed=false;   //±íÊ¾À¶·½½«¾üºì·½
-		public bool redToBlue=false;   //±íÊ¾ºì·½½«¾üÀ¶·½
-		public bool shanShuo=false;    //±êÖ¾ÊÇ·ñÏÔÊ¾½«¾üÎÄ×Ö
+		//çº¢å¸…:4å·å›¾ç‰‡  è“å°†:27å·å›¾ç‰‡
+		public FlagMoveRule b=new FlagMoveRule();  //æ¥å— a çš„å€¼,è¿›è¡Œåˆ¤æ–­
+        public bool blueToRed=false;   //è¡¨ç¤ºè“æ–¹å°†å†›çº¢æ–¹
+		public bool redToBlue=false;   //è¡¨ç¤ºçº¢æ–¹å°†å†›è“æ–¹
+		public bool shanShuo=false;    //æ ‡å¿—æ˜¯å¦æ˜¾ç¤ºå°†å†›æ–‡å­—
 		public bool GenEatGen=false;
 		public JudgeWhichOneWiner()
 		{
@@ -60,10 +60,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			int index;
 			Point p;
 				
-			//¼ì²éºìË§ÊÇ·ñ±»½«¾ü
-			index=b.GetIndexByPictureIndex(4);  //ºìË§ÎªµÚËÄÕÂÍ¼Æ¬
+			//æ£€æŸ¥çº¢å¸…æ˜¯å¦è¢«å°†å†›
+			index=b.GetIndexByPictureIndex(4);  //çº¢å¸…ä¸ºç¬¬å››ç« å›¾ç‰‡
 			if(index==-1) return;
-			p=b.CountPoint(index);    //ÕÒµ½´æÓĞµÚËÄÕÂÍ¼Æ¬µÄµã
+			p=b.CountPoint(index);    //æ‰¾åˆ°å­˜æœ‰ç¬¬å››ç« å›¾ç‰‡çš„ç‚¹
 			
 			this.blueToRed=false;
 			this.redToBlue=false;
@@ -77,10 +77,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					shanShuo=true;					
 				}
 			}
-			//¼ì²éÀ¶½«ÊÇ·ñ±»½«¾ü
-			index=b.GetIndexByPictureIndex(27);  //ºìË§ÎªµÚ27ÕÂÍ¼Æ¬
+			//æ£€æŸ¥è“å°†æ˜¯å¦è¢«å°†å†›
+			index=b.GetIndexByPictureIndex(27);  //çº¢å¸…ä¸ºç¬¬27ç« å›¾ç‰‡
 			if(index==-1) return;
-			p=b.CountPoint(index);    //ÕÒµ½´æÓĞµÚ27ÕÂÍ¼Æ¬µÄµã
+			p=b.CountPoint(index);    //æ‰¾åˆ°å­˜æœ‰ç¬¬27ç« å›¾ç‰‡çš„ç‚¹
 			for(int i=0;i<90;i++)
 			{
 				if(b.have[i]&&b.who[i]=="red"&&b.AcceptJudge(b.allPoint[i],p,false))
@@ -89,7 +89,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					shanShuo=true;					
 				}
 			}
-			if(ShuaiSymmetryJiang())//Èç¹ûË§½«¸ôºÓÏàÍû,ÔòÒ²ËãÊÇ½«¾ü
+			if(ShuaiSymmetryJiang())//å¦‚æœå¸…å°†éš”æ²³ç›¸æœ›,åˆ™ä¹Ÿç®—æ˜¯å°†å†›
 			{
 				shanShuo=true;
 				GenEatGen=true;
@@ -113,23 +113,23 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			int index=-1;			
 			index=a.GetIndexByPictureIndex(4);
 			if(index==-1)
-				return 1;       //±íÊ¾À¶·½Ê¤
+				return 1;       //è¡¨ç¤ºè“æ–¹èƒœ
 			
 			index=-1;
 			
 			index=a.GetIndexByPictureIndex(27);
 			if(index==-1)
-				return 2;           //±íÊ¾ºì·½Ê¤
+				return 2;           //è¡¨ç¤ºçº¢æ–¹èƒœ
 
 			if(a.rednum==0)    
 			{
 				this.shanShuo=false;
-				return 1;     //À¶·½Ê¤
+				return 1;     //è“æ–¹èƒœ
 			}
 			if(a.bluenum==0)
 			{
 				this.shanShuo=false;
-				return 2;     //ºì·½Ê¤
+				return 2;     //çº¢æ–¹èƒœ
 			}
 			
 			return 0;

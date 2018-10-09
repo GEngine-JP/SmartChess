@@ -6,20 +6,20 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
 	
 	/// <summary>
-	/// ***Form2¹¦ÄÜ:1.µ÷ÓÃÆäËü¼¸¸ö×Ô¶¨ÒåÀà,ÊµÏÖ×Ô¶¨ÒåÀàµÄ¹¦ÄÜ
-	/// ***          2.ÊÇ¶Ô×Ô¶¨ÒåÀàµÄÊÓ¾õÊµÏÖ;Ò²¿ÉÒÔËµÊÇÆäËü¼¸¸ö×Ô¶¨ÒåÀàÓëForm1µÄ½Ó¿Ú        
+	/// ***Form2åŠŸèƒ½:1.è°ƒç”¨å…¶å®ƒå‡ ä¸ªè‡ªå®šä¹‰ç±»,å®ç°è‡ªå®šä¹‰ç±»çš„åŠŸèƒ½
+	/// ***          2.æ˜¯å¯¹è‡ªå®šä¹‰ç±»çš„è§†è§‰å®ç°;ä¹Ÿå¯ä»¥è¯´æ˜¯å…¶å®ƒå‡ ä¸ªè‡ªå®šä¹‰ç±»ä¸Form1çš„æ¥å£        
 	/// </summary>
-	public class Form2 : ÖÇÄÜÏóÆåÓÎÏ·.Form1
+	public class Form2 : Form1
 	{
 		private System.ComponentModel.IContainer components = null;
 
-		public const string FileName="..\\..\\ÓÎÏ·²¼ÖÃÎÄ¼ş.ini";
-		public Hashtable myHT=new Hashtable(); //½¨Á¢³õÊ¼±í£¬ÓÃÓÚ´æ·Å¶ÔÓ¦µÄÆì×Ó×Ö·û´®ºÍÆì×ÓÍ¼Ïó
-		public System.Windows.Forms.PictureBox[] pictureBoxs=new PictureBox[32]; //´æ·ÅÆì×ÓµÄÒ»×éÍ¼Æ¬¿ò
+		public const string FileName="..\\..\\æ¸¸æˆå¸ƒç½®æ–‡ä»¶.ini";
+		public Hashtable myHT=new Hashtable(); //å»ºç«‹åˆå§‹è¡¨ï¼Œç”¨äºå­˜æ”¾å¯¹åº”çš„æ——å­å­—ç¬¦ä¸²å’Œæ——å­å›¾è±¡
+		public System.Windows.Forms.PictureBox[] pictureBoxs=new PictureBox[32]; //å­˜æ”¾æ——å­çš„ä¸€ç»„å›¾ç‰‡æ¡†
 		
 		public Image[] imgs=new Image[14];	
 		
@@ -27,68 +27,68 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		
 		public string[] soldiers=new string[32];
 
-		public Point[] tempPoint=new Point[32]; //´æ·ÅÊ¢Æì×ÓµÄ32¸öµã			
+		public Point[] tempPoint=new Point[32]; //å­˜æ”¾ç››æ——å­çš„32ä¸ªç‚¹			
 	
-		public bool whetherSelected=false;  //±£Ö¤Ö»ÓĞÒ»¸öÍ¼ÏñÒÆ¶¯,²¢ÇÒÈ·±£ÒÆ¶¯ÕıÈ·
-		public Point p=new Point();                     //ÒÆ¶¯Í¼ÏóÊ±,¼ÇÂ¼Êó±êµÄ¾É×ø±ê
+		public bool whetherSelected=false;  //ä¿è¯åªæœ‰ä¸€ä¸ªå›¾åƒç§»åŠ¨,å¹¶ä¸”ç¡®ä¿ç§»åŠ¨æ­£ç¡®
+		public Point p=new Point();                     //ç§»åŠ¨å›¾è±¡æ—¶,è®°å½•é¼ æ ‡çš„æ—§åæ ‡
 		
 		public Point beforeMovePoint=new Point();
         
 		public bool letDown=false;
         
-		public string[] signString=new string[2];  //´æ·Å±êÖ¾Ë­×ßÆìµÄÁ½¸ö×Ö·û´®
-		public int signRight=0;       //ÄÄ·½×ßÆìË÷Òı
-		public bool start=false;      //±êÖ¾Î»,Ê¹µÚÒ»´Î×ßÆìÊ±,ÎŞÌõ¼şÖ´ĞĞ	     
+		public string[] signString=new string[2];  //å­˜æ”¾æ ‡å¿—è°èµ°æ——çš„ä¸¤ä¸ªå­—ç¬¦ä¸²
+		public int signRight=0;       //å“ªæ–¹èµ°æ——ç´¢å¼•
+		public bool start=false;      //æ ‡å¿—ä½,ä½¿ç¬¬ä¸€æ¬¡èµ°æ——æ—¶,æ— æ¡ä»¶æ‰§è¡Œ	     
 
 		public string wrongString="right";
 
-		public DateTime startTime=new DateTime(); 	//¼ÍÂ¼¿ªÊ¼µÄÊ±¼ä,ÓÃÏµÍ³Ê±¼ä¼õÈ¥¿ªÊ¼Ê±¼ä,¾ÍÊÇÏÂÆåÓÃµÃÊ±¼ä
-		public bool displaystartTime=false;  //µ±Ñ¡ÔñÁËÒ»¸öÓÎÏ·ÀàĞÍºó(¼´¿ªÊ¼ÓÎÏ·ºó)²Å¿ªÊ¼¼ÆÊ±
+		public DateTime startTime=new DateTime(); 	//çºªå½•å¼€å§‹çš„æ—¶é—´,ç”¨ç³»ç»Ÿæ—¶é—´å‡å»å¼€å§‹æ—¶é—´,å°±æ˜¯ä¸‹æ£‹ç”¨å¾—æ—¶é—´
+		public bool displaystartTime=false;  //å½“é€‰æ‹©äº†ä¸€ä¸ªæ¸¸æˆç±»å‹å(å³å¼€å§‹æ¸¸æˆå)æ‰å¼€å§‹è®¡æ—¶
 
-		public bool pause=false;         //±êÖ¾ÊÇ·ñ°´ÁËÔİÍ£¼ü
+		public bool pause=false;         //æ ‡å¿—æ˜¯å¦æŒ‰äº†æš‚åœé”®
 
 		public bool whichFangQianZou=false;
 
-		public int pauseCount=0;  //¼ÇÂ¼ÔİÍ£µÄÊ±¼ä
+		public int pauseCount=0;  //è®°å½•æš‚åœçš„æ—¶é—´
         
 		public FlagMoveRule a=new FlagMoveRule();
-		public RegretMoveFlag huiQi=new RegretMoveFlag();  //Öü´æ×ßµÄÃ¿Ò»²½ÆìµÄĞÅÏ¢,Íê³É»ÚÆì²Ù×÷¹¦ÄÜ
-        public JudgeWhichOneWiner jiangJun=new JudgeWhichOneWiner(); //ÅĞ¶ÏÊÇ·ñ½«¾üºÍÊÇ·ñÓÎÏ·½á¹û(Ò»·½»ñÊ¤)
+		public RegretMoveFlag huiQi=new RegretMoveFlag();  //è´®å­˜èµ°çš„æ¯ä¸€æ­¥æ——çš„ä¿¡æ¯,å®Œæˆæ‚”æ——æ“ä½œåŠŸèƒ½
+        public JudgeWhichOneWiner jiangJun=new JudgeWhichOneWiner(); //åˆ¤æ–­æ˜¯å¦å°†å†›å’Œæ˜¯å¦æ¸¸æˆç»“æœ(ä¸€æ–¹è·èƒœ)
 		public KeyboardOperaterFunction keyBoard=new KeyboardOperaterFunction();
 		public SaveGameStatus fileOperate=new SaveGameStatus();
-		public RepaintPictureToRound round=new RepaintPictureToRound();   //½«ËùÓĞpictureBox¿Ø¼şÓÉ·½ĞÎ±äÎªÔ²ĞÎ
+		public RepaintPictureToRound round=new RepaintPictureToRound();   //å°†æ‰€æœ‰pictureBoxæ§ä»¶ç”±æ–¹å½¢å˜ä¸ºåœ†å½¢
 		public ComputerBrainpower computer=new ComputerBrainpower();
 
-		public int index=0;   //±êÖ¾µ±Ç°ÄÄ¸öpictureBox¼¤»î
+		public int index=0;   //æ ‡å¿—å½“å‰å“ªä¸ªpictureBoxæ¿€æ´»
 		
 		public bool label3_ShanShuo=false;
 
-		public bool add_Or_Not=true;  //ÍËÆì´úÂëÖĞÓÃµ½µÄ±êÖ¾±äÁ¿
+		public bool add_Or_Not=true;  //é€€æ——ä»£ç ä¸­ç”¨åˆ°çš„æ ‡å¿—å˜é‡
 
-		public int shanShuoVarialbe=0;		 //ÏÔÊ¾Ê±¼ä±äÁ¿,Íê³ÉÉÁË¸¹¦ÄÜ
-		public int fen=0,second=0;          //ÇóµÃµ±Ç°Ê±¼ä±äÁ¿
-		public string whoGoString="";       //¼ÇÂ¼label3_Textµ±Ç°×Ö·û´®,ÓÃÓÚÍê³ÉÉÁË¸¹¦ÄÜ		
+		public int shanShuoVarialbe=0;		 //æ˜¾ç¤ºæ—¶é—´å˜é‡,å®Œæˆé—ªçƒåŠŸèƒ½
+		public int fen=0,second=0;          //æ±‚å¾—å½“å‰æ—¶é—´å˜é‡
+		public string whoGoString="";       //è®°å½•label3_Textå½“å‰å­—ç¬¦ä¸²,ç”¨äºå®Œæˆé—ªçƒåŠŸèƒ½		
 		
 		private System.Timers.Timer timer1;
 
 		static public Form2 form2;	
 
-		public bool GoOnceTime=false;       //µçÄÔ×Ô¶¯×ßÆì¿ØÖÆ±äÁ¿
-		public bool computerAutoPause=false;    //µ±ÍËÆìÊ±,Ê¹µçÄÔ×ßÆìÔİÍ£                 
-		public int computerAutoNumber=0;     //ÔÚÍËÆìÊ±,Èç¹û²»ÔÙÍËÆì,µçÄÔÔÚ¼ä¸ôÊ±¼äÄÚ×Ô¶¯×ßÆì  
+		public bool GoOnceTime=false;       //ç”µè„‘è‡ªåŠ¨èµ°æ——æ§åˆ¶å˜é‡
+		public bool computerAutoPause=false;    //å½“é€€æ——æ—¶,ä½¿ç”µè„‘èµ°æ——æš‚åœ                 
+		public int computerAutoNumber=0;     //åœ¨é€€æ——æ—¶,å¦‚æœä¸å†é€€æ——,ç”µè„‘åœ¨é—´éš”æ—¶é—´å†…è‡ªåŠ¨èµ°æ——  
  
-		int SoundValue=0;  //Ê¹Á¬ĞøÁ½¸öÉùÒôÍ¬²½
+		int SoundValue=0;  //ä½¿è¿ç»­ä¸¤ä¸ªå£°éŸ³åŒæ­¥
 
 		public Form2()
 		{			
-			//½¨Á¢pictureBoxsµÄÊµÀı
+			//å»ºç«‹pictureBoxsçš„å®ä¾‹
 			for(int i=0;i<32;i++)						
 				this.pictureBoxs[i]=new PictureBox();							
 			
 			InitializeComponent();	
 			
-			//ÒÔÏÂ´úÂë³õÊ¼»¯MyHT¶ÔÕÕ±í
-			string[] str={"À¶±ø","À¶ÅÚ","À¶Ü‡","À¶Âí","À¶Ïó","À¶Ê¿","À¶½«","ºì×ä","ºìÅÚ","ºìÜ‡","ºìÂí","ºìÏó","ºìÊ¿","ºìË§"}; 			
+			//ä»¥ä¸‹ä»£ç åˆå§‹åŒ–MyHTå¯¹ç…§è¡¨
+			string[] str={"è“å…µ","è“ç‚®","è“è»Š","è“é©¬","è“è±¡","è“å£«","è“å°†","çº¢å’","çº¢ç‚®","çº¢è»Š","çº¢é©¬","çº¢è±¡","çº¢å£«","çº¢å¸…"}; 			
 			
 			imgs[0]=Image.FromFile(@"..\..\img\blue-bing.gif");
 			imgs[1]=Image.FromFile(@"..\..\img\blue-pao.gif");
@@ -109,10 +109,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				myHT.Add(str[i],imgs[i]);
 			}	
 			
-			//Íùpanel1ÖĞÌí¼ÓpictureBoxsÊı×é¿Ø¼ş
+			//å¾€panel1ä¸­æ·»åŠ pictureBoxsæ•°ç»„æ§ä»¶
 			this.panel1.Controls.AddRange(pictureBoxs);					
 
-			//Ê¹ËùÓĞPictureBoxsÒş²Ø,²»Ó°ÏìÖ÷½çÃæµÄÏÔÊ¾
+			//ä½¿æ‰€æœ‰PictureBoxséšè—,ä¸å½±å“ä¸»ç•Œé¢çš„æ˜¾ç¤º
 			for(int i=0;i<32;i++)						
 				this.pictureBoxs[i].Visible=false;				
 			
@@ -123,7 +123,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				this.pictureBoxs[i].MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxs_MouseDown);				
 			}
             
-			signString[0]="blue";   //³õÊ¼»¯±êÖ¾ÄÄ·½×ßÆì×Ö·û´®
+			signString[0]="blue";   //åˆå§‹åŒ–æ ‡å¿—å“ªæ–¹èµ°æ——å­—ç¬¦ä¸²
 			signString[1]="red";   
 
 			this.pictureBox6.Width=this.width/2-5;
@@ -157,7 +157,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		
 		public void LoadPictures()
 		{            
-			//µ÷ÕûpictureBox×éµÄÎ»ÖÃ/Í¼ÏñÀ´Ô´/ÏÔÊ¾Ä£Ê½	
+			//è°ƒæ•´pictureBoxç»„çš„ä½ç½®/å›¾åƒæ¥æº/æ˜¾ç¤ºæ¨¡å¼	
 			for(int i=0;i<32;i++)
 			{				
 				this.pictureBoxs[i].Width=this.width;
@@ -172,14 +172,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				this.pictureBoxs[i].Visible=true;			
 			}
 
-			//±¾Óï¾äÈç¹ûÖ´ĞĞ,ËäÈ»ËùÓĞpictureBox¿Ø¼ş¶¼±äÎªÕæÕıµÄÔ²;µ«ÊÇ,Í¼ÏñÍÏ¶¯Ğ§¹û²»Ì«ºÃ,³öÏÖÑÓ³Ù
+			//æœ¬è¯­å¥å¦‚æœæ‰§è¡Œ,è™½ç„¶æ‰€æœ‰pictureBoxæ§ä»¶éƒ½å˜ä¸ºçœŸæ­£çš„åœ†;ä½†æ˜¯,å›¾åƒæ‹–åŠ¨æ•ˆæœä¸å¤ªå¥½,å‡ºç°å»¶è¿Ÿ
 			//round.MakeToPictureBoxsToCircle(this.pictureBoxs);
 			
 			string tempStr=null;				
 			StreamReader sr = new StreamReader(FileName,System.Text.Encoding.Default);
-			while(tempStr!=battle&&(tempStr=sr.ReadLine())!="[½áÊø]");
-			if(tempStr.Equals("[½áÊø]")) return;   //ÕÒ²»µ½Õ½ÒÛÃû³Æ,ÔòÍË³ö			
-			tempStr=sr.ReadLine();    //ÂÔ¹ıÕ½ÒÛÃû³Æ			
+			while(tempStr!=battle&&(tempStr=sr.ReadLine())!="[ç»“æŸ]");
+			if(tempStr.Equals("[ç»“æŸ]")) return;   //æ‰¾ä¸åˆ°æˆ˜å½¹åç§°,åˆ™é€€å‡º			
+			tempStr=sr.ReadLine();    //ç•¥è¿‡æˆ˜å½¹åç§°			
 			tempStr=tempStr.Trim();				
 			int index=0;
 			while(!tempStr.Equals("[END]"))
@@ -209,7 +209,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
             if (IsReplay == false)
             {
-                label3.Text="ÇëÒ»·½×ßÆì";
+                label3.Text="è¯·ä¸€æ–¹èµ°æ——";
 			    start=false; 
 
 			    pauseCount=0;
@@ -229,12 +229,12 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
     			
 			    this.computerAuto=false;            
 
-                //µ¯³öÑ¡ÔñÄ£Ê½¿òÒôÀÖ
+                //å¼¹å‡ºé€‰æ‹©æ¨¡å¼æ¡†éŸ³ä¹
                 //Sound.Play("popup");            
 
                 login = new Form3();
 
-                //µ¯³öÑ¡ÔñÓÎÏ·Ä£Ê½¶Ô»°¿ò
+                //å¼¹å‡ºé€‰æ‹©æ¸¸æˆæ¨¡å¼å¯¹è¯æ¡†
                 if (login.ShowDialog() == DialogResult.OK)
                 {
                     label1.Text = login.textBox1.Text.ToString() + " VS " + login.textBox2.Text.ToString();
@@ -245,29 +245,29 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                 else
                     login.Close();
 
-                playName[1] = "Å®º¢"; playName[2] = "ÄĞº¢";
+                playName[1] = "å¥³å­©"; playName[2] = "ç”·å­©";
                 playName[3] = login.textBox1.Text.ToString();
                 playName[4] = login.textBox2.Text.ToString();
 
             }
             IsReplay = false;
 		
-			//²¥·Å¿ªÊ¼ÒôÀÖ
+			//æ’­æ”¾å¼€å§‹éŸ³ä¹
 			Sound.Play("start");
 
 			
-			//¿ªÊ¼ÏÔÊ¾ÏÂÆåÒÑÓÃÊ±¼ä
+			//å¼€å§‹æ˜¾ç¤ºä¸‹æ£‹å·²ç”¨æ—¶é—´
 			startTime=DateTime.Now;
 			displaystartTime=true;
 
-			if(this.computerAuto)           //ÖÃ¼ÆËã»úÎªºì·½
+			if(this.computerAuto)           //ç½®è®¡ç®—æœºä¸ºçº¢æ–¹
 			{
 				start=true;
-				this.label3.Text="Çë À¶·½(you) ×ßÆì";
+				this.label3.Text="è¯· è“æ–¹(you) èµ°æ——";
 			}
 			this.GoOnceTime=false;	
 	
-			label3_ShanShuo=false;        //Í£Ö¹ÉÁË¸ÎÄ×Ö
+			label3_ShanShuo=false;        //åœæ­¢é—ªçƒæ–‡å­—
 		}
 		
 		public void FromARead()
@@ -302,10 +302,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			base.Dispose( disposing );
 		}
 
-		#region Éè¼ÆÆ÷Éú³ÉµÄ´úÂë
+		#region è®¾è®¡å™¨ç”Ÿæˆçš„ä»£ç 
 		/// <summary>
-		/// Éè¼ÆÆ÷Ö§³ÖËùĞèµÄ·½·¨ - ²»ÒªÊ¹ÓÃ´úÂë±à¼­Æ÷ĞŞ¸Ä
-		/// ´Ë·½·¨µÄÄÚÈİ¡£
+		/// è®¾è®¡å™¨æ”¯æŒæ‰€éœ€çš„æ–¹æ³• - ä¸è¦ä½¿ç”¨ä»£ç ç¼–è¾‘å™¨ä¿®æ”¹
+		/// æ­¤æ–¹æ³•çš„å†…å®¹ã€‚
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -350,7 +350,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			// 
 			// label2
 			// 
-			this.label2.Font = new System.Drawing.Font("ËÎÌå", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.label2.Font = new System.Drawing.Font("å®‹ä½“", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.label2.Location = new System.Drawing.Point(8, 184);
 			this.label2.Name = "label2";
 			// 
@@ -539,14 +539,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			// 
 			// label1
 			// 
-			this.label1.Font = new System.Drawing.Font("Á¥Êé", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
+			this.label1.Font = new System.Drawing.Font("éš¶ä¹¦", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));
 			this.label1.Name = "label1";
 			// 
 			// label7
 			// 
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(80, 23);
-			this.label7.Text = "<ºóÍË&B>";
+			this.label7.Text = "<åé€€&B>";
 			this.label7.Click += new System.EventHandler(this.label7_Click);
 			// 
 			// label8
@@ -554,7 +554,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			this.label8.Location = new System.Drawing.Point(96, 368);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(80, 23);
-			this.label8.Text = "<Ç°½ø&G>";
+			this.label8.Text = "<å‰è¿›&G>";
 			this.label8.Click += new System.EventHandler(this.label8_Click);
 			// 
 			// timer1
@@ -585,7 +585,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		[STAThread]
 		static void Main() 
 		{			
-			//if(MessageBox.Show("ÇëÔÚ·Ö±æÂÊÎª:(1024*768)ÏóËØÏÂÔËĞĞ±¾ÓÎÏ·,·ñÔò¿ÉÄÜ³öÏÖÍ¼ĞÎ²»ÍêÕû!!!","ÌáĞÑ",MessageBoxButtons.OKCancel,MessageBoxIcon.Asterisk)==DialogResult.OK)
+			//if(MessageBox.Show("è¯·åœ¨åˆ†è¾¨ç‡ä¸º:(1024*768)è±¡ç´ ä¸‹è¿è¡Œæœ¬æ¸¸æˆ,å¦åˆ™å¯èƒ½å‡ºç°å›¾å½¢ä¸å®Œæ•´!!!","æé†’",MessageBoxButtons.OKCancel,MessageBoxIcon.Asterisk)==DialogResult.OK)
 			//{
 				form2=new Form2();
 				Application.Run(form2);				
@@ -596,37 +596,37 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		private void Form2_Load(object sender, System.EventArgs e)
 		{
 			int fen=0,second=0;
-			label2.Text="ÏÂÆåÓÃÊ±: "+fen.ToString()+"·Ö "+second.ToString()+"Ãë";	
+			label2.Text="ä¸‹æ£‹ç”¨æ—¶: "+fen.ToString()+"åˆ† "+second.ToString()+"ç§’";	
 			
-			//ÉèÖÃ³õÊ¼±³¾°ÒôÀÖ
+			//è®¾ç½®åˆå§‹èƒŒæ™¯éŸ³ä¹
 			Helpers.PlaySound(@"..\..\sound\bk_music\first.WAV", IntPtr.Zero, Helpers.PlaySoundFlags.SND_FILENAME | Helpers.PlaySoundFlags.SND_ASYNC | Helpers.PlaySoundFlags.SND_LOOP);
 		}
 
 
-		#region ÏÔÊ¾ÏÂÆåÊ±¼äºÍÏµÍ³µ±Ç°Ê±¼ä´úÂë		
+		#region æ˜¾ç¤ºä¸‹æ£‹æ—¶é—´å’Œç³»ç»Ÿå½“å‰æ—¶é—´ä»£ç 		
 		
 		int increase=0;
 		private void timer1_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
 		{
 			SoundValue++;
 			if(SoundValue==3&&signRight==1&&this.start&&switchEnd!=0)
-				Sound.Play("return_red");   //²¥·Åºì·½ÏÂÆìÒôÀÖ
+				Sound.Play("return_red");   //æ’­æ”¾çº¢æ–¹ä¸‹æ——éŸ³ä¹
 			else if(SoundValue==3&&signRight==0&&this.start&&switchEnd!=0)
 			{
 				Sound.Play("return_blue");
 			}
 
 
-			if(jiangJun.shanShuo&&shanShuoVarialbe%2==0)   //µ±½«¾üÊ±ÏÔÊ¾ÉÁË¸ÎÄ×Ö
+			if(jiangJun.shanShuo&&shanShuoVarialbe%2==0)   //å½“å°†å†›æ—¶æ˜¾ç¤ºé—ªçƒæ–‡å­—
 			{
-				label6.Text=" ½«¾ü";				
+				label6.Text=" å°†å†›";				
 			}
 			else 
 			{
 				//shanShuoVarialbe=0;
 				label6.Text="";
 			}
-			if(label3_ShanShuo&&shanShuoVarialbe%2==0)    //µ±²»ÊÇÄ³·½×ßÆì,¶øÄ³·½ÒªÄÃÆìÊ±,ÏÔÊ¾ÌáÊ¾ÎÄ×Ö
+			if(label3_ShanShuo&&shanShuoVarialbe%2==0)    //å½“ä¸æ˜¯æŸæ–¹èµ°æ——,è€ŒæŸæ–¹è¦æ‹¿æ——æ—¶,æ˜¾ç¤ºæç¤ºæ–‡å­—
 			{				
 				this.label3.Text="";
 			}
@@ -637,7 +637,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			shanShuoVarialbe++; 
 			if(shanShuoVarialbe>50000)
 				shanShuoVarialbe=0;
-			this.statusBarPanel4.Text="µ±Ç°Ê±¼ä: "+DateTime.Now.ToString();			
+			this.statusBarPanel4.Text="å½“å‰æ—¶é—´: "+DateTime.Now.ToString();			
 			if(pause)
 			{					
 				increase++;
@@ -660,9 +660,9 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					fen-=1; second+=60;
 				}				
 				if(!pause)
-					label2.Text="ÏÂÆåÓÃÊ±: "+fen.ToString()+"·Ö "+second.ToString()+"Ãë";
+					label2.Text="ä¸‹æ£‹ç”¨æ—¶: "+fen.ToString()+"åˆ† "+second.ToString()+"ç§’";
 			}	
-			//µçÄÔ×ßÆì´úÂë
+			//ç”µè„‘èµ°æ——ä»£ç 
             if (huiQi.IsReplayAndNoAddItem == false)
             {
                 lock (this)
@@ -706,93 +706,93 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			pause=!pause;
 			if(pause)
 			{
-				label3.Text="ÒÑÔİÍ£";
-				this.menuItem57.Text="¼ÌĞø";
+				label3.Text="å·²æš‚åœ";
+				this.menuItem57.Text="ç»§ç»­";
 			}
 			else
 			{
-				this.menuItem57.Text="ÔİÍ£";
+				this.menuItem57.Text="æš‚åœ";
 				if(start)
 					SettingNoChangeDecriptText();
 				else
-					label3.Text="ÇëÒ»·½×ßÆì";				
+					label3.Text="è¯·ä¸€æ–¹èµ°æ——";				
 			}
 		}
 		#endregion
 
 		
-		#region ×°ÔØÕ½ÒÛÊÂ¼ş´úÂë
+		#region è£…è½½æˆ˜å½¹äº‹ä»¶ä»£ç 
 		private void menuItem7_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[Ü‡VSÂíÖ®Õ½]";
+			battle="[è»ŠVSé©¬ä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem3_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
             //IsReplay = false;
-			battle="[ĞÂÕ½ÒÛ]";
+			battle="[æ–°æˆ˜å½¹]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;            
+			this.label5.Text="æˆ˜å½¹:"+battle;            
 		}
 
 		private void menuItem13_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[Ü‡VSÅÚÖ®Õ½]";
+			battle="[è»ŠVSç‚®ä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem14_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[±øVS±øÖ®Õ½]";
+			battle="[å…µVSå…µä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem16_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[ÂíVSÅÚÖ®Õ½]";
+			battle="[é©¬VSç‚®ä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem17_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[ÅÚÂíÜ‡Ö®Õ½]";
+			battle="[ç‚®é©¬è»Šä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem18_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[ÅÚVS±øÖ®Õ½]";
+			battle="[ç‚®VSå…µä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem19_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[½«¾üÖ®Õ½]";
+			battle="[å°†å†›ä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}
 
 		private void menuItem20_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[ÎŞÊ¿Ö®Õ½]";
+			battle="[æ— å£«ä¹‹æˆ˜]";
 			this.LoadPictures();
-			this.label5.Text="Õ½ÒÛ:"+battle;
+			this.label5.Text="æˆ˜å½¹:"+battle;
 		}		
 		private void menuItem4_Click(object sender, System.EventArgs e)
 		{
@@ -803,163 +803,163 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		private void menuItem22_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÒ»Ü‡]";
+			battle="[é«˜æ‰‹è®©ä¸€è»Š]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem23_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÁ½Ü‡]";
+			battle="[é«˜æ‰‹è®©ä¸¤è»Š]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem25_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÒ»Âí]";
+			battle="[é«˜æ‰‹è®©ä¸€é©¬]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem26_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÁ½Âí]";
+			battle="[é«˜æ‰‹è®©ä¸¤é©¬]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem28_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÒ»ÅÚ]";
+			battle="[é«˜æ‰‹è®©ä¸€ç‚®]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem29_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÁ½ÅÚ]";
+			battle="[é«˜æ‰‹è®©ä¸¤ç‚®]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem31_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÒ»Ïó]";
+			battle="[é«˜æ‰‹è®©ä¸€è±¡]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem32_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÒ»Ê¿]";
+			battle="[é«˜æ‰‹è®©ä¸€å£«]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem34_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÈı×ä]";
+			battle="[é«˜æ‰‹è®©ä¸‰å’]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem35_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÎå×ä]";
+			battle="[é«˜æ‰‹è®©äº”å’]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem38_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÜ‡Ü‡ÅÚ]";
+			battle="[é«˜æ‰‹è®©è»Šè»Šç‚®]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem41_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÜ‡Ü‡Âí]";
+			battle="[é«˜æ‰‹è®©è»Šè»Šé©¬]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem39_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÂíÂíÅÚ]";
+			battle="[é«˜æ‰‹è®©é©¬é©¬ç‚®]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem40_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÂíÂíÜ‡]";
+			battle="[é«˜æ‰‹è®©é©¬é©¬è»Š]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem43_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÅÚÅÚÂí]";
+			battle="[é«˜æ‰‹è®©ç‚®ç‚®é©¬]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem44_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÅÚÅÚÜ‡]";
+			battle="[é«˜æ‰‹è®©ç‚®ç‚®è»Š]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem37_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖÈÃÜ‡ÂíÅÚ]";
+			battle="[é«˜æ‰‹è®©è»Šé©¬ç‚®]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 
 		private void menuItem47_Click(object sender, System.EventArgs e)
 		{
             huiQi.IsReplayAndNoAddItem = false;
-			battle="[¸ßÊÖ°ë¶ÔÈ«¾ü]";
+			battle="[é«˜æ‰‹åŠå¯¹å…¨å†›]";
 			this.LoadPictures();
-			this.label5.Text="¸ßÊÖVSÀµÄñ:"+battle;
+			this.label5.Text="é«˜æ‰‹VSèµ–é¸Ÿ:"+battle;
 		}
 		#endregion		
 				
 		
-		#region Í¼ÏóÍÏ¶¯ÊÂ¼ş´úÂë	
+		#region å›¾è±¡æ‹–åŠ¨äº‹ä»¶ä»£ç 	
 		
-		public void MouseDownFunction()        //ÉèÖÃÊó±ê°´ÏÂÊ±µÄ¶ÔÊı
+		public void MouseDownFunction()        //è®¾ç½®é¼ æ ‡æŒ‰ä¸‹æ—¶çš„å¯¹æ•°
 		{			
-			//ÊÇ²»ÊÇÂÖµ½Äã×ßÆìÁË			
+			//æ˜¯ä¸æ˜¯è½®åˆ°ä½ èµ°æ——äº†			
 			if((a.who[a.CountIndex(pictureBoxs[index].Left+width/2,pictureBoxs[index].Top+height/2)])!=signString[signRight]&&start)                
 			{
-				//²¥·Å·Ç·¨ÄÃÆìÉùÒô
+				//æ’­æ”¾éæ³•æ‹¿æ——å£°éŸ³
 				Sound.Play("no");
 				
 				Cursor.Current=new Cursor(@"..\..\cursor\stop.cur");					
 				if(GoOnceTime==false&&this.computerAuto)
 				{
-					this.label3.Text="À¶·½(you)!!! ºì·½(computer)";	
+					this.label3.Text="è“æ–¹(you)!!! çº¢æ–¹(computer)";	
 					whoGoString=this.label3.Text.ToString();
 				}
 				else
@@ -969,7 +969,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return;			
 			}
 			
-			//²¥·ÅÄÃÆìÉùÒô
+			//æ’­æ”¾æ‹¿æ——å£°éŸ³
 			Sound.Play("hold");
 			
 			wrongString="right";            
@@ -1001,12 +1001,12 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			
 			if(letDown)
 			{				
-				Point dropPoint=a.GetNearPoint(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //ÇóµÃµ±Ç°pictureBoxËùÔÚµÄµã(ÔÚÆìÅÌÉÏ´æÔÚµÄµã)			
+				Point dropPoint=a.GetNearPoint(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //æ±‚å¾—å½“å‰pictureBoxæ‰€åœ¨çš„ç‚¹(åœ¨æ——ç›˜ä¸Šå­˜åœ¨çš„ç‚¹)			
 				jiangJun.JiangJun(beforeMovePoint,dropPoint,this.a);				
 				
-				Point point=a.GetNearPoint(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //ÇóµÃµ±Ç°pictureBoxËùÔÚµÄµã(ÔÚÆìÅÌÉÏ´æÔÚµÄµã)
+				Point point=a.GetNearPoint(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //æ±‚å¾—å½“å‰pictureBoxæ‰€åœ¨çš„ç‚¹(åœ¨æ——ç›˜ä¸Šå­˜åœ¨çš„ç‚¹)
 				
-				//¼ÆËãÄ¿µÄµãÊÇÄÄ¸öpictureBox
+				//è®¡ç®—ç›®çš„ç‚¹æ˜¯å“ªä¸ªpictureBox
 				int sourceIndex=a.whichPicture[a.CountIndex(this.beforeMovePoint)];
 				int objectIndex=a.whichPicture[a.CountIndex(point)];
 
@@ -1027,19 +1027,19 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				
 				if(switchEnd==0)
 				{					
-					//²¥·ÅÂäÆì×ÓµÄÒôÀÖ
+					//æ’­æ”¾è½æ——å­çš„éŸ³ä¹
 					Sound.Play("fall");
 					
-					//½«pictureBoxÒÆµ½Ô­Î»ÖÃ
+					//å°†pictureBoxç§»åˆ°åŸä½ç½®
 					this.MovePicture(point,beforeMovePoint,index,false);	
 					SettingNoChangeDecriptText();					
 				}
 				if(switchEnd==1)
 				{
-					//²¥·ÅÂäÆìµ«Ã»³Ô¶Ô·½Æì×ÓµÄÒôÀÖ
+					//æ’­æ”¾è½æ——ä½†æ²¡åƒå¯¹æ–¹æ——å­çš„éŸ³ä¹
 					Sound.Play("fall");		
 					
-					//½«picture´Óµ±Ç°Î»ÖÃÒÆµ½Ä¿µÄÎ»ÖÃ
+					//å°†pictureä»å½“å‰ä½ç½®ç§»åˆ°ç›®çš„ä½ç½®
 					Point currentPoint=new Point(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2);
 					this.MovePicture(currentPoint,point,index,false);					
                    
@@ -1050,10 +1050,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				}
 				if(switchEnd==2)
 				{
-					//²¥·ÅÂäÆìÇÒÒÑ³ÔÁË¶Ô·½Æì×ÓµÄÒôÀÖ
+					//æ’­æ”¾è½æ——ä¸”å·²åƒäº†å¯¹æ–¹æ——å­çš„éŸ³ä¹
 					Sound.Play("kill");
 					
-					//Ê¹pictureÒÆ¶¯µ½µ±Ç°Î»ÖÃ,²¢½«µ±Ç°Î»ÖÃpictureBoxÒş²Ø
+					//ä½¿pictureç§»åŠ¨åˆ°å½“å‰ä½ç½®,å¹¶å°†å½“å‰ä½ç½®pictureBoxéšè—
 					Point currentPoint=new Point(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2);
 					this.MovePicture(currentPoint,point,index,false);	
 					this.pictureBoxs[objectIndex].Hide();
@@ -1063,8 +1063,8 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					this.pictureBox6.Visible=false;					
 				}				
 				
-				//²¥·Å½«¾üÉùÒô
-				if(jiangJun.shanShuo)  //jiangJunÀàÖĞµÄ³ÉÔ±±äÁ¿shanShuo,±êÖ¾µ±Ç°Æì¾ÖÊÇ·ñ½«¾ü
+				//æ’­æ”¾å°†å†›å£°éŸ³
+				if(jiangJun.shanShuo)  //jiangJunç±»ä¸­çš„æˆå‘˜å˜é‡shanShuo,æ ‡å¿—å½“å‰æ——å±€æ˜¯å¦å°†å†›
 				{					
 					Sound.Play("jiangjun");
 				}
@@ -1072,7 +1072,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				if(jiangJun.WinGame(this.a)!=0)
 				{					
 					this.start=false;
-					//²¥·Å±¾Æì¾Ö½áÊø-Ê¤ÀûÉùÒô
+					//æ’­æ”¾æœ¬æ——å±€ç»“æŸ-èƒœåˆ©å£°éŸ³
 					Sound.Play("win");
 					
 					this.signRight=0;
@@ -1082,14 +1082,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			}
 			else
 			{
-				switchEnd=0; //±ÜÃâ²¥·Åreturn_red/blackµÄÒôÀÖ£¬ÒòÎªÍæÕßÒÑ¾­ÖªµÀ
-				//²¥·Å·Ç·¨ÖÃÆì×ÓÒôÀÖ
+				switchEnd=0; //é¿å…æ’­æ”¾return_red/blackçš„éŸ³ä¹ï¼Œå› ä¸ºç©è€…å·²ç»çŸ¥é“
+				//æ’­æ”¾éæ³•ç½®æ——å­éŸ³ä¹
 				Sound.Play("back");
 				
-				Point point=new Point(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //ÇóµÃµ±Ç°pictureBoxËùÔÚµÄµã(ÔÚÆìÅÌÉÏ²»´æÔÚµÄµã)
+				Point point=new Point(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2); //æ±‚å¾—å½“å‰pictureBoxæ‰€åœ¨çš„ç‚¹(åœ¨æ——ç›˜ä¸Šä¸å­˜åœ¨çš„ç‚¹)
 				this.MovePicture(point,beforeMovePoint,index,false);				
 			}			
-			this.pictureBox2.Visible=false;	  //²»ÏÔÊ¾±êÖ¾¿ÉÒÔÂäÆìµÄÏÂ¼ıÍ·Í¼Æ¬			
+			this.pictureBox2.Visible=false;	  //ä¸æ˜¾ç¤ºæ ‡å¿—å¯ä»¥è½æ——çš„ä¸‹ç®­å¤´å›¾ç‰‡			
 		}		
 		
 		public void MouseMoveFunction()
@@ -1098,7 +1098,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			{				
 				if(this.pictureBoxs[index].Left>this.panel1.Left-10&&this.pictureBoxs[index].Right<this.panel1.Right+10&&this.pictureBoxs[index].Top>this.panel1.Top-10&&this.pictureBoxs[index].Bottom<this.panel1.Bottom+10)				
 				{			
-					//²¥·ÅÒÆ¶¯Æì×ÓÉùÒô
+					//æ’­æ”¾ç§»åŠ¨æ——å­å£°éŸ³
 					Sound.Play("move");
 					
 					this.pictureBoxs[index].Left=this.pictureBoxs[index].Left+(Cursor.Position.X-p.X);
@@ -1107,20 +1107,20 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					p.X=Cursor.Position.X;
 					p.Y=Cursor.Position.Y;						
 
-					//ÅĞ¶ÏÊÇ·ñÊÇÕıÈ·Î»ÖÃ;Èç¹ûÊÇ,ÔòĞŞ¸ÄÊó±êÎª"ÏÂ¼üÍ·"	
+					//åˆ¤æ–­æ˜¯å¦æ˜¯æ­£ç¡®ä½ç½®;å¦‚æœæ˜¯,åˆ™ä¿®æ”¹é¼ æ ‡ä¸º"ä¸‹é”®å¤´"	
 					Point point=a.GetNearPoint(this.pictureBoxs[index].Left+width/2,this.pictureBoxs[index].Top+height/2);										
 					if(point.X!=-1&&a.AcceptJudge(beforeMovePoint,point,jiangJun.GenEatGen))
 					{						
-						string str1=a.str[a.CountIndex(beforeMovePoint)];   //ÇóµÃÊÖÖĞÎÕµÄÊÇÊ²Ã´Æì×Ó
-						string str2=a.str[a.CountIndex(point)];             //ÇóµÃÒª·ÅÖÃµÄÎ»ÖÃÊÇÊ²Ã´Æì×Ó
-						string who1=a.who[a.CountIndex(beforeMovePoint)]; //ÇóµÃÊÖÖĞÎÕµÄÆì×ÓÊÇÊôÓÚÄÄ·½
-						string who2=a.who[a.CountIndex(point)];           //ÇóµÃÒª·ÅÆì×ÓÎ»ÖÃ´æ·ÅÄÄ·½µÄÆì×Ó
+						string str1=a.str[a.CountIndex(beforeMovePoint)];   //æ±‚å¾—æ‰‹ä¸­æ¡çš„æ˜¯ä»€ä¹ˆæ——å­
+						string str2=a.str[a.CountIndex(point)];             //æ±‚å¾—è¦æ”¾ç½®çš„ä½ç½®æ˜¯ä»€ä¹ˆæ——å­
+						string who1=a.who[a.CountIndex(beforeMovePoint)]; //æ±‚å¾—æ‰‹ä¸­æ¡çš„æ——å­æ˜¯å±äºå“ªæ–¹
+						string who2=a.who[a.CountIndex(point)];           //æ±‚å¾—è¦æ”¾æ——å­ä½ç½®å­˜æ”¾å“ªæ–¹çš„æ——å­
 
 						this.pictureBox2.Visible=true;
 						if(beforeMovePoint==point)
 						{
 							Cursor.Current=new Cursor(@"..\..\cursor\hold.cur");							
-							label3.Text="ÇëÎª ["+str1+"] Ñ¡ÔñÎ»ÖÃ";
+							label3.Text="è¯·ä¸º ["+str1+"] é€‰æ‹©ä½ç½®";
 							if(this.signRight==0)
 								this.pictureBox2.Image=Image.FromFile(@"..\..\img\boy.GIF");
 							else 
@@ -1128,7 +1128,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 						}
 						else
 						{
-							//²¥·Å¿ÉÒÔ·ÅÆìµÄÉùÒô
+							//æ’­æ”¾å¯ä»¥æ”¾æ——çš„å£°éŸ³
 							Sound.Play("mayfall");
 							
 							this.pictureBox2.Image=Image.FromFile(@"..\..\img\down.gif");
@@ -1138,7 +1138,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 									Cursor.Current=new Cursor(@"..\..\cursor\finger.cur");	
 								else
 									Cursor.Current=new Cursor(@"..\..\cursor\finger1.cur");
-								label3.Text="¿ÉÒÔ·ÅÖÃ    ["+str1+"]";
+								label3.Text="å¯ä»¥æ”¾ç½®    ["+str1+"]";
 
 							}
 							else 
@@ -1146,14 +1146,14 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 								if(who2=="red"||who1=="blue")
 								{
 									Cursor.Current=new Cursor(@"..\..\cursor\ok2.cur"); 
-									label3.Text="["+str1+"] ¿ÉÒÔ³Ô ["+str2+"]";
+									label3.Text="["+str1+"] å¯ä»¥åƒ ["+str2+"]";
 								}
 								else 
 								{
 									if(who2=="blue"||who1=="red")
 									{
 										Cursor.Current=new Cursor(@"..\..\cursor\ok1.cur");
-										label3.Text="["+str1+"] ¿ÉÒÔ³Ô ["+str2+"]";
+										label3.Text="["+str1+"] å¯ä»¥åƒ ["+str2+"]";
 									}
 								}								
 							}							
@@ -1162,7 +1162,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					}
 					else
 					{
-						label3.Text="²»ÄÜ·ÅÖÃ["+a.str[a.CountIndex(beforeMovePoint)]+"]";
+						label3.Text="ä¸èƒ½æ”¾ç½®["+a.str[a.CountIndex(beforeMovePoint)]+"]";
 						Cursor.Current=new Cursor(@"..\..\cursor\hold.cur");
 						letDown=false;
 						this.pictureBox2.Visible=false;
@@ -1172,7 +1172,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				{
 					letDown=false;
 					Cursor.Current=new Cursor(@"..\..\cursor\stop.cur");
-					label3.Text="["+a.str[a.CountIndex(beforeMovePoint)]+"] ²»ÄÜ³ö½ç";
+					label3.Text="["+a.str[a.CountIndex(beforeMovePoint)]+"] ä¸èƒ½å‡ºç•Œ";
 				}
 			}				
 		}
@@ -1181,16 +1181,16 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			if(pause)
 			{
 				Sound.Play("no");
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ×ßÆì
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½èµ°æ——
 			}
 			
 			if(keyBoard.KeyBoardOperating)
 			{
-				Sound.Play("no");  //Îª·ÀÖ¹³åÍ»,¼üÅÌ²Ù×÷Ê±,Êó±ê½ûÖ¹²Ù×÷
+				Sound.Play("no");  //ä¸ºé˜²æ­¢å†²çª,é”®ç›˜æ“ä½œæ—¶,é¼ æ ‡ç¦æ­¢æ“ä½œ
 				return;
 			}		
 			
-			if(e.Button==MouseButtons.Right)  //ÎªÁË±ÜÃâÊó±ê×óÓÒ¼ü³åÍ»,Ö»ÏŞ°´×ó¼ü
+			if(e.Button==MouseButtons.Right)  //ä¸ºäº†é¿å…é¼ æ ‡å·¦å³é”®å†²çª,åªé™æŒ‰å·¦é”®
 				return;		
 			
 			keyBoard.MouseOperating=true;
@@ -1208,7 +1208,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			if(pause)
 			{
 				Sound.Play("no");
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ×ßÆì
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½èµ°æ——
 			}
 			if(!keyBoard.MouseOperating)
 			{
@@ -1216,7 +1216,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return;
 			}			
 
-			if(e.Button==MouseButtons.Right)   //ÎªÁË±ÜÃâÊó±ê×óÓÒ¼ü³åÍ»,Ö»ÏŞ°´×ó¼ü
+			if(e.Button==MouseButtons.Right)   //ä¸ºäº†é¿å…é¼ æ ‡å·¦å³é”®å†²çª,åªé™æŒ‰å·¦é”®
 				return;		
 			MouseUpFunction();	
 		
@@ -1226,7 +1226,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		private void pictureBoxs_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{			
 			if(pause)
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ×ßÆì
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½èµ°æ——
 			if(keyBoard.KeyBoardOperating)
 			{				
 				return;
@@ -1240,15 +1240,15 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			if(battle!=null)
 				this.LoadPictures();
 			else
-				MessageBox.Show(this,"ÇëÏÈÑ¡ÔñÕ½ÒÛ");
+				MessageBox.Show(this,"è¯·å…ˆé€‰æ‹©æˆ˜å½¹");
 			templabel3_Text="";
 			this.pictureBox2.Visible=false;			
 		}
 		public void end()
 		{
-			double rateLive_Blue=(a.bluenum*10/a.blueNumTotal)*10;  //´æ»îÂÊ
+			double rateLive_Blue=(a.bluenum*10/a.blueNumTotal)*10;  //å­˜æ´»ç‡
 			double rateLive_Red=(a.rednum*10/a.redNumTotal)*10;     
-			double rateDeath_Blue=(((a.blueNumTotal*10-a.bluenum*10)/a.blueNumTotal)*10); //¾ü¶ÓËğÊ§ÂÊ
+			double rateDeath_Blue=(((a.blueNumTotal*10-a.bluenum*10)/a.blueNumTotal)*10); //å†›é˜ŸæŸå¤±ç‡
 			double rateDeath_Red=(((a.redNumTotal*10-a.rednum*10)/a.redNumTotal)*10);
 			if(rateLive_Blue==0)
 				rateLive_Blue++;
@@ -1256,48 +1256,48 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				rateLive_Red++;
 			double bluerate=(rateDeath_Blue/rateLive_Blue)*100;
 			double redrate=(rateDeath_Red/rateLive_Red)*100;
-			double blueScore=this.fen*2+bluerate*30;               //³É¼¨
+			double blueScore=this.fen*2+bluerate*30;               //æˆç»©
 			double redScore=this.fen*2+redrate*30;
 			
 			
 			if(jiangJun.WinGame(this.a)==1)
 			{				
-				this.label3.Text="À¶·½»ñÊ¤!!!";
+				this.label3.Text="è“æ–¹è·èƒœ!!!";
 				blueZhanJi++;
-				jiangJun.shanShuo=false;Thread.Sleep(500);MessageBox.Show("\nÀ¶·½Ó®µÃ±ÈÈü,ºì·½ÔÙ½ÓÔÙÁ¦!!!"+"\n\n"+this.label2.Text.ToString()+"\n\n\n"+"   À¶·½            ºì·½\n\n"+"×ÜÆìÊıÄ¿:"+a.blueNumTotal.ToString()+"¸ö"+"   ×ÜÆìÊıÄ¿:"+a.redNumTotal.ToString()+"¸ö\n\n"+"Ê§ÆìÊıÄ¿:"+(a.blueNumTotal-a.bluenum).ToString()+"¸ö  "+"  Ê§ÆìÊıÄ¿:"+(a.redNumTotal-a.rednum).ToString()+"¸ö\n\n"+"¾ü¶ÓËğÊ§ÂÊ:%"+((int)(rateDeath_Blue)).ToString()+"  ¾ü¶ÓËğÊ§ÂÊ:%"+((int)rateDeath_Red).ToString()+"\n\n"+"µÃ·Ö:"+((int)(blueScore+15000)).ToString()+"·Ö"+"    µÃ·Ö"+((int)redScore).ToString()+"·Ö","À¶·½Ê¤Àû"); 
-				this.statusBarPanel3.Text="À¶·½: "+blueZhanJi.ToString();				
+				jiangJun.shanShuo=false;Thread.Sleep(500);MessageBox.Show("\nè“æ–¹èµ¢å¾—æ¯”èµ›,çº¢æ–¹å†æ¥å†åŠ›!!!"+"\n\n"+this.label2.Text.ToString()+"\n\n\n"+"   è“æ–¹            çº¢æ–¹\n\n"+"æ€»æ——æ•°ç›®:"+a.blueNumTotal.ToString()+"ä¸ª"+"   æ€»æ——æ•°ç›®:"+a.redNumTotal.ToString()+"ä¸ª\n\n"+"å¤±æ——æ•°ç›®:"+(a.blueNumTotal-a.bluenum).ToString()+"ä¸ª  "+"  å¤±æ——æ•°ç›®:"+(a.redNumTotal-a.rednum).ToString()+"ä¸ª\n\n"+"å†›é˜ŸæŸå¤±ç‡:%"+((int)(rateDeath_Blue)).ToString()+"  å†›é˜ŸæŸå¤±ç‡:%"+((int)rateDeath_Red).ToString()+"\n\n"+"å¾—åˆ†:"+((int)(blueScore+15000)).ToString()+"åˆ†"+"    å¾—åˆ†"+((int)redScore).ToString()+"åˆ†","è“æ–¹èƒœåˆ©"); 
+				this.statusBarPanel3.Text="è“æ–¹: "+blueZhanJi.ToString();				
 			}
 			else
 			{				
-				this.label3.Text="ºì·½»ñÊ¤!!!";
+				this.label3.Text="çº¢æ–¹è·èƒœ!!!";
 				redZhanJi++;
-				jiangJun.shanShuo=false;Thread.Sleep(500);MessageBox.Show("\nºì·½Ó®µÃ±ÈÈü,À¶·½ÔÙ½ÓÔÙÁ¦!!!"+"\n\n"+this.label2.Text.ToString()+"\n\n\n"+"   À¶·½            ºì·½\n\n"+"×ÜÆìÊıÄ¿:"+a.blueNumTotal.ToString()+"¸ö"+"   ×ÜÆìÊıÄ¿:"+a.redNumTotal.ToString()+"¸ö\n\n"+"Ê§ÆìÊıÄ¿:"+(a.blueNumTotal-a.bluenum).ToString()+"¸ö  "+"  Ê§ÆìÊıÄ¿:"+(a.redNumTotal-a.rednum).ToString()+"¸ö\n\n"+"¾ü¶ÓËğÊ§ÂÊ:%"+((int)(rateDeath_Blue)).ToString()+"  ¾ü¶ÓËğÊ§ÂÊ:%"+((int)rateDeath_Red).ToString()+"\n\n"+"µÃ·Ö:"+((int)blueScore).ToString()+"·Ö"+"    µÃ·Ö"+((int)(redScore+15000)).ToString()+"·Ö","ºì·½Ê¤Àû"); 
-				this.statusBarPanel2.Text="ºì·½: "+redZhanJi.ToString();				
+				jiangJun.shanShuo=false;Thread.Sleep(500);MessageBox.Show("\nçº¢æ–¹èµ¢å¾—æ¯”èµ›,è“æ–¹å†æ¥å†åŠ›!!!"+"\n\n"+this.label2.Text.ToString()+"\n\n\n"+"   è“æ–¹            çº¢æ–¹\n\n"+"æ€»æ——æ•°ç›®:"+a.blueNumTotal.ToString()+"ä¸ª"+"   æ€»æ——æ•°ç›®:"+a.redNumTotal.ToString()+"ä¸ª\n\n"+"å¤±æ——æ•°ç›®:"+(a.blueNumTotal-a.bluenum).ToString()+"ä¸ª  "+"  å¤±æ——æ•°ç›®:"+(a.redNumTotal-a.rednum).ToString()+"ä¸ª\n\n"+"å†›é˜ŸæŸå¤±ç‡:%"+((int)(rateDeath_Blue)).ToString()+"  å†›é˜ŸæŸå¤±ç‡:%"+((int)rateDeath_Red).ToString()+"\n\n"+"å¾—åˆ†:"+((int)blueScore).ToString()+"åˆ†"+"    å¾—åˆ†"+((int)(redScore+15000)).ToString()+"åˆ†","çº¢æ–¹èƒœåˆ©"); 
+				this.statusBarPanel2.Text="çº¢æ–¹: "+redZhanJi.ToString();				
 			}
 			//this.ReStart();				
 			
-            ////Çå¿ÕÆìÅÌ
+            ////æ¸…ç©ºæ——ç›˜
             //for(int i=0;i<32;i++)
             //    this.pictureBoxs[i].Visible=false;
-            //this.label3.Text="ÇëÑ¡ÔñÓÎÏ·ÀàĞÍ";	
+            //this.label3.Text="è¯·é€‰æ‹©æ¸¸æˆç±»å‹";	
             this.pictureBox2.Visible=false;
 
-            //µ±ÏÂÆì½áÊøÊ±£¬²Å¿ÉÒÔÆôÓÃ»Ø·Å¹¦ÄÜ
+            //å½“ä¸‹æ——ç»“æŸæ—¶ï¼Œæ‰å¯ä»¥å¯ç”¨å›æ”¾åŠŸèƒ½
             menuItem74.Enabled = true;
             lbRollback.Enabled = true;
 
-            //displaystartTime=false;  //ÔÚĞÂÆì¾Ö¿ªÊ¼Ö®Ç°,²»ÄÜ»ÚÆì²Ù×÷
+            //displaystartTime=false;  //åœ¨æ–°æ——å±€å¼€å§‹ä¹‹å‰,ä¸èƒ½æ‚”æ——æ“ä½œ
 			
-            ////»Ö¸´±äÁ¿×´Ì¬,ÔÚĞÂÆì¾Ö¿ªÊ¼Ö®Ç°,²»ÄÜÉèÖÃ¶ÏµãºÍ»Ö¸´¶Ïµã
+            ////æ¢å¤å˜é‡çŠ¶æ€,åœ¨æ–°æ——å±€å¼€å§‹ä¹‹å‰,ä¸èƒ½è®¾ç½®æ–­ç‚¹å’Œæ¢å¤æ–­ç‚¹
             //maySave=false;  
             //beforeSaved=false;
 
-            //²¥·Å±³¾°ÒôÀÖ
+            //æ’­æ”¾èƒŒæ™¯éŸ³ä¹
 			Helpers.PlaySound(@"..\..\sound\bk_music\three.WAV", IntPtr.Zero, Helpers.PlaySoundFlags.SND_FILENAME | Helpers.PlaySoundFlags.SND_ASYNC | Helpers.PlaySoundFlags.SND_LOOP);
 		}
 		public double XtoY_Value(Point p1,Point p2,int x)
 		{
-			//ÉèÖ±Ïß·½³ÌÎª: y=Kx+C,¸ù¾İÁ½¸öµã¿ÉÒÔÇó³öÖ±Ïß·½³Ì,½ø¶ø¿ÉÒÔ·µ»Øx¶ÔÓ¦µÄyÖµ
+			//è®¾ç›´çº¿æ–¹ç¨‹ä¸º: y=Kx+C,æ ¹æ®ä¸¤ä¸ªç‚¹å¯ä»¥æ±‚å‡ºç›´çº¿æ–¹ç¨‹,è¿›è€Œå¯ä»¥è¿”å›xå¯¹åº”çš„yå€¼
 			double x1=p1.X,y1=p1.Y;
 			double x2=p2.X,y2=p2.Y;            
 			double C,K;			
@@ -1319,7 +1319,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
                 if (fromPoint != toPoint)
                 {
-                    if (a.GetTwoPointDistance(fromPoint, toPoint) <= 2 * height && fromPoint.X == toPoint.X)//´¹Ö±,ÇÒ¾àÀëÎªÒ»¸ñÊ±,Èç±ø
+                    if (a.GetTwoPointDistance(fromPoint, toPoint) <= 2 * height && fromPoint.X == toPoint.X)//å‚ç›´,ä¸”è·ç¦»ä¸ºä¸€æ ¼æ—¶,å¦‚å…µ
                     {
                         int i = 0;
                         if (fromPoint.Y > toPoint.Y)
@@ -1345,7 +1345,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                             }
                         }
                     }
-                    else if (fromPoint.X == toPoint.X)   //ÈçÅÚ´¹Ö±×ßÆì
+                    else if (fromPoint.X == toPoint.X)   //å¦‚ç‚®å‚ç›´èµ°æ——
                     {
                         int i = 0;
                         if (fromPoint.Y > toPoint.Y)
@@ -1396,7 +1396,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                                 int getNum = num.Next(100);
                                 if (getNum % 2 == 0 && distance < 250.0 && computerRun == false)
                                     Thread.Sleep(5);
-                                if (getNum % 2 == 0 && distance < 300 && computerRun)   //ÔÚÍËÆì/½øÆì²Ù×÷ÖĞ,ÑÓ³ÙÆì×ÓËÙ¶È,ÒÔÖÂÓÚÄÜ¹»¿´ÇåÆì×ÓÔË¶¯¹ì¼£
+                                if (getNum % 2 == 0 && distance < 300 && computerRun)   //åœ¨é€€æ——/è¿›æ——æ“ä½œä¸­,å»¶è¿Ÿæ——å­é€Ÿåº¦,ä»¥è‡´äºèƒ½å¤Ÿçœ‹æ¸…æ——å­è¿åŠ¨è½¨è¿¹
                                     Thread.Sleep(10);
                             }
                         }
@@ -1417,23 +1417,23 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			{				
 				signRight=1;
 				if(!(login.textBox1.Text.ToString().Equals("player1")&&login.textBox2.Text.ToString().Equals("player2")))
-					label3.Text=login.textBox1.Text.ToString()+" Çë×ßÆì";
+					label3.Text=login.textBox1.Text.ToString()+" è¯·èµ°æ——";
 				else
-					label3.Text="ºì·½ Çë×ßÆì";				
+					label3.Text="çº¢æ–¹ è¯·èµ°æ——";				
 			}
 			else 
 			{
 				signRight=0;
 				if(!(login.textBox1.Text.ToString().Equals("player1")&&login.textBox2.Text.ToString().Equals("player2")))
-					label3.Text=login.textBox2.Text.ToString()+" Çë×ßÆì";
+					label3.Text=login.textBox2.Text.ToString()+" è¯·èµ°æ——";
 				else
 				{					
-					label3.Text="À¶·½ Çë×ßÆì";	//²¥·ÅÀ¶·½ÏÂÆìÒôÀÖ			
+					label3.Text="è“æ–¹ è¯·èµ°æ——";	//æ’­æ”¾è“æ–¹ä¸‹æ——éŸ³ä¹			
 				}				
 			}
 			start=true;
 			whichFangQianZou=true;
-			whoGoString="²»ÄÜÁ¬Ğø×ßÆì "+label3.Text.ToString();
+			whoGoString="ä¸èƒ½è¿ç»­èµ°æ—— "+label3.Text.ToString();
 
 			if(GoOnceTime==false&&this.computerAuto)
 				GoOnceTime=true;			
@@ -1442,44 +1442,44 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		{			
 			if(whichFangQianZou==false)
 			{
-				label3.Text="ÇëÒ»·½×ßÆì";
+				label3.Text="è¯·ä¸€æ–¹èµ°æ——";
 				return;
 			}
 			if(signRight==1)
 			{				
 				if(!(login.textBox1.Text.ToString().Equals("player1")&&login.textBox2.Text.ToString().Equals("player2")))
-					label3.Text=login.textBox1.Text.ToString()+" Çë×ßÆì";
+					label3.Text=login.textBox1.Text.ToString()+" è¯·èµ°æ——";
 				else
-					label3.Text="ºì·½×ßÆì";				
+					label3.Text="çº¢æ–¹èµ°æ——";				
 			}
 			else 
 			{				
 				if(!(login.textBox1.Text.ToString().Equals("player1")&&login.textBox2.Text.ToString().Equals("player2")))
-					label3.Text=login.textBox2.Text.ToString()+" Çë×ßÆì";
+					label3.Text=login.textBox2.Text.ToString()+" è¯·èµ°æ——";
 				else
 				{					
-					label3.Text="À¶·½×ßÆì";				
+					label3.Text="è“æ–¹èµ°æ——";				
 				}
 			}
 			start=true;
-			whoGoString="²»ÄÜÁ¬Ğø×ßÆì "+label3.Text.ToString();			
+			whoGoString="ä¸èƒ½è¿ç»­èµ°æ—— "+label3.Text.ToString();			
 		}		
 		int temp_from_index;int temp_to_index;Point tempbeforemovepoint;Point temppoint;string templabel3_Text;int tempsignright;bool tempstart;string tempwrongstring;bool tempwhichfangxianzou;FlagMoveRule tempa=new FlagMoveRule(); 
 		public void SaveLastItem(int tempFromIndex,int tempToIndex,Point tempbeforeMovePoint,Point temppoint,string templabel3_Text,int tempsignRight,bool tempstart,string tempwrongString,bool tempwhichFangQianZou,FlagMoveRule a)
 		{			
-			//¸³Öµ
+			//èµ‹å€¼
 			this.temp_from_index=tempFromIndex;this.temp_to_index=tempToIndex;this.tempbeforemovepoint=tempbeforeMovePoint;this.temppoint=temppoint;this.templabel3_Text=templabel3_Text;
 			this.tempsignright=tempsignRight;this.tempstart=tempstart;this.tempwrongstring=tempwrongString;this.tempwhichfangxianzou=tempwhichFangQianZou;this.tempa=a;
 		}
 		#endregion
 
 
-		#region »ÚÆì²Ù×÷´úÂë
+		#region æ‚”æ——æ“ä½œä»£ç 
 		private void Back()
 		{		
 			if(displaystartTime==false)
 			{
-				this.label3.Text="ÇëÑ¡ÔñÓÎÏ·ÀàĞÍ";
+				this.label3.Text="è¯·é€‰æ‹©æ¸¸æˆç±»å‹";
 				Sound.Play("no");
 				return;
 			}
@@ -1489,15 +1489,15 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				add_Or_Not=false;
 			}
 			
-			//ÍËÆì²Ù×÷
-			int fromIndex=-1,toIndex=-1; string label3_Text="ÇëÒ»·½×ßÆì";
+			//é€€æ——æ“ä½œ
+			int fromIndex=-1,toIndex=-1; string label3_Text="è¯·ä¸€æ–¹èµ°æ——";
 			Point fromPoint,toPoint;
 			fromPoint=new Point(-1,-1);  toPoint=new Point(-1,-1);					
 			int end=huiQi.FallBack(ref fromIndex,ref toIndex,ref fromPoint,ref toPoint,ref label3_Text,ref this.signRight,ref this.start,ref this.wrongString,ref this.whichFangQianZou,ref this.a);
 					
 			if(end==0)
 			{
-				label3.Text="ÒÑ¾­ÍËµ½ÆğÊ¼ ÇëÒ»·½×ßÆì";
+				label3.Text="å·²ç»é€€åˆ°èµ·å§‹ è¯·ä¸€æ–¹èµ°æ——";
 				Sound.Play("huiqiend");
 				this.whichFangQianZou=false;
 				return;
@@ -1505,18 +1505,18 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
             if (!huiQi.IsReplayAndNoAddItem)
             {
-                this.label3.Text = "[" + a.str[a.CountIndex(fromPoint)] + "]" + "ºóÍË " + "        " + label3_Text;
+                this.label3.Text = "[" + a.str[a.CountIndex(fromPoint)] + "]" + "åé€€ " + "        " + label3_Text;
             }
             else
             {
-                this.label3.Text = "¹Û¿´:[" + a.str[a.CountIndex(fromPoint)] + "]" + "ºóÍË," + "" + "°´<B>¼ü¼ÌĞø...";
+                this.label3.Text = "è§‚çœ‹:[" + a.str[a.CountIndex(fromPoint)] + "]" + "åé€€," + "" + "æŒ‰<B>é”®ç»§ç»­...";
             }
-			if(fromIndex==-1&&toIndex==-1)  //×îºóÒ»²½Ö»ÊÇ´æ´¢Ò»Ğ©²ÎÊı
+			if(fromIndex==-1&&toIndex==-1)  //æœ€åä¸€æ­¥åªæ˜¯å­˜å‚¨ä¸€äº›å‚æ•°
 			{				
 				return;
 			}
 			Sound.Play("huiqi");
-			if(toIndex==-1)  //±¾²½²Ù×÷ÎªÒÆ¶¯²Ù×÷
+			if(toIndex==-1)  //æœ¬æ­¥æ“ä½œä¸ºç§»åŠ¨æ“ä½œ
 			{
 				this.MovePicture(toPoint,fromPoint,fromIndex,true);
 			}
@@ -1533,7 +1533,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			if(displaystartTime==false)
 			{
 				Sound.Play("no");
-				this.label3.Text="ÇëÑ¡ÔñÓÎÏ·ÀàĞÍ";
+				this.label3.Text="è¯·é€‰æ‹©æ¸¸æˆç±»å‹";
 				return;
 			}
             if (add_Or_Not)
@@ -1541,33 +1541,33 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				huiQi.SaveNewItem(temp_from_index,temp_to_index,tempbeforemovepoint,temppoint,templabel3_Text,tempsignright,tempstart,tempwrongstring,tempwhichfangxianzou,tempa);					
 				add_Or_Not=false;
 			}		
-			//ÍùÇ°ÒÆ¶¯Æì×Ó
-			int fromIndex=-1,toIndex=-1; string label3_Text="ÇëÒ»·½×ßÆì";
+			//å¾€å‰ç§»åŠ¨æ——å­
+			int fromIndex=-1,toIndex=-1; string label3_Text="è¯·ä¸€æ–¹èµ°æ——";
 			Point fromPoint,toPoint;
 			fromPoint=new Point(-1,-1);  toPoint=new Point(-1,-1);						
 			int end=huiQi.GoAhead(ref fromIndex,ref toIndex,ref fromPoint,ref toPoint,ref label3_Text,ref this.signRight,ref this.start,ref this.wrongString,ref this.whichFangQianZou,ref a);
 						
 			if(end==0)
 			{
-				label3.Text="ÒÑ¾­ÍËµ½×îºó "+templabel3_Text;
+				label3.Text="å·²ç»é€€åˆ°æœ€å "+templabel3_Text;
 				Sound.Play("huiqiend");
 				return;
 			}
 
             if (!huiQi.IsReplayAndNoAddItem)
             {
-                this.label3.Text = "[" + a.str[a.CountIndex(toPoint)] + "]" + "Ç°½ø " + "        " + label3_Text;
+                this.label3.Text = "[" + a.str[a.CountIndex(toPoint)] + "]" + "å‰è¿› " + "        " + label3_Text;
             }
             else
             {
-                this.label3.Text = "¹Û¿´:[" + a.str[a.CountIndex(toPoint)] + "]" + "Ç°½ø," + "" + "°´<G>¼ü¼ÌĞø...";
+                this.label3.Text = "è§‚çœ‹:[" + a.str[a.CountIndex(toPoint)] + "]" + "å‰è¿›," + "" + "æŒ‰<G>é”®ç»§ç»­...";
             }
-			if(fromIndex==-1&&toIndex==-1)  //¶Ô×îºóÒ»²½ÆìÖ»ĞŞ¸Ä²ÎÊı,²»ÒÆ¶¯Í¼Æ¬
+			if(fromIndex==-1&&toIndex==-1)  //å¯¹æœ€åä¸€æ­¥æ——åªä¿®æ”¹å‚æ•°,ä¸ç§»åŠ¨å›¾ç‰‡
 				return;			
 			
 			Sound.Play("huiqi");
 
-			if(toIndex==-1)  //±¾²½²Ù×÷ÎªÒÆ¶¯²Ù×÷
+			if(toIndex==-1)  //æœ¬æ­¥æ“ä½œä¸ºç§»åŠ¨æ“ä½œ
 			{
 				this.MovePicture(fromPoint,toPoint,fromIndex,true);
 			}
@@ -1592,7 +1592,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
             //Back
             if (displaystartTime == false)
             {
-                this.label3.Text = "ÇëÑ¡ÔñÓÎÏ·ÀàĞÍ";
+                this.label3.Text = "è¯·é€‰æ‹©æ¸¸æˆç±»å‹";
                 Sound.Play("no");
                 return;
             }
@@ -1604,10 +1604,10 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
                 huiQi.IsReplayAndNoAddItem = true;
             }
 
-            //ÍËÆì²Ù×÷
+            //é€€æ——æ“ä½œ
             int end = -1;
             int fromIndex = -1, toIndex = -1;
-            string label3_Text = "ÇëÒ»·½×ßÆì";
+            string label3_Text = "è¯·ä¸€æ–¹èµ°æ——";
             Point fromPoint, toPoint;
             fromPoint = new Point(-1, -1); toPoint = new Point(-1, -1);
             while (end != 0)
@@ -1619,19 +1619,19 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
             //if (end == 0)
             //{
-            //    label3.Text = "ÒÑ¾­ÍËµ½ÆğÊ¼ ÇëÒ»·½×ßÆì";
+            //    label3.Text = "å·²ç»é€€åˆ°èµ·å§‹ è¯·ä¸€æ–¹èµ°æ——";
             //    Sound.Play("huiqiend");
             //    this.whichFangQianZou = false;
             //    return;
             //}
 
-            //this.label3.Text = "[" + a.str[a.CountIndex(fromPoint)] + "]" + "ºóÍË " + "        " + label3_Text;
-            if (fromIndex == -1 && toIndex == -1)  //×îºóÒ»²½Ö»ÊÇ´æ´¢Ò»Ğ©²ÎÊı
+            //this.label3.Text = "[" + a.str[a.CountIndex(fromPoint)] + "]" + "åé€€ " + "        " + label3_Text;
+            if (fromIndex == -1 && toIndex == -1)  //æœ€åä¸€æ­¥åªæ˜¯å­˜å‚¨ä¸€äº›å‚æ•°
             {
                 return;
             }
             //Sound.Play("huiqi");
-            //if (toIndex == -1)  //±¾²½²Ù×÷ÎªÒÆ¶¯²Ù×÷
+            //if (toIndex == -1)  //æœ¬æ­¥æ“ä½œä¸ºç§»åŠ¨æ“ä½œ
             //{
             //    this.MovePicture(toPoint, fromPoint, fromIndex, true);
             //}
@@ -1642,19 +1642,19 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
             //}
             //this.jiangJun.JiangJun(this.a);   			
 
-            //»Ö¸´Æì×ÓÔ­Ê¼Î»ÖÃ
+            //æ¢å¤æ——å­åŸå§‹ä½ç½®
             if (battle != null)
                 this.LoadPictures();
 
-            this.label3.Text = " ÇëÁ¬Ğø°´< G >¼ü....";
+            this.label3.Text = " è¯·è¿ç»­æŒ‰< G >é”®....";
 
 
-            ////Forward(ÕıÏòÒ»²½Ò»²½ÒÆ¶¯Æì×Ó)                 
-            ////ÕâÀïÓöµ½ÎÊÌâ£º³ÌĞòÄÜ¹»ÕıÈ·ÊµÏÖ,²¢ÄÜ¹»ÕıÈ·µÄÍùÇ°×ßÆì£¬µ«PictureBoxsÔÚÒÆ¶¯¹ı³ÌÖĞ¿´²»Çå³ş£¬µÃµÈËùÓĞÆì×ÓÒÆ¶¯Íê±Ï²ÅÄÜ¿´Çå³ş,ËùÒÔ»Ø·Å¶¯×÷ÒªÓÃÓÃ»§À´´¦·¢Ã¿Ò»²½ÍùÇ°×ßÆì             
-            ////¸ĞĞËÈ¤µÄ»°£¬¿ÉÒÔ½«ÏÂÃæµÄ´úÂë×¢ÊÍÈ¥µô£¬¼´¿É¿´Ò»ÏÂÔËĞĞĞ§¹û! Ò²ĞíÄúÓĞ¸üºÃµÄ½â¾ö°ì·¨!            
+            ////Forward(æ­£å‘ä¸€æ­¥ä¸€æ­¥ç§»åŠ¨æ——å­)                 
+            ////è¿™é‡Œé‡åˆ°é—®é¢˜ï¼šç¨‹åºèƒ½å¤Ÿæ­£ç¡®å®ç°,å¹¶èƒ½å¤Ÿæ­£ç¡®çš„å¾€å‰èµ°æ——ï¼Œä½†PictureBoxsåœ¨ç§»åŠ¨è¿‡ç¨‹ä¸­çœ‹ä¸æ¸…æ¥šï¼Œå¾—ç­‰æ‰€æœ‰æ——å­ç§»åŠ¨å®Œæ¯•æ‰èƒ½çœ‹æ¸…æ¥š,æ‰€ä»¥å›æ”¾åŠ¨ä½œè¦ç”¨ç”¨æˆ·æ¥å¤„å‘æ¯ä¸€æ­¥å¾€å‰èµ°æ——             
+            ////æ„Ÿå…´è¶£çš„è¯ï¼Œå¯ä»¥å°†ä¸‹é¢çš„ä»£ç æ³¨é‡Šå»æ‰ï¼Œå³å¯çœ‹ä¸€ä¸‹è¿è¡Œæ•ˆæœ! ä¹Ÿè®¸æ‚¨æœ‰æ›´å¥½çš„è§£å†³åŠæ³•!            
             ////
             //int fromIndex2 = -1, toIndex2 = -1; 
-            //string label3_Text2 = "ÇëÒ»·½×ßÆì";
+            //string label3_Text2 = "è¯·ä¸€æ–¹èµ°æ——";
             //Point fromPoint2, toPoint2;
             //fromPoint2 = new Point(-1, -1); toPoint2 = new Point(-1, -1);
             //int end2 = -1;
@@ -1663,12 +1663,12 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
             //{
             //    Thread.Sleep(1000);
             //    end2 = huiQi.GoAhead(ref fromIndex2, ref toIndex2, ref fromPoint2, ref toPoint2, ref label3_Text, ref this.signRight, ref this.start, ref this.wrongString, ref this.whichFangQianZou, ref a);
-            //    this.label3.Text = "[" + a.str[a.CountIndex(toPoint)] + "]" + "Ç°½ø " + "        " + label3_Text2;
-            //    if (fromIndex == -1 && toIndex == -1)  //¶Ô×îºóÒ»²½ÆìÖ»ĞŞ¸Ä²ÎÊı,²»ÒÆ¶¯Í¼Æ¬
+            //    this.label3.Text = "[" + a.str[a.CountIndex(toPoint)] + "]" + "å‰è¿› " + "        " + label3_Text2;
+            //    if (fromIndex == -1 && toIndex == -1)  //å¯¹æœ€åä¸€æ­¥æ——åªä¿®æ”¹å‚æ•°,ä¸ç§»åŠ¨å›¾ç‰‡
             //        return;
 
             //    Sound.Play("huiqi");
-            //    if (toIndex2 == -1)  //±¾²½²Ù×÷ÎªÒÆ¶¯²Ù×÷
+            //    if (toIndex2 == -1)  //æœ¬æ­¥æ“ä½œä¸ºç§»åŠ¨æ“ä½œ
             //    {
             //        this.MovePicture(fromPoint2, toPoint2, fromIndex2, true);
             //    }
@@ -1682,7 +1682,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
             //if (end2 == 0)
             //{
-            //    //label3.Text = "ÒÑ¾­ÍËµ½×îºó " + templabel3_Text;
+            //    //label3.Text = "å·²ç»é€€åˆ°æœ€å " + templabel3_Text;
             //    Sound.Play("huiqiend");
             //    return;
             //}                   
@@ -1690,26 +1690,26 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
         }
 		private void label7_Click(object sender, System.EventArgs e)
 		{
-			if(pause||fetch)  //µ±¼üÅÌÕıÔÚ×ßÆì»òÔİÍ£Ê±,²»×¼ÍËÆì
+			if(pause||fetch)  //å½“é”®ç›˜æ­£åœ¨èµ°æ——æˆ–æš‚åœæ—¶,ä¸å‡†é€€æ——
 			{
 				Sound.Play("no");
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ»ÚÆì²Ù×÷
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½æ‚”æ——æ“ä½œ
 			}
 
-			label3_ShanShuo=false;        //Í£Ö¹ÉÁË¸ÎÄ×Ö
+			label3_ShanShuo=false;        //åœæ­¢é—ªçƒæ–‡å­—
 			this.Back();
 			this.computerAutoPause=true;
 		}
 
 		private void label8_Click(object sender, System.EventArgs e)
 		{
-			if(pause||fetch)  //µ±¼üÅÌÕıÔÚ×ßÆì»òÔİÍ£Ê±,²»×¼ÍËÆì
+			if(pause||fetch)  //å½“é”®ç›˜æ­£åœ¨èµ°æ——æˆ–æš‚åœæ—¶,ä¸å‡†é€€æ——
 			{
 				Sound.Play("no");
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ»ÚÆì²Ù×÷
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½æ‚”æ——æ“ä½œ
 			}
 
-			label3_ShanShuo=false;        //Í£Ö¹ÉÁË¸ÎÄ×Ö
+			label3_ShanShuo=false;        //åœæ­¢é—ªçƒæ–‡å­—
 			this.forward();
 			this.computerAutoPause=true;
 		}
@@ -1727,17 +1727,17 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		#endregion
 
 
-		#region Ö§³Ö¼üÅÌ²Ù×÷´úÂë		
+		#region æ”¯æŒé”®ç›˜æ“ä½œä»£ç 		
 			   
 		public bool fetch=false;
 		private void Form2_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
-            if (e.KeyCode == Keys.B && whetherSelected == false)  //µ±Êó±êÍæÕßÔÚ×ßÆìÊ±,¼üÅÌÍæÕß²»µÃ»ÚÆì²Ù×÷
+            if (e.KeyCode == Keys.B && whetherSelected == false)  //å½“é¼ æ ‡ç©è€…åœ¨èµ°æ——æ—¶,é”®ç›˜ç©è€…ä¸å¾—æ‚”æ——æ“ä½œ
             {
                 label7_Click(sender, e);
                 return;
             }
-            if (e.KeyCode == Keys.G && whetherSelected == false)  //µ±Êó±êÍæÕßÔÚ×ßÆìÊ±,¼üÅÌÍæÕß²»µÃ»ÚÆì²Ù×÷
+            if (e.KeyCode == Keys.G && whetherSelected == false)  //å½“é¼ æ ‡ç©è€…åœ¨èµ°æ——æ—¶,é”®ç›˜ç©è€…ä¸å¾—æ‚”æ——æ“ä½œ
             {
                 label8_Click(sender, e);
                 return;
@@ -1745,7 +1745,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			if(pause)
 			{
 				Sound.Play("no");
-				return;   //ÔİÍ£Ê±ºò²»ÄÜ×ßÆì
+				return;   //æš‚åœæ—¶å€™ä¸èƒ½èµ°æ——
 			}
 
 			if(keyBoard.MouseOperating)
@@ -1754,7 +1754,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return;
 			}   
 			
-			//½«¹â±êÒÆ¶¯µ½×î½üÒ»µã´úÂë			
+			//å°†å…‰æ ‡ç§»åŠ¨åˆ°æœ€è¿‘ä¸€ç‚¹ä»£ç 			
 				double distance=double.MaxValue;
 				int smallIndex=-1;
 				Point cursorCurrentPoint=new Point(Cursor.Position.X,Cursor.Position.Y-48);
@@ -1773,7 +1773,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 					return;
 				
 				MouseDownFunction();
-				if(label3_ShanShuo==false)  //MouseDownFunctionË³ÀûÖ´ĞĞ(¼´ÊÇÂÖµ½¸Ã·½×ßÆì)
+				if(label3_ShanShuo==false)  //MouseDownFunctioné¡ºåˆ©æ‰§è¡Œ(å³æ˜¯è½®åˆ°è¯¥æ–¹èµ°æ——)
 				{
 					fetch=true;				
 					keyBoard.KeyBoardOperating=true;
@@ -1792,7 +1792,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				fetch=false;
 				MouseUpFunction();				
 				keyBoard.KeyBoardOperating=false;				
-				string str="ÒÑ·ÅÏÂÆì×Ó    ";
+				string str="å·²æ”¾ä¸‹æ——å­    ";
 				str+=this.label3.Text.ToString();
 				this.label3.Text=str;
 			}
@@ -1833,7 +1833,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		#endregion
 
 
-		#region ÓÎÏ· ÉèÖÃ¶Ïµã/»Ö¸´¶Ïµã ´úÂë
+		#region æ¸¸æˆ è®¾ç½®æ–­ç‚¹/æ¢å¤æ–­ç‚¹ ä»£ç 
 		
 		public bool[] pictureBoxsStatus=new bool[32];
 		public Point[] pictureBoxsLocation=new Point[32];
@@ -1843,7 +1843,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		{			
 			for(int i=0;i<32;i++)
 			{
-				this.pictureBoxsStatus[i]=false;  //³õÊ¼»¯
+				this.pictureBoxsStatus[i]=false;  //åˆå§‹åŒ–
 
 				this.pictureBoxsStatus[i]=this.pictureBoxs[i].Visible;				
 			}
@@ -1859,35 +1859,35 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 			for(int i=0;i<32;i++)
 				this.pictureBoxs[i].Location=new Point(this.pictureBoxsLocation[i].X,this.pictureBoxsLocation[i].Y);
 		}
-		private void menuItem9_Click(object sender, System.EventArgs e)  //¶ÁÈ¡¶Ïµã
+		private void menuItem9_Click(object sender, System.EventArgs e)  //è¯»å–æ–­ç‚¹
 		{			
 			if(beforeSaved==false)
 			{
-				MessageBox.Show("Ã»ÓĞÉèÖÃ¶Ïµã,²»ÄÜ»Ö¸´¶Ïµã!!!");
+				MessageBox.Show("æ²¡æœ‰è®¾ç½®æ–­ç‚¹,ä¸èƒ½æ¢å¤æ–­ç‚¹!!!");
 				return;
 			}
 			this.fileOperate.Read(ref Form2.form2);			
 			this.RestorePictureBoxStatus();			
 			this.ReFresh();			
 			if(this.signRight==0&&this.whichFangQianZou)
-				this.label3.Text="À¶·½×ßÆì";
+				this.label3.Text="è“æ–¹èµ°æ——";
 			else
 			{
 				if(this.signRight==1&&this.whichFangQianZou)
-					this.label3.Text="ºì·½×ßÆì";
-				else this.label3.Text="ÇëÒ»·½×ßÆì";
+					this.label3.Text="çº¢æ–¹èµ°æ——";
+				else this.label3.Text="è¯·ä¸€æ–¹èµ°æ——";
 			}
 		}
 
-		private void menuItem8_Click(object sender, System.EventArgs e)   //ÉèÖÃ¶Ïµã
+		private void menuItem8_Click(object sender, System.EventArgs e)   //è®¾ç½®æ–­ç‚¹
 		{		
 			if(maySave==false)			
 			{
-				MessageBox.Show("ÓÎÏ·¿ªÊ¼ºó,²Å¿ÉÒÔÉèÖÃ¶Ïµã!!!");
+				MessageBox.Show("æ¸¸æˆå¼€å§‹å,æ‰å¯ä»¥è®¾ç½®æ–­ç‚¹!!!");
 				return;					
 			}
 			this.SavePictureBoxsStatus();			
-			fileOperate.Save(Form2.form2);//±£´æ´úÂë
+			fileOperate.Save(Form2.form2);//ä¿å­˜ä»£ç 
 			beforeSaved=true;
 		}
 		#endregion	

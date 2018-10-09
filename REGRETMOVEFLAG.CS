@@ -3,14 +3,14 @@ using System.Collections;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ÖÇÄÜÏóÆåÓÎÏ·
+namespace SmartChessGame
 {
-	/// ///****¸ÃÀàÖ÷Òª¶Ô»ÚÆì(ÍËÆì)²Ù×÷	  
+	/// ///****è¯¥ç±»ä¸»è¦å¯¹æ‚”æ——(é€€æ——)æ“ä½œ	  
 	public class RegretMoveFlag
 	{
         public const int Length = 500;
-		public int[] fromIndex=new int[Length];         //¼ÇÂ¼×ßÒ»²½ÆìÊ±,¶¯µÄÊÇÄÄ¸öÍ¼Æ¬¿Ø¼ş(pictureBox)
-		public int[]   toIndex=new int[Length];         //¼ÇÂ¼×ßÒ»²½ÆìÊ±,¶¯µÄÊÇÄÄ¸öÍ¼Æ¬¿Ø¼ş(pictureBox)		
+		public int[] fromIndex=new int[Length];         //è®°å½•èµ°ä¸€æ­¥æ——æ—¶,åŠ¨çš„æ˜¯å“ªä¸ªå›¾ç‰‡æ§ä»¶(pictureBox)
+		public int[]   toIndex=new int[Length];         //è®°å½•èµ°ä¸€æ­¥æ——æ—¶,åŠ¨çš„æ˜¯å“ªä¸ªå›¾ç‰‡æ§ä»¶(pictureBox)		
         
 		public Point[] fromPoint=new Point[Length];
 		public Point[]   toPoint=new Point[Length];
@@ -18,15 +18,15 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		public int[] fromPointIndex=new int[Length];  //******
 		public int[] toPointIndex=new int[Length];
 		
-		public string[] label3_Text=new string[Length]; //´æ·ÅÃ¿Ò»²½ÆìµÄËµÃ÷ÎÄ×Ö       			
-		public int[] signRight=new int[Length];         //±£´æÄÄ·½×ßÆì±êÖ¾
-		public bool[] start=new bool[Length];           //±äÁ¿×÷ÓÃ:Ê¹µÚÒ»´Î×ßÆìÊ±,ÎŞÌõ¼şÖ´ĞĞ,Òò´Ëµ±¿ÒÆìµ½µÚÒ»²½Ö®Ç°Ê±,Òª»Ö¸´±êÖ¾Î»      
-		public string[] wrongString=new string[Length]; //¼ÇÂ¼ÅÅ³â±êÖ¾,µ±mouse_downÊÂ¼ş²»Ö´ĞĞÊ±,²»ÄÜÖ´ĞĞmouse_upÊÂ¼ş						
-		public bool[] whichFangQianZou=new bool[Length];//±äÁ¿×÷ÓÃ:ÒòÎªÒ»¿ªÊ¼ÄÄ·½ÏÈ×ßÆìÊÇÍæÕßÀ´¾ö¶¨;Òò´ËĞèÒªÕâ¸ö±äÁ¿ÊµÏÖÆä¹¦ÄÜ;µ±ÍËÆìµ½µÚÒ»²½Ö®Ç°Ê±,Òª»Ö¸´±êÖ¾Î»    
+		public string[] label3_Text=new string[Length]; //å­˜æ”¾æ¯ä¸€æ­¥æ——çš„è¯´æ˜æ–‡å­—       			
+		public int[] signRight=new int[Length];         //ä¿å­˜å“ªæ–¹èµ°æ——æ ‡å¿—
+		public bool[] start=new bool[Length];           //å˜é‡ä½œç”¨:ä½¿ç¬¬ä¸€æ¬¡èµ°æ——æ—¶,æ— æ¡ä»¶æ‰§è¡Œ,å› æ­¤å½“æ³æ——åˆ°ç¬¬ä¸€æ­¥ä¹‹å‰æ—¶,è¦æ¢å¤æ ‡å¿—ä½      
+		public string[] wrongString=new string[Length]; //è®°å½•æ’æ–¥æ ‡å¿—,å½“mouse_downäº‹ä»¶ä¸æ‰§è¡Œæ—¶,ä¸èƒ½æ‰§è¡Œmouse_upäº‹ä»¶						
+		public bool[] whichFangQianZou=new bool[Length];//å˜é‡ä½œç”¨:å› ä¸ºä¸€å¼€å§‹å“ªæ–¹å…ˆèµ°æ——æ˜¯ç©è€…æ¥å†³å®š;å› æ­¤éœ€è¦è¿™ä¸ªå˜é‡å®ç°å…¶åŠŸèƒ½;å½“é€€æ——åˆ°ç¬¬ä¸€æ­¥ä¹‹å‰æ—¶,è¦æ¢å¤æ ‡å¿—ä½    
 		
 		public FlagMoveRule[] b=new FlagMoveRule[Length];	
-		public int activeIndex;                            //ÆğÁ÷¶¯Ö¸Õë×÷ÓÃ
-		public int tailIndex;                              //Ê¼ÖÕÖ¸ÏòÎ²²¿(¸Õ×ßÍêµÄ×îºóÒ»²½Æì)µÄË÷Òı
+		public int activeIndex;                            //èµ·æµåŠ¨æŒ‡é’ˆä½œç”¨
+		public int tailIndex;                              //å§‹ç»ˆæŒ‡å‘å°¾éƒ¨(åˆšèµ°å®Œçš„æœ€åä¸€æ­¥æ——)çš„ç´¢å¼•
 
         public bool IsReplayAndNoAddItem = false;
 		
@@ -39,7 +39,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		}
 		public void Initialize()
 		{
-			//³õÊ¼»¯¸÷Êı×é
+			//åˆå§‹åŒ–å„æ•°ç»„
 			for(int i=0;i<Length;i++)
 			{
 				fromIndex[i]=-1;	  toIndex[i]=-1;
@@ -57,13 +57,13 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				this.b[i]=new FlagMoveRule();
 				this.b[i].Initialize();
 			}				
-			//³õÊ¼»¯Ë÷Òı
+			//åˆå§‹åŒ–ç´¢å¼•
 			activeIndex=-1;
 			tailIndex=-1;
 		}
 		public void Initialize(int i)
 		{
-			//³õÊ¼»¯Ò»¸öÊı×é
+			//åˆå§‹åŒ–ä¸€ä¸ªæ•°ç»„
 			fromIndex[i]=-1;	  toIndex[i]=-1;
 			fromPoint[i].X=-1;	  fromPoint[i].Y=-1;
 			toPoint[i].X=-1;	  toPoint[i].Y=-1;
@@ -110,7 +110,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 
 			if(this.activeIndex==Length)
 			{
-				MessageBox.Show("»ÚÆìÀà¿Õ¼ä²»¹»,Ó¦À©´ó¿Õ¼ä");
+				MessageBox.Show("æ‚”æ——ç±»ç©ºé—´ä¸å¤Ÿ,åº”æ‰©å¤§ç©ºé—´");
 				return;
 			}   
 			this.fromIndex[this.activeIndex]=fromIndex;
@@ -156,7 +156,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 				return 0;
 			if(this.activeIndex>=this.tailIndex)
 				this.activeIndex=this.tailIndex-1;
-			if(this.activeIndex<=-1)                   //*******************·ÀÖ¹Ò»¿ªÊ¼¾ÍµãºóÍË
+			if(this.activeIndex<=-1)                   //*******************é˜²æ­¢ä¸€å¼€å§‹å°±ç‚¹åé€€
 				return 0;
 			
 			fromIndex=this.fromIndex[this.activeIndex];
@@ -180,7 +180,7 @@ namespace ÖÇÄÜÏóÆåÓÎÏ·
 		public int GoAhead(ref int fromIndex,ref int toIndex,ref Point fromPoint,ref Point toPoint,ref string label3_Text,ref int signRight,ref bool start,ref string wrongString,ref bool whichFangQianZou,ref FlagMoveRule b)
 		{			
 			if(this.activeIndex>=this.tailIndex-1)
-				return 0;            //Ö»ÄÜÇ°½øµ½×îºóÒ»²½Æì
+				return 0;            //åªèƒ½å‰è¿›åˆ°æœ€åä¸€æ­¥æ——
 			this.activeIndex++;	
 			if(this.activeIndex<0)
 				this.activeIndex=0;
