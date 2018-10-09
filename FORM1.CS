@@ -10,7 +10,7 @@ using System.Data;
 namespace SmartChessGame
 {
 	/// <summary>
-	/// ***FormÀàÖ÷ÒªÊÇ»æ³ö½çÃæ,½øĞĞÒ»Ğ©¼òµ¥µÄ³õÊ¼»¯²Ù×÷
+	/// ***Formç±»ä¸»è¦æ˜¯ç»˜å‡ºç•Œé¢,è¿›è¡Œä¸€äº›ç®€å•çš„åˆå§‹åŒ–æ“ä½œ
 	/// </summary>
 	public class Form1 : System.Windows.Forms.Form
 	{
@@ -105,10 +105,10 @@ namespace SmartChessGame
 		public System.Windows.Forms.Label label8;
 	 
 		public string[] playName=new string[5];
-		//×Ô¶¨ÒåÈ«¾Ö±äÁ¿
+		//è‡ªå®šä¹‰å…¨å±€å˜é‡
 		public  Point []point=new Point[90];
 		public int width,height;
-		public int blueZhanJi=0;  //Õ½¼¨
+		public int blueZhanJi=0;  //æˆ˜ç»©
 		public int redZhanJi=0;
 		
 		static public Form3 login;
@@ -131,19 +131,19 @@ namespace SmartChessGame
 		public Form1()
 		{
 			//
-			// Windows ´°ÌåÉè¼ÆÆ÷Ö§³ÖËù±ØĞèµÄ
+			// Windows çª—ä½“è®¾è®¡å™¨æ”¯æŒæ‰€å¿…éœ€çš„
 			//			
 			if(this.displaySize==-1)
 				AdjustDisplay();
 			InitializeComponent(); 			
 			MyInitializeComponent();
 			//
-			// TODO: ÔÚ InitializeComponent µ÷ÓÃºóÌí¼ÓÈÎºÎ¹¹Ôìº¯Êı´úÂë
+			// TODO: åœ¨ InitializeComponent è°ƒç”¨åæ·»åŠ ä»»ä½•æ„é€ å‡½æ•°ä»£ç 
 			//				
 		}
 
 		/// <summary>
-		/// ÇåÀíËùÓĞÕıÔÚÊ¹ÓÃµÄ×ÊÔ´¡£
+		/// æ¸…ç†æ‰€æœ‰æ­£åœ¨ä½¿ç”¨çš„èµ„æºã€‚
 		/// </summary>
 		protected override void Dispose( bool disposing )
 		{
@@ -157,10 +157,10 @@ namespace SmartChessGame
 			base.Dispose( disposing );
 		}
 
-		#region Windows ´°ÌåÉè¼ÆÆ÷Éú³ÉµÄ´úÂë
+		#region Windows çª—ä½“è®¾è®¡å™¨ç”Ÿæˆçš„ä»£ç 
 		/// <summary>
-		/// Éè¼ÆÆ÷Ö§³ÖËùĞèµÄ·½·¨ - ²»ÒªÊ¹ÓÃ´úÂë±à¼­Æ÷ĞŞ¸Ä
-		/// ´Ë·½·¨µÄÄÚÈİ¡£
+		/// è®¾è®¡å™¨æ”¯æŒæ‰€éœ€çš„æ–¹æ³• - ä¸è¦ä½¿ç”¨ä»£ç ç¼–è¾‘å™¨ä¿®æ”¹
+		/// æ­¤æ–¹æ³•çš„å†…å®¹ã€‚
 		/// </summary>
 		private void InitializeComponent()
 		{
@@ -332,45 +332,45 @@ namespace SmartChessGame
             this.lbRollback.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbRollback.Enabled = false;
             this.lbRollback.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.lbRollback.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbRollback.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbRollback.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.lbRollback.Location = new System.Drawing.Point(96, 319);
             this.lbRollback.Name = "lbRollback";
             this.lbRollback.Size = new System.Drawing.Size(72, 23);
             this.lbRollback.TabIndex = 16;
-            this.lbRollback.Text = "<»Ø·Å>";
+            this.lbRollback.Text = "<å›æ”¾>";
             this.lbRollback.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label8.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(88, 368);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(72, 23);
             this.label8.TabIndex = 15;
-            this.label8.Text = "<Ç°½ø>";
+            this.label8.Text = "<å‰è¿›>";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
             // 
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label7.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(8, 368);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 23);
             this.label7.TabIndex = 14;
-            this.label7.Text = "<ºóÍË>";
+            this.label7.Text = "<åé€€>";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.label1.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Gold;
             this.label1.Location = new System.Drawing.Point(8, 144);
             this.label1.Name = "label1";
@@ -383,7 +383,7 @@ namespace SmartChessGame
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label6.ForeColor = System.Drawing.Color.Maroon;
             this.label6.Location = new System.Drawing.Point(56, 280);
             this.label6.Name = "label6";
@@ -405,36 +405,36 @@ namespace SmartChessGame
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label5.Location = new System.Drawing.Point(8, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(152, 40);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Õ½ÒÛ:ÇëÑ¡ÔñÕ½ÒÛ";
+            this.label5.Text = "æˆ˜å½¹:è¯·é€‰æ‹©æˆ˜å½¹";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.Font = new System.Drawing.Font("ËÎÌå", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Font = new System.Drawing.Font("å®‹ä½“", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(8, 335);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 23);
             this.label4.TabIndex = 9;
-            this.label4.Text = "¹¦ÄÜ²Ù×÷:";
+            this.label4.Text = "åŠŸèƒ½æ“ä½œ:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label3.Location = new System.Drawing.Point(8, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(152, 48);
             this.label3.TabIndex = 6;
-            this.label3.Text = "ÇëÑ¡ÔñÓÎÏ·ÀàĞÍ";
+            this.label3.Text = "è¯·é€‰æ‹©æ¸¸æˆç±»å‹";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox5
@@ -486,12 +486,12 @@ namespace SmartChessGame
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("¿¬Ìå_GB2312", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("æ¥·ä½“_GB2312", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.Location = new System.Drawing.Point(8, 200);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(152, 40);
             this.label2.TabIndex = 1;
-            this.label2.Text = "ÒÑÓÃÊ±¼ä:";
+            this.label2.Text = "å·²ç”¨æ—¶é—´:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statusBar1
@@ -508,33 +508,33 @@ namespace SmartChessGame
             this.statusBar1.ShowPanels = true;
             this.statusBar1.Size = new System.Drawing.Size(568, 24);
             this.statusBar1.TabIndex = 2;
-            this.statusBar1.Text = "ÖĞ¹úÏóÆì";
+            this.statusBar1.Text = "ä¸­å›½è±¡æ——";
             this.statusBar1.PanelClick += new System.Windows.Forms.StatusBarPanelClickEventHandler(this.statusBar1_PanelClick);
             // 
             // statusBarPanel1
             // 
             this.statusBarPanel1.Alignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.statusBarPanel1.Name = "statusBarPanel1";
-            this.statusBarPanel1.Text = "Õ½¼¨:";
+            this.statusBarPanel1.Text = "æˆ˜ç»©:";
             this.statusBarPanel1.Width = 50;
             // 
             // statusBarPanel2
             // 
             this.statusBarPanel2.Name = "statusBarPanel2";
-            this.statusBarPanel2.Text = "ºì·½: 0";
+            this.statusBarPanel2.Text = "çº¢æ–¹: 0";
             this.statusBarPanel2.Width = 50;
             // 
             // statusBarPanel3
             // 
             this.statusBarPanel3.Name = "statusBarPanel3";
-            this.statusBarPanel3.Text = "À¶·½: 0";
+            this.statusBarPanel3.Text = "è“æ–¹: 0";
             this.statusBarPanel3.Width = 50;
             // 
             // statusBarPanel4
             // 
             this.statusBarPanel4.Alignment = System.Windows.Forms.HorizontalAlignment.Right;
             this.statusBarPanel4.Name = "statusBarPanel4";
-            this.statusBarPanel4.Text = "µ±Ç°Ê±¼ä:";
+            this.statusBarPanel4.Text = "å½“å‰æ—¶é—´:";
             this.statusBarPanel4.Width = 550;
             // 
             // mainMenu1
@@ -557,17 +557,17 @@ namespace SmartChessGame
             this.menuItem67,
             this.menuItem69,
             this.menuItem12});
-            this.menuItem1.Text = "ÎÄ¼ş(&F)";
+            this.menuItem1.Text = "æ–‡ä»¶(&F)";
             // 
             // menuItem8
             // 
             this.menuItem8.Index = 0;
-            this.menuItem8.Text = "ÉèÖÃ¶Ïµã...";
+            this.menuItem8.Text = "è®¾ç½®æ–­ç‚¹...";
             // 
             // menuItem9
             // 
             this.menuItem9.Index = 1;
-            this.menuItem9.Text = "¶ÁÈ¡¶Ïµã...";
+            this.menuItem9.Text = "è¯»å–æ–­ç‚¹...";
             // 
             // menuItem10
             // 
@@ -577,13 +577,13 @@ namespace SmartChessGame
             // menuItem11
             // 
             this.menuItem11.Index = 3;
-            this.menuItem11.Text = "ÇĞ»»µ½Ë«ÈËÓÎÏ·";
+            this.menuItem11.Text = "åˆ‡æ¢åˆ°åŒäººæ¸¸æˆ";
             this.menuItem11.Click += new System.EventHandler(this.menuItem11_Click);
             // 
             // menuItem67
             // 
             this.menuItem67.Index = 4;
-            this.menuItem67.Text = "ÇĞ»»µ½µ¥ÈËÓÎÏ·";
+            this.menuItem67.Text = "åˆ‡æ¢åˆ°å•äººæ¸¸æˆ";
             this.menuItem67.Click += new System.EventHandler(this.menuItem67_Click);
             // 
             // menuItem69
@@ -594,7 +594,7 @@ namespace SmartChessGame
             // menuItem12
             // 
             this.menuItem12.Index = 6;
-            this.menuItem12.Text = "ÍË³ö";
+            this.menuItem12.Text = "é€€å‡º";
             this.menuItem12.Click += new System.EventHandler(this.menuItem12_Click);
             // 
             // menuItem2
@@ -614,12 +614,12 @@ namespace SmartChessGame
             this.menuItem57,
             this.menuItem73,
             this.menuItem74});
-            this.menuItem2.Text = "²Ù×÷(&O)";
+            this.menuItem2.Text = "æ“ä½œ(&O)";
             // 
             // menuItem3
             // 
             this.menuItem3.Index = 0;
-            this.menuItem3.Text = "ĞÂ¿ªÒ»¾Ö";
+            this.menuItem3.Text = "æ–°å¼€ä¸€å±€";
             // 
             // menuItem68
             // 
@@ -630,7 +630,7 @@ namespace SmartChessGame
             // 
             this.menuItem4.Checked = true;
             this.menuItem4.Index = 2;
-            this.menuItem4.Text = "ÖØĞÂ¿ªÊ¼";
+            this.menuItem4.Text = "é‡æ–°å¼€å§‹";
             // 
             // menuItem5
             // 
@@ -649,47 +649,47 @@ namespace SmartChessGame
             this.menuItem18,
             this.menuItem19,
             this.menuItem20});
-            this.menuItem6.Text = "Ñ¡Ôñ²Ğ¾Ö";
+            this.menuItem6.Text = "é€‰æ‹©æ®‹å±€";
             // 
             // menuItem7
             // 
             this.menuItem7.Index = 0;
-            this.menuItem7.Text = "Ü‡VSÂíÖ®Õ½";
+            this.menuItem7.Text = "è»ŠVSé©¬ä¹‹æˆ˜";
             // 
             // menuItem13
             // 
             this.menuItem13.Index = 1;
-            this.menuItem13.Text = "Ü‡VSÅÚÖ®Õ½";
+            this.menuItem13.Text = "è»ŠVSç‚®ä¹‹æˆ˜";
             // 
             // menuItem14
             // 
             this.menuItem14.Index = 2;
-            this.menuItem14.Text = "±øVS±øÖ®Õ½";
+            this.menuItem14.Text = "å…µVSå…µä¹‹æˆ˜";
             // 
             // menuItem16
             // 
             this.menuItem16.Index = 3;
-            this.menuItem16.Text = "ÂíVSÅÚÖ®Õ½";
+            this.menuItem16.Text = "é©¬VSç‚®ä¹‹æˆ˜";
             // 
             // menuItem17
             // 
             this.menuItem17.Index = 4;
-            this.menuItem17.Text = "ÅÚÂíÜ‡Ö®Õ½";
+            this.menuItem17.Text = "ç‚®é©¬è»Šä¹‹æˆ˜";
             // 
             // menuItem18
             // 
             this.menuItem18.Index = 5;
-            this.menuItem18.Text = "ÅÚVS±øÖ®Õ½";
+            this.menuItem18.Text = "ç‚®VSå…µä¹‹æˆ˜";
             // 
             // menuItem19
             // 
             this.menuItem19.Index = 6;
-            this.menuItem19.Text = "½«¾üÖ®Õ½";
+            this.menuItem19.Text = "å°†å†›ä¹‹æˆ˜";
             // 
             // menuItem20
             // 
             this.menuItem20.Index = 7;
-            this.menuItem20.Text = "ÎŞÊ¿Ö®Õ½";
+            this.menuItem20.Text = "æ— å£«ä¹‹æˆ˜";
             // 
             // menuItem48
             // 
@@ -714,17 +714,17 @@ namespace SmartChessGame
             this.menuItem33,
             this.menuItem34,
             this.menuItem35});
-            this.menuItem21.Text = "Ò»°ã¸ßÊÖVS²ËÄñ";
+            this.menuItem21.Text = "ä¸€èˆ¬é«˜æ‰‹VSèœé¸Ÿ";
             // 
             // menuItem22
             // 
             this.menuItem22.Index = 0;
-            this.menuItem22.Text = "¸ßÊÖÈÃÒ»Ü‡";
+            this.menuItem22.Text = "é«˜æ‰‹è®©ä¸€è»Š";
             // 
             // menuItem23
             // 
             this.menuItem23.Index = 1;
-            this.menuItem23.Text = "¸ßÊÖÈÃÁ½Ü‡";
+            this.menuItem23.Text = "é«˜æ‰‹è®©ä¸¤è»Š";
             // 
             // menuItem24
             // 
@@ -734,12 +734,12 @@ namespace SmartChessGame
             // menuItem25
             // 
             this.menuItem25.Index = 3;
-            this.menuItem25.Text = "¸ßÊÖÈÃÒ»Âí";
+            this.menuItem25.Text = "é«˜æ‰‹è®©ä¸€é©¬";
             // 
             // menuItem26
             // 
             this.menuItem26.Index = 4;
-            this.menuItem26.Text = "¸ßÊÖÈÃÁ½Âí";
+            this.menuItem26.Text = "é«˜æ‰‹è®©ä¸¤é©¬";
             // 
             // menuItem27
             // 
@@ -749,12 +749,12 @@ namespace SmartChessGame
             // menuItem28
             // 
             this.menuItem28.Index = 6;
-            this.menuItem28.Text = "¸ßÊÖÈÃÒ»ÅÚ";
+            this.menuItem28.Text = "é«˜æ‰‹è®©ä¸€ç‚®";
             // 
             // menuItem29
             // 
             this.menuItem29.Index = 7;
-            this.menuItem29.Text = "¸ßÊÖÈÃÁ½ÅÚ";
+            this.menuItem29.Text = "é«˜æ‰‹è®©ä¸¤ç‚®";
             // 
             // menuItem30
             // 
@@ -764,12 +764,12 @@ namespace SmartChessGame
             // menuItem31
             // 
             this.menuItem31.Index = 9;
-            this.menuItem31.Text = "¸ßÊÖÈÃÒ»Ïó";
+            this.menuItem31.Text = "é«˜æ‰‹è®©ä¸€è±¡";
             // 
             // menuItem32
             // 
             this.menuItem32.Index = 10;
-            this.menuItem32.Text = "¸ßÊÖÈÃÒ»Ê¿";
+            this.menuItem32.Text = "é«˜æ‰‹è®©ä¸€å£«";
             // 
             // menuItem33
             // 
@@ -779,12 +779,12 @@ namespace SmartChessGame
             // menuItem34
             // 
             this.menuItem34.Index = 12;
-            this.menuItem34.Text = "¸ßÊÖÈÃÈı×ä";
+            this.menuItem34.Text = "é«˜æ‰‹è®©ä¸‰å’";
             // 
             // menuItem35
             // 
             this.menuItem35.Index = 13;
-            this.menuItem35.Text = "¸ßÊÖÈÃÎå×ä";
+            this.menuItem35.Text = "é«˜æ‰‹è®©äº”å’";
             // 
             // menuItem36
             // 
@@ -801,17 +801,17 @@ namespace SmartChessGame
             this.menuItem45,
             this.menuItem37,
             this.menuItem47});
-            this.menuItem36.Text = "¶¥¼â¸ßÊÖVS²ËÄñ";
+            this.menuItem36.Text = "é¡¶å°–é«˜æ‰‹VSèœé¸Ÿ";
             // 
             // menuItem38
             // 
             this.menuItem38.Index = 0;
-            this.menuItem38.Text = "¸ßÊÖÈÃÜ‡Ü‡ÅÚ";
+            this.menuItem38.Text = "é«˜æ‰‹è®©è»Šè»Šç‚®";
             // 
             // menuItem41
             // 
             this.menuItem41.Index = 1;
-            this.menuItem41.Text = "¸ßÊÖÈÃÜ‡Ü‡Âí";
+            this.menuItem41.Text = "é«˜æ‰‹è®©è»Šè»Šé©¬";
             // 
             // menuItem46
             // 
@@ -821,12 +821,12 @@ namespace SmartChessGame
             // menuItem39
             // 
             this.menuItem39.Index = 3;
-            this.menuItem39.Text = "¸ßÊÖÈÃÂíÂíÅÚ";
+            this.menuItem39.Text = "é«˜æ‰‹è®©é©¬é©¬ç‚®";
             // 
             // menuItem40
             // 
             this.menuItem40.Index = 4;
-            this.menuItem40.Text = "¸ßÊÖÈÃÂíÂíÜ‡";
+            this.menuItem40.Text = "é«˜æ‰‹è®©é©¬é©¬è»Š";
             // 
             // menuItem42
             // 
@@ -836,12 +836,12 @@ namespace SmartChessGame
             // menuItem43
             // 
             this.menuItem43.Index = 6;
-            this.menuItem43.Text = "¸ßÊÖÈÃÅÚÅÚÂí";
+            this.menuItem43.Text = "é«˜æ‰‹è®©ç‚®ç‚®é©¬";
             // 
             // menuItem44
             // 
             this.menuItem44.Index = 7;
-            this.menuItem44.Text = "¸ßÊÖÈÃÅÚÅÚÜ‡";
+            this.menuItem44.Text = "é«˜æ‰‹è®©ç‚®ç‚®è»Š";
             // 
             // menuItem45
             // 
@@ -851,12 +851,12 @@ namespace SmartChessGame
             // menuItem37
             // 
             this.menuItem37.Index = 9;
-            this.menuItem37.Text = "¸ßÊÖÈÃÜ‡ÂíÅÚ";
+            this.menuItem37.Text = "é«˜æ‰‹è®©è»Šé©¬ç‚®";
             // 
             // menuItem47
             // 
             this.menuItem47.Index = 10;
-            this.menuItem47.Text = "¸ßÊÖ°ë¶ÔÈ«¾ü";
+            this.menuItem47.Text = "é«˜æ‰‹åŠå¯¹å…¨å†›";
             // 
             // menuItem49
             // 
@@ -866,13 +866,13 @@ namespace SmartChessGame
             // menuItem50
             // 
             this.menuItem50.Index = 9;
-            this.menuItem50.Text = "×ª»»ÍæÕß³Æºô";
+            this.menuItem50.Text = "è½¬æ¢ç©è€…ç§°å‘¼";
             this.menuItem50.Click += new System.EventHandler(this.label1_DoubleClick);
             // 
             // menuItem57
             // 
             this.menuItem57.Index = 10;
-            this.menuItem57.Text = "ÔİÍ£";
+            this.menuItem57.Text = "æš‚åœ";
             // 
             // menuItem73
             // 
@@ -883,7 +883,7 @@ namespace SmartChessGame
             // 
             this.menuItem74.Enabled = false;
             this.menuItem74.Index = 12;
-            this.menuItem74.Text = "»Ø·Å";
+            this.menuItem74.Text = "å›æ”¾";
             // 
             // menuItem58
             // 
@@ -897,22 +897,22 @@ namespace SmartChessGame
             this.menuItem64,
             this.menuItem65,
             this.menuItem66});
-            this.menuItem58.Text = "¿ØÖÆ(&C)";
+            this.menuItem58.Text = "æ§åˆ¶(&C)";
             // 
             // menuItem59
             // 
             this.menuItem59.Index = 0;
-            this.menuItem59.Text = "Êó±ê²Ù×÷:";
+            this.menuItem59.Text = "é¼ æ ‡æ“ä½œ:";
             // 
             // menuItem60
             // 
             this.menuItem60.Index = 1;
-            this.menuItem60.Text = "ÄÃ·ÅÆì×Ó-----µã»÷×ó¼ü";
+            this.menuItem60.Text = "æ‹¿æ”¾æ——å­-----ç‚¹å‡»å·¦é”®";
             // 
             // menuItem61
             // 
             this.menuItem61.Index = 2;
-            this.menuItem61.Text = "ÒÆ¶¯Æì×Ó-----×ó¼üÍÏ¶¯";
+            this.menuItem61.Text = "ç§»åŠ¨æ——å­-----å·¦é”®æ‹–åŠ¨";
             // 
             // menuItem62
             // 
@@ -922,22 +922,22 @@ namespace SmartChessGame
             // menuItem63
             // 
             this.menuItem63.Index = 4;
-            this.menuItem63.Text = "¼üÅÌ²Ù×÷:";
+            this.menuItem63.Text = "é”®ç›˜æ“ä½œ:";
             // 
             // menuItem64
             // 
             this.menuItem64.Index = 5;
-            this.menuItem64.Text = "ÄÃ·ÅÆì×Ó-----Ctrl/¿Õ¸ñ/ENTER(»Ø³µ)";
+            this.menuItem64.Text = "æ‹¿æ”¾æ——å­-----Ctrl/ç©ºæ ¼/ENTER(å›è½¦)";
             // 
             // menuItem65
             // 
             this.menuItem65.Index = 6;
-            this.menuItem65.Text = "ÒÆ¶¯Æì×Ó-----UP/DOWN/LEFT/RIGHT ";
+            this.menuItem65.Text = "ç§»åŠ¨æ——å­-----UP/DOWN/LEFT/RIGHT ";
             // 
             // menuItem66
             // 
             this.menuItem66.Index = 7;
-            this.menuItem66.Text = "ÒÆ¶¯Æì×Ó-----W(ÉÏ)/S(ÏÂ)/A(×ó)/D(ÓÒ)";
+            this.menuItem66.Text = "ç§»åŠ¨æ——å­-----W(ä¸Š)/S(ä¸‹)/A(å·¦)/D(å³)";
             // 
             // menuItem51
             // 
@@ -948,7 +948,7 @@ namespace SmartChessGame
             this.menuItem54,
             this.menuItem55,
             this.menuItem56});
-            this.menuItem51.Text = "ÒôÀÖ(M)";
+            this.menuItem51.Text = "éŸ³ä¹(M)";
             // 
             // menuItem52
             // 
@@ -973,19 +973,19 @@ namespace SmartChessGame
             // menuItem56
             // 
             this.menuItem56.Index = 4;
-            this.menuItem56.Text = "¹Ø±ÕÒôĞ§";
+            this.menuItem56.Text = "å…³é—­éŸ³æ•ˆ";
             // 
             // menuItem15
             // 
             this.menuItem15.Index = 4;
-            this.menuItem15.Text = "°æ±¾(V)";
+            this.menuItem15.Text = "ç‰ˆæœ¬(V)";
             this.menuItem15.Click += new System.EventHandler(this.menuItem15_Click);
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.ContextMenu = this.contextMenu1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Ğ»Ğ»ÄúµÄ¹âÁÙ*_*";
+            this.notifyIcon1.Text = "è°¢è°¢æ‚¨çš„å…‰ä¸´*_*";
             this.notifyIcon1.Visible = true;
             // 
             // contextMenu1
@@ -998,26 +998,26 @@ namespace SmartChessGame
             // menuItem70
             // 
             this.menuItem70.Index = 0;
-            this.menuItem70.Text = "×î´ó»¯";
+            this.menuItem70.Text = "æœ€å¤§åŒ–";
             this.menuItem70.Click += new System.EventHandler(this.menuItem70_Click);
             // 
             // menuItem71
             // 
             this.menuItem71.Index = 1;
-            this.menuItem71.Text = "×îĞ¡»¯";
+            this.menuItem71.Text = "æœ€å°åŒ–";
             this.menuItem71.Click += new System.EventHandler(this.menuItem71_Click);
             // 
             // menuItem72
             // 
             this.menuItem72.Index = 2;
-            this.menuItem72.Text = "ÍË³ö";
+            this.menuItem72.Text = "é€€å‡º";
             this.menuItem72.Click += new System.EventHandler(this.menuItem72_Click);
             // 
             // notifyIcon2
             // 
             this.notifyIcon2.ContextMenu = this.contextMenu1;
             this.notifyIcon2.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon2.Icon")));
-            this.notifyIcon2.Text = "Ë«Âí·ÉÌÚ";
+            this.notifyIcon2.Text = "åŒé©¬é£è…¾";
             this.notifyIcon2.Visible = true;
             // 
             // Form1
@@ -1031,7 +1031,7 @@ namespace SmartChessGame
             this.Menu = this.mainMenu1;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ÖÇÄÜÏóÆåÓÎÏ·";
+            this.Text = "æ™ºèƒ½è±¡æ£‹æ¸¸æˆ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -1053,13 +1053,13 @@ namespace SmartChessGame
 		#endregion
 
 		/// <summary>
-		/// Ó¦ÓÃ³ÌĞòµÄÖ÷Èë¿Úµã¡£
+		/// åº”ç”¨ç¨‹åºçš„ä¸»å…¥å£ç‚¹ã€‚
 		/// </summary>	
 		/// 
 
 		public void AdjustDisplay()
 		{			
-            //if(MessageBox.Show("ÄúµÄÏÔÊ¾Æ÷ÊÇ17´çµÄÂğ£¿Èç¹ûÊÇµ¥»÷(Y),·ñÔòµ¥»÷(N)","ÇëÕıÈ·Ñ¡Ôñ£¬·ñÔòÆì¾Ö»áÓĞÒ»µãµãÆ«ÒÆ",MessageBoxButtons.YesNo,MessageBoxIcon.Asterisk)==DialogResult.Yes)
+            //if(MessageBox.Show("æ‚¨çš„æ˜¾ç¤ºå™¨æ˜¯17å¯¸çš„å—ï¼Ÿå¦‚æœæ˜¯å•å‡»(Y),å¦åˆ™å•å‡»(N)","è¯·æ­£ç¡®é€‰æ‹©ï¼Œå¦åˆ™æ——å±€ä¼šæœ‰ä¸€ç‚¹ç‚¹åç§»",MessageBoxButtons.YesNo,MessageBoxIcon.Asterisk)==DialogResult.Yes)
             //{
             //    displaySize=17;		
             //}
@@ -1111,20 +1111,20 @@ namespace SmartChessGame
 		}
 		
 		public void MyInitializeComponent()
-		{	//º¯Êı¹¦ÄÜ£ºµÃµ½Ò»×éµã£¬ÒÔ±ãÓÃÕâĞ©µãÀ´È·¶¨pictureBoxs×éµÄÎ»ÖÃ		
+		{	//å‡½æ•°åŠŸèƒ½ï¼šå¾—åˆ°ä¸€ç»„ç‚¹ï¼Œä»¥ä¾¿ç”¨è¿™äº›ç‚¹æ¥ç¡®å®špictureBoxsç»„çš„ä½ç½®		
 			int startLeft,startTop;
 			if(this.displaySize==15)
 			{
-				startLeft=48;startTop=30;//×óÉÏ½Çµã	800*600
+				startLeft=48;startTop=30;//å·¦ä¸Šè§’ç‚¹	800*600
 			}
 			else
 			{
-				startLeft=60;startTop=35;//×óÉÏ½Çµã     1024*768
+				startLeft=60;startTop=35;//å·¦ä¸Šè§’ç‚¹     1024*768
 			}
-			int Index=0; //¼ÇÂ¼µãµÄË÷Òı			
+			int Index=0; //è®°å½•ç‚¹çš„ç´¢å¼•			
 			width=panel1.Width;
 			height=panel1.Height;
-			width=width/9;  height=height/10;  //È·¶¨Ã¿¸ö·½¸ñµÄ¿íºÍ¸ß
+			width=width/9;  height=height/10;  //ç¡®å®šæ¯ä¸ªæ–¹æ ¼çš„å®½å’Œé«˜
 			width-=4; height-=3;			
 			int startX=startLeft,startY=startTop;
 			for(int i=0;i<2;i++)
@@ -1140,36 +1140,36 @@ namespace SmartChessGame
 					point[Index]=new Point(point[Index-1].X+width,point[Index-1].Y);
 					Index++;
 					
-					startY+=height;  //ÍùÏÂÒÆ¶¯¶¯×ø±ê,ÒÔ¼ÇÂ¼ÏÂÒ»ĞĞ×ø±ê
+					startY+=height;  //å¾€ä¸‹ç§»åŠ¨åŠ¨åæ ‡,ä»¥è®°å½•ä¸‹ä¸€è¡Œåæ ‡
 					startX=startLeft;
 				}				
-				//¼ÇÂ¼ÉÏÃæÍüÏÂµÄ¾Å¸öµã
+				//è®°å½•ä¸Šé¢å¿˜ä¸‹çš„ä¹ä¸ªç‚¹
 				for(int ii=Index-9,j=0;j<9;ii++,j++)
 				{					
 					point[Index]=new Point(point[ii].X,point[ii].Y+height);
 					Index++;
 				}					
 				startX=startLeft;
-				startY=startTop+5*height+height/2;	//ÒÆ¶¯×ø±ê¼ÇÏÂ·½ÆìÅÌ×ø±ê		    
+				startY=startTop+5*height+height/2;	//ç§»åŠ¨åæ ‡è®°ä¸‹æ–¹æ——ç›˜åæ ‡		    
 			}				            
 		}		
 		
 		public void panel1_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-		{//·½·¨¹¦ÄÜ£º»­ÆìÅÌ
+		{//æ–¹æ³•åŠŸèƒ½ï¼šç”»æ——ç›˜
 			Graphics g=e.Graphics;
 			int startLeft,startTop;
 			if(this.displaySize==15)
 			{
-				startLeft=48;startTop=32;//×óÉÏ½Çµã	 800*600
+				startLeft=48;startTop=32;//å·¦ä¸Šè§’ç‚¹	 800*600
 			}
 			else
 			{
-				startLeft=60;startTop=35;//×óÉÏ½Çµã 1024*768
+				startLeft=60;startTop=35;//å·¦ä¸Šè§’ç‚¹ 1024*768
 			}
-			int Index=0; //¼ÇÂ¼µãµÄË÷Òı			
+			int Index=0; //è®°å½•ç‚¹çš„ç´¢å¼•			
 			width=panel1.Width;
 			height=panel1.Height;
-			width=width/9;  height=height/10;  //È·¶¨Ã¿¸ö·½¸ñµÄ¿íºÍ¸ß
+			width=width/9;  height=height/10;  //ç¡®å®šæ¯ä¸ªæ–¹æ ¼çš„å®½å’Œé«˜
 			width-=4; height-=3;			
 			Pen pen1=new Pen(Color.DarkBlue,3);	
 			Pen pen2=new Pen(Color.Black,2);
@@ -1179,7 +1179,7 @@ namespace SmartChessGame
 				for(int j=0;j<4;j++)
 				{
 					for(int k=0;k<8;k++)
-					{//ÒÔÏÂÀ¨ºÅÄÚËùÓĞÓï¾äÎª»­Ò»ĞĞ·½¸ñ						
+					{//ä»¥ä¸‹æ‹¬å·å†…æ‰€æœ‰è¯­å¥ä¸ºç”»ä¸€è¡Œæ–¹æ ¼						
 						g.DrawRectangle(pen1,startX,startY,width,height);						
 						point[Index]=new Point(startX,startY);
 						Index++;
@@ -1188,17 +1188,17 @@ namespace SmartChessGame
 					point[Index]=new Point(point[Index-1].X+width,point[Index-1].Y);
 					Index++;
 					
-					startY+=height;  //ÍùÏÂÒÆ¶¯¶¯×ø±ê,»­ÏÂÒ»ĞĞ·½¸ñ
+					startY+=height;  //å¾€ä¸‹ç§»åŠ¨åŠ¨åæ ‡,ç”»ä¸‹ä¸€è¡Œæ–¹æ ¼
 					startX=startLeft;
 				}				
-				//¼ÇÂ¼ÉÏÃæÍüÏÂµÄ¾Å¸öµã
+				//è®°å½•ä¸Šé¢å¿˜ä¸‹çš„ä¹ä¸ªç‚¹
 				for(int ii=Index-9,j=0;j<9;ii++,j++)
 				{					
 					point[Index]=new Point(point[ii].X,point[ii].Y+height);
 					Index++;
 				}
-				int paoX,paoY;  //ÉùÃ÷»­ÅÚµãµÄÆ¯ÁÁÍ¼°¸×ø±ê
-				int x,y,temp;   //»­½«/Ë§µÄ¸¨Öú±äÁ¿
+				int paoX,paoY;  //å£°æ˜ç”»ç‚®ç‚¹çš„æ¼‚äº®å›¾æ¡ˆåæ ‡
+				int x,y,temp;   //ç”»å°†/å¸…çš„è¾…åŠ©å˜é‡
 				if(i==0)
 				{
 					paoX=startLeft+width;
@@ -1216,36 +1216,36 @@ namespace SmartChessGame
 					temp=7*height+height/2+2;
 				}				
 				
-				//»­ºáÏòµÄÁ½¸öÅÚµÄÆ¯ÁÁÍ¼°¸
+				//ç”»æ¨ªå‘çš„ä¸¤ä¸ªç‚®çš„æ¼‚äº®å›¾æ¡ˆ
 				DrawAllSitePoint(sender,e,paoX,paoY,width);		
 				paoX=startLeft+7*width;
 				DrawAllSitePoint(sender,e,paoX,paoY,width);	
                 
-				//»­½«/Ë§¼Ò					
+				//ç”»å°†/å¸…å®¶					
 				float[] dashValues={3,1,3,1,3,1};
 				pen2.DashPattern=dashValues;
 				g.DrawLine(pen2,x,startTop+temp,x+2*width,y);
 				x=startLeft+5*width;
 				g.DrawLine(pen2,x,startTop+temp,x-2*width,y);
 
-				//»­ÖĞ¼äµÄºÓ				
-				Font font=new Font("»ªÎÄĞĞ¿¬", 42F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));                				
+				//ç”»ä¸­é—´çš„æ²³				
+				Font font=new Font("åæ–‡è¡Œæ¥·", 42F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((System.Byte)(134)));                				
 				Brush brush=new SolidBrush(Color.Purple);
 				PointF tempPoint=new PointF(startLeft,startTop+4*height+10);
 				string tempStr;
 				if(this.displaySize==15)
 				{
-					tempStr="  ³ş   ºÓ       ºº   ½ç     "; /************ÊÊÓÚ800*600 ·Ö±çÂÊ**************/
+					tempStr="  æ¥š   æ²³       æ±‰   ç•Œ     "; /************é€‚äº800*600 åˆ†è¾©ç‡**************/
 				}
 				else
 				{
-					tempStr="      ³ş    ºÓ           ºº    ½ç     ";   /************ÊÊÓÚ1024*768·Ö±çÂÊ**************/
+					tempStr="      æ¥š    æ²³           æ±‰    ç•Œ     ";   /************é€‚äº1024*768åˆ†è¾©ç‡**************/
 					tempPoint.Y=tempPoint.Y+8;
 				}
 				g.DrawString(tempStr,font,brush,tempPoint);
 
 				startX=startLeft;
-				startY=startTop+5*height+height/2;	//ÒÆ¶¯×ø±ê,»­ÏÂ·½ÆìÅÌ		    
+				startY=startTop+5*height+height/2;	//ç§»åŠ¨åæ ‡,ç”»ä¸‹æ–¹æ——ç›˜		    
 			}			
 			for(int i=29;i<=33;i+=2)
 				DrawAllSitePoint(sender,e,this.point[i].X,this.point[i].Y,width);
@@ -1273,7 +1273,7 @@ namespace SmartChessGame
 			this.pictureBox5.Cursor=new Cursor(@"..\..\cursor\heart.cur");	
 			MyInitializeComponent();
 
-			//²¼ÖÃ
+			//å¸ƒç½®
 			this.panel1.Width=this.Width-this.panel2.Width;
 			this.panel1.Height=this.Height-this.statusBar1.Height-52;
 			this.panel2.Left=this.Left+this.panel1.Width;
@@ -1291,7 +1291,7 @@ namespace SmartChessGame
 			else
 				login.Close();	
 		
-			playName[1]="Å®º¢"; playName[2]="ÄĞº¢";
+			playName[1]="å¥³å­©"; playName[2]="ç”·å­©";
 			playName[3]=login.textBox1.Text.ToString();
 			playName[4]=login.textBox2.Text.ToString();					*/
 		}
@@ -1318,8 +1318,8 @@ namespace SmartChessGame
 			
 			//this.blueZhanJi=0;
 			//this.redZhanJi=0;
-			//this.statusBarPanel2.Text="ºì·½: 0";
-			//this.statusBarPanel3.Text="À¶·½: 0";
+			//this.statusBarPanel2.Text="çº¢æ–¹: 0";
+			//this.statusBarPanel3.Text="è“æ–¹: 0";
 		}
 
 		private void menuItem15_Click(object sender, System.EventArgs e)
@@ -1347,8 +1347,8 @@ namespace SmartChessGame
 		{
 			this.blueZhanJi=0;
 			this.redZhanJi=0;
-			this.statusBarPanel2.Text="ºì·½: 0";
-			this.statusBarPanel3.Text="À¶·½: 0";
+			this.statusBarPanel2.Text="çº¢æ–¹: 0";
+			this.statusBarPanel3.Text="è“æ–¹: 0";
 		}
 
 		private void menuItem70_Click(object sender, System.EventArgs e)
